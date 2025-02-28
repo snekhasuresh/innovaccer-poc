@@ -1,0 +1,363 @@
+.brand-item:hover {
+    background-color: #F6F6F6;
+    /* Background color on hover */
+    cursor: pointer;
+    /* Change the cursor to indicate interactivity */
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+}
+
+#loader {
+    position: fixed;
+    /* Cover the whole page */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent background */
+    z-index: 9999;
+    /* High z-index to ensure it appears above all content */
+    display: flex;
+    /* Center the spinner */
+    justify-content: center;
+    align-items: center;
+}
+
+.car-brands-container {
+    display: flex;
+    /*max-width: 100%;*/
+}
+
+.car-brands-layout {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.car-brands-sidebar {
+    background-color: #ffffff;
+    display: flex;
+    height: calc(100vh - 0px);
+}
+
+.alphabet-filter a {
+    color: #fff;
+    background-color: #f5c34b;
+
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.car-brands-list {
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+}
+
+.car-brands-list .alpha_first_letter {
+    background: #f5f5f5;
+    font-size: 16px;
+    font-family: "Roboto";
+    color: rgba(0, 0, 0, .85);
+    padding-left: 15px;
+    line-height: 32px;
+    position: sticky;
+    top: 0;
+    font-weight: 400;
+}
+
+.car-brands-list .alpha_first_letter:first-child {
+    margin-top: 0;
+}
+
+
+
+.brand-item img {
+    width: 40px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.brand-item span {
+    font-size: 16px;
+    font-family: "Roboto";
+    color: #484848;
+    line-height: 20px;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.car-brand-details {
+    padding: 20px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.car-brand-details h2 {
+    font-size: 26px;
+    color: #262626;
+    font-weight: 700;
+    margin-bottom: 15px;
+    margin-top: 30px;
+
+}
+
+#loader {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#loader img {
+    width: 50px;
+    height: 50px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+    .car-brands-container.container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-container.col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #car-brand-details.car-brand-details.col-md-9 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.car-brands-container {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.alphabet-filter {
+    background-color: #ffb400;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.alphabet-filter::-webkit-scrollbar {
+    display: none;
+}
+
+.alphabet-filter a {
+    display: block;
+    padding: 1px 0 !important;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    background-color: #ffb400;
+}
+
+.alphabet-filter a.active {
+    background-color: white;
+    color: #ffb400;
+}
+
+
+.alphabet-filter a.active {
+    background-color: white;
+    color: #ffb400;
+    padding: 3px 20px !important;
+}
+
+.car-brands-sidebar {
+    flex-grow: 1;
+    max-height: 130vh;
+    overflow-y: auto;
+}
+
+.car-brands-list {
+    display: flex;
+    flex-direction: column;
+    width: 247px;
+
+
+}
+
+.alpha_first_letter {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.brand-item {
+    display: flex;
+    align-items: center;
+    padding: 17px;
+}
+
+.brand-item img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.car-brand-details {
+    padding: 20px;
+	width:100%;
+}
+
+/* .car-brand-details::-webkit-scrollbar {
+    display: none;
+}
+
+.car-brand-details {
+    scrollbar-width: none;
+}
+
+.car-brand-details {
+    -ms-overflow-style: none;
+} */
+
+.filter-container,
+.car-brand-details,
+#new-car-links {
+    scroll-behavior: smooth;
+}
+
+@media screen and (max-width: 768px) {
+    .brand-item img {
+        width: 45px;
+        height: auto;
+        margin-right: 10px;
+    }
+
+    .alphabet-filter {
+        background-color: #ffb400;
+        display: flex;
+        flex-direction: column;
+        width: 35px;
+        height: 100vh;
+        align-items: center;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+
+    .filter-container {
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .car-brands-list .alpha_first_letter {
+        background: #f5f5f5;
+        font-size: 18px;
+        font-family: "Roboto";
+        color: rgba(0, 0, 0, .85);
+        padding-left: 15px;
+        line-height: 32px;
+        position: sticky;
+        top: 0;
+        font-weight: 400;
+    }
+
+    .alphabet-filter a {
+        display: block;
+        padding: 1px 0 !important;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        font-size: 18px;
+        background-color: #ffb400;
+    }
+
+    .brand-item span {
+        font-size: 20px;
+        font-family: "Roboto";
+        color: #484848;
+        line-height: 20px;
+    }
+
+    .car-brands-container {
+        display: flex;
+        flex-direction: column;
+/*         max-height: 300vh !important; */
+    }
+
+    .car-brand-details {
+        flex-grow: 2;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .filter-group {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        display: flow !important;
+    }
+
+    .car-list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        width: 100%;
+    }
+
+
+    .filter-container {
+        display: flex;
+    }
+
+    .car-brands-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .car-brands-sidebar {
+        flex-grow: 1;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+
+    .more-options-container {
+        display: none;
+    }
+
+}

@@ -1,0 +1,181 @@
+/* General Styles */
+.car-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles */
+.car-image img {
+    width: 120px;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* Car information styles */
+.car-info {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.car-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.number-plate {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* Edit button styles */
+.car-actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* .edit-car-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.edit-car-btn i {
+    font-family: FontAwesome;
+}
+
+.edit-car-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+} */
+
+/* Popup Styles */
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+.popup-content h3 {
+    margin: 0;
+}
+
+.close-popup {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.popup-header h3 {
+    margin: 0;
+}
+
+.close-popup {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.popup-body {
+    margin-top: 20px;
+}
+
+.car-preview img {
+    width: 100px;
+    border-radius: 8px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-car-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-right: 10px;
+}
+
+.edit-confirm-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.edit-car-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}

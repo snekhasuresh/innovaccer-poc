@@ -1,0 +1,200 @@
+.bike-tabs {
+  width: 100%;
+}
+
+.tabs-container {
+  border-bottom: 2px solid #e5e5e5;
+}
+.home-tab-bikes-name {
+  display: block;
+  font-size: 16px;
+  font-family: "Roboto";
+  color: #262626;
+  line-height: 22px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.more-button {
+  margin-top: -46px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  right: -1px;
+  text-decoration: none;
+}
+.badge-hot {
+  background-color: "red";
+}
+.bike-tabs .tabs {
+  display: flex;
+  list-style-type: none;
+
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e5e5e5;
+  overflow-x: auto;
+  /* For horizontal scrolling on smaller screens */
+}
+
+.bike-tabs .tabs li {
+  margin-right: 30px;
+  position: relative;
+}
+.wap-home-tab-title {
+  display: block;
+    font-size: 16px;
+    font-family: "Roboto";
+    color: #262626;
+    line-height: 22px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 700;
+}
+.bike-tabs .tabs li a {
+  padding: 10px 5px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s ease;
+  position: relative;
+  font-family: "Roboto" !important;
+}
+
+.bike-tabs .tabs li a:hover {
+  color: #ffb400;
+  border-bottom: 2px solid #ffb400;
+  /* Underline on hover */
+}
+
+.bike-tabs .tabs li a.active {
+  color: #ffb400;
+  font-weight: 600;
+  border-bottom: 3px solid #ffb400;
+}
+
+.bike-tabs .tabs li + li::before {
+  content: "";
+  height: 20px;
+  /* Adjust this to change the height of the divider */
+  width: 1px;
+  /* Adjust this to change the thickness of the divider */
+  background-color: #e5e5e5;
+  /* Color of the divider */
+  position: absolute;
+  left: -15px;
+  /* Positioning the divider correctly between tabs */
+  top: 50%;
+  /* Centering the divider vertically */
+  transform: translateY(-50%);
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.bike-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bike-tabs .tab-content {
+  padding-top: 10px;
+
+  background-color: #fff;
+  border-top: none;
+  border-radius: 0 5px 5px 5px;
+  margin-top: -1px;
+  /* Prevents a gap between the active tab and content */
+}
+
+.bike-tabs .tab-pane {
+  display: none;
+}
+
+.bike-tabs .tab-pane.active {
+  display: block;
+}
+
+.home-tab-bike-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) !important;
+  /* 5 equal columns */
+  margin-left: -11px;
+}
+
+.tab-bike-item {
+  width: 259px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.badge {
+  background-color: #1e90ff;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.fixed-thumbnail {
+  width: 250px;
+  /* Fixed width */
+  height: 200px;
+  /* Fixed height */
+  object-fit: cover;
+  /* Ensures the image covers the box without distortion */
+  border-radius: 5px;
+  /* Optional: Adds rounded corners */
+  display: block;
+  margin: 0 auto;
+  transition: all 0.2s;
+}
+.fixed-thumbnail:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+.home-tab-bikes-name {
+  margin-top: 24px !important;
+  margin-bottom: 15px !important;
+}
+
+.bikes-price-hometab {
+  display: inline-block;
+  font-size: inherit;
+  color: #576b95;
+  font-weight: 700;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-top: -21px;
+}
+@media screen and (max-width: 768px) {
+.home-tab-bike-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
+  /* 5 equal columns */
+  margin-left: -11px;
+}
+}

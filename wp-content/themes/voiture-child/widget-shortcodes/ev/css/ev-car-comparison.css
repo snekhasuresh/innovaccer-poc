@@ -1,0 +1,371 @@
+.price-and-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.findnew-comparison-wrapper h2::before,
+.pc-title::before,
+.wa-title::before {
+    content: " ";
+    display: block;
+    width: 14px;
+    height: 26px;
+    transform: skewX(345deg);
+    background-image: linear-gradient(90deg, #32D0C6 0%, #32D0C6 64%, #0B0E52 64%, #0B0E52 100%);
+
+}
+
+.findnew-comparison-wrapper {
+    /* Ensure wrapper has a defined height */
+    min-height: 300px;
+    /* Adjust as necessary */
+}
+
+.findnew-comparison-carousel {
+    display: flex;
+    /* Or use grid if preferred */
+    justify-content: space-between;
+    /* Space items evenly */
+    gap: 20px;
+    /* Space between items */
+}
+
+.car-thumbnail img {
+    width: 222px;
+    height: 150px;
+    transition: transform 0.3s ease;
+}
+
+.slick-track {
+    display: flex !important;
+    gap: 20px;
+    min-width: 1200px !important;
+
+}
+
+/* Slick Previous/Next button styles */
+.slick-prev,
+.slick-next {
+    background-color: #ffffff !important;
+    /* Default white background */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 20px;
+    color: black !important;
+    /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: white !important;
+    /* Change to yellow on hover */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+}
+
+/* Focus state */
+.slick-prev:focus,
+.slick-next:focus {
+    background-color: white !important;
+    /* Keep background yellow on focus */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Active state when button is clicked */
+.slick-prev:active,
+.slick-next:active {
+    background-color: white !important;
+    /* Keep background yellow on click */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Focus-visible state for keyboard users */
+.slick-prev:focus-visible,
+.slick-next:focus-visible {
+    background-color: white !important;
+    color: white !important;
+    outline: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+
+/* Prevent disappearing of background by using more specific selectors */
+button.slick-prev,
+button.slick-next,
+div.slick-prev,
+div.slick-next {
+    background-color: white !important;
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+/* Slick Dots customization */
+.findnew-comparison-wrapper .slick-prev {
+    left: -6px !important;
+    /* Adjust the positioning of the left arrow */
+}
+
+/* Position for the Next arrow */
+.findnew-comparison-wrapper .slick-next {
+    right: -20px !important;
+    /* Adjust the positioning of the right arrow */
+}
+
+.findnew-comparison-wrapper{
+	margin-left:-20px;
+}
+
+.findnew-comparison-item {
+    flex: 0 0 300;
+    /* Prevent flexbox from shrinking */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.1s ease;
+    position: relative;
+    min-width: 200px;
+    /* Ensure a consistent width */
+    min-height: 233px;
+    /* Set a minimum height for the cards */
+}
+
+.findnew-comparison-item:hover {
+    transform: translateY(-5px);
+}
+
+.car-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.findnew-car-image {
+    flex: 0 0 45%;
+    text-align: center;
+
+}
+
+.findnew-car-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.findnew-car-image h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.findnew-car-image .price {
+    font-size: 14px;
+    font-weight: bold;
+    color: #576B95;
+
+}
+
+/* Card container */
+.findnew-compare-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 156px;
+    /* Smaller card width */
+    overflow: hidden;
+    /* Prevent overflow */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.findnew-car-image-container {
+    width: 124px;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center the image vertically and horizontally */
+    border-radius: 4px;
+    background-color: #ffff;
+    /* Light background color to better see the image */
+}
+
+/* Ensure images fit the container without cropping */
+.findnew-car-image-container img {
+    width: 65%;
+    height: 100%;
+    object-fit: contain;
+    /* Ensures image fits within the container without cropping */
+    display: block;
+    /* Prevents extra space below the image */
+}
+
+
+/* Car name styling */
+.findnew-car-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #262626;
+    white-space: nowrap;
+    font-family: 'Roboto';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Pricing section */
+.findnew-car-price {
+    font-size: 14px;
+    color: #576B95;
+    font-family: 'Roboto';
+    font-weight: 700;
+}
+
+.findnew-vs-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* Stack vertically */
+    position: relative;
+    height: 120px;
+    /* Adjust as needed */
+}
+
+/* Vertical line above the VS tag */
+.findnew-vs-container::before {
+    content: '';
+    width: 1px;
+    height: 40px;
+    /* Adjust the height of the top vertical line */
+    background-color: #ddd;
+    /* Divider color */
+    position: absolute;
+    top: 0;
+}
+
+/* Vertical line below the VS tag */
+.findnew-vs-container::after {
+    content: '';
+    width: 1px;
+    height: 71px;
+    /* Adjust the height of the bottom vertical line */
+    background-color: #ddd;
+    /* Divider color */
+    position: absolute;
+    bottom: 0;
+}
+
+/* VS tag styling */
+.findnew-vs-tag {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 1px 4px;
+    border-radius: 50%;
+    z-index: 1;
+    position: relative;
+	margin-top: -44px;
+}
+
+.findnew-comparison-item .findnew-compare-button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 6px;
+    background-color: white;
+    color: #ffb400;
+    border: 1px solid #ffb400;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    box-sizing: border-box;
+	font-family:'Roboto';
+}
+
+
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: #ddd;
+}
+
+.carousel-prev {
+    left: -30px;
+}
+
+.carousel-next {
+    right: -30px;
+}
+@media screen and (max-width: 768px) {
+.findnew-comparison-wrapper .slick-prev {
+display:none !important;
+    /* Adjust the positioning of the left arrow */
+}
+
+/* Position for the Next arrow */
+.findnew-comparison-wrapper .slick-next {
+   display:none !important;
+    /* Adjust the positioning of the right arrow */
+}
+}
+/* @media (min-width: 768px) and (max-width: 1024px) {
+	.findnew-comparison-wrapper.slick-prev {
+    margin-left: 35px;
+}
+.findnew-comparison-carousel .slick-track {
+    display: flex !important;
+    gap: 49px !important;
+    min-width: 1200px !important;
+}
+} */

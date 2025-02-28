@@ -1,0 +1,67 @@
+.competitors {
+    max-width: 285px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.competitor {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    margin-top: 15px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.competitor img {
+    width: 80px;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.details h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.details p {
+    font-size: 16px;
+    color: #555;
+}
+
+.title-com {
+    font-size: 22px;
+    line-height: 32px;
+    font-weight: bold;
+    color: #262626;
+    width: 333px;
+    -webkit-text-overflow: ellipsis !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.car-name-comp {
+    font-size: 16px;
+    font-weight: 700;
+    color: #262626;
+    margin-bottom: -5px;
+    font-family: 'roboto';
+    white-space: nowrap;
+}
+
+.car-price-comp {
+    font-size: 14px;
+    color: #576b95;
+    font-weight: 700;
+    font-family: 'Roboto';
+    margin-bottom: 10px;
+	white-space:nowrap;
+}

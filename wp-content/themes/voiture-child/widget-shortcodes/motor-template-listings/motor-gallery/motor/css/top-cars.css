@@ -1,0 +1,157 @@
+.price {
+  font-size: 15px;
+  color: #576b95;
+  font-weight: 700;
+  margin-top: -5px;
+}
+
+.car-titile-con {
+  margin-top: -20px;
+  color: #262626;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.view-model-button {
+  padding: 8px 12px;
+  background-color: white;
+  color: #feb429;
+  text-decoration: none;
+  border: 1px solid #feb429;
+  border-radius: 4px;
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+  font-weight: 700;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+/* Carousel container */
+.top-cars-sedan-list {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Prevents wrapping onto a new line */
+  overflow: visible;
+  /* Hides any overflowed content */
+  position: relative;
+  gap: 20px;
+  margin-left: -33px;
+}
+
+.slick-prev:focus,
+.slick-next:focus,
+.slick-prev:active,
+.slick-next:active {
+  background-color: #ffffff !important;
+  /* Keep the same background color after click */
+  color: black !important;
+  /* Retain the arrow color */
+  outline: none;
+  /* Remove any default browser outlines */
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.slick-prev:before {
+  content: "←";
+
+  color: black !important;
+}
+
+.slick-next:before {
+  content: "→";
+  color: black !important;
+}
+
+.slick-prev,
+.slick-next {
+  background-color: #ffffff !important;
+  /* Default white background */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+  /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: white !important;
+  /* Change to yellow on hover */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Focus state */
+.slick-prev:focus,
+.slick-next:focus {
+  background-color: white !important;
+  /* Keep background yellow on focus */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+
+  outline: none;
+}
+
+/* Active state when button is clicked */
+.slick-prev:active,
+.slick-next:active {
+  background-color: white !important;
+  /* Keep background yellow when clicked */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.car-sedan-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  width: calc(250px - 30px);
+  /* Adjusts the width to account for the margin */
+
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+  width: 250px;
+  margin: 0 15px;
+  /* Adds horizontal margin (space) between each card */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Hover effect for car items */
+.car-item:hover {
+  /* transform: translateY(0.1px); */
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail styling */
+.car-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.car-thumbnail img {
+  width: 100%;
+  height: 140px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}

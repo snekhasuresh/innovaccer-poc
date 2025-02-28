@@ -1,0 +1,70 @@
+.author-single {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.home-pagination {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-pagination div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-pagination .prev-page svg,
+.home-pagination .next-page svg {
+    width: 42px;
+    height: 39px;
+    background: #f7f7f7;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    transition: all .2s;
+}
+
+.home-pagination .next-page svg {
+    margin-left: 10px;
+}
+
+
+.home-pagination .next-page svg :hover {
+    background: #e5e5e5;
+
+}
+
+/* Center the loader and change color to blue */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px;
+    color: #007bff;
+    /* Blue color */
+    z-index: 9999;
+    /* Ensure it's on top */
+}
+
+.loader i {
+    font-size: 2em;
+    /* Increase spinner size */
+}
+
+.cate-news-container {
+    position: relative;
+    /* Ensure the container has positioning context for the loader */
+}
+
+.author-img {
+    max-height: 30px;
+    max-width: 30px;
+    border-radius: 50% !important;
+}

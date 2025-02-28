@@ -1,0 +1,95 @@
+.car-brands-title {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.car-brands {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* 6 equal columns */
+  gap: 0;
+  /* No gaps between the items */
+  border: 1px solid #ddd;
+  /* Surrounding border for the entire grid */
+  border-radius: 4px;
+  /* Slightly rounded corners for the entire grid */
+  overflow: hidden;
+}
+
+.car-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  font-family: "Roboto";
+  /* Apply borders between each item */
+}
+
+.car-brand:nth-child(-n + 6) {
+  border-top: none;
+  /* Remove the top border for the first row */
+}
+
+.car-brand:nth-child(6n) {
+  border-right: none;
+  /* Remove the right-side border for every 6th item */
+}
+
+.car-brand:nth-child(6n + 1) {
+  border-left: none;
+  /* Remove the left-side border for every 1st item in the row */
+}
+
+.brand-logo {
+  width: 40px;
+  /* Smaller logo size */
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.brand-name {
+  display: block;
+  font-size: 12px;
+  color: #262626;
+}
+
+.view-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.view-more-button {
+  font-size: 16px;
+  font-weight: bold;
+  color: #576b95;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family:'Roboto';
+}
+
+.view-more-button:hover{
+	  color: #576b95;
+}
+.view-more-button span {
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family:'Roboto';	
+}
+		@media screen and (max-width: 915px) {
+			.car-brands {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr) !important;
+				gap: 0;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				overflow: hidden;
+            }
+		}

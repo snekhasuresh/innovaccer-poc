@@ -1,0 +1,77 @@
+.petrol-name {
+    font-size: 18px;
+    color: #262626;
+    font-weight: 600;
+}
+
+.fuel-prices-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.fuel-prices-container h3 {
+    font-size: 20px;
+    margin: 20px 0 10px;
+}
+
+.fuel-prices ul {
+    list-style: none;
+
+    padding-right: 40px;
+}
+
+.fuel-prices li {
+    display: flex;
+    align-items: center;
+
+    /* Spread items evenly */
+    margin-bottom: 5px;
+}
+
+.fuel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.fuel-variant {
+    /* flex-grow: 1; */
+    /* text-align: left;     */
+    min-width: 100px;
+    font-size: 16px;
+	color: #262626;
+    font-family: 'Roboto';
+    /* Ensure space for the fuel name */
+}
+
+.fuel-price-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align price and change to the right */
+    min-width: 120px;
+    /* Ensures all prices are aligned */
+}
+
+.fuel-price {
+    text-align: right;
+    margin-right: 5px;
+    font-size: 16px;
+	color: #262626;
+    font-family: 'Roboto';
+    /* Space between price and percentage */
+}
+
+.fuel-change {
+    font-size: 12px;
+    white-space: nowrap;
+    /* Keep percentage change in one line */
+}
+
+.last-updated {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #8c8c8c;
+}

@@ -1,0 +1,266 @@
+<?php
+function enqueue_ev_latest_news_css()
+{
+    wp_enqueue_style(
+        'ev-latest-news-style',
+        get_stylesheet_directory_uri() . '/widget-shortcodes/ev/css/ev-latest-news.css',
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_ev_latest_news_css');
+
+function latest_ev_news_with_thumbnail_shortcode($atts)
+{
+	enqueue_ev_latest_news_css();
+    $latest_news_data = get_latest_ev_news_data();
+    ob_start();
+
+    echo '<div class="heading-and-select">
+            <div class = "popular-ev-head">
+                <h2 class="wa-title-text">ข่าวรถ EV ล่าสุด</h2>
+            </div>
+        </div>';
+
+    if (!empty($latest_news_data)) { ?>
+        <ul class="latest-news-list">
+            <?php
+            $index = 0;
+            $news_count = count($latest_news_data);
+
+            while ($index < $news_count):
+                $news_item = $latest_news_data[$index];
+            ?>
+                <li class="news-item">
+                    <?php if (!empty($news_item['thumbnail_url'])) : ?>
+                        <div class="news-thumbnail">
+                            <a href="<?php echo esc_url($news_item['link']); ?>">
+                                <img src="<?php echo esc_url($news_item['thumbnail_url']); ?>" alt="<?php echo esc_attr($news_item['title']); ?>" />
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                    <div class="news-content">
+                        <h3><a href="<?php echo esc_url($news_item['link']); ?>" class="news-title"><?php echo esc_attr($news_item['title']); ?></a></h3>
+                        <div class="news-description">
+                            <a href="<?php echo esc_url($news_item['link']); ?>">
+                                <?php echo esc_html($news_item['content']); ?>
+                            </a>
+                        </div>
+                        <div class="news-meta">
+                            <div class="ev-avatar-and-auther-con">
+                                <a href="<?php echo esc_url($news_item['custom_author_link']); ?>">
+                                    <span class="news-avatar">
+                                        <img src="<?php echo esc_url($news_item['avatar']); ?>" />
+                                        <span class="news-author"><?php echo esc_html($news_item['author']); ?> </span>
+                                    </span>
+                                </a>
+                            </div>
+                            <span class="news-date"><?php echo date('F j, Y', strtotime($news_item['publish_time'])); ?></span> <!-- Display date -->
+                        </div>
+                    </div>
+                </li>
+            <?php
+                $index++;
+            endwhile;
+            ?>
+        </ul>
+        <div class="view-more-container">
+            <a href="<?php echo esc_url(home_url('/news/evs')); ?>" class="view-more-button">
+                <?php echo esc_html__('View More', 'voiture'); ?> <span>&#8250;</span>
+            </a>
+        </div>
+<style>
+.heading-and-select {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  .dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 3px;
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 108px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+/*   .dropdown::after {
+    content: '\25BC';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  } */
+  
+  select::-ms-expand {
+    display: none;
+    /* Hide the default dropdown arrow in IE */
+  }
+  
+  .latest-news-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .news-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+  
+  .news-thumbnail {
+    flex-shrink: 0;
+    margin-right: 20px;
+    display: flex;
+  
+  }
+  
+  .news-thumbnail img {
+    width: 300px;
+    /* Adjust the size based on the design */
+    height: 200px;
+  
+    border-radius: 8px;
+    /* Rounded corners */
+  }
+  
+  .news-content {
+    flex-grow: 1;
+  }
+	.news-description:hover{
+		color:#8c8c8c;
+	}
+  .news-title {
+    font-size: 26.91px;
+    font-weight: bold;
+    color: #2a2a2a;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limits the title to 2 lines */
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    height: calc(1.4em * 2);
+    margin-bottom: 10px;
+    font-family: "Roboto Condensed";
+  }
+  
+  .news-title:hover {
+    color: #ffb400;
+  }
+  
+.news-description a {
+    font-size: 14px;
+    color: #8c8c8c !important;
+    line-height: 22px;
+    font-family: "Roboto";
+    font-weight: 500;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    /* margin-bottom: 10px; */
+}
+	.news-description a:hover { 
+	color:#8c8c8c;
+	}
+  .news-meta {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+	justify-content:space-between;
+  }
+  
+  .news-author {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: 400;
+    line-height: 20px;
+    font-family: 'Roboto';
+  }
+  
+  .news-avatar img {
+    border-radius: 50%;
+    height: 30px;
+	width:30px;
+    /* Makes the avatar round */
+  }
+  
+  .news-date {
+    margin-left: auto;
+	font-size: 14px;
+    color: #8c8c8c;
+    font-weight: 400;
+    line-height: 20px;
+    font-family: 'Roboto';
+  }
+.news-avatar-author{
+	display:flex;
+	align-items:center;
+}
+.news-item h3{
+	margin:0px;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	.news-item {
+    display: flex;
+    align-items: start;
+    padding: 15px 0;
+    flex-direction: column;
+}
+}
+  @media (max-width: 768px) {
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+	  .news-meta {
+		  margin-top:34px;
+	  }
+	  .news-content{
+		  width: -webkit-fill-available !important;
+	  }
+    .news-thumbnail {
+        margin-bottom: 10px;
+    }
+  
+    .news-thumbnail img {
+        width: 100%;
+        height: auto;
+    }
+  
+  
+    .news-date {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+  }
+</style>
+    <?php
+    } else {
+    ?>
+        <p>No news available.</p>
+<?php
+    }
+	
+
+    wp_reset_postdata();
+
+    return ob_get_clean();
+}
+
+add_shortcode('latest_ev_news', 'latest_ev_news_with_thumbnail_shortcode');

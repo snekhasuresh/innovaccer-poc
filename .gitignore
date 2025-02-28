@@ -1,0 +1,29 @@
+# Ignore evierything
+*
+
+# Allow directories to be included
+!*/
+
+# Allow composer file
+!/composer.json
+
+# Allow wp-content folder
+!/wp-content/
+
+# Allow themes folder inside wp-content
+!/wp-content/themes/
+
+# Allow only the specific theme folder, replace "your-theme" with your actual theme name
+!/wp-content/themes/voiture-child/**
+
+# Allow plugins folder inside wp-content
+!/wp-content/plugins/
+
+# Allow everything inside the plugins folder (including files and subdirectories)
+!/wp-content/plugins/**
+
+# Allow gitignore
+!.gitignore
+
+#ignore nginx cache logs
+wp-content/plugins/fastcgi-cache-purge-and-preload-nginx/fastcgi_ops.log

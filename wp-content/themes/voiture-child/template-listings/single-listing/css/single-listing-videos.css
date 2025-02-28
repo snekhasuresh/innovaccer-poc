@@ -1,0 +1,123 @@
+.variants-videos-title-con {
+  margin-bottom: 15px;
+}
+
+.single-listing-video-title {
+  font-family: "Roboto";
+  font-weight: 700;
+  color: #000000;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* Limits the text to 2 lines */
+  white-space: normal;
+  max-height: 3em;
+  /* Adjusts height for 2 lines */
+  /* height: 33px; */
+  /* For fallback consistency */
+}
+
+.variants-videos-title {
+  position: relative;
+  font-size: 26px;
+  line-height: 32px;
+  color: #262626;
+  font-weight: 700;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  width: 80%;
+  max-width: 800px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.single-listing-car-videos-container .slick-track {
+  display: flex;
+  gap: 20px !important;
+}
+.single-listing-car-videos-container .slick-slide{
+	margin:0px !important;
+}
+.single-listing-car-videos-container .slick-prev,
+.single-listing-car-videos-container .slick-next {
+  background-color: #ffffff !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  top: 36% !important;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+}
+
+.single-listing-car-videos-container .slick-prev {
+  left: -6px !important;
+}
+
+.single-listing-car-videos-container .slick-next {
+  right: -18px !important;
+}
+.single-listing-car-videos-container {
+	margin-left:-17px;
+}
+
+.slick-arrow {
+  top: 103px !important;
+  transform: none !important;
+}
+@media screen and (max-width: 768px) {
+	.single-listing-car-videos-container .slick-prev {
+  display:none !important;
+}
+
+.single-listing-car-videos-container .slick-next {
+ display:none !important;
+}
+}

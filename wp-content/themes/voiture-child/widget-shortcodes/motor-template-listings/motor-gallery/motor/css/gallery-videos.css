@@ -1,0 +1,103 @@
+   .single-listing-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .single-listing-modal-content {
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .single-listing-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+			.single-listing-latest-car-videos-container-gallary .slick-track {
+    display: flex;
+    gap: 20px !important;
+ }
+		}
+        .single-listing-close:hover,
+        .single-listing-close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+        }
+		.single-listing-latest-car-videos-container-gallary{
+			margin-left:-20px;
+		}
+        .slick-track {
+            display: flex;
+        }
+		.single-listing-latest-car-videos-container-gallary .slick-slide{
+			margin:0px !important;
+		}
+        /* Slick Previous/Next button styles */
+        .slick-prev,
+        .slick-next {
+            background-color: #ffffff !important;
+            /* Default white background */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            z-index: 10;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+        }
+
+        .slick-prev:before,
+        .slick-next:before {
+            font-size: 20px;
+            color: black !important;
+            /* Black arrow */
+        }
+
+        /* Hover state */
+        .slick-prev:hover,
+        .slick-next:hover {
+            background-color: white !important;
+            /* Change to yellow on hover */
+            color: white !important;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+        }
+
+        /* Slick Dots customization */
+        .single-listing-latest-car-videos-container-gallary .slick-prev {
+            left: -5px !important;
+        }
+
+        .single-listing-latest-car-videos-container-gallary .slick-next {
+            right: -12px !important;
+        }
+	@media screen and (max-width: 768px) {
+		        .single-listing-latest-car-videos-container-gallary .slick-prev {
+            display:none !important;
+        }
+
+        .single-listing-latest-car-videos-container-gallary .slick-next {
+            display:none !important;
+        }
+		}

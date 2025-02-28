@@ -1,0 +1,15 @@
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0;
+    color: white;
+}
+
+.userpage-header {
+    background-image: url('https://static.wapcar.my/pc/my/images/d53720e49fd114e39dcf.png');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    color: white !important;
+    background-color: #121785;
+}

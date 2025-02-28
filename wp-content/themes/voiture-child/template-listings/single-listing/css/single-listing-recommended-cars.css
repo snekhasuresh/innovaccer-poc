@@ -1,0 +1,381 @@
+.recommended-multi-tab-heading {
+  position: relative;
+  font-size: 26px;
+  line-height: 32px;
+  color: #262626;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Parent container style */
+.recommended_carousel,
+.car-item {
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Dropdown styles */
+.car-variant-dropdown {
+  position: relative;
+  /* Make the parent relative to handle the absolute dropdown */
+}
+
+.variant-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease;
+  opacity: 0;
+  /* Make sure the initial opacity is 0 */
+}
+
+.variant-list.visible {
+  max-height: 1000px;
+  /* Set a maximum height large enough to fit the content */
+  opacity: 1;
+}
+
+.variant-toggle i:hover {
+  color: #333;
+  /* Change icon color on hover */
+}
+
+.variant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  padding: 10px 0;
+  position: relative;
+}
+
+.variant-count {
+  font-size: 14px;
+  color: #757575;
+}
+
+.variant-toggle {
+  background: none;
+  border: none;
+  color: #757575;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.variant-list {
+  display: none;
+  background-color: #fff;
+  list-style: none;
+  width: 100%;
+  left: 0;
+  top: 40px;
+
+  transition: 0.5s ease, opacity 0.5s ease;
+}
+
+.variant-list.visible {
+  display: block !important;
+  transition: 0.5s ease, opacity 0.5s ease;
+}
+
+.variant-list li {
+  padding: 5px 10px;
+}
+
+.variant-list li a {
+  font-size: 14px;
+  font-family: "Roboto";
+  color: #576b95;
+  line-height: 20px;
+  display: block;
+}
+
+.variant-list li a:hover {
+  text-decoration: underline;
+}
+
+.wa-single-car-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  background-color: #fff;
+}
+
+.car-image img {
+  width: 100%;
+  /* / height: 200px; */
+  /* Set the desired height */
+  object-fit: cover;
+  /* Ensures the image maintains its aspect ratio while filling the container */
+  border-radius: 4px;
+}
+
+.badge-new-variant {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #00bfa5;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.car-details {
+  margin-top: 12px;
+}
+
+.car-make::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffb400;
+}
+
+.car-make {
+  color: #262626;
+  font-size: 12px;
+  margin: 0;
+  position: relative;
+  left: 9px;
+  margin-top: 6px;
+  font-family:'Roboto';
+  font-weight: 500;
+}
+
+.wa-single-car-item h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+  font-family: "Roboto" !important;
+}
+
+.car-price {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #576b95;
+  font-family: "Roboto";
+}
+
+.btn-view-model {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #ffb400;
+  border: 1px solid #ffb400;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 10px;
+  font-family: "Roboto";
+}
+
+
+.variant-count {
+  font-family: "Roboto";
+  font-size: 14px;
+  color: #262626;
+  letter-spacing: 0;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.variant-toggle {
+  background: none;
+  border: none;
+  color: #757575;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.recommended-multi-car-tabs {
+  width: 100%;
+  border: none !important;
+}
+
+.slick-track {
+  display: flex;
+  gap: 21px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+}
+
+.slick-arrow {
+  top: 130px !important;
+  transform: none !important;
+}
+
+/* Slick Previous/Next button styles */
+.slick-prev,
+.slick-next {
+  background-color: #ffffff !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+/* Slick Dots customization */
+.single-listing-car-list .slick-prev {
+  left: -6px !important;
+  /* Adjust the positioning of the left arrow */
+}
+
+/* Position for the Next arrow */
+.single-listing-car-list .slick-next {
+  right: -21px !important;
+  /* Adjust the positioning of the right arrow */
+}
+
+/* Ensure the arrow buttons don't disappear on hover */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #071a40;
+  /* Slightly darker color on hover */
+  color: white;
+}
+
+
+
+.recommended_carousal {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Prevents wrapping onto a new line */
+  overflow: visible;
+  /* Hides any overflowed content */
+  position: relative;
+  gap: 20px;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #e5e5e5;
+  overflow-x: auto;
+  /* For horizontal scrolling on smaller screens */
+}
+.recommended-multi-car-tabs .btn-view-model:hover {
+	color:#ffb400;
+}
+.recommended-multi-car-tabs .recommended-multi-tabs li {
+  margin-right: 30px;
+  /* Adjust spacing between tabs */
+  position: relative;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a {
+  padding: 15px 0px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  transition: color 0.3s ease;
+  position: relative;
+  font-family: "Roboto";
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a:hover {
+  color: #ffb400;
+  /* Hover color similar to the design */
+  border-bottom: 3px solid #ffb400;
+  /* Underline on hover */
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a.active {
+  color: #ffb400;
+  font-weight: 600;
+  border-bottom: 3px solid #ffb400;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li + li::before {
+  content: "";
+  height: 20px;
+  /* Adjust this to change the height of the divider */
+  width: 1px;
+  /* Adjust this to change the thickness of the divider */
+  background-color: #e5e5e5;
+  /* Color of the divider */
+  position: absolute;
+  left: -15px;
+  /* Positioning the divider correctly between tabs */
+  top: 50%;
+  /* Centering the divider vertically */
+  transform: translateY(-50%);
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-content {
+  padding-top:20px;
+  background-color: #fff;
+  border-top: none;
+  border-radius: 0 5px 5px 5px;
+  margin-top: -1px;
+  margin-left:-17px;
+  /* Prevents a gap between the active tab and content */
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-pane {
+  display: none;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-pane.active {
+  display: block;
+}
+
+.recommended-multi-single-listing-car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.recommended-multi-car-tabs .slick-prev {
+left:-3px;
+  /* Adjust the positioning of the left arrow */
+}
+@media screen and (max-width: 768px){
+	.slick-track {
+    display: flex !important;
+    gap: 13px !important;
+
+}
+.recommended-multi-car-tabs .slick-prev {
+ display:none !important;
+  /* Adjust the positioning of the left arrow */
+}
+
+.recommended-multi-car-tabs .slick-next {
+ display:none !important;
+  /* Adjust the positioning of the right arrow */
+}
+}

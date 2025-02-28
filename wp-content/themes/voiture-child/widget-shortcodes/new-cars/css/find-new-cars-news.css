@@ -1,0 +1,230 @@
+.slick-track {
+    display: flex !important;
+    gap: 20px !important;
+    /* width: 1785px !important; */
+}
+.fuel-news-section .slick-slide {
+    margin: 0 0px;
+}
+/* Slick Previous/Next button styles */
+.slick-prev,
+.slick-next {
+    background-color: #ffffff !important;
+    /* Default white background */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 20px;
+    color: black !important;
+    /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: white !important;
+    /* Change to yellow on hover */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+}
+
+/* Focus state */
+.slick-prev:focus,
+.slick-next:focus {
+    background-color: white !important;
+    /* Keep background yellow on focus */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Active state when button is clicked */
+.slick-prev:active,
+.slick-next:active {
+    background-color: white !important;
+    /* Keep background yellow on click */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Focus-visible state for keyboard users */
+.slick-prev:focus-visible,
+.slick-next:focus-visible {
+    background-color: white !important;
+    color: white !important;
+    outline: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+
+/* Prevent disappearing of background by using more specific selectors */
+button.slick-prev,
+button.slick-next,
+div.slick-prev,
+div.slick-next {
+    background-color: white !important;
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+/* Slick Dots customization */
+.slick-prev {
+    left: -25px !important;
+    /* Adjust the positioning of the left arrow */
+}
+
+/* Position for the Next arrow */
+.slick-next {
+    right: -25px !important;
+    /* Adjust the positioning of the right arrow */
+}
+
+#fuel-latest-news-section {
+    margin: 20px 0;
+	padding-left:30px;
+}
+
+.fuel-news-cards {
+    display: flex;
+    cursor: pointer;
+}
+
+.find-car-news-title{
+	margin-left:29px !important;
+}
+
+.fuel-news-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fuel-news-card:hover {
+    transform: scale(1.01);
+}
+
+.fuel-news-card img {
+    width: 100%;
+    height: 186px;
+    object-fit: cover;
+}
+
+.fuel-news-content {
+    padding: 10px;
+}
+
+.fuel-news-title {
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 43px;
+    color: #262626;
+    line-height: 22px;
+    margin-top: 20px;
+}
+.fuel-news-title:hover{
+	  color: #ffb400 !important;
+}
+
+.fuel-news-description {
+    font-size: 12px;
+    color: #8c8c8c;
+    height: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: -6px;
+    margin-bottom: 11px;
+    margin-top: -7px !important;
+	font-family:'Roboto';
+}
+
+.fuel-news-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.fuel-news-footer .fuel-date {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #8c8c8c;
+    font-weight: 500;
+}
+
+.fuel-read-more {
+    font-size: 14px;
+    color: #576b95;
+    font-weight: 700;
+    text-decoration: none;
+	font-family:'Roboto';
+}
+.fuel-read-more:hover{
+    color: #576b95;	
+}
+
+.fuel-btn-more {
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #071A40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	font-family:'Roboto';
+}
+
+.fuel-btn-more-container {
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-top: 2rem;
+}
+@media screen and (max-width: 768px) {
+	#fuel-latest-news-section {
+    padding-left: -20px !important;
+    margin-right: 0px;
+}
+	#fuel-latest-news-section .slick-prev {
+   display:none;
+}
+	#fuel-latest-news-section .slick-next {
+     display:none;
+    /* Adjust the positioning of the right arrow */
+}
+}

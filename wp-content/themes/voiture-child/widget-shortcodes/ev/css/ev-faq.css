@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+.acc {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.accordion {
+    max-width: 100%;
+    font-family: "Roboto";
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.accordion-item {
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+.accordion-header {
+    padding: 12px 0px;
+    cursor: pointer;
+    color: #262626;
+    position: relative;
+    user-select: none;
+    font-weight: 700;
+    display: block;
+    background: white;
+    font-size: 16px;
+    display: flex;
+    gap: 0px;
+	align-items:center;
+}
+
+.accordion-header::after {
+    content: "›";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.accordion-content {
+    background: white;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 20px;
+    color: #666;
+    opacity: 0;
+}
+
+.accordion-item input[type="checkbox"] {
+    display: none;
+}
+
+/* Show content when checked */
+.accordion-item input[type="checkbox"]:checked + .accordion-header::after {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.accordion-item input[type="checkbox"]:checked ~ .accordion-content {
+    max-height: 300px;
+    opacity: 1;
+    padding: 12px 20px;
+}
+
+/* Links inside content */
+.accordion-content a {
+    color: #576b95;
+    font-weight: 700;
+}
+
+
+.accordion-content a {
+    color: #576b95;
+    font-weight: 700;
+}
+
+.accordion-item input[type="checkbox"]:checked~* {
+    position: relative;
+    z-index: 2;
+}
+@media screen and (max-width: 768px) {
+.accordion-header::after {
+    content: "›";
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 24px;
+    font-weight: bold;
+}
+}

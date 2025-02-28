@@ -1,0 +1,149 @@
+.heading-and-select {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+  
+  .dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 3px;
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 108px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown::after {
+    content: '\25BC';
+    /* Down arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  select::-ms-expand {
+    display: none;
+    /* Hide the default dropdown arrow in IE */
+  }
+  
+  .latest-news-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .news-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+  }
+  
+  .news-thumbnail {
+    flex-shrink: 0;
+    margin-right: 20px;
+    display: flex;
+  
+  }
+  
+  .news-thumbnail img {
+    width: 400px;
+    /* Adjust the size based on the design */
+    height: 230px;
+  
+    border-radius: 8px;
+    /* Rounded corners */
+  }
+  
+  .news-content {
+    flex-grow: 1;
+    margin-top: 60px;
+  }
+  
+  .news-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -80px;
+    color: #2a2a2a;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limits the title to 2 lines */
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    height: calc(1.4em * 2);
+    margin-bottom: 10px;
+  }
+  
+  .news-title:hover {
+    color: #ffb400;
+  }
+  
+  .news-description {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-top: -20px;
+    /* margin-bottom: 10px; */
+  }
+  
+  .news-meta {
+    display: flex;
+    align-items: center;
+    margin-top: 70px;
+  }
+  
+  .news-author {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #666;
+    font-weight: bold;
+  
+  
+  }
+  
+  .news-avatar img {
+    border-radius: 50%;
+    /* Makes the avatar round */
+  }
+  
+  .news-date {
+    margin-left: auto;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  @media (max-width: 768px) {
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+  
+    .news-thumbnail {
+        margin-bottom: 10px;
+    }
+  
+    .news-thumbnail img {
+        width: 100%;
+        height: auto;
+    }
+  
+  
+    .news-date {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+  }

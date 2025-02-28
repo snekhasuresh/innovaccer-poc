@@ -1,0 +1,241 @@
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  border-bottom: 1px solid #e0e0e0;
+  /* Optional border under the tab container */
+}
+
+.variant-name {
+  height: 40px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 14px;
+  color: #262626;
+  line-height: 20px;
+  white-space: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 8px;
+}
+
+.variant-image {
+  display: flex;
+  justify-content: center;
+}
+
+.variant-price {
+  display: block;
+  font-family: "Roboto";
+  font-weight: Bold;
+  font-size: 14px;
+  color: #576b95;
+  letter-spacing: 0;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #333;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.tab-button:hover {
+  color: #f5c34b !important;
+  /* Change color on hover */
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 5px;
+  background-color: #f5c34b !important;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  bottom: -1px;
+  width: 42%;
+  height: 5px;
+  background-color: #ffb400;
+  transition: width 0.3s ease;
+  border-radius: 10px;
+}
+
+/* .tab-button:hover::after {
+width: 100%;
+} */
+
+.selects-cars-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.selects-car {
+  width: 100%;
+  height: 250px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.add-car {
+  width: 60px;
+  height: 60px;
+  background-color: #dadce4;
+  border-radius: 50%;
+  color: white;
+  border: 1px dashed darkgray;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.plus-sign {
+  font-size: 39px;
+  color: #262626;
+  line-height: 51px;
+}
+
+.dropdown-menu {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: none;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.breadcrumb {
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.loader {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.switch-btn-container {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px;
+}
+
+.switch-button {
+  width: 77%;
+  padding: 6px 0;
+  margin-top: -20px;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.extra-div {
+  width: 100%;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.extra-div h4 {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cancel-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  /*     color: red; */
+}
+
+.comparison-table th,
+.spec-table th,
+.spec-table td,
+.comparison-table td {
+  width: 20%;
+  /*     text-align: center; */
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.comparison-table,
+.spec-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.notification {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.warning {
+  background-color: #ffe6e6;
+  border-color: #ff9999;
+}

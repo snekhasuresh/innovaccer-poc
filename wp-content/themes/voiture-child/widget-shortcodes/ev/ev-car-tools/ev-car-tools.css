@@ -1,0 +1,71 @@
+.ev-car-tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .ev-tool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ev-tool:hover {
+    background-color: #e6e6e6;
+  }
+  
+  .ev-tool i {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .ev-tool span {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Icon styles */
+  .icon-sell-car:before {
+    content: "\f155";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  .icon-trade-in:before {
+    content: "\f0b1";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  .icon-insurance:before {
+    content: "\f0e0";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  .icon-car-loan-calculator:before {
+    content: "\f1ec";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  .icon-my-car:before {
+    content: "\f1b9";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  .icon-car-comparison:before {
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 24px;
+    color: #333;
+  }

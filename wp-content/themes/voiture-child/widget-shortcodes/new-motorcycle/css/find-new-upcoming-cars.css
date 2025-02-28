@@ -1,0 +1,251 @@
+.car-brand-model {
+  font-size: 16px;
+  font-weight: bold;
+  color: #262626;
+  font-family: "Roboto";
+  line-height: 22px;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+/* Carousel container */
+.upcoming-cars-list {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+  position: relative;
+  gap: 20px;
+  height: 240px !important;
+}
+
+.slick-track {
+  display: flex;
+  gap: 20px;
+}
+
+.slick-prev:focus,
+.slick-next:focus,
+.slick-prev:active,
+.slick-next:active {
+  background-color: #ffffff !important;
+  color: black !important;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.slick-prev:before {
+  content: "←";
+  color: black !important;
+}
+
+.slick-next:before {
+  content: "→";
+  color: black !important;
+}
+
+/* More specific selector for slick arrows */
+.slick-prev,
+.slick-next {
+  background-color: #ffffff !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+  /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: white !important;
+  /* Change to yellow on hover */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Focus state */
+.slick-prev:focus,
+.slick-next:focus {
+  background-color: white !important;
+  /* Keep background yellow on focus */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+  outline: none;
+}
+
+/* Active state when button is clicked */
+.slick-prev:active,
+.slick-next:active {
+  background-color: white !important;
+  /* Keep background yellow on click */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+  outline: none;
+}
+
+/* Focus-visible state for keyboard users */
+.slick-prev:focus-visible,
+.slick-next:focus-visible {
+  background-color: white !important;
+  color: white !important;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Prevent disappearing of background by using more specific selectors */
+button.slick-prev,
+button.slick-next,
+div.slick-prev,
+div.slick-next {
+  background-color: white !important;
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* Positioning adjustments */
+.slick-prev {
+  left: -4px !important;
+}
+
+.slick-next {
+  right: -25px !important;
+}
+
+/* Individual car item */
+.car-sedan-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  width: calc(250px - 30px);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+  margin: 0 15px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for car items */
+.car-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail styling */
+.car-thumbnail {
+  position: relative;
+  overflow: hidden;
+  margin-top: -29px;
+}
+
+.car-thumbnail img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Car label */
+.car-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Car content styling */
+.car-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.car-info {
+  /* display: flex; */
+  width: 100%;
+  color: black;
+  align-items: baseline;
+  /* margin-bottom: -10px; */
+}
+
+.car-info p {
+  margin: 0 0 1px;
+}
+
+.car-brand-icon {
+  color: #feb429;
+  margin-right: 5px;
+}
+
+.car-brand {
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Price styling */
+.price {
+  margin-top: -10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #576b95;
+}
+
+/* Title styling */
+.car-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Price text styling */
+.car-price {
+  font-size: 16px;
+  color: #777;
+}
+
+/* View Model button */
+.view-model-button {
+  padding: 8px 12px;
+  background-color: white;
+  color: #feb429;
+  text-decoration: none;
+  border: 1px solid #feb429;
+  border-radius: 4px;
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-model-button:hover {
+  background-color: #feb429;
+  color: white;
+}

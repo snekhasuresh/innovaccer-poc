@@ -1,0 +1,23 @@
+.upcoming-ev-card {
+    display: flex;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.upcoming-ev-image-container {
+    height: 63px;
+    width: 100px;
+    padding-right: 20px;
+}
+
+.upcoming-ev-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: #262626;
+}
+
+.upcoming-ev-launch-time {
+font-weight: bold;
+    color: #576b95;
+    font-size: 14px;
+ margin-top: -3px;
+}

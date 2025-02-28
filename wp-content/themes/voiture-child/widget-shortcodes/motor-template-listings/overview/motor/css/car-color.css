@@ -1,0 +1,137 @@
+.individual-color-title-con {
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.individual-color-title {
+
+    position: relative;
+    font-size: 26px;
+    line-height: 32px;
+    color: #262626;
+    font-weight: 700;
+}
+
+.main-color-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px auto;
+
+}
+
+.custom-prev,
+.custom-next {
+    width: 40px;
+    /* Adjust the size of the button */
+    height: 40px;
+    background-color: transparent;
+    /* Transparent background */
+    border: 2px solid #ddd;
+    /* Light border for the button */
+    color: #000;
+    /* Color for the arrow */
+    border-radius: 50%;
+    /* Make the button circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    /* Size of the arrow */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-prev {
+    left: 10px;
+    /* Position for the left button */
+}
+
+.custom-next {
+    right: 10px;
+    /* Position for the right button */
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+    background-color: #f0f0f0;
+    /* Slight background on hover */
+    border-color: #aaa;
+    /* Darker border on hover */
+}
+
+.slick-track {
+    display: flex !important;
+    gap: 0px;
+}
+
+.car-image {
+    width: 600px !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.car-image-gallery {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-bottom: 1px solid #f5f5f5;
+    height: 500px;
+    border-radius: 0px !important;
+    background-color: white !important;
+}
+
+.color-options {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.color-select {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 5px;
+    outline: none;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-select:hover,
+.color-select:focus {
+    transform: scale(1.1);
+    border-color: #000;
+}
+
+.color-select.active {
+    border-color: #000;
+    transform: scale(1.2);
+}
+
+.selected-color-name {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .car-image {
+        width: 600px !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+}

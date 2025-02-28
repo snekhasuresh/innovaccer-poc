@@ -1,0 +1,141 @@
+.brand-hidden-text {
+    display: none;
+}
+
+.brand-hidden-text.show {
+    display: inline;
+}
+
+.brand-preview{
+    height: 250px !important;
+}
+.brand-intro-section {
+    max-width: 100%;
+    /* Initial height */
+    position: relative;
+    /* Position relative for absolute positioning of button */
+}
+
+.brand-preview {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    font-family: 'roboto';
+    color: #262626;
+}
+
+.car-container {
+    max-height: 100%;
+    border: 1px solid #ddd;
+    /* max-width: 100%; */
+    display: block;
+}
+
+.car-row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.dis-header {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.dis-label,
+.dis-value {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.dis-label {
+    text-align: left;
+    border-right: 1px solid #ccc;
+    padding-right: 15px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.dis-value {
+    text-align: right;
+    padding-left: 15px;
+}
+
+.car-row:first-child {
+    border-top: 1px solid #ddd;
+}
+
+.car-row:last-child {
+    border-bottom: 1px solid #ddd;
+}
+
+.brand-content-box {
+    padding: 15px;
+}
+
+.brand-hidden-text {
+    max-height: 0;
+    /* Initially hide content */
+    overflow: hidden;
+    /* Hide overflow */
+    transition: max-height 0.5s ease;
+    /* Smooth transition */
+}
+
+.desc-read-more-btn {
+    background: none;
+    border: none;
+    color: #576b95;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    position: absolute;
+    bottom: -10px;
+    right: 15px;
+    z-index: 10;
+	font-family:'Roboto';
+}
+
+.desc-read-more-btn:hover {
+    text-decoration: underline;
+}
+.brand-intro-section h1{
+	font-size:32px !important;
+	color:#262626;
+	font-weight:700;
+}
+.brand-intro-con {
+    display: flex;
+    align-items: start;
+}
+
+#brand-dots {
+    display: inline;
+}
+
+@media screen and (max-width: 768px) {
+    .brand-intro-section h1 {
+        margin: none;
+    }
+
+    .brand-intro-section img {
+        margin-top: -16px;
+        width: 100px;
+    }
+
+    .brand-intro-con {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .brand-preview {
+        max-height: 100vh;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        margin-top: 0px;
+    }
+}

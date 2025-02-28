@@ -1,0 +1,142 @@
+.individual-review-title-con {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.tab-content h3{
+	color:#262626 !important;
+	font-family:'Roboto' !important;
+	font-size:18px !important;
+	white-space:nowrap !important;
+}
+.tab-content th {
+	background-color:#f9f9f9 !important;
+}
+.tab-content th p {
+color:#262626 !important;
+}
+.individual-review-title {
+
+    position: relative;
+    font-size: 26px;
+    line-height: 32px;
+    color: #262626;
+    font-weight: 700;
+}
+
+.dimension-tabs {
+    display: flex;
+    font-family: Arial, sans-serif;
+    height: 560px;
+}
+
+.tabs-left {
+    width: 30%;
+    border-right: 1px solid #ddd;
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.dimension-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-item {
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Roboto";
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-item.active {
+    background-color: white;
+    color: #ffb400;
+    font-size: 16px;
+    font-weight: 700;
+    border-left: 5px solid #ffb400;
+    margin: 0px;
+}
+
+.tab-item.active:hover {
+    background: white;
+    color: #ffb400;
+}
+
+.tab-item:hover {
+    background-color: rgba(255, 255, 255, .15);
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    margin: 0px;
+}
+
+.tabs-right {
+    width: 70%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-left: none;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab-content {
+    display: none;
+    font-size: 16px;
+    color: #262626;
+    opacity: 0;
+    font-family: 'Roboto';
+    transition: opacity 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.MsoNormal {
+    font-size: 14px;
+    margin-top: 20px !important;
+}
+
+.dimension-title {
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #262626;
+    border-bottom: 3px solid #e0e0e0;
+    transition: border-color 0.3s ease;
+    margin-top: 0px;
+}
+
+.dimension-cont {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.tab-content.active .dimension-title {
+    border-bottom: 3px solid #ffb400;
+    color: #262626;
+    margin-bottom: -1px;
+    width: 130px;
+}
+
+.tabs-right::-webkit-scrollbar-track {
+    background-color: #071A40;
+}
+
+@media screen and (max-width: 768px) {
+    .tabs-left {
+        width: 32% !important;
+        border-right: 1px solid #ddd;
+        background-color: #071A40;
+        color: white;
+    }
+}

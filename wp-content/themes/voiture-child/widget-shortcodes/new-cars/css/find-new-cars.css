@@ -1,0 +1,326 @@
+ /* Tab container */
+ .fruit-tabs {
+    margin: 20px 0;
+}
+
+.tab {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+    margin-bottom: -1px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.tabs {
+    border-bottom: 1px solid #ddd;
+    /* Separator */
+}
+
+.tabs li {
+    margin-right: 25px;
+}
+
+.tabs .tabs-link {
+    padding: 4px 3px;
+    text-decoration: none;
+    color: #8c8c8c;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    /* Add letter spacing */
+}
+
+.tab .tabs-link.active {
+    color: #262626;
+    border-bottom: 3px solid #ffb400;
+    padding-bottom: 3px;
+    border-bottom-width: 3px;
+	font-family:'Roboto';
+}
+
+/* Each car item */
+.car-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-item:hover {
+    transform: translateY(1.01px);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Car list grid */
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3-column grid */
+    gap: 20px;
+    width: 100%;
+}
+
+/* Car image */
+.car-item img {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* Car title */
+.car-item h4 {
+    font-size: 16px;
+    color: #262626;
+    margin-bottom: -2px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Car price */
+.car-item p {
+   font-size: 12px;
+    color: #262626;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 10px !important;
+    font-family: 'Roboto';
+}
+   
+.find-new-cars-price{
+    font-size: 14px;
+    color: #576b95;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+
+/* Hide all panes initially */
+.tab-pane {
+    display: none;
+}
+
+/* Show active pane */
+.tab-pane.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-model-button {
+    background: white;
+    border: 1px solid #ffb400;
+   width:100%;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #ffb400 !important;
+	font-family:'Roboto';
+}
+
+
+
+.popular-cars-find {
+  font-size: 16px;
+    font-weight: 700;
+    margin-top: -15px;
+    color: #262626 !important;
+    margin-bottom: -4px;
+	font-family:'Roboto';
+}
+
+
+.title-and-post {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.page-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-btn:hover {
+    background-color: #ffb400;
+    color: #fff;
+    border-color: #ffb400;
+}
+
+.page-btn.active {
+    background-color: #ffb400;
+    color: #fff;
+    border-color: #ffb400;
+    font-weight: bold;
+}
+
+.prev-btn,
+.next-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: #0073e6;
+    color: #fff;
+    border-color: #0073e6;
+}
+
+.prev-btn[disabled],
+.next-btn[disabled] {
+    background-color: #e0e0e0;
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.ellipsis {
+    color: #999;
+    padding: 0 5px;
+    font-size: 14px;
+}
+.popular-new-car-find{
+	display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-weight: 700;
+    padding-top: 10px;
+    font-family: 'Roboto';
+
+}
+
+.listing-state {
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    border-radius: 4px;
+	
+}
+
+.title-and-post .car-brand-icon {
+     color: #ffb400;
+    margin-right: 5px ;
+    font-size: 30px ;
+    font-weight: 900;
+    display: flex;
+    margin-top: -19px;
+}
+.ellipsis:hover {
+    color: #0073e6 !important;
+    /* mark it as important */
+    background-color: transparent !important;
+}
+
+
+	@media screen and (max-width: 768px) {
+    .tabs {
+        display: flex;
+        overflow-x: auto; 
+        white-space: nowrap; 
+        list-style: none;
+        padding: 0;
+        margin-bottom: 9px;
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tabs li {
+        margin-right: 15px; 
+        flex-shrink: 0;
+    }
+
+    .tabs .tabs-link {
+        padding: 4px 3px;
+        text-decoration: none;
+        color: #8c8c8c;
+        background-color: transparent;
+        border: none;
+        position: relative;
+        font-size: 14px;
+        cursor: pointer;
+        transition: color 0.3s;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        white-space: nowrap; 
+    }
+
+    /* Adjustments for the car grid */
+    .car-list {
+        grid-template-columns: repeat(1, 1fr); 
+        gap: 15px; 
+    }
+
+    .car-item {
+        max-width: 100%; 
+    }
+
+    .car-item img {
+        height: 200px;
+    }
+}
+
+.listing-state {
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 768px) {
+ .fruit-tabs {
+    margin: 20px 0;
+  padding-left:0px;
+}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .car-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+    }
+}

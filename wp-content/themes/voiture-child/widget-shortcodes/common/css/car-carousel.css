@@ -1,0 +1,310 @@
+/* Carousel container */
+.carousel-cars-list {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Prevents wrapping onto a new line */
+    overflow: visible;
+    /* Hides any overflowed content */
+    position: relative;
+    gap: 20px;
+    margin-left: -33px;
+}
+.top10-sedan-cars-carousel{
+	margin-left:-17px;
+}
+.top10-sedan-cars-carousel .slick-track {
+    display: flex;
+     gap:0px !important;
+    width: 3260px !important;
+}
+
+.slick-prev:focus,
+.slick-next:focus,
+.slick-prev:active,
+.slick-next:active {
+    background-color: #ffffff !important;
+    /* Keep the same background color after click */
+    color: black !important;
+    /* Retain the arrow color */
+    outline: none;
+    /* Remove any default browser outlines */
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+.slick-prev:before {
+    content: '←';
+
+    color: black !important;
+}
+
+.slick-next:before {
+    content: '→';
+    color: black !important;
+}
+.popular-ev-head h2 {
+    position: relative; /* Ensure the h2 acts as a parent for ::before */
+    display: flex; /* Allows aligning text with decorative pseudo-element */
+    align-items: center;
+    gap: 10px;
+}
+
+.popular-ev-head h2::before {
+    content: "";
+    display: block; /* Use block for a decorative element */
+    width: 14px;
+    height: 26px;
+    transform: skewX(-15deg); /* Correct skew value for better visual effect */
+    background-image: linear-gradient(
+        90deg,
+        rgb(42, 205, 172) 0%,
+        rgb(42, 205, 172) 64%,
+        rgb(0, 0, 0) 64%,
+        rgb(0, 0, 0) 100%
+    );
+}
+.slick-prev,
+.slick-next {
+    background-color: #ffffff !important;
+    /* Default white background */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    position: absolute;
+    top: 36% !important;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 20px;
+    color: black !important;
+    /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: white !important;
+    /* Change to yellow on hover */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+}
+
+/* Focus state */
+.slick-prev:focus,
+.slick-next:focus {
+    background-color: white !important;
+    /* Keep background yellow on focus */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Active state when button is clicked */
+.slick-prev:active,
+.slick-next:active {
+    background-color: white !important;
+    /* Keep background yellow on click */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+
+    outline: none;
+}
+
+/* Focus-visible state for keyboard users */
+.slick-prev:focus-visible,
+.slick-next:focus-visible {
+    background-color: white !important;
+    color: white !important;
+    outline: none;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+
+/* Prevent disappearing of background by using more specific selectors */
+button.slick-prev,
+button.slick-next,
+div.slick-prev,
+div.slick-next {
+    background-color: white !important;
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+
+}
+
+/* Positioning adjustments */
+.top10-sedan-cars-carousel .slick-prev {
+    left: -16px !important;
+}
+
+.top10-sedan-cars-carousel .slick-next {
+    right: -15px !important;
+}
+
+
+/* Individual car item */
+.car-sedan-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    width: calc(250px - 30px);
+    /* Adjusts the width to account for the margin */
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 13px;
+    width: 250px;
+    margin: 0 10px;
+    /* Adds horizontal margin (space) between each card */
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for car items */
+.car-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Thumbnail styling */
+.car-thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.top10-sedan-cars-carousel .car-thumbnail img {
+    width: 100% !important;
+    height: 164px !important;
+    transition: transform 0.3s ease;
+}
+
+/* Car label */
+.car-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Car content */
+.car-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+/* Additional car information */
+.car-info {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: baseline;
+    margin-bottom: -10px;
+}
+
+.car-make::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ffb400;
+	
+
+}
+
+.car-make {
+    color: #757575;
+    font-size: 12px;
+    margin-bottom: px;
+    position: relative;
+    left: 9px;
+	font-family:'Roboto';
+
+}
+
+/* Car brand */
+.car-brand-icon {
+    color: #32D0C6;
+    margin-right: 5px;
+}
+
+.car-brand {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Car price */
+.price {
+    margin-bottom: 10px;
+    font-size: 14px !important;
+    font-weight: bold;
+    color: #576B95;
+	font-family:'Roboto';
+	margin-top:-7px;
+}
+
+/* Title styling */
+.car-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #262626;
+    text-decoration: none;
+    display: block;
+	margin-top:16px;
+	font-family:'Roboto';
+}
+.car-title:hover {
+	color:#262626;
+}
+.car-price {
+    font-size: 16px;
+    color: #777;
+}
+
+/* View model button styling */
+.view-model-button {
+    padding: 8px 12px;
+    background-color: white;
+    color: #ffb400;
+    text-decoration: none;
+    border: 1px solid #ffb400;
+    border-radius: 4px;
+    margin-top: auto;
+    text-align: center;
+    width: 100% !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+	font-family:'Roboto';
+}
+
+@media screen and (max-width: 768px) {
+	.top10-sedan-cars-carousel {
+    margin-left: -5px;
+}
+	.top10-sedan-cars-carousel .slick-prev {
+    display:none !important;
+}
+
+.top10-sedan-cars-carousel .slick-next {
+   display:none !important;
+}
+}

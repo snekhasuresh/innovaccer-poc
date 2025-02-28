@@ -1,0 +1,260 @@
+.car-tabs {
+  width: 100%;
+}
+
+.tabs-container {
+  border-bottom: 2px solid #e5e5e5;
+}
+.more-button-svg{
+	width:10px;
+	height:10px;
+}
+.home-tab-cars-name {
+  display: block;
+  font-size: 16px;
+  font-family: "Roboto";
+  color: #262626;
+  line-height: 22px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.more-button {
+  margin-top: -46px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  right: -1px;
+  text-decoration: none;
+}
+.badge-hot {
+  background-color: "red";
+}
+.car-tabs .tabs {
+  display: flex;
+  list-style-type: none;
+
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #e5e5e5;
+  overflow-x: auto;
+  /* For horizontal scrolling on smaller screens */
+}
+
+.car-tabs .tabs li {
+  margin-right: 30px;
+  position: relative;
+}
+.wap-home-tab-title {
+  display: block;
+  font-size: 16px;
+  font-family: "Roboto";
+  color: #262626;
+  line-height: 22px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+.car-tabs .tabs li a {
+  padding: 10px 5px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #262626;
+  line-height:24px;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s ease;
+  position: relative;
+  font-family: "Roboto" !important;
+}
+
+.car-tabs .tabs li a:hover {
+  color: #ffb400;
+  border-bottom: 3px solid #ffb400;
+  /* Underline on hover */
+}
+
+.car-tabs .tabs li a.active {
+  color: #ffb400;
+  font-weight: 600;
+  border-bottom: 3px solid #ffb400;
+}
+
+.car-tabs .tabs li + li::before {
+  content: "";
+  height: 20px;
+  /* Adjust this to change the height of the divider */
+  width: 1px;
+  /* Adjust this to change the thickness of the divider */
+  background-color: #e5e5e5;
+  /* Color of the divider */
+  position: absolute;
+  left: -15px;
+  /* Positioning the divider correctly between tabs */
+  top: 50%;
+  /* Centering the divider vertically */
+  transform: translateY(-50%);
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.car-tabs .tab-content {
+  padding-top: 10px;
+
+  background-color: #fff;
+  border-top: none;
+  border-radius: 0 5px 5px 5px;
+  margin-top: -1px;
+  /* Prevents a gap between the active tab and content */
+}
+
+.car-tabs .tab-pane {
+  display: none;
+}
+
+.car-tabs .tab-pane.active {
+  display: block;
+}
+
+.home-tab-car-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) !important;
+  /* 5 equal columns */
+  margin-left: -11px;
+}
+
+.tab-car-item {
+  width: 259px;
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.badge {
+  background-color: #1e90ff;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.fixed-thumbnail {
+  width: 220px !important;
+  /* Fixed width */
+  height: 146px !important;
+  /* Fixed height */
+  object-fit: cover;
+  /* Ensures the image covers the box without distortion */
+  border-radius: 5px;
+  /* Optional: Adds rounded corners */
+  display: block;
+  margin: 0 auto;
+  transition: all 0.2s !important;
+}
+.fixed-thumbnail:hover {
+  transform: scale(1) translateZ(0)
+}
+
+.home-tab-cars-name {
+  margin-top: 24px !important;
+  margin-bottom: 15px !important;
+}
+
+.cars-price-hometab {
+  display: inline-block;
+  font-size: inherit;
+  color: #576b95;
+  font-weight: 700;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-family: 'Roboto';
+  font-size:14px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .car-tabs .tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+/*     border-bottom: 1px solid #e5e5e5; */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+	.more{
+		display:none;
+	}
+  .car-tabs .tabs li {
+    flex: 0 0 auto;
+    margin-right: 15px;
+  }
+.more-button-svg{
+	width:20px;
+	height:20px;
+	margin-top:10px;
+}
+  .car-tabs .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-tab-car-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    margin-left: 0;
+  }
+
+  .tab-car-item {
+    width: auto; 
+    padding: 8px;
+  }
+
+  .fixed-thumbnail {
+    width: 100% !important; 
+    height: 110px !important;
+    object-fit: cover !important;
+  }
+	.more-button {
+    margin-top: -38px;
+    color: #262626;
+    font-size: 16px;
+    font-weight: 500;
+    position: absolute;
+    right: -23px;
+    text-decoration: none;
+    font-family:'Roboto';
+}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	.home-tab-car-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    margin-left: -11px;
+}
+}

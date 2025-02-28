@@ -1,0 +1,391 @@
+.recommended-car-image-container {
+  width: 250px;
+  height: 160px;
+}
+.recommended-car-image-container .fixed-thumbnail{
+	width:100%;
+	height:100%;
+}
+/* Parent container style */
+.recommended_carousel,
+.wa-car-item {
+  position: relative;
+  /* Create positioning context for absolute positioning */
+  overflow: visible;
+  /* Ensure content isn't clipped */
+  z-index: 1;
+  /* Set z-index to ensure dropdowns appear above other content */
+}
+
+/* Dropdown styles */
+.car-variant-dropdown {
+  margin-top: 8px;
+  position: relative;
+  /* Establishes a positioning context for absolute children */
+}
+
+.variant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 5px 0;
+  position: relative;
+}
+
+.variant-count {
+  font-size: 14px;
+  color: #757575;
+}
+
+.variant-toggle {
+  background: none;
+  border: none;
+  color: #757575;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.variant-list {
+  display: none;
+  /* Initially hidden */
+  /* margin-top: 5px;
+padding: 8px 0; */
+  background-color: #fff;
+  /* border: 1px solid #e0e0e0; */
+  list-style: none;
+  width: 100%;
+  /* Takes the full width of the parent */
+  /* position: absolute; */
+  /* Position relative to the parent */
+  left: 0;
+  /* Align to the left of the parent */
+  top: 40px;
+  /* Positions it just below the toggle button */
+
+  /* High enough to be above other elements */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* Adds shadow for better visibility */
+}
+
+.variant-list.visible {
+  display: block !important;
+  /* Show when visible class is added */
+}
+
+.variant-list li {
+  padding: 5px 10px;
+}
+
+.variant-list li a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.variant-list li a:hover {
+  text-decoration: underline;
+}
+
+.wa-car-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  background-color: #fff;
+}
+
+.car-image img {
+  width: 100%;
+  height: 200px;
+  /* Set the desired height */
+  object-fit: cover;
+  /* Ensures the image maintains its aspect ratio while filling the container */
+  border-radius: 4px;
+}
+
+.badge-new-variant {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #00bfa5;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.car-details {
+  margin-top: 12px;
+}
+
+.car-make {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    font-size: 12px;
+    font-weight: 700;
+    padding-top: 10px;
+    font-family: 'Roboto';
+}
+
+.car-brand-icon {
+    color: #32D0C6;
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+
+.car-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: #262626;
+  font-family:'Roboto';
+}
+
+.car-price {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #576b95;
+  font-family:'Roboto';	
+}
+
+.btn-view-model {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #32d0c6;
+  border: 1px solid #32d0c6;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-view-model:hover {
+  background-color: #F3FCFC;
+  color: #32d0c6;
+}
+
+.car-variant-dropdown {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.variant-count {
+  font-size: 14px;
+  color: #757575;
+  margin-right: 8px;
+}
+
+.variant-toggle {
+  background: none;
+  border: none;
+  color: #757575;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.recommended-multi-car-tabs {
+  width: 100%;
+}
+
+.car_item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  width: calc(250px - 30px);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+  width: 250px;
+  margin: 0 15px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slick-arrow {
+  top: 165px !important;
+  transform: none !important;
+}
+
+.recommended-multi-tab-content .slick-track {
+  display: flex;
+  gap: 16px;
+}
+
+.slick-prev,
+.slick-next {
+  background-color: #ffffff !important;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+}
+
+.recommended-multi-car-tabs .slick-prev {
+  left: -9px !important;
+}
+
+.recommended-multi-car-tabs .slick-next {
+  right: -20px !important;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #071a40;
+  color: white;
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.recommended_carousal {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Prevents wrapping onto a new line */
+  overflow: visible;
+  /* Hides any overflowed content */
+  position: relative;
+  gap: 20px;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid #e5e5e5;
+  overflow-x: auto;
+  margin-top:-24px;
+  /* For horizontal scrolling on smaller screens */
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li {
+  margin-right: 30px;
+  /* Adjust spacing between tabs */
+  position: relative;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a {
+  padding: 15px 0px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  transition: color 0.3s ease;
+  position: relative;
+  font-family: "Roboto";
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a:hover {
+  color: #32d0c6;
+  /* Hover color similar to the design */
+  border-bottom: 3px solid #32d0c6;
+  /* Underline on hover */
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li a.active {
+  color: #32d0c6;
+  font-weight: 600;
+  border-bottom: 3px solid #32d0c6;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tabs li + li::before {
+  content: "";
+  height: 20px;
+  /* Adjust this to change the height of the divider */
+  width: 1px;
+  /* Adjust this to change the thickness of the divider */
+  background-color: #e5e5e5;
+  /* Color of the divider */
+  position: absolute;
+  left: -15px;
+  /* Positioning the divider correctly between tabs */
+  top: 50%;
+  /* Centering the divider vertically */
+  transform: translateY(-50%);
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-content {
+    background-color: #fff;
+    border-top: none;
+    border-radius: 0 5px 5px 5px;
+    margin-top: -1px;
+    padding-top: 14px;
+    margin-left: -20px !important;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-pane {
+  display: none;
+}
+
+.recommended-multi-car-tabs .recommended-multi-tab-pane.active {
+  display: block;
+}
+
+.recommended-multi-car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 768px){
+.recommended-multi-car-tabs .slick-prev {
+display:none !important;
+}
+
+.recommended-multi-car-tabs .slick-next {
+display:none !important;
+}
+	.recommended-car-image-container {
+  width: 100%;
+  height: 100%;
+}
+	.recommended-multi-car-tabs .recommended-multi-tab-content {
+    background-color: #fff;
+    border-top: none;
+    border-radius: 0 5px 5px 5px;
+    margin-top: -1px;
+    padding-top: 14px;
+    margin-left: -11px !important;
+}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+.recommended-multi-tab-content .slick-track {
+    display: flex;
+    gap: 12px;
+}
+}
+

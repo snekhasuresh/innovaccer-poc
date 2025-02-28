@@ -1,0 +1,268 @@
+.gallery-arrow-button {
+  position: absolute;
+  top: 38%;
+  right: 56px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+.container-gallary{
+	margin-top:30px;
+}
+
+.carousel-main {
+  position: relative;
+  width: 100%;
+  padding: 0px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 456px;
+  max-height: 256px;
+  overflow: hidden;
+  padding: 0px;
+  margin-bottom: 15px !important;
+}
+
+.carousel-images {
+  display: flex;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 254px !important;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.carousel-link {
+  position: relative;
+  display: inline-block;
+}
+
+.icon img {
+  width: 22px;
+  height: 24px;
+  margin-top: 5px;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel-container:hover .carousel-button {
+  opacity: 1;
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 10px;
+}
+
+.carousel-thumbnails-gal {
+  display: flex;
+  justify-content: space-around;
+  max-width: 456px;
+  gap: 10px !important;
+  padding: 0px !important;
+  background: none !important;
+  border: none !;
+}
+
+.carousel-container .slick-track {
+  gap: 0px !important;
+}
+
+.thumbnail-image-gal {
+  width: 150px;
+  height: 70px !important;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  margin-bottom: 0px;
+}
+
+.thumbnail-gal-individual {
+  padding: 0px;
+  height: 90px !important;
+  width: 100%;
+}
+
+.thumbnail-link {
+  position: relative;
+  display: inline-block;
+  width: 144px;
+  height: 74px;
+}
+
+.thumbnail-link .image-text:hover {
+  color: #00c4c7;
+}
+
+.thumbnail-link .image-text {
+  position: absolute;
+  top: 108%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  /* padding: 0px 12px; */
+  /* border-radius: 5px; */
+  text-align: center;
+  font-size: 12px;
+  /* z-index: 10; */
+  width: 100%;
+  background: #969696;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ----------------specs css------------------- */
+.widget-title {
+  font-size: 14px;
+  color: #262626;
+  font-weight: 500;
+  font-family: "Roboto";
+}
+
+.specs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 16px;
+}
+
+.spec-field {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: start;
+  width: 100%;
+  height: 83px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.icon {
+  font-size: 20px;
+  color: #00c4c7;
+  margin-bottom: -8px;
+}
+
+.spec-label {
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-bottom: -8px;
+  font-family:'Roboto';
+}
+
+.spec-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #262626;
+  font-family: "Roboto";
+}
+
+.price-range {
+  font-size: 32px;
+  font-weight: bold;
+  color: #576b95;
+  margin-bottom: -10px;
+  letter-spacing: 1px;
+  font-family: "Roboto";
+  margin-top: -19px;
+}
+
+.buttons-container-spec {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 60px;
+  font-family: "Roboto";
+}
+
+.view-specs-button {
+  padding: 0px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  height: 43px;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ffb400;
+  color: #ffb400;
+  font-weight: 700;
+  font-family: "Roboto";
+}
+
+.trade-in-button {
+  padding: 0px 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  height: 43px;
+  width: 100%;
+  font-weight: 700;
+  font-family: "Roboto";
+  background-color: #ffb400;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+    .specs-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        justify-items: center;
+        margin-top: 16px;
+    }
+	.buttons-container-spec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 60px;
+    font-family: "Roboto";
+}
+	.price-range {
+    font-size: 27px;
+    font-weight: bold;
+    color: #576b95;
+    margin-bottom: -10px;
+    letter-spacing: 1px;
+    font-family: "Roboto";
+    margin-top: 33px;
+}
+}

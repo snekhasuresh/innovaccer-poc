@@ -1,0 +1,234 @@
+.nav-tabs li a {
+    margin-right: 2px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.9;
+    border: none;
+    /* Remove all side borders */
+    border-radius: 8px 8px 0 0;
+}
+
+.nav-link:hover {
+    border-bottom: 3px solid #ffb400;
+    color: #262626;
+    background-color: white !important;
+    cursor: pointer;
+}
+
+
+.nav-link {
+    color: #8c8c8c;
+}
+
+.nav-link:hover {
+    border: none;
+    /* No border on hover */
+}
+
+.nav-link.active {
+    color: #262626 !important;
+    border-bottom: 3px solid #ffb400 !important;
+    /* Only bottom border */
+    background-color: transparent !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+}
+
+#selectedFiltersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#selectedFiltersContainer div {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.car-search-filters {
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    margin-top: 43px;
+}
+
+
+
+.heading-search-filters {
+    font-size: 26px;
+    line-height: 32px;
+
+    font-weight: bold;
+    color: black;
+}
+
+.filter-group {
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+
+}
+
+.filter-group-container {
+    margin-top: 30px;
+}
+
+.filter-group label {
+    flex: 0 0 124px;
+    margin-right: 10px;
+    text-align: left;
+    font-size: 14px;
+    color: #595959;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+
+.filter-group ul {
+    list-style: none;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Roboto';
+    color: #262626;
+}
+
+.filter-group ul li {
+    margin-right: 8px;
+    /* Reduced margin */
+    margin-bottom: 8px;
+}
+
+.filter-group button {
+
+    /* Reduced padding to make buttons smaller */
+    font-size: 14px;
+    font-family: "roboto";
+    /* Reduced button text size */
+    background: none;
+
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+    padding-left: 11px;
+    padding-right: 11px;
+    font-weight: 400;
+    /* Reduced button height */
+}
+
+.filter-group button.highlight-yellow {
+    display: block;
+    background: #ffb400;
+    color: #fff;
+}
+
+.filter-group button.highlight-yellow:hover,
+.filter-group button.highlight-dark-yellow:hover {
+    background-color: #ffb400;
+    color: white;
+}
+
+.filter-group button.highlight-dark-yellow {
+    background-color: #ffb400;
+    color: black;
+}
+
+.filter-group button:hover {
+    background-color: #f5f5f5;
+}
+
+
+.more-options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.more-options-toggle {
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 227px;
+    height: 40px;
+    margin-top: 39px;
+    border-top: none;
+    background-color: white;
+    font-family: "Roboto";
+    font-weight: 700;
+    line-height: 20px;
+    font-size: 14px;
+    color: #595959;
+
+}
+
+
+.line {
+    height: 0.5px;
+    background-color: #ccc;
+    flex-grow: 1;
+}
+
+.selected-filters {
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 63px;
+    background-color: #f9f9f9;
+    margin-top: 28px;
+}
+
+.selected-filters h4 {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.selected-filters .filter-tag {
+    background-color: #ffb400;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selected-filters .filter-tag span {
+    margin-right: 5px;
+}
+
+.selected-filters .filter-tag .remove-filter {
+    background-color: #ccc;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#resetFilters {
+    border: none;
+    background-color: #F9F9F9;
+
+    cursor: pointer;
+
+}
+
+.reset-filters {
+    display: flex;
+    justify-content: flex-end;
+    padding: auto;
+    margin: 10px 0px;
+}

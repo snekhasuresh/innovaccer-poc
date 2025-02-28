@@ -1,0 +1,26 @@
+#listing-detail-description ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.props-and-cons-con {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: stretch;
+}
+
+@media screen and (max-width: 768px) {
+    .props-and-cons-con {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: stretch;
+    }
+}

@@ -1,0 +1,105 @@
+.custom-recommended-cars-title {
+  font-size: 26px;
+  font-family: "roboto";
+  font-weight: 700;
+  color: #262626;
+}
+
+.custom-recommended-tabs li {
+  margin-right: 30px;
+}
+
+.custom-recommended-tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  border-bottom: 2px solid #eee;
+  font-size: 16px;
+  margin-top:-20px;
+}
+
+.custom-recommended-tabs .custom-recommended-tab-link {
+  padding: 10px 5px;
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+  font-weight: 700;
+}
+
+.custom-recommended-tabs .custom-recommended-tab-link.current {
+  color: #262626;
+  border-color: #ffb400;
+  font-weight: 700;
+}
+
+.custom-recommended-tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.custom-recommended-tab-content.current {
+  display: block;
+  opacity: 1;
+}
+
+.custom-recommended-car-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-recommended-car-item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-recommended-car-thumbnail img {
+  width: 96px;
+  height: 51px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.custom-recommended-car-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-car-title {
+  font-size: 16px !important;
+  font-weight: bold;
+  color: #262626;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  font-family:'Roboto'
+}
+.custom-car-title:hover {
+color:#262626;	
+}
+.custom-recommended-car-price {
+  font-size: 14px;
+  color: #576b95;
+  font-weight: 700;
+  white-space: nowrap;
+  font-family:'Roboto';
+	
+}
+@media screen and (max-width: 768px) {
+.custom-recommended-cars .wa-title-text {
+    font-size: 26px;
+    line-height: 32px;
+    font-family: "Roboto Condensed";
+    font-weight: bold;
+    color: #262626;
+    margin-top: 0px;
+}
+}

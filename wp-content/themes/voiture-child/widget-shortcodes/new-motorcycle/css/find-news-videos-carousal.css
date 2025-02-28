@@ -1,0 +1,87 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  width: 80%;
+  max-width: 800px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.slick-track {
+  display: flex;
+  gap: 20px;
+}
+
+/* Slick Previous/Next button styles */
+.slick-prev,
+.slick-next {
+  background-color: #ffffff !important;
+  /* Default white background */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 20px;
+  color: black !important;
+  /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: white !important;
+  /* Change to yellow on hover */
+  color: white !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Slick Dots customization */
+.slick-prev {
+  left: -25px;
+}
+
+.slick-next {
+  right: -25px;
+}

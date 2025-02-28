@@ -1,0 +1,125 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.find-new-car-video-title{
+	margin-left:29px;
+}
+.find-latest-car-video-description{
+	color: #262626;
+    font-weight: 700;
+    text-align: start;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: normal;
+    max-height: 3em;
+}
+.modal-content {
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    width: 80%;
+    max-width: 800px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.latest-car-videos-container .slick-track {
+    display: flex;
+    gap: 20px;
+}
+.latest-car-videos-container .slick-slide {
+    margin: 0 0px !important;
+}
+
+/* Slick Previous/Next button styles */
+.slick-prev,
+.slick-next {
+    background-color: #ffffff !important;
+    /* Default white background */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 20px;
+    color: black !important;
+    /* Black arrow */
+}
+
+/* Hover state */
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: white !important;
+    /* Change to yellow on hover */
+    color: white !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
+}
+
+/* Slick Dots customization */
+.latest-car-videos-container .slick-prev {
+    left: -5px !important;
+}
+.latest-car-videos-container{
+	margin-left:10px;
+}
+.latest-car-videos-container .slick-next {
+    right: -20px !important;
+}
+@media screen and (max-width: 768px) {
+	.latest-car-videos-container {
+    margin-left: -20px;
+    margin-right: 0px;
+}
+	.find-new-car-video-title {
+		margin-left:0px !important;
+	}
+	.slick-prev {
+     display:none !important;
+}
+	.slick-next {
+  display:none !important;
+}
+}
+}

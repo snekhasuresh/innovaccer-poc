@@ -1,0 +1,230 @@
+ /* Parent container style */
+ .recommended_carousel,
+ .car-item {
+     position: relative;
+     overflow: visible;
+     z-index: 1;
+ }
+
+ /* Dropdown styles */
+ .car-variant-dropdown {
+     position: relative;
+ }
+
+ .variant-list {
+     max-height: 0;
+     overflow: hidden;
+     transition: max-height 0.5s ease-out, opacity 0.5s ease;
+     opacity: 0;
+     /* Make sure the initial opacity is 0 */
+ }
+
+ .variant-list.visible {
+     max-height: 1000px;
+     /* Set a maximum height large enough to fit the content */
+     opacity: 1;
+ }
+
+ .variant-toggle i:hover {
+     color: #333;
+     /* Change icon color on hover */
+ }
+
+ .variant-header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     cursor: pointer;
+
+     padding: 10px 0;
+     position: relative;
+ }
+
+ .variant-count {
+     font-size: 14px;
+     color: #757575;
+ }
+
+ .variant-toggle {
+     background: none;
+     border: none;
+     color: #757575;
+     font-size: 14px;
+     cursor: pointer;
+     margin: 0;
+     padding: 0;
+ }
+
+ .variant-list {
+     display: none;
+     background-color: #fff;
+     list-style: none;
+     width: 100%;
+     left: 0;
+     top: 40px;
+
+     transition: 0.5s ease, opacity 0.5s ease;
+ }
+
+
+ .variant-list.visible {
+     display: block !important;
+     transition: 0.5s ease, opacity 0.5s ease;
+ }
+
+
+ .variant-list li {
+     padding: 5px 10px;
+ }
+
+ .variant-list li a {
+     font-size: 14px;
+     font-family: "Roboto";
+     color: #576b95;
+     line-height: 20px;
+     display: block;
+ }
+
+ .variant-list li a:hover {
+     text-decoration: underline;
+ }
+
+ .car-item {
+     border: 1px solid #e0e0e0;
+     border-radius: 8px;
+     padding: 16px;
+     display: flex;
+     flex-direction: column;
+     /* align-items: center; */
+     position: relative;
+     background-color: #fff;
+ }
+
+ .car-image img {
+     width: 100%;
+     /* / height: 200px; */
+     /* Set the desired height */
+     object-fit: cover;
+     /* Ensures the image maintains its aspect ratio while filling the container */
+     border-radius: 4px;
+ }
+
+
+ .badge-new-variant {
+     position: absolute;
+     top: 8px;
+     left: 8px;
+     background-color: #00bfa5;
+     color: #fff;
+     padding: 4px 8px;
+     border-radius: 12px;
+     font-size: 12px;
+ }
+
+ .car-details {
+     margin-top: 12px;
+ }
+
+ .car-make::before {
+     content: "";
+     position: absolute;
+     left: -8px;
+     top: 9px;
+     width: 6px;
+     height: 6px;
+     border-radius: 50%;
+     background-color: #00bfa5;
+ }
+
+ .car-make {
+     color: #262626;
+     font-size: 12px;
+     margin: 0;
+     position: relative;
+     left: 9px;
+     margin-top: 6px;
+     font-family: 'Roboto';
+     font-weight: 500;
+ }
+
+ .car-title {
+     font-size: 14px;
+     font-weight: bold;
+     margin: 0;
+     color: #333;
+ }
+
+ .car-price {
+     margin-bottom: 10px;
+     font-size: 14px;
+     font-weight: bold;
+     color: #576B95;
+ }
+
+ .car-button,
+ .car-variant-dropdown {
+     width: 100%;
+ }
+
+ .car-button .btn-view-model {
+     width: 100%;
+     text-align: center;
+     font-weight: bold;
+     padding: 8px;
+     border-radius: 4px;
+     background-color: #fff;
+     color: #00bfa5;
+     border: 1px solid #00bfa5;
+     text-decoration: none;
+     display: inline-block;
+     transition: background-color 0.3s ease, color 0.3s ease;
+     margin-top: 10px;
+ }
+
+ .car-button .btn-view-model:hover {
+     color: #00bfa5;
+     background-color: #F3FCFC;
+ }
+
+ .variant-count {
+     font-family: "Roboto";
+     font-size: 14px;
+     color: #262626;
+     letter-spacing: 0;
+     line-height: 20px;
+     cursor: pointer;
+ }
+
+ .variant-toggle {
+     background: none;
+     border: none;
+     color: #757575;
+     font-size: 14px;
+     cursor: pointer;
+ }
+
+ .recommended-multi-car-tabs {
+     width: 100%;
+     border: none !important;
+ }
+
+ .car_item {
+     display: flex;
+     flex-direction: column;
+     border: 1px solid #e0e0e0;
+     width: calc(250px - 30px);
+     /* Adjusts the width to account for the margin */
+
+     border-radius: 8px;
+     overflow: hidden;
+     padding: 15px;
+     width: 250px;
+     margin: 0 15px;
+     /* Adds horizontal margin (space) between each card */
+     position: relative;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .single-car .btn-view-model {
+     margin-top: -6px;
+ }

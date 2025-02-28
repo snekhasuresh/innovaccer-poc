@@ -1,0 +1,77 @@
+.individula-fuel-title-con {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fuel-consumption-table {
+    font-family: "Roboto";
+}
+
+.fuel-consumption-table th {
+
+    background: #F5F5F5
+}
+
+.individula-fuel-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    position: relative;
+    line-height: 32px;
+}
+
+.hidden-row {
+    display: none;
+}
+
+#view-more-btn {
+    background-color: white;
+    color: blue;
+    font-weight: bold;
+    border: none;
+}
+
+table th,
+table td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    white-space: nowrap;
+}
+
+table td {
+    font-size: 14px;
+    color: #595959;
+}
+
+table th {
+    font-size: 16px;
+    font-weight: 700;
+    color: #262626;
+}
+
+.btn-more {
+    border: none;
+    background: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #576b97;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-more:hover {
+    color: #576b97;
+}
+
+.btn-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-more svg {
+    margin-left: 5px;
+    color: #576b95;
+    margin-top: 2px;
+}

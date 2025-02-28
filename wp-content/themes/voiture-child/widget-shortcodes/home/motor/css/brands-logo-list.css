@@ -1,0 +1,45 @@
+.brands-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.logo-brand-item {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.view-more-brands {
+    padding: 5px 10px;
+    background-color: #0073aa;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.view-more-brands:hover {
+    background-color: #005177;
+}
+
+.highlight-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.brand-logo {
+    width: 65px;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand-logo:hover {
+    transform: scale(1.1);
+}

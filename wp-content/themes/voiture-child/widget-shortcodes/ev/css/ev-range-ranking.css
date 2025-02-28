@@ -1,0 +1,39 @@
+.ev-range-ranking-item {
+  display: flex;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.ev-range-ranking-thumbnail {
+  height: 72px;
+/*   width: 100px; */
+  padding-right: 20px;
+  overflow: hidden; /* Prevent content overflow */
+}
+.ev-range-ranking-thumbnail img {
+  height: 100%; /* Make the image fill the height */
+  width: 100%; /* Make the image fill the width */
+  border-radius: 4px; /* Add rounded corners if desired */
+}
+
+.ev-range-ranking-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.ev-range-ranking-title a{
+       font-weight: 700;
+    font-size: 16px;
+    font-family: "Roboto";
+    margin-bottom: 5px;
+    color: #262626;
+    white-space: nowrap;
+    margin-top: 8px;
+}
+
+.ev-range-ranking-range {
+    font-weight: 600;
+    font-size: 14px;
+    font-family: "Roboto";
+    color: #576b95;
+    margin-top: -5px;
+}

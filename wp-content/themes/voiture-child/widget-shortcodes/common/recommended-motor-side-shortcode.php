@@ -138,13 +138,23 @@ function recommended_motors_shortcode()
     $latest_motors = get_recommended_motor('latest');
 
     ob_start();
+	$translate = [
+    'Berita Terkini' => 'Các mẫu xe máy đề xuất',
+	'Populer' => 'Phổ biến',
+	'Terbaru' => 'Mới nhất',
+	];
+
+
+
+
     ?>
 
     <div class="custom-recommended-motors">
-        <h2 class="wa-title-text ">Motor Rekomendasi</h2>
+        <h2 class="wa-title-text "><?php echo $translate['Berita Terkini']; ?></h2>
         <ul class="custom-recommended-tabs">
-            <li class="motor-custom-recommended-tab-link current" data-tab="custom-motor-recommended-tab-1">Populer</li>
-            <li class="motor-custom-recommended-tab-link" data-tab="custom-motor-recommended-tab-2">Terbaru</li>
+            <li class="motor-custom-recommended-tab-link current" data-tab="custom-motor-recommended-tab-1"><?php echo $translate['Populer']; ?>
+</li>
+            <li class="motor-custom-recommended-tab-link" data-tab="custom-motor-recommended-tab-2"><?php echo $translate['Terbaru']; ?></li>
         </ul>
 
         <div id="custom-motor-recommended-tab-1" class="motor-custom-recommended-tab-content current">

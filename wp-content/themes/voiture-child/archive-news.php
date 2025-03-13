@@ -15,7 +15,7 @@ if ($current_url === 'zh') {
 
 <div class='above-breadcrumb-ad'>
     <!-- /22557728108/my_news_breadcrumb_above_pc -->
-    <?php echo do_shortcode('[dynamic_ad_unit ad_id="MY_News_Breadcrumb_Above_PC"]'); ?>
+    <?php echo do_shortcode('[dynamic_ad_unit ad_id="VN_News_Breadcrumb_Above_PC"]'); ?>
 </div>
 
 <div class="news-breadcrumb container">
@@ -166,7 +166,7 @@ if ($current_url === 'zh') {
         <div class="col-sm-12 col-md-4 col-lg-3 col-xs-12 recommended-cars-wrapper">
             <?php echo do_shortcode('[recommended_cars]'); ?>
             <?php echo do_shortcode('[popular_car_videos]'); ?>
-			<?php echo do_shortcode('[dynamic_ad_unit ad_id="MY_News_Sidebar_End_PC"]'); ?>
+			<?php echo do_shortcode('[dynamic_ad_unit ad_id="VN_News_Sidebar_End_PC"]'); ?>
         </div>
     </div>
 

@@ -19,10 +19,13 @@ function motor_latest_news_with_thumbnail_shortcode($atts)
     ob_start();
 
     if (!empty($latest_news)) {
+		$translate = [
+			'Berita Terkini' => 'Tin mới nhất',
+		];
 ?>
         <div style="display: flex; align-items: center;">
             <span>
-                <h2 class="wa-title-text">Berita Terkini</h2>
+                <h2 class="wa-title-text"> <?php echo $translate['Berita Terkini']; ?></h2>
             </span>
         </div>
         <ul class="latest-news-list">

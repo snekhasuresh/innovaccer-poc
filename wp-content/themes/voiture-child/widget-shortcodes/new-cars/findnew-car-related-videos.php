@@ -8,6 +8,7 @@ function enqueue_find_new_cars_videos_css()
 
 function findnew_car_videos_carousal($atts)
 {
+	
     enqueue_find_new_cars_videos_css();
 
     $atts = shortcode_atts(array(

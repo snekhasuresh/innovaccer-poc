@@ -31,13 +31,13 @@ if ($post_type === 'motorcycles') {
     $news_id = 318831;
     $overview_id =  318829;
 
-    $fuel_consumption_id = 327534;
-    $color_page_id = 355822;
+    $fuel_consumption_id = 31903;
+    $color_page_id = 31908;
 	
 	  // variant pages
-    $variant_overview_page_id = 355840;
-    $variant_specs_page_id = 355853;
-    $variant_gallery_page_id = 355720;
+    $variant_overview_page_id = 31883;
+    $variant_specs_page_id = 31893;
+    $variant_gallery_page_id = 31898;
 ?>
 
     <section id="main-container" class="main-content <?php echo apply_filters('voiture_blog_content_class', 'container'); ?> inner">
@@ -215,7 +215,7 @@ if ($post_type === 'motorcycles') {
         //         if (is_mobile_device()) {
         //             echo do_shortcode('[current_post_data is_amp=1]');
         //         } else {
-        $new_individual_page = 78856;
+        $new_individual_page = 30632;
         $elementor_query = new WP_Query(array('page_id' => $new_individual_page));
         if ($elementor_query->have_posts()) :
             while ($elementor_query->have_posts()) : $elementor_query->the_post();

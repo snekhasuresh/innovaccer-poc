@@ -124,8 +124,8 @@ function display_motor_tab()
 //     $bike_data = get_recommended_cars_data();
 
     $motor_tabs = [
-        'Motor Terpopuler' => 'motor-popular-content',
-        'Motor Terbaru' => 'motor-latest-content',
+        'Xe máy phổ biến' => 'motor-popular-content',
+        'Xe máy mới nhất' => 'motor-latest-content',
     ];
 
 //     foreach ($bike_data as $model_key => $bikes) {
@@ -137,6 +137,10 @@ function display_motor_tab()
 //     }
 
     ob_start();
+$translate = [
+    'More' => 'Nhiều hơn',
+];
+
 
 ?>
 
@@ -148,7 +152,7 @@ function display_motor_tab()
                 <?php endforeach; ?>
 
             </ul>
-            <a href="<?php echo home_url('/motorcycles'); ?>" class="more-button">Lebih <svg width="10px" height="10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <a href="<?php echo home_url('/motorcycles'); ?>" class="more-button"><?php echo $translate['More']; ?><svg width="10px" height="10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg></i></a>
 

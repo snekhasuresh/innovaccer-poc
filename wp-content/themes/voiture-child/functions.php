@@ -799,7 +799,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'author') !== false || wp_doing_ajax()) {
 require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/add-car.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/individual-listing-tabs.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/cars-for-sale/used-cars-for-sale/used-cars-for-sale.php';
-if (strpos($_SERVER['REQUEST_URI'], 'mobil') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/gallary.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/mega-gallary.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/competitors.php';
@@ -1095,7 +1095,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'mobil') !== false || wp_doing_ajax()) {
 }
 
 //motor page
-if (strpos($_SERVER['REQUEST_URI'], 'motor') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || wp_doing_ajax()) {
     //news motorcycles page
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/new-motorcycle/latest-bike-videos-carousal-shortcode.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/new-motorcycle/motor-brand-sidebar.php';
@@ -1163,7 +1163,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'motor') !== false || wp_doing_ajax()) {
 
 // fuel-price-malaysia
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/fuel-price-thailand/news-carousal-shortcode.php';
-if (strpos($_SERVER['REQUEST_URI'], 'fuel-price') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], '/gia-xang-dau') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/fuel-price-thailand/latest-fuel-price-shortcode.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/fuel-price-thailand/petrol-price-shortcode.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/fuel-price-thailand/fuel-price-faqs.php';
@@ -1193,7 +1193,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'fuel-price') !== false || wp_doing_ajax()) 
 }
 
 // motor calculater pages
-if (strpos($_SERVER['REQUEST_URI'], 'alat') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'dung-cu') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-template-calculators.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-car-loan-data.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-buying-guide-news.php';
@@ -1290,7 +1290,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'alat') !== false || wp_doing_ajax()) {
 
 //compare cars
 // if (is_page('compare-cars') && preg_match('#^/compare-cars/?#', $_SERVER['REQUEST_URI']) || wp_doing_ajax()) {
-if (strpos($_SERVER['REQUEST_URI'], 'compare-cars') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'so-sanh-xe') !== false || wp_doing_ajax()) {
     // wp-content\themes\voiture-child\widget-shortcodes\car-comparison\car-compare-shortcode.php
     require_once(get_stylesheet_directory() . '/widget-shortcodes/car-comparison/car-compare-shortcode.php');
     require_once(get_stylesheet_directory() . '/widget-shortcodes/car-comparison/compare-popular-cars-tabs.php');
@@ -1316,10 +1316,10 @@ if (
     require_once ABSPATH . 'wp-content/themes/voiture-child/article-page.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/social-media.php';
 }
-
-if (strpos($_SERVER['REQUEST_URI'], 'mobil') !== false || strpos($_SERVER['REQUEST_URI'], 'alat') !== false || strpos($_SERVER['REQUEST_URI'], 'fuel-price') !== false || strpos($_SERVER['REQUEST_URI'], 'berita') !== false || wp_doing_ajax()) {
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/popular-car-brands/brands-in-my.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/recommended-car-carousel.php';
+
+if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || strpos($_SERVER['REQUEST_URI'], 'dung-cu') !== false || strpos($_SERVER['REQUEST_URI'], 'gia-xang-dau') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false || wp_doing_ajax()) {
+    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/popular-car-brands/brands-in-my.php';
 }
 
 function custom_calculator_rewrite()
@@ -1348,14 +1348,14 @@ function custom_calculator_rewrite()
     add_rewrite_rule('^alat/kredit-motor/?$', 'index.php?pagename=kredit-motor', 'top');
 
     // Match /alat/anything-else or /alat
-    add_rewrite_rule('^alat/([^/]*)/?$', 'index.php?pagename=alat', 'top');
+    add_rewrite_rule('^dung-cu/([^/]*)/?$', 'index.php?pagename=tools', 'top');
 	
 }
 add_action('init', 'custom_calculator_rewrite');
 
 
 // if (is_page('tools') && preg_match('#^/tools/?#', $_SERVER['REQUEST_URI']) || wp_doing_ajax()) {
-if (strpos($_SERVER['REQUEST_URI'], 'alat') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], '/dung-cu/mua-xe-tra-gop') !== false ||strpos($_SERVER['REQUEST_URI'], '/dung-cu/bao-hiem-xe') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/template-calculators.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/car-loan-data.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/fuel-cost-data.php';
@@ -2051,15 +2051,15 @@ add_action('template_redirect', 'capture_dynamic_variables');
 function create_cars_post_type()
 {
     register_post_type(
-        'cars',
+        'xe-oto',
         array(
             'labels' => array(
-                'name' => __('Cars'),
-                'singular_name' => __('Car'),
+                'name' => __('Xe-oto'),
+                'singular_name' => __('Xe-oto'),
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'cars/%make%/%model%'), // Include the make and model in the rewrite
+            'rewrite' => array('slug' => 'xe-oto/%make%/%model%'), // Include the make and model in the rewrite
             'supports' => array('title', 'editor', 'custom-fields'),
         )
     );
@@ -2117,22 +2117,22 @@ add_action('init', 'custom_cars_rewrite_rules');
 
 function custom_cars_rewrite_rules()
 {
-    add_rewrite_rule('^berita/([^/]+)/?$', 'index.php?post_type=news&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^mobil/([^/]+)/?$', 'index.php?pagename=mobil&make=$matches[1]', 'top');
-    add_rewrite_rule('^mobil/([^/]+)/([^/]+)/?$', 'index.php?post_type=mobil&make=$matches[1]&model=$matches[2]', 'top');
-    add_rewrite_rule('^mobil/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=mobil&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
-    add_rewrite_rule('^mobil/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=mobil&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
+    add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=news&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=xe-oto&make=$matches[1]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
-    add_rewrite_rule('^mobil-baru/([^/]+)/?$', 'index.php?pagename=mobil&filter=$matches[1]', 'top');
+    add_rewrite_rule('^mobil-baru/([^/]+)/?$', 'index.php?pagename=xe-oto&filter=$matches[1]', 'top');
 
     //motor rewrite url
-    add_rewrite_rule('^berita-motor/([^/]+)/?$', 'index.php?post_type=motorcycle-news&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^motor/([^/]+)/?$', 'index.php?pagename=motor&make=$matches[1]', 'top');
-    add_rewrite_rule('^motor/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]', 'top');
-    add_rewrite_rule('^motor/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
-    add_rewrite_rule('^motor/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
+    add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=motorcycle-news&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=motor&make=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
-    add_rewrite_rule('^motor/([^/]+)/?$', 'index.php?pagename=motor&filter=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=motor&filter=$matches[1]', 'top');
 
     //author
     add_rewrite_rule('^author/([^/]+)/?$', 'index.php?pagename=author&author_slug=$matches[1]', 'top');
@@ -2224,7 +2224,7 @@ add_filter('template_include', 'load_archive_motors_for_news_slug');
 function load_archive_motors_for_news_slug($template)
 {
     // 	print_r($_SERVER['REQUEST_URI']);
-    if (strpos($_SERVER['REQUEST_URI'], 'motor') !== false || strpos($_SERVER['REQUEST_URI'], 'berita-motor') !== false) {
+    if (strpos($_SERVER['REQUEST_URI'], 'motor') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc-xe-may') !== false) {
         $news_slug = get_query_var('news_slug');
 
         if (($news_slug && !is_excluded_news_slug($news_slug, true))) {
@@ -2256,12 +2256,12 @@ function create_news_post_type()
         'news',
         array(
             'labels' => array(
-                'name' => __('Berita'),
-                'singular_name' => __('Berita'),
+                'name' => __('tin-tuc'),
+                'singular_name' => __('tin-tuc'),
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'berita'),
+            'rewrite' => array('slug' => 'tin-tuc'),
             'supports' => array('title', 'editor', 'custom-fields'),
         )
     );
@@ -2274,12 +2274,12 @@ function create_motor_news_post_type()
         'motorcycle-news',
         array(
             'labels' => array(
-                'name' => __('Berita Motor'),
-                'singular_name' => __('Berita Motor'),
+                'name' => __('tin-tuc-xe-may'),
+                'singular_name' => __('tin-tuc-xe-may'),
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'berita-motor'),
+            'rewrite' => array('slug' => 'tin-tuc-xe-may'),
             'supports' => array('title', 'editor', 'custom-fields'),
         )
     );
@@ -2306,7 +2306,7 @@ add_filter('post_type_link', function ($post_link, $post) {
         // Replace spaces with dashes for URL compatibility
         $make_slug = sanitize_title($make);
         $model_slug = sanitize_title($model);
-        return home_url("mobil/$make_slug/$model_slug/");
+        return home_url("xe-oto/$make_slug/$model_slug/");
     }
     if ($post->post_type === 'motorcycle-listing') {
         $make_id = get_post_meta($post->ID, 'make', true);
@@ -2507,8 +2507,8 @@ add_filter('wp_title', 'custom_seo_title', 20);
 function custom_seo_title($seo_title)
 {
     global $wpdb;
-    $is_motorcycle = strpos($_SERVER['REQUEST_URI'], '/motorcycles/') !== false;
-    $is_car = strpos($_SERVER['REQUEST_URI'], '/cars/') !== false;
+    $is_motorcycle = strpos($_SERVER['REQUEST_URI'], '/xe-may/') !== false;
+    $is_car = strpos($_SERVER['REQUEST_URI'], '/xe-oto/') !== false;
     $url_path = $_SERVER['REQUEST_URI'];
     $make = get_query_var('make');
     $model = get_query_var('model');
@@ -2524,7 +2524,7 @@ function custom_seo_title($seo_title)
 
     // homepage
     if ($url_path == '/' || $url_path == '') {
-        $title = 'ดูราคารถใหม่ในประเทศไทย รถยนต์ รถมอเตอร์ไซค์ รถยนต์ไฟฟ้า โปรโมชั่น ข่าว รีวิว รูปภาพ วีดีโอ｜Autofun';
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
 
     // cars for sale
@@ -2537,11 +2537,11 @@ function custom_seo_title($seo_title)
     }
 
     // cars
-    if ($url_path == '/cars') {
-        $title = 'ค้นหารถยนต์ 2024 ราคารถใหม่ ข่าวสาร รูปภาพรถ สเปครถ โปรโมชั่นที่ไทย | AutoFun';
+    if ($url_path == '/xe-oto') {
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
-    if ($url_path == '/motorcycles/') {
-        $title = 'ค้นหา รถจักรยานยนต์ ' . $current_year . ' ราคารถมอเตอร์ไซค์ใหม่, บิ๊กไบค์, ข่าวสาร รูปภาพ สเปค โปรโมชั่น, ที่ไทย | AutoFun';
+    if ($url_path == '/xe-may/') {
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
     // if make && not model
     if ($is_car) {
@@ -2549,7 +2549,7 @@ function custom_seo_title($seo_title)
             $thai_make_name = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Construct the title dynamically
-            $title = "รถยนต์" . $thai_make_name . " " . $make . " " . $current_year . " ราคาใหม่" . $thai_make_name . "สเปค รูปภาพ โปรโมชั่น | AutoFun";
+            $title = "Bảng Giá Xe ". ucfirst($make) ." Việt Nam ". $current_year ." - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
         }
     }
 
@@ -2558,11 +2558,11 @@ function custom_seo_title($seo_title)
             $thai_make_name = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Construct the title dynamically
-            $title = "รถมอเตอร์ไซค์ อัลฟ่า โวแลนทิส" . $make . " " . $model . " " . $current_year  . "- ราคารถใหม่ สเปค รูปภาพ โปรโมชั่น | AutoFun";
+            $title = "Bảng giá xe máy ". ucfirst($make) ." Việt Nam ". $current_year ." - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
         }
     }
     // cars filter
-    if (strpos($url_path, '/new-cars') !== false) {
+    if (strpos($url_path, '/xe-hoi-moi') !== false) {
         $current_url = trim($_SERVER['REQUEST_URI'], '/');
         $last_part = basename($current_url);
 
@@ -2580,7 +2580,7 @@ function custom_seo_title($seo_title)
             if (strpos($part, 'between') === 0) {
                 // Handle price range ("between60to90K")
                 $price_range = str_replace(['between', 'to', 'K'], ['', '-', 'K'], $part);
-                $price_range_text = "between THB $price_range";
+                $price_range_text = "between Triệu $price_range";
             } else {
                 // Convert URL-friendly word to sentence-friendly word
                 $filters[] = ucfirst($part);
@@ -2590,11 +2590,11 @@ function custom_seo_title($seo_title)
         // Combine filters and price range to form the title
         $filters_text = implode(' ', $filters);
        
-        $title = "$current_year รถยนต์ ราคา $price_range_text $filters_text แสนบาท ที่ดีที่สุดในไทยพร้อมราคา รูปภาพ | AutoFun";
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
 
         //motorcycle filter
-        if (strpos($url_path, '/new-motorcycles') !== false) {
+        if (strpos($url_path, '/xe-may-moi') !== false) {
             $current_url = trim($_SERVER['REQUEST_URI'], '/');
             $last_part = basename($current_url);
     
@@ -2612,7 +2612,7 @@ function custom_seo_title($seo_title)
                 if (strpos($part, 'between') === 0) {
                     // Handle price range ("between60to90K")
                     $price_range = str_replace(['between', 'to', 'K'], ['', '-', 'K'], $part);
-                    $price_range_text = "between THB $price_range";
+                    $price_range_text = "between Triệu $price_range";
                 } else {
                     // Convert URL-friendly word to sentence-friendly word
                     $filters[] = ucfirst($part);
@@ -2622,7 +2622,7 @@ function custom_seo_title($seo_title)
             // Combine filters and price range to form the title
             $filters_text = implode(' ', $filters);
            
-            $title = `ลิสต์รวมรถมอเตอร์ไซค์ ไม่เกิน  $price_range_text  บาท $filters_text ใหม่ล่าสุดปี $current_year ที่น่าซื้อและที่ดีที่สุดในไทย - ราคา รูปภาพ รีวิว | AutoFun`;
+            $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
         }
 
     // individual listing
@@ -2632,55 +2632,53 @@ function custom_seo_title($seo_title)
         // Check if the URL contains "motorcycles" or "cars"
 
         if ($is_car) {
-            $title = "ราคา" . " " . $make . " " . $model . " " . $current_year . "ตัว ใหม่ ล่าสุด - ตารางผ่อน, รีวิว สเปค รูปภาพ โปรโมชั่น | AutoFun";
+            $title = "Giá xe ". $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
         } elseif ($is_motorcycle) {
-            $title = $make . " " . $model . " " . $current_year . " ราคา มอเตอร์ไซค์ ใหม่ - รีวิว สเปค รูปภาพ โปรโมชั่น | AutoFun";
+            $title = "Giá xe ". $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
         }
 
         if ($is_car) {
             switch ($section) {
-                case 'news':
-                    $title = 'ข่าวรถยนต์' . " " . $make . " " . $model . " " . $current_year . " " . "ข้อมูลล่าสุด เปิดตัวรถใหม่ รีวิว | Autofun";
-                    // $title = $make . " " . $model . " Latest News in Malaysia - " . $current_year . " Updates, Launches, Reviews | WapCar";
+                case 'tin-tuc':
+                    $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
                     break;
-                case 'specs':
-                    $title = $make . " " . $model . " " . $current_year . "สเปครถ - เกียร์ เครื่องยนต์ ขนาด ยาง ฟีเจอร์ รายละเอียด | AutoFun";
+                case 'thong-so-ky-thuat':
+                    $title = "Thông số kỹ thuật " . $make . " " . $model . " " . $current_year . " - Kích thước, Trọng lượng, Động cơ, Hộp số | Autofun";
                     break;
-                case 'gallery':
-                    $title = "รูปภาพภายนอกและภายใน" . " " . $make . " " . $model . "- รูปภาพ & แกลเลอรีของ" . $make . " " . $model . "| Autofun";
+                case 'hinh-anh':
+                    $title = "Hình ảnh Nội & Ngoại thất " . $make . " " . $model . " " . $current_year . " - Thư viện | Autofun";
                     break;
-                case 'fuel-consumption':
-                    $title = "เช็คอัตราสิ้นเปลืองน้ำมันของ" . " " . $make . " " . $model . "ในประเทศไทยได้ที่ | Autofun";
+                case 'tieu-hao-nhien-lieu':
+                    $title = "Mức Tiêu Hao Nhiên Liệu Của Xe " . $make . " " . $model . " tại Việt Nam | AutoFun";
                     break;
 
-                case 'colors':
-                    $title = "สีแต้มรถ" . $make . " " . $model . $current_year . " สี เทา ขาว ดำ น้ำเงิน แดง น้ำตาล เหลือง เงิน เขียว และสีอื่นๆ | AutoFun";
+                case 'mau-sac':
+                    $title = "Màu xe mới của " . $make . " " . $model . " " . $current_year . ", Kiểm Tra Tất Cả 4 Màu Tại Việt Nam | AutoFun";
                     break;
                 default:
-                    $title = "ราคา" . " " . $make . " " . $model . " " . $current_year . "ตัว ใหม่ ล่าสุด - ตารางผ่อน, รีวิว สเปค รูปภาพ โปรโมชั่น | AutoFun";
+                    $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
                     break;
             }
         } elseif ($is_motorcycle) {
             switch ($section) {
-                case 'news':
-                    $title = "ข่าวมอเตอร์ไซค์ " . $make . " " . $model . " " . $current_year . " ข้อมูลล่าสุด เปิดตัวรถใหม่ รีวิว | Autofun";
-                    // $title = $make . " " . $model . " Latest News in Malaysia - " . $current_year . " Updates, Launches, Reviews | WapCar";
+                case 'tin-tuc':
+                    $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
                     break;
-                case 'specs':
-                    $title = "รถมอเตอร์ไซค์" . $make . " " . $model . " " . $current_year .  "สเปค - ขนาด ยาง อัตราสิ้นเปลืองน้ำมัน เครื่องยนต์ น้ำหนัก ฟีเจอร์ รายละเอียด | AutoFun";
+                case 'thong-so-ky-thuat':
+                    $title = "Thông số kỹ thuật " . $make . " " . $model . " " . $current_year ." - Kích thước, Trọng lượng, Động cơ, Hộp số | Autofun";
                     break;
-                case 'gallery':
-                    $title = "รูปภาพ ภายนอก" . $make . " " . $model . "- รูปภาพ สี แกลเลอรีของ " . $make . " " . $model . " | Autofun";
+                case 'hinh-anh':
+                    $title = "Thư viện & Hình ảnh " . $make . " " . $model . " " . $current_year . " | Autofun";
                     break;
-                case 'fuel-consumption':
-                    $title = "อัตราสิ้นเปลืองเชื้อเพลิง" . $make . " " . $model . " - AutoFun";
+                case 'tieu-hao-nhien-lieu':
+                    $title = "Tiêu Thụ Nhiên Liệu " . $make . " " . $model . " | Autofun";
                     break;
 
-                case 'colors':
-                    $title = "สี " . $make . " " . $model . " " . $current_year . " สีขาว สีดำ สีแดง สีเขียว สีเหลือง สีน้ำเงิน | AutoFun";
+                case 'mau-sac':
+                    $title = "Màu xe mới của " . $make . " " . $model . " " . $current_year .", Kiểm Tra Tất Cả 10 Màu Tại Việt Nam | AutoFun";
                     break;
                 default:
-                    $title = $make . " " . $model . " " . $current_year . " ราคา มอเตอร์ไซค์ ใหม่ - รีวิว สเปค รูปภาพ โปรโมชั่น | AutoFun";
+                    $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
                     break;
             }
         }
@@ -2705,14 +2703,14 @@ function custom_seo_title($seo_title)
             wp_reset_postdata();  // Reset post data
 
             switch ($section) {
-                case 'specs':
-                    $title = $make." " .$model."2025 สเปครถ - เกียร์ เครื่องยนต์ ขนาด ยาง ฟีเจอร์ รายละเอียด | AutoFun" ;
+                case 'thong-so-ky-thuat':
+                    $title = "Thông số " . $make . " " . $model . " 2023 - Tính năng, Cấu hình động cơ, Kích thước lốp | Autofun" ;
                     break;
-                case 'gallery':
-                    $title = "รูปภาพภายนอกและภายใน".$make ." ".$model." - รูปภาพ & แกลเลอรีของ ".$make ." ".$model. "| Autofun";
+                case 'hinh-anh':
+                    $title = "Hình ảnh " . $make . " " . $model . " - Ảnh thực HD | Autofun";
                     break;
                 default:
-                    $title = $make." ".$model."ราคา THB 739,000 บาท ฮอนด้า ซิตี้ - โปรโมชั่น รีวิวรถใหม่, ข่าว รูปภาพ | AutoFunขายรถมือสอง";
+                    $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
                     break;
             }
         }
@@ -2736,91 +2734,86 @@ if($is_motorcycle){
             wp_reset_postdata();  // Reset post data
 
             switch ($section) {
-                case 'specs':
-                    $title = $make." " .$model."2025 สเปครถ - เกียร์ เครื่องยนต์ ขนาด ยาง ฟีเจอร์ รายละเอียด | AutoFun" ;
+                case 'thong-so-ky-thuat':
+                    $title = "Thông số ".$make." " .$model." - Động cơ, Mức tiêu hao nhiên liệu của, Kích thước lốp | Autofun" ;
                     break;
-                case 'gallery':
-                    $title = "รูปภาพภายนอกและภายใน".$make ." ".$model." - รูปภาพ & แกลเลอรีของ ".$make ." ".$model. "| Autofun";
+                case 'hinh-anh':
+                    $title = "Hình ảnh ".$make." " .$model." - Ảnh thực HD hình ảnh lớn | Autofun";
                     break;
                 default:
-                    $title = $make." ".$model."ราคา THB 92,900 บาท ฮอนด้า พีซีเอกซ์ - โปรโมชั่น รีวิวรถใหม่, ข่าว รูปภาพ | AutoFun";
+                    $title = "Giá xe ".$make ." ".$model." - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
                     break;
             }
         }
     }
 }
 
-    // cars-electric
   // cars-electric
-  if ($url_path == '/cars-electric') {
-    $title = 'ราคา รถ EV ใน ไทย, EV Cars Thailand | AutoFun';
-}
+//   if ($url_path == '/cars-electric') {
+//     $title = 'ราคา รถ EV ใน ไทย, EV Cars Thailand | AutoFun';
+// }
 
     /***************** Tools Pages ****************/
     /***************** Tools Pages ****************/
-    if ($url_path == '/tools/loan-calculator/') {
-        $title = 'คํานวณผ่อนรถ - ตารางผ่อนรถ ตารางผ่อนดาวน์ สินเชื่อรถ อัตราผ่อนรถ ดอกเบี้ย | AutoFun';
+    if ($url_path == '/dung-cu/mua-xe-tra-gop/') {
+        $title = 'Mua Xe Trả Góp - Bảng Tính Chi Phí Mua Xe Ô Tô Trả Góp | Autofun';
     }
 
-    if ($url_path == '/tools/road-tax-calculator') {
-        $title = 'เครื่องมือคำนวณภาษีรถยนต์ 2020-2021 ต่อภาษีรถยนต์ 2563-2564 ในประเทศไทย | AutoFun';
+    if ($url_path == '/dung-cu/bao-hiem-xe') {
+        $title = 'Bảo Hiểm Xe - Tính Phí Bảo Hiểm Xe Tại Việt Nam | AutoFun';
     }
 
-    if ($url_path == '/tools/insurance-calculator') {
-        $title = 'Car Insurance Calculator In Malaysia | WapCar';
+    if ($url_path == '/dung-cu/gia-xang-dau') {
+        $title = 'Giá Xăng Hôm Nay - Giá Xăng Hiện Tại, RON 92, RON 95, Dầu Diesel, Dầu hỏa ở Việt Nam';
     }
 
-    if ($url_path == '/tools/fuel-cost-calculator') {
-        $title = 'เครื่องคำนวณค่าน้ำมันเชื้อเพลิง คำนวณค่าน้ำมันเดินทาง ค่าใช้จ่ายน้ำมัน | AutoFun';
-    }
+//     if ($url_path == '/tools/fuel-cost-calculator') {
+//         $title = 'เครื่องคำนวณค่าน้ำมันเชื้อเพลิง คำนวณค่าน้ำมันเดินทาง ค่าใช้จ่ายน้ำมัน | AutoFun';
+//     }
 
-    if ($url_path == '/compare-cars') {
-        $title = "เปรียบเทียบรถ - เปรียบเทียบ ราคา ประกันภัย รถยนต์" . $current_year . "ที่ไทย | AutoFun";
+    if ($url_path == '/so-sanh-xe') {
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
-    if ($url_path == '/compare-motorcycles') {
-        $title = "เปรียบเทียบรถ - เปรียบเทียบ ราคา ประกันภัย รถยนต์" . $current_year . "ที่ไทย | AutoFun";
-    }
-    if ($url_path == '/fuel-price') {
-        $title = 'ราคาน้ำมันวันนี้ ราคาน้ำมันพรุ่งนี้ เบนซิน 95, แก๊สโซฮอล์ 95, 91, ราคาน้ำมันดีเซล, ราคา NGV | AutoFun';
+    if ($url_path == '/so-sanh-xe-may') {
+        $title = "So Sánh Xe Hơi và Xe Máy ở Việt Nam";
     }
     // bikes
-    if ($url_path == '/tools/motor-loan-calculator') {
-        $title = 'คํานวณผ่อนรถ - ตารางผ่อนรถ ตารางผ่อนดาวน์ สินเชื่อรถ อัตราผ่อนรถ ดอกเบี้ย | AutoFun';
+    if ($url_path == '/dung-cu/mua-xe-tra-gop') {
+        $title = 'Mua Xe Trả Góp - Bảng Tính Chi Phí Mua Xe Ô Tô Trả Góp | Autofun';
     }   
 
     // other pages
     if ($url_path == '/about-us') {
-        $title = 'Autofun- เว็บไซต์ที่ดีที่สุดในการค้นหาข่าวรถยนต์ รีวิว รูปภาพ ราคาในประเทศไทย
-';
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
     if ($url_path == '/join-us') {
-        $title = 'AutoFun-เว็บไซต์สุดเยี่ยมที่ค้นหารถยนต์ใหม่ รถมอเตอร์ไซค์ เช็คราคารีวิวข่าวสารรูปภาพรถและสปคในประเทศไทย';
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
-    if ($url_path == '/advertise-with-us') {
-        $title = 'ยกระดับการรับรู้และยอดขายแบรนด์ของคุณไปกับ Autofun Thailand';
+    if ($url_path == '/quang-cao-voi-chung-toi') {
+        $title = 'Tăng độ tiếp xúc thương hiệu và doanh số cùng Autofun.vn!';
     }
 
     if ($url_path == '/user-agreement') {
-        $title = 'AutoFun-เว็บไซต์สุดเยี่ยมที่ค้นหารถยนต์ใหม่ รถมอเตอร์ไซค์ เช็คราคารีวิวข่าวสารรูปภาพรถและสปคในประเทศไทย';
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
 
     if ($url_path == '/privacy-policy') {
-        $title = 'AutoFun-เว็บไซต์สุดเยี่ยมที่ค้นหารถยนต์ใหม่ รถมอเตอร์ไซค์ เช็คราคารีวิวข่าวสารรูปภาพรถและสปคในประเทศไทย';
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
 
-    if ($url_path == '/write-for-us') {
-        $title = 'เขียนถึงเรา: คู่มือการส่งฉบับเต็มสำหรับการโพสต์ของผู้เยี่ยมชมยานยนต์ | AutoFun';
+    if ($url_path == '/viet-cho-chung-toi') {
+        $title = 'Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun';
     }
 
     // news
-    if ((strpos($url_path, '/news') !== false && !$news_slug) || $url_path == '/bm' || $url_path == '/zh') {
-            $title = "ข่าวรถยนต์ ข่าวรถใหม่ 2024 ที่ไทย, ข่าวเปิดตัวรถใหม่ รีวิวรถใหม่ | AutoFun";
+    if ((strpos($url_path, '/tin-tuc') !== false && !$news_slug) || $url_path == '/bm' || $url_path == '/zh') {
+            $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
-    if ($url_path == '/news-motorcycles') {
-        $title = "ข่าวรถมอเตอร์ไซค์ 2024 ที่ไทย, ข่าวบิ๊กไบค์ ข้อมูลรถจักรยานยนต์ใหม่ | AutoFun";
+    if ($url_path == '/tin-tuc-xe-may') {
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
     if ($news_slug) {
-        $title = "ข่าวรถยนต์ ข่าวรถใหม่ 2024 ที่ไทย, ข่าวเปิดตัวรถใหม่ รีวิวรถใหม่ | AutoFun";
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
         $news_post = get_news_post_from_news_slug();
         if ($news_post) {
             $title = $news_post->post_title . ' | Autofun';
@@ -2890,6 +2883,8 @@ add_filter('wpseo_metadesc', function ($description) {
     $variant_section = get_query_var('variant_section');
     $current_year = date('Y');
     $news_slug = get_query_var('news_slug');
+	$is_motorcycle = strpos($_SERVER['REQUEST_URI'], '/xe-may/') !== false;
+    $is_car = strpos($_SERVER['REQUEST_URI'], '/xe-oto/') !== false;
 
     // chinese and malay language news article
     $lang = get_query_var('lang');
@@ -2898,20 +2893,20 @@ add_filter('wpseo_metadesc', function ($description) {
 
     // homepage
     if ($url_path == '/' || $url_path == '') {
-        $description = "AutoFun เว็บไซต์รถยนต์ที่ดีที่สุดของประเทศไทย ตรวจสอบราคารถยนต์ใหม่ปี" . " " . $current_year . " " . "ราคารถมอเตอร์ไซค์ ราคารถยนต์ไฟฟ้า คู่มือการซื้อ ข่าวรถยนต์ รีวิว ภาพรถยนต์ วิดีโอและอื่นๆ ครอบคลุม Honda, Toyota, MG, Ford, Mazda, Tesla, Kia, Hyundai, BMW, Mercedes-Benz, Mitsubishi, Suzuki, Ducati, Yamaha, Kawasaki, GPX และแบรนด์ที่มีชื่อเสียงอื่นๆ";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
     }
 
     // cars
-    if ($url_path == '/cars') {
-        $description = "ค้นหาข้อมูลรถใหม่ทั้งหมดในประเทศไทยในปี 2567 ได้ที่ AutoFun Thailand Cars รวมทั้งราคารถใหม่ล่าสุด" . " " . $current_year . " " . " สเปครถ รูปภาพ คุณสมบัติ ข่าวรถใหม่ รีวิวโดยผู้เชี่ยวชาญ โปรโมชั่น สินเชื่อรถยนต์ คู่มือการซื้อรถ และอื่นๆ ครอบคลุม Honda, Toyota, MG, Mazda , Tesla, Mercedes - Benz, Hyundai, BMW, Mitsubishi, Suzuki, Kia, Ford และแบรนด์รถยนต์ยอดนิยมอื่น ๆ";
+    if ($url_path == '/xe-oto') {
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
-    if ($url_path == '/motorcycles') {
-        $description = "ค้นหาข้อมูลรถมอเตอร์ไซค์ใหม่ทั้งหมดในประเทศไทยในปี 2568 ได้ที่ AutoFun Thailand Motorcycles รวมทั้งราคารถจักรยานยนต์ล่าสุด ราคาบิ๊กไบค์ ราคารถมอเตอร์ไซค์ไฟฟ้า สเปครถจักรยานยนต์ รูปภาพ คุณสมบัติ ข่าว รีวิวโดยผู้เชี่ยวชาญ โปรโมชั่น สินเชื่อรถจักรยานยนต์ คู่มือการซื้อรถยนต์ และอื่นๆ ครอบคลุม Honda, Yamaha, GPX, Kawasaki, SUzuki, Aprilia, Bajaj, Benelli, Ducati, BMW, KYM, Vespa และรถมอเตอร์ไซค์แบรนด์ดังอื่นๆ";
+    if ($url_path == '/xe-may') {
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($is_car) {
         if ($make && !$model) {
-            $description = "AutoFun New" . $make . "Thailandค้นหารถยนต์อบาร์ธใหม่ในประเทศไทยในปี 2566 อบาร์ธรถเก๋งและ SUV ทุกรุ่น, ราคารถอบาร์ธล่าสุด, สเปค, คุณสมบัติ, รถยนต์ Abarth รูปภาพ, ข่าว, บทวิจารณ์, วิดีโอ, บทวิจารณ์ของผู้ใช้, เปรียบเทียบพารามิเตอร์ อัตราสิ้นเปลืองน้ำมัน, ติดตามโปรโมชั่นล่าสุดของ" . " " . $make;
+            $description = "Nhận bảng giá xe ô tô ". ucfirst($make) ." 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe ". ucfirst($make) .", tra xe điện / giá xe ". ucfirst($make) .", thư viện, màu sắc, thông số kỹ thuật, tính năng, đánh giá của chuyên gia, đánh giá của người dùng, hình ảnh và video.";
         }
     }
 
@@ -2921,13 +2916,13 @@ add_filter('wpseo_metadesc', function ($description) {
             $thai_make = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Build the description with the dynamically replaced Thai make
-            $description = "AutoFun New " . $make . " Motorcycle Thailandค้นหารถมอเตอร์ไซค์" . $thai_make . "ใหม่ในประเทศไทยในปี 2566 รถมอเตอร์ไซค์ " . $thai_make . "ทุกรุ่น, เช่น รถครอบครัว รถวิบาก รถสปอร์ต, ราคา มอเตอร์ไซค์ " . $thai_make . " ล่าสุด, สเปค, คุณสมบัติ, " . $thai_make . " บิ๊กไบค์ รูปภาพ, ข่าว, บทวิจารณ์, วิดีโอ, บทวิจารณ์ของผู้ใช้, เปรียบเทียบพารามิเตอร์ อัตราสิ้นเปลืองน้ำมัน, ติดตามโปรโมชั่นล่าสุดของ รถมอเตอร์ไซค์ " . $make;
+            $description = "Nhận bảng giá xe máy / xe tay ga / xe máy điện ". ucfirst($make) ." 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe máy BMW, khảo giá xe máy ". ucfirst($make) .", thư viện hình ảnh, màu sắc, thông số kỹ thuật, tính năng, đánh giá và video của chuyên gia.";
         }
     }
 
 
     // cars filter
-    if (strpos($url_path, '/new-cars') !== false) {
+    if (strpos($url_path, '/xe-hoi-moi') !== false) {
         $current_url = trim($_SERVER['REQUEST_URI'], '/');
 
         $last_part = basename($current_url);
@@ -2946,7 +2941,7 @@ add_filter('wpseo_metadesc', function ($description) {
             if (strpos($part, 'between') === 0) {
                 // Handle price range ("between60to90K")
                 $price_range = str_replace(['between', 'to', 'K'], ['', '-', 'K'], $part);
-                $price_range_text = "between RM $price_range";
+                $price_range_text = "between Triệu $price_range";
             } else {
                 // Convert URL-friendly word to sentence-friendly word
                 $filters[] = ucfirst($part);
@@ -2955,30 +2950,30 @@ add_filter('wpseo_metadesc', function ($description) {
 
         // Combine filters and price range to form the title
         $filters_text = implode(' ', $filters);
-        $description = "ตรวจสอบ $current_year ราคา รถยนต์ ราคา $price_range_text แสนบาท รถเชิงพาณิชย์  $filters_text ตารางราคาที่ดีที่สุดและล่าสุด ค้นหารถที่ดีที่สุดของคุณตามเงื่อนไขแบรนด์รถยนต์ ราคา ประเภทตัวถัง จำนวนที่นั่ง ระบบส่งกำลัง ระบบขับเคลื่อน เซ็กเมนต์ และคุณสมบัติอื่นๆ";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     // cars for sale
-    if (strpos($url_path, '/used-car-market-value-guide') !== false) {
-        $description = "Want to buy or sell a second hand car but have no idea about its market value? Get instant car values online with WapCar's free car value calculator. Make it easy to get a great deal.";
-    }
+//     if (strpos($url_path, '/used-car-market-value-guide') !== false) {
+//         $description = "Want to buy or sell a second hand car but have no idea about its market value? Get instant car values online with WapCar's free car value calculator. Make it easy to get a great deal.";
+//     }
 
-    if (strpos($url_path, '/trade-in-your-car') !== false) {
-        $description = 'How to trade in your car in Malaysia? WapCar’s online trade-in car calculator creates the best car trade-in value for you, and at the same time solves the problem of when should you trade-in your car (trade in car price) and how to trade in a car with loan, save more on your next car.';
-    }
+//     if (strpos($url_path, '/trade-in-your-car') !== false) {
+//         $description = 'How to trade in your car in Malaysia? WapCar’s online trade-in car calculator creates the best car trade-in value for you, and at the same time solves the problem of when should you trade-in your car (trade in car price) and how to trade in a car with loan, save more on your next car.';
+//     }
 
     // news
     
-    if (strpos($url_path, '/news') !== false || $url_path == '/bm' || $url_path == '/zh') {
-        $description = "ข่าวสารรถยนต์AutoFun Car News Updateให้ข้อมูลเกี่ยวกับข่าวรถยนต์ในประเทศไทย " . $current_year . ", รายงานข่าวรถใหม่แบบเรียลไทม์, ข่าวเปิดตัวรถใหม่, ราคารถใหม่, การเปลี่ยนแปลงของตลาดรถยนต์, รีวิวรถใหม่, โปรโมชั่น, ได้แก่ Honda, Toyota, Audi, BMW, Ford, Hyundai, Haval, Isuzu, Kia, Lexus, Mitsubishi, Mazda, Mercedes-Benz, MG, Nissan, ORA, Suzuki, Tesla, Wuling, Volvo และรถยนต์ยี่ห้ออื่นๆ";
+    if (strpos($url_path, '/tin-tuc') !== false || $url_path == '/bm' || $url_path == '/zh') {
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
     }
-    if (strpos($url_path, '/news-motorcycles') !== false || $url_path == '/bm' || $url_path == '/zh') {
-        $description = "ข่าวรถมอเตอร์ไซค์AutoFun Motorcycle News Thailandข่าวบิ๊กไบค์ " . " " . $current_year . " " . ", ข้อมูลรถมอเตอร์ไซค์ใหม่รายงานสด, ข่าวเปิดตัวรถจักรยานยนต์ใหม่, ราคารถมอเตอร์ไซค์ใหม่, การเปลี่ยนแปลงของตลาดรถจักรยานยนต์, รีวิวรถจักรยานยนต์ใหม่ โปรโมชั่น, ได้แก่ Honda, Yamaha, Ducati, Kawasaki, KTM, Aprilia, Suzuki, Zongshen, Vespa, Bajaj, Benelli, BMW, Harley-Davidson, Royal Enfield, GPX, MV Agusta และรถมอเตอร์ไซค์แบรนด์ดังอื่นๆ";
+    if (strpos($url_path, '/tin-tuc-xe-may') !== false || $url_path == '/bm' || $url_path == '/zh') {
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
     }
     if ($news_slug) {
-        $description = "ข่าวสารรถยนต์AutoFun Car News Updateให้ข้อมูลเกี่ยวกับข่าวรถยนต์ในประเทศไทย " . $current_year . ", รายงานข่าวรถใหม่แบบเรียลไทม์, ข่าวเปิดตัวรถใหม่, ราคารถใหม่, การเปลี่ยนแปลงของตลาดรถยนต์, รีวิวรถใหม่, โปรโมชั่น, ได้แก่ Honda, Toyota, Audi, BMW, Ford, Hyundai, Haval, Isuzu, Kia, Lexus, Mitsubishi, Mazda, Mercedes-Benz, MG, Nissan, ORA, Suzuki, Tesla, Wuling, Volvo และรถยนต์ยี่ห้ออื่นๆ";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
         $news_post = get_news_post_from_news_slug();
         if ($news_post) {
@@ -2992,7 +2987,7 @@ add_filter('wpseo_metadesc', function ($description) {
 
     // chinese and malay news article
     if ($lang && $post_name && $post_id) {
-        $description = "ข่าวสารรถยนต์AutoFun Car News Updateให้ข้อมูลเกี่ยวกับข่าวรถยนต์ในประเทศไทย " . $current_year . ", รายงานข่าวรถใหม่แบบเรียลไทม์, ข่าวเปิดตัวรถใหม่, ราคารถใหม่, การเปลี่ยนแปลงของตลาดรถยนต์, รีวิวรถใหม่, โปรโมชั่น, ได้แก่ Honda, Toyota, Audi, BMW, Ford, Hyundai, Haval, Isuzu, Kia, Lexus, Mitsubishi, Mazda, Mercedes-Benz, MG, Nissan, ORA, Suzuki, Tesla, Wuling, Volvo และรถยนต์ยี่ห้ออื่นๆ";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
 
         $result = $wpdb->get_var(
@@ -3018,28 +3013,53 @@ add_filter('wpseo_metadesc', function ($description) {
             'posts_per_page' => 1
         ));
         $post_id = $listing_post[0]->ID;
-        $description = "All New" . $make . " " .  $model . "2021 - 2022 - 2023 Thailand, ราคา" . $make . " " .  $model . $thai_make_name . " " . $thai_model_name . "ใหม่ ในไทยเริ่มต้นที่" . $starting_retail_price . ". ค้นหาข้อมูลทั้งหมดเกี่ยวกับ" . $make . " " .  $model . " รวมทุกรุ่น ข่าว สี รูปภาพ สเปค ห้องโดยสาร คุณสมบัติ อัตราสิ้นเปลืองน้ำมัน รีวิวจากผู้ใช้ โปรโมชั่น," . $thai_make_name . " " . $thai_model_name . " ตารางผ่อน.";
+        $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " ". $current_year .".";
 
 
-        if ($is_motorcycle) {
+        if ($is_car) {
             switch ($section) {
-                case 'news':
-                    $description = "อ่านข่าว" . $make . " " .  $model .  "ล่าสุดในประเทศไทย" . $starting_retail_price . "ตรวจสอบการอัปเดต" . $make . " " .  $model . "เปิดตัวรถใหม่ ความคิดเห็นของผู้เชี่ยวชาญและบทวิจารณ์ของเจ้าของ คู่มือการซื้อและเคล็ดลับสำหรับคำถาม";
+                case 'tin-tuc':
+                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
                     break;
-                case 'specs':
-                    $description = "สเปค" . $make . " " .  $model . " " . $current_year  . "ที่ไทย" . $thai_make_name . " " . $thai_model_name . " " . $make . " " .  $model . "รายละเอียด เช่นระบบส่งกำลัง ขนาด ยาง สี การตกแต่งภายใน ระบบขับเคลื่อน อัตราสิ้นเปลืองน้ำมัน ความจุ ที่นั่ง ความปลอดภัยและข้อมูลทั้งหมดของ Abarth 595 specification.";
+                case 'thong-so-ky-thuat':
+                    $description = "Xem đặc điểm và thông số kỹ thuật xe " . $make . " " .  $model .  " tại Việt Nam ". $current_year .", bao gồm mẫu xe " . $make . " " .  $model .  " kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
                     break;
-                case 'gallery':
-                    $description = "ชมรูปภาพและภาพถ่ายภายในและภายนอกของ" . $make . " " .  $model .  "ล่าสุด รูปภาพทั้งด้านหน้าและด้านหลังของ" . $current_year . " " . $make . " " .  $model .  " ," . $make . " " .  $model . "มีรูปภาพและภาพถ่ายทั้งหมด166 รูปที่เกี่ยวกับภายใน ภายนอก สีสัน เครื่องยนต์ และอื่นๆอีกมากมาย";
+                case 'hinh-anh':
+                    $description = "Xem 22 hình ảnh xe " . $make . " " .  $model ." tại Việt Nam ". $current_year .", Bao gồm 200 ảnh nội thất " . $make . " " .  $model .", 300 ảnh ngoại thất Honda City, cũng như các hình ảnh phía trước và phía sau khác, hình ảnh bên hông, màu sắc và hình ảnh động cơ và khung gầm.";
                     break;
-                case 'fuel-consumption':
-                    $description = $make . " " .  $model . " อัตราสิ้นเปลือง ได้ที่ Autofun.สำรวจตัวเลขอัตราสิ้นเปลืองน้ำมันของ" . $make . " " .  $model . "สำหรับการวิ่งในเขตเมืองหรือนอกเขตเมืองในประเทศไทย คำนวณค่าน้ำมันต่อการวิ่ง 100 กม. รถของคุณถ้าเติมน้ำมันเต็มถังขับได้ระยะทางไกลแค่ไหน?";
+                case 'tieu-hao-nhien-lieu':
+                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model ." tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model .", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
                     break;
-                case 'colors':
-                    $description = "New สีแต้มรถ" . $make . " " .  $model . " " . $current_year . "มีให้เลือก 4 สี ดูตัวเลือกสีรถทั้งหมดของ ใหม่"  . $make . " " .  $model . " ในไทย: red, , pink, blue สีดำ สีขาว สีน้ำตาล สีเงิน สีแดง สีน้ำเงิน สีน้ำตาล สีเหลือง สีเขียว สีเทา และสีอื่นๆ.";
+                case 'mau-sac':
+                    $description = "Xem ảnh các màu Ford Fiesta ". $current_year ." đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
                     break;
                 default:
-                    $description = "All New" . $make . " " .  $model . "2021 - 2022 - 2023 Thailand, ราคา" . $make . " " .  $model . $thai_make_name . " " . $thai_model_name . "ใหม่ ในไทยเริ่มต้นที่" . $starting_retail_price . ". ค้นหาข้อมูลทั้งหมดเกี่ยวกับ" . $make . " " .  $model . " รวมทุกรุ่น ข่าว สี รูปภาพ สเปค ห้องโดยสาร คุณสมบัติ อัตราสิ้นเปลืองน้ำมัน รีวิวจากผู้ใช้ โปรโมชั่น," . $thai_make_name . " " . $thai_model_name . " ตารางผ่อน.";
+                    $description = "Giá xe " . $make . " " .  $model ." mới nhất tại Việt Nam là 5200000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model ." trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model ." ". $current_year .".";
+
+                    break;
+            }
+        }
+		
+		
+        if ($is_motorcycle) {
+            switch ($section) {
+                case 'tin-tuc':
+                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+                    break;
+                case 'thong-so-ky-thuat':
+                    $description = "Xem đặc điểm và thông số kỹ thuật " . $make . " " .  $model ." tại Việt Nam ". $current_year .", bao gồm mẫu xe máy " . $make . " " .  $model ." kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
+                    break;
+                case 'hinh-anh':
+                    $description = "Xem 0 hình ảnh xe máy " . $make . " " .  $model ." tại Việt Nam ". $current_year .", Trong cửa hàng đã chụp 200 tấm hình lớn của " . $make . " " .  $model .", và 200 hình chụp các chi tiết về kiểu dáng và màu sắc.";
+                    break;
+                case 'tieu-hao-nhien-lieu':
+                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model ." tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model .", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
+                    break;
+                case 'mau-sac':
+                    $description = "Xem ảnh các màu Ford Fiesta ". $current_year ." đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
+                    break;
+                default:
+                    $description = "Giá xe máy BMW F 800 ". $current_year ." mới tại Việt Nam bắt giá từ 0 đồng. Xem ngay bảng giá lăn bánh xe điện, xe tay ga BMW F 800 mới nhất, các đánh giá, mẫu xe, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, hình ảnh, màu sắc, khuyến mãi và tin tức.";
 
                     break;
             }
@@ -3061,7 +3081,7 @@ add_filter('wpseo_metadesc', function ($description) {
             $post_title = get_the_title();
             wp_reset_postdata();
 
-            $description = "All New" . $make . " " .  $model . "2021 - 2022 - 2023 Thailand, ราคา" . $make . " " .  $model . $thai_make_name . " " . $thai_model_name . "ใหม่ ในไทยเริ่มต้นที่" . $starting_retail_price . ". ค้นหาข้อมูลทั้งหมดเกี่ยวกับ" . $make . " " .  $model . " รวมทุกรุ่น ข่าว สี รูปภาพ สเปค ห้องโดยสาร คุณสมบัติ อัตราสิ้นเปลืองน้ำมัน รีวิวจากผู้ใช้ โปรโมชั่น," . $thai_make_name . " " . $thai_model_name . " ตารางผ่อน.";
+            $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " ". $current_year .".";
 
         }
     }
@@ -3084,17 +3104,17 @@ add_filter('wpseo_metadesc', function ($description) {
             wp_reset_postdata();
 
             $listing_name = ucfirst($make) . ' ' . ucfirst($model);
-            $description = "All New".$listing_name." RS ราคา อย่างเป็นทางการ THB 839,000 บาท.เช็คราคาใหม่ล่าสุด ฮอนด้า ซิตี้ ได้ที่ Autofun,ถูกใจ ".$listing_name."สเปค คุณสมบัติ รูปภาพ ข่าวสาร โปรโมชั่น,อ่านบทความรีวิวรถยนต์ การเปรียบเทียบรถยนต์ ค้นหาข้อมูลอัตราสิ้นเปลืองเชื้อเพลิง และตารางผ่อนรถยนต์";
+            $description = "Giá xe ".$listing_name." mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe ".$listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ".$listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
 
             switch ($section) {
-                case 'specs':
-                    $description = "ตรวจสอบ สเปค ".$listing_name." ที่ไทย.รายละเอียดข้อมูลจำเพาะ ได้แก่ เครื่องยนต์ ".$listing_name.", เกียร์, ขนาดยาง, แรงม้าสูงสุด, ความเร็วสูงสุด, น้ำหนัก, ถุงลมนิรภัย, อัตราสิ้นเปลืองน้ำมัน, สีภายในและภายนอก, ที่นั่งและอื่น ๆ";
+                case 'thong-so-ky-thuat':
+                    $description = "Xem cấu hình, chức năng và thông số kỹ thuật ".$listing_name." mới nhất tại Việt Nam, bao gồm kích thước ".$listing_name." D x R x C, chiều dài cơ sở, dung tích bình nhiên liệu, cỡ lốp, cỡ vành, trọng lượng, dung tích động cơ, công suất cực đại và tiêu thụ nhiên liệu kết hợp và thiết bị an toàn.";
                     break;
-                case 'gallery':
-                    $description = "ชมรูปภาพและภาพถ่ายภายในและภายนอกของ ".$listing_name." ล่าสุด รูปภาพทั้งด้านหน้าและด้านหลังของ ".$current_year." ".$listing_name.", ".$listing_name."มีรูปภาพและภาพถ่ายทั้งหมด247 รูปที่เกี่ยวกับภายใน ภายนอก สีสัน เครื่องยนต์ และอื่นๆอีกมากมาย";
+                case 'hinh-anh':
+                    $description = "Xem những hình ảnh chụp thực tế HD ".$listing_name." mới nhất tại Việt Nam. Các bạn có thể xem hình ảnh nội ngoại thất ".$listing_name." tại Autofun.vn, bao gồm động cơ, thân trước, thân sau, nóc xe, gầm xe, lốp và gương chiếu hậu, nắp thùng, đèn hậu, màu sắc ".$listing_name.".";
                     break;
                 default:
-                $description = "All New".$listing_name." RS ราคา อย่างเป็นทางการ THB 839,000 บาท.เช็คราคาใหม่ล่าสุด ฮอนด้า ซิตี้ ได้ที่ Autofun,ถูกใจ ".$listing_name."สเปค คุณสมบัติ รูปภาพ ข่าวสาร โปรโมชั่น,อ่านบทความรีวิวรถยนต์ การเปรียบเทียบรถยนต์ ค้นหาข้อมูลอัตราสิ้นเปลืองเชื้อเพลิง และตารางผ่อนรถยนต์";
+                $description = "Giá xe ".$listing_name." mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe ".$listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ".$listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
 
                     break;
             }
@@ -3119,17 +3139,17 @@ add_filter('wpseo_metadesc', function ($description) {
                 wp_reset_postdata();
     
                 $listing_name = ucfirst($make) . ' ' . ucfirst($model);
-                $description = "รถมอเตอร์ไซค์ All New ". $listing_name." ราคา อย่างเป็นทางการ THB ". $starting_retail_price." บาท.เช็คราคาใหม่ล่าสุด ฮอนด้า พีซีเอกซ์ ได้ที่ Autofun,ถูกใจ ".$listing_name." สเปค คุณสมบัติ รูปภาพ ข่าวสาร โปรโมชั่น บทความการเปรียบเทียบมอเตอร์ไซค์รุ่นอื่นๆ,ค้นหาข้อมูลอัตราสิ้นเปลืองเชื้อเพลิง,ตารางผ่อนดาวน์และการแต่งรถมอเตอร์ไซค์";
+                $description = "Giá xe máy ". $listing_name." mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy ". $listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ". $listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
     
                 switch ($section) {
-                    case 'specs':
-                        $description = "ตรวจสอบ รถมอเตอร์ไซค์ ". $listing_name."สเปค ที่ไทย.รายละเอียดข้อมูลจำเพาะ ได้แก่ ". $listing_name." อัตราสิ้นเปลืองน้ำมัน เครื่องยนต์ ขนาดยาง แรงม้าสูงสุด ความเร็วสูงสุด น้ำหนัก รูปลักษณ์ที่นั่ง และอื่นๆ";
+                    case 'thong-so-ky-thuat':
+                        $description = "Cùng xem cấu hình, tính năng, thông số kỹ thuật xe máy ". $listing_name." mới nhất Việt Nam, bao gồm công suất động cơ ". $listing_name.", cỡ lốp, mức tiêu hao nhiên liệu của, dung tích bình xăng, trọng lượng bản thân, kích thước D x R x C và các trang bị an toàn.";
                         break;
-                    case 'gallery':
-                        $description = "ดูรูปภาพและภาพถ่ายใหม่ล่าสุดของ ". $listing_name.", ".$current_year." ". $listing_name." มาพร้อม 0 สีสันและ 28 รูปภาพเกี่ยวกับภายนนอก เรือนไมล์ ลักษณะดีไซน์ เครื่องยนต์และอื่น ๆ";
+                    case 'hinh-anh':
+                        $description = "Xem những hình ảnh chụp thực tế HD của xe máy ". $listing_name." mới nhất tại Việt Nam. Các bạn có thể xem hình ngoại thất ". $listing_name." trên Autofun.vn, bao gồm động cơ, lốp xe, thân trước, thân xe, đệm ngồi, đuôi xe, chiếu hậu gương và đèn pha, đèn bên, đèn hậu và màu sắc ". $listing_name.".";
                         break;
                     default:
-                    $description = "รถมอเตอร์ไซค์ All New ". $listing_name." ราคา อย่างเป็นทางการ THB ". $starting_retail_price." บาท.เช็คราคาใหม่ล่าสุด ฮอนด้า พีซีเอกซ์ ได้ที่ Autofun,ถูกใจ ".$listing_name." สเปค คุณสมบัติ รูปภาพ ข่าวสาร โปรโมชั่น บทความการเปรียบเทียบมอเตอร์ไซค์รุ่นอื่นๆ,ค้นหาข้อมูลอัตราสิ้นเปลืองเชื้อเพลิง,ตารางผ่อนดาวน์และการแต่งรถมอเตอร์ไซค์";
+                    $description = "Giá xe máy ". $listing_name." mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy ". $listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ". $listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
     
                         break;
                 }
@@ -3137,44 +3157,43 @@ add_filter('wpseo_metadesc', function ($description) {
         }
     }
     // cars-electric
-    if ($url_path == '/cars-electric') {
-        $description = "รถ EV ใน ไทย EV Cars Thailand (BEV/HEV/PHEV/FCEV) ในประเทศไทย รวบรวมรถไฟฟ้าทุกยี่ห้อในโลก ราคา รถ EVใหม่และใช้แล้วที่ถูกที่สุด ข่าวการเปิดตัวรถยนต์ EV ใหม่ สถานีชาร์จ ประกันภัย สินเชื่อ ซ่อมแซม บำรุงรักษา ภาษีถนน โปรโมชั่น และนโยบายสิทธิพิเศษอื่นๆ สำหรับรถยนต์ไฟฟ้า";
-    }
+//     if ($url_path == '/cars-electric') {
+//         $description = "รถ EV ใน ไทย EV Cars Thailand (BEV/HEV/PHEV/FCEV) ในประเทศไทย รวบรวมรถไฟฟ้าทุกยี่ห้อในโลก ราคา รถ EVใหม่และใช้แล้วที่ถูกที่สุด ข่าวการเปิดตัวรถยนต์ EV ใหม่ สถานีชาร์จ ประกันภัย สินเชื่อ ซ่อมแซม บำรุงรักษา ภาษีถนน โปรโมชั่น และนโยบายสิทธิพิเศษอื่นๆ สำหรับรถยนต์ไฟฟ้า";
+//     }
 
     /****************** Tools Pages ****************/
 
-    if ($url_path == '/tools/loan-calculator') {
-        $description = "คำนวณค่างวดรถ ด้วยเครื่อง คำนวณสินเชื่อรถ ในไทย เช็คตารางผ่อนรถ ตารางผ่อนดาวน์ อัตราผ่อนรถและดอกเบี้ย ค่างวดต่อเดือน อ้างอิงจากราคารถ เงินดาวน์ ดอกเบี้ยที่เกิดขึ้นต่อปี อัตราผ่อนรถ ค่างวดรถดอกเบี้ยผ่อนรถ ที่ AutoFun ก่อนซื้อรถใหม่หรือรถมือสอง";
+    if ($url_path == '/dung-cu/mua-xe-tra-gop') {
+        $description = "Chọn xe muốn mua, tự động tính toán chi phí mua xe trả góp, tính lãi suất vay mua xe hàng tháng, dễ dàng đơn giản có được kế hoạch trả góp hàng tháng chính xác.";
     }
 
-    if ($url_path == '/tools/road-tax-calculator') {
-        $description = "กำลังค้นหาเครื่องมือคำนวณภาษีรถยนต์？ เช็คภาษีรถยนต์ของรถยนต์ใหม่2020-2021หรือรถมือสองที่AutoFunได้";
+//     if ($url_path == '/tools/road-tax-calculator') {
+//         $description = "กำลังค้นหาเครื่องมือคำนวณภาษีรถยนต์？ เช็คภาษีรถยนต์ของรถยนต์ใหม่2020-2021หรือรถมือสองที่AutoFunได้";
+//     }
+
+    if ($url_path == '/dung-cu/bao-hiem-xe') {
+        $description = "Bảng tính phí Bảo hiểm Xe ô tô Trực tuyến tại Việt Nam. Tính toán chi phí mua bảo hiểm cho ô tô của bạn.";
     }
 
-    if ($url_path == '/tools/insurance-calculator') {
-        $description = "Looking for car insurance quotes to suit your needs? Use our Car Insurance Calculator to find the 
-        right car insurance plans offered by popular car insurance companies in Malaysia.";
-    }
-
-    if ($url_path == '/tools/fuel-cost-calculator') {
-        $description = "เครื่องคำนวณค่าน้ำมันเชื้อเพลิง วิธีคำนวณค่าน้ำมันรถยนต์ คำนวณค่าใช้จ่ายน้ำมันเชื้อเพลิงในการเดินทางตามรุ่นรถยนต์ อัตราการใช้น้ำมันเชื้อเพลิง ระยะทาง ราคาน้ำมัน และคำนวณค่าน้ำมันเชื้อเพลิงต่อปี";
+//     if ($url_path == '/tools/fuel-cost-calculator') {
+//         $description = "เครื่องคำนวณค่าน้ำมันเชื้อเพลิง วิธีคำนวณค่าน้ำมันรถยนต์ คำนวณค่าใช้จ่ายน้ำมันเชื้อเพลิงในการเดินทางตามรุ่นรถยนต์ อัตราการใช้น้ำมันเชื้อเพลิง ระยะทาง ราคาน้ำมัน และคำนวณค่าน้ำมันเชื้อเพลิงต่อปี";
+//     }
+	
+	    if ($url_path == '/dung-cu/mua-xe-tra-gop') {
+        $description = "Chọn xe muốn mua, tự động tính toán chi phí mua xe trả góp, tính lãi suất vay mua xe hàng tháng, dễ dàng đơn giản có được kế hoạch trả góp hàng tháng chính xác.";
     }
 	
-	    if ($url_path == '/tools/motor-loan-calculator') {
-        $description = "คํานวณสินเชื่อรถมอเตอร์ไซค์ใหม่ในไทย เลือกตารางผ่อนรถมอเตอร์ไซค์ 24 - 84 เดือน เงินดาวน์และดอกเบี้ย ค้นหาแผนผ่อนรถจักรยานยนต์ที่เหมาะกับคุณได้แล้ววันนี้";
-    }
-	
-    if ($url_path == '/compare-cars') {
-        $description = 'เปรียบเทียบ ราคา รถยนต์ '.$current_year.' ทั้งเเปรียบเทียบรถ suv 7 ที่นั่ง กระบะ รถเก๋งใหม่, เปรียบเทียบรถยนต์ในประเทศไทยตามราคา,ราคา ประกัน รถยนต์,สเปค,สีรถและอื่นๆ ทันทีได้เลย เพื่อค้นหารถยนต์ที่สมบูรณ์แบบของคุณ! ตรวจสอบรายการกำหนดค่าที่สมบูรณ์รวมถึงเครื่องยนต์, ระบบส่งกำลัง, สี, การตกแต่งภายใน, ระบบขับเคลื่อน, อัตราสิ้นเปลืองน้ำมัน, การประหยัดน้ำมันเชื้อเพลิงและคุณสมบัติด้านความปลอดภัย. รวมทั้ง Toyota, Honda, Nissan, Mitsubishi, Mazda, Suzuki, Isuzu, Ford, BMW, MG, ORA, Haval, Hyundai, Mercedes-Benz, Volvo และรถยี่ห้ออื่นๆ. ';
+    if ($url_path == '/so-sanh-xe') {
+        $description = 'Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam '.$current_year.' trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động. ';
     }
 
-    if ($url_path == '/compare-motorcycles') {
-        $description = 'เปรียบเทียบ มอเตอร์ไซค์ '.$current_year.' ที่ไทย รวมเปรียบเทียบ ขนาด ยาง มอเตอร์ไซค์ ราคา เกียร์ออโต้ และประกัน. ตรวจสอบรายการเปรียบเทียบข้อมูลจำเพาะของรถจักรยานยนต์ทั้งหมด, รวมถึงเครื่องยนต์, ระบบส่งกำลัง, สี, ระบบขับเคลื่อน, อัตราสิ้นเปลืองน้ำมัน, การประหยัดน้ำมันเชื้อเพลิงและคุณสมบัติด้านความปลอดภัย. รวมทั้ง Honda, Ducati, Yamaha, Kawasaki, GPX, Suzuki, Royal Enfield, Benelli, KTM, Vespa, Triumph และรถยี่ห้ออื่นๆ. ';
+    if ($url_path == '/so-sanh-xe-may') {
+        $description = 'Bạn đang muốn so sánh xe hơi và xe máy ở Việt Nam? Đừng tìm nữa, hãy truy cập vào AutoFunVN! Trang web toàn diện của chúng tôi cho phép bạn dễ dàng so sánh thông số kỹ thuật, giá cả và tính năng của nhiều loại xe khác nhau, giúp bạn đưa ra quyết định mua hàng thông minh. Bắt đầu tìm kiếm của bạn ngay hôm nay và tìm thấy chiếc xe hơi hoặc xe máy hoàn hảo cho nhu cầu của bạn!';
     }
     
-    if ($url_path == '/fuel-price') {
+    if ($url_path == '/dung-cu/gia-xang-dau') {
         $oil_price_string = get_oil_prices();
-        $description = 'เช็คราคาน้ำมันล่าสุดประเทศไทย: ราคาน้ำมันวันนี้ ราคาน้ำมันพรุ่งนี้และราคาน้ำมันย้อนหลัง แก๊สโซฮอล์ 95 THB 35.25 บาท/ลิตร, เบนซิน 95 THB 43.14บาท/ลิตร, แก๊สโซฮอล์ 91 THB 33.48 บาท/ลิตร, แก๊สโซฮอล์ E20 THB 33.14 บาท/ลิตร, แก๊สโซฮอล์ E85 THB 33.29 บาท/ลิตร, ดีเซล B7 THB 29.94 บาท/ลิตร, ดีเซล B20 THB 29.94 บาท/ลิตร, แก๊ส NGV THB 17.59 บาท/ลิตร';
+        $description = 'Giá Xăng Dầu Hôm Nay - Giá xăng RON 92, RON 95, Dầu KO, DO 0 mới nhất ở Việt Nam: RON 92 giá 19.400 đ 1 lít, RON 95 giá 20.500 đ 1 lít, Dầu KO giá 18.830 đ 1 lít, Dầu DO 0 giá 18.140 đ 1 lít.';
     }
 
 	
@@ -3182,26 +3201,25 @@ add_filter('wpseo_metadesc', function ($description) {
 	
     // other pages
     if ($url_path == '/about-us') {
-        $description = "ค้นหารถยนต์ รถมอเตอร์ไซค์ใหม่2024 - ".$current_year." เช็คราคารถใหม่ รีวิวรถ คูมือซื้อรถ ข่าวสารรถล่าสุด ฯลฯ อีกมามาย ที่ AutoFun-เว็บไซต์รถยนต์และรถมอเตอร์ไซค์ชั้นนำที่ครอบคลุมที่สุดในประเทศไทย";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
-    if ($url_path == '/advertise-with-us') {
-        $description = "Autofun Thailand เป็นศูนย์กลางข้อมูลข่าวสารยานยนต์ชั้นนำของไทย เรานำเสนอเนื้อหาที่ทันสมัยและโซลูชั่นส์โฆษณาที่ช่วยให้คุณเข้าถึงกลุ่มผู้ชมที่มีมูลค่าสูงและบรรลุเป้าหมายการตลาดของคุณ";
+    if ($url_path == '/quang-cao-voi-chung-toi') {
+        $description = "Autofun.vn là chuyên trang nội dung về Ô tô - Xe máy hàng đầu tại Việt Nam. Chúng tôi cung cấp nội dung và các giải pháp quảng cáo hiệu quả để giúp bạn tiếp cận đến khách hàng mục tiêu và đạt được doanh số mong muốn.";
     }
 
     if ($url_path == '/user-agreement') {
-        $description = "ค้นหารถยนต์ รถมอเตอร์ไซค์ใหม่2024 - ".$current_year." เช็คราคารถใหม่ รีวิวรถ คูมือซื้อรถ ข่าวสารรถล่าสุด ฯลฯ อีกมามาย ที่ AutoFun-เว็บไซต์รถยนต์และรถมอเตอร์ไซค์ชั้นนำที่ครอบคลุมที่สุดในประเทศไทย";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($url_path == '/join-us') {
-        $description = "ค้นหารถยนต์ รถมอเตอร์ไซค์ใหม่2024 - ".$current_year." เช็คราคารถใหม่ รีวิวรถ คูมือซื้อรถ ข่าวสารรถล่าสุด ฯลฯ อีกมามาย ที่ AutoFun-เว็บไซต์รถยนต์และรถมอเตอร์ไซค์ชั้นนำที่ครอบคลุมที่สุดในประเทศไทย";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($url_path == '/privacy-policy') {
-        $description = "ค้นหารถยนต์ รถมอเตอร์ไซค์ใหม่2024 - ".$current_year." เช็คราคารถใหม่ รีวิวรถ คูมือซื้อรถ ข่าวสารรถล่าสุด ฯลฯ อีกมามาย ที่ AutoFun-เว็บไซต์รถยนต์และรถมอเตอร์ไซค์ชั้นนำที่ครอบคลุมที่สุดในประเทศไทย";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     if ($url_path == '/write-for-us') {
-        $description = 'If you are a car enthusiast and wondering where to share your knowledge, experiences, and passion for 
-        Automotives, now write a guest post for Wapcar today and showcase your expertise.';
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     return $description;
@@ -5060,4 +5078,110 @@ function get_motor_variant_from_query_vars()
     return $variant_post_response;
 }
 
+function motor_latest_news_shortcode($atts)
+{
+$translate = [
+    'Latest News' => 'ข่าวล่าสุด',
+];
+    $all_news = get_latest_news_data('motorcycle-news');
+    $news = array_slice($all_news, 0, 5);
+?>
+    <!-- Your HTML Structure for Related News -->
+    <h2 style="margin-bottom: 16px; " class="wa-title-text"> <?php echo $translate['Latest News']; ?></h2>
+    <div id="buying-guide-news-container" style="list-style: none; padding: 0;">
+        <?php foreach ($all_news as $news): ?>
+            <?php
+            $title = $news['title'];
+            $guid = $news['thumbnail_url'];
+            $custom_link = $news['link'];
+            $author_name = $news['author'];
+            $post_date = $news['post_date'];
+            ?>
+            <div class="buying-guide-news-item">
+                <!-- Post Thumbnail -->
+                <div class="news-thumbnail">
+                    <a href="<?php echo $custom_link; ?>">
+                        <img src="<?php echo esc_url($guid); ?>" alt="<?php echo $title; ?>" style="width: 110px; border-radius: 5px; height:74px;">
+                    </a>
+                </div>
+                <!-- Post Info -->
+                <div class="news-info" style="flex: 1;">
+                    <h3 style="font-size: 14px; font-weight: bold; color: #262626; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;font-weight:700;">
+                        <a href="<?php echo $custom_link; ?>" style="color: inherit; text-decoration: none;"><?php echo $title; ?></a>
+                    </h3>
+
+                    <div class="news-meta-author-page">
+                        <?php echo $author_name; ?> • <?php echo $post_date; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- "View More" Button -->
+    <div id="view-more-container" style="text-align: center; margin-top: 20px;">
+        <a href="<?php echo home_url('/news-motorcycles/latest'); ?>" class="view-more">
+            View More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <style>
+        .news-meta-author-page {
+            font-family: "Roboto";
+            font-weight: 400;
+            font-size: 12px;
+            color: #8c8c8c;
+            letter-spacing: 0px;
+            line-height: 33px;
+        }
+
+
+        .buying-guide-news-item {
+            display: flex;
+            padding: 6px 0;
+            border-bottom: 1px solid #e0e0e0;
+            gap: 15px;
+        }
+
+        .news-info {
+            color: #262626;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: "Roboto";
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .view-more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 24px auto 0;
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            color: #576B95;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .view-more svg {
+            width: 18px;
+            height: 20px;
+        }
+    </style>
+<?php
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode('motor_latest_news_shortcode', 'motor_latest_news_shortcode');
 

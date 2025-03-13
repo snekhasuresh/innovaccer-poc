@@ -2,18 +2,18 @@
 
 function fetch_single_thumbnail_news_data_from_db($args)
 {
-	$post_type = $args['post_type'] ?? '';
-	
-    $args = array(
-        'post_type' => $post_type,
-        'posts_per_page' => 1,
-        'post_status' => 'publish',
-        'meta_query' => array(
+    $post_type = $args['post_type'] ?? '';
+
+    $query_args = array(
+        'post_type'      => $post_type,
+        'posts_per_page' => 3, // Fetching 3 posts
+        'post_status'    => 'publish',
+        'meta_query'     => array(
             'relation' => 'AND',
             array(
-                'key' => 'second_language',
-                'value' => '',
-                'compare' => '==',
+                'key'     => 'second_language',
+                'value'   => '',
+                'compare' => '='
             ),
             array(
                 'key'     => 'publish_time',
@@ -24,40 +24,42 @@ function fetch_single_thumbnail_news_data_from_db($args)
         ),
         'meta_key'       => 'publish_time',
         'orderby'        => 'meta_value',
-        'order'          => 'DESC',
-        'meta_type'      => 'DATETIME',
+        'order'          => 'DESC'
     );
 
-    $news_query = new WP_Query($args);
+    $news_query = new WP_Query($query_args);
     if (!$news_query->have_posts()) {
         return [];
     }
 
-    $news_posts = $news_query->posts;
-    $post = $news_posts[0];
+    $news_posts = [];
 
-    $required_meta_keys = ['_thumbnail_id', 'news_category'];
-    $required_meta = get_selected_meta_data_for_posts([$post->ID], $required_meta_keys);
+    foreach ($news_query->posts as $post) {
+        $required_meta_keys = ['_thumbnail_id', 'news_category'];
+        $required_meta = get_selected_meta_data_for_posts([$post->ID], $required_meta_keys);
 
-    $thumbnail_id = $required_meta[$post->ID]['_thumbnail_id'][0] ?? null;
-    $image_post = $thumbnail_id ? get_post($thumbnail_id) : null;
-    $thumbnail_url = $image_post ? $image_post->guid : null;
+        // Fetch thumbnail
+		  $thumbnail_id = $required_meta[$post->ID]['_thumbnail_id'][0] ?? null;
+			$image_post = $thumbnail_id ? get_post($thumbnail_id) : null;
+			$thumbnail_url = $image_post ? $image_post->guid : null;
 
-    //category
-    $serialized_category = $required_meta[$post->ID]['news_category'][0] ?? null;
-    $category_data = $serialized_category ? unserialize($serialized_category) : null;
-    $category_id = $category_data[0] ?? null;
-    $news_category = $category_id ? get_term($category_id)->name : 'ข่าว';
+        // Fetch category
+        $serialized_category = $required_meta[$post->ID]['news_category'][0] ?? null;
+        $category_data = (is_string($serialized_category) && !empty($serialized_category)) ? unserialize($serialized_category) : [];
+        $category_id = $category_data[0] ?? null;
+        $news_category = ($category_id && get_term($category_id)) ? get_term($category_id)->name : 'ข่าว';
 
-    $news_post = [
-        'id' => $post->ID,
-        'title' => $post->post_title,
-        'link'  => get_custom_post_link($post->ID, ''),
-        'thumbnail_url' => $thumbnail_url,
-        'news_category' => $news_category ? $news_category : 'ข่าว'
-    ];
+        // Add post data to array
+        $news_posts[] = [
+            'id'             => $post->ID,
+            'title'          => $post->post_title,
+            'link'           => get_custom_post_link($post->ID, ''),
+            'thumbnail_url'  => $thumbnail_url,
+            'news_category'  => $news_category
+        ];
+    }
 
-    return $news_post;
+    return $news_posts;
 }
 
 function fetch_latest_news_data_from_db($args)

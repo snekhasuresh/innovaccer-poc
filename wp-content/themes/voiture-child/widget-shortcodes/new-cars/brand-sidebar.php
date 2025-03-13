@@ -218,7 +218,7 @@ function add_scripts_for_car_brands()
 function show_all_cars()
 {
     echo '<div style="display: flex; justify-content: center; align-items: center">';
-    echo do_shortcode('[dynamic_ad_unit ad_id="MY_Cars_Breadcrumb_Above_PC"]');
+    echo do_shortcode('[dynamic_ad_unit ad_id="VN_Cars_Breadcrumb_Above_PC"]');
     echo '</div>';
 
     echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
@@ -237,7 +237,7 @@ function show_all_cars()
     echo '</div>';
 
     echo '<div style="display: flex; justify-content: center; align-items: center">';
-    echo do_shortcode('[dynamic_ad_unit ad_id="MY_Cars_Popularbrand_Above_PC"]');
+    echo do_shortcode('[dynamic_ad_unit ad_id="VN_Cars_Popularbrand_Above_PC"]');
     echo '</div>';
 
     echo '<div class="widget-container populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px;">';
@@ -280,7 +280,7 @@ function apply_brand_filter($brand)
     ob_start();
 
     echo '<div style="display: flex; justify-content: center; align-items: center">';
-    echo do_shortcode('[dynamic_ad_unit ad_id="MY_Brand_Breadcrumb_Above_PC"]');
+    echo do_shortcode('[dynamic_ad_unit ad_id="VN_Brand_Breadcrumb_Above_PC"]');
     echo '</div>';
 
     echo do_shortcode('[breadcrumb]');
@@ -300,7 +300,7 @@ function apply_brand_filter($brand)
     echo '</div>';
 
     echo '<div style="display: flex; justify-content: center; align-items: center">';
-    echo do_shortcode('[dynamic_ad_unit ad_id="MY_Brand_Modellist_Under_PC"]');
+    echo do_shortcode('[dynamic_ad_unit ad_id="VN_Brand_Modellist_Under_PC"]');
     echo '</div>';
 
     // echo '<h2>' . $brand->name . ' News in Malaysia</h2>';

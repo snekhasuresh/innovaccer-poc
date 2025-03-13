@@ -8,6 +8,7 @@ function enqueue_find_new_cars_css()
 
 function popular_cars_in_new_cars($atts)
 {
+	print_r("sss");
     enqueue_find_new_cars_css();
     $atts = shortcode_atts(
         array(
@@ -23,14 +24,14 @@ function popular_cars_in_new_cars($atts)
     if ($brand_id === 0) {
         $popular_cars = get_popular_cars_data(); // fetch_popular_cars_from_db();
         $latest_cars = get_latest_cars_data(); // fetch_latest_cars_from_db();
-        $top_car_models = get_top_car_models_data(); // fetch_top_car_models_from_db();
-        $top_5_suv_cars = $top_car_models['suv_cars'];
-        $top_10_petrol_cars = $top_car_models['petrol_cars'];
+//         $top_car_models = get_top_car_models_data(); // fetch_top_car_models_from_db();
+//         $top_5_suv_cars = $top_car_models['suv_cars'];
+//         $top_10_petrol_cars = $top_car_models['petrol_cars'];
 
         $popular_cars_in_malaysia['Popular'] = $popular_cars;
         $popular_cars_in_malaysia['Latest'] = $latest_cars;
-        $popular_cars_in_malaysia['Top 10 SUV Cars'] = $top_5_suv_cars;
-        $popular_cars_in_malaysia['Top 10 Gasoline Cars'] = $top_10_petrol_cars;
+//         $popular_cars_in_malaysia['Top 10 SUV Cars'] = $top_5_suv_cars;
+//         $popular_cars_in_malaysia['Top 10 Gasoline Cars'] = $top_10_petrol_cars;
     } else {
         $grouped_cars = get_grouped_by_type_cars_data($brand_id); //fetch_grouped_by_type_cars_data_from_db();
         $grouped_cars = array_map(function ($cars) {

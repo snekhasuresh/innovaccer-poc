@@ -48,6 +48,12 @@ function display_cars($cars, $tab_type = 'popular')
 
 function recommended_cars_shortcode()
 {
+	$translate = [
+		'Recommended car models' => 'Các mẫu xe đề xuất',
+		'Popular' => 'Phổ biến',
+		'Latest' => 'Mới nhất',
+	];
+
     enqueue_recommended_cars_css();
     // Get popular and latest cars but don't display them immediately
     $popular_cars = get_popular_cars_data();
@@ -69,7 +75,7 @@ function recommended_cars_shortcode()
     if ($clean_title === 'spanNewsspan') {
         $set_title = 'Popular Cars';
     } else {
-        $set_title = 'Mobil Rekomendasi';
+        $set_title = $translate['Recommended car models'];
     }
 
     ?>
@@ -78,8 +84,8 @@ function recommended_cars_shortcode()
 
         <h2 class="wa-title-text"><?php echo esc_html($set_title); ?></h2>
         <ul class="custom-recommended-tabs">
-            <li class="custom-recommended-tab-link current" data-tab="custom-recommended-tab-1">Populer</li>
-            <li class="custom-recommended-tab-link" data-tab="custom-recommended-tab-2">Terbaru</li>
+            <li class="custom-recommended-tab-link current" data-tab="custom-recommended-tab-1"><?php echo $translate['Popular']; ?></li>
+            <li class="custom-recommended-tab-link" data-tab="custom-recommended-tab-2"><?php echo $translate['Latest']; ?></li>
         </ul>
 
         <div id="custom-recommended-tab-1" class="custom-recommended-tab-content current">

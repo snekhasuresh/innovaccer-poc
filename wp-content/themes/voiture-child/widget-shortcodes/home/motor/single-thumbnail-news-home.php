@@ -16,26 +16,35 @@ add_action('wp_enqueue_scripts', 'enqueue_motor_thumbnail_news_css');
 
 function first_motor_thumbnail_news_shortcode()
 {
-	$news_post = get_motor_single_thumbnail_news_data('motorcycle-news');
+	$news_posts = get_motor_single_thumbnail_news_data('motorcycle-news');
 	
-    if (!empty($news_post)) {
+    if (!empty($news_posts)) {
         ob_start();
 ?>
-        <div class="news-post-thumbnail">
-            <?php if ($news_post['thumbnail_url']): ?>
-                <a href="<?php echo esc_url($news_post['link']); ?>" class="thumbnail-link">
+        <div class="news-posts-container" style="display: flex; gap: 20px;">
+            <!-- Left Side: First Post -->
+            <div class="news-post-left" style="flex: 2;">
+                <?php $first_post = $news_posts[0]; ?>
+                <a href="<?php echo esc_url($first_post['link']); ?>" class="thumbnail-link">
                     <div class="thumbnail-overlay" style="position: relative;">
-                        <img src="<?php echo esc_url($news_post['thumbnail_url']); ?>" alt="<?php echo esc_attr($news_post['title']); ?>"
-                            style="height: 500px; width: 100%; display: block;" />
-
-                        <span class="dd"><?php echo esc_html($news_post['news_category']); ?></span>
-
-                        <a class="thumbnail-title"><?php echo esc_html($news_post['title']); ?></a>
+                        <img src="<?php echo esc_url($first_post['thumbnail_url']); ?>" alt="<?php echo esc_attr($first_post['title']); ?>" style="height: 500px; width: 100%; display: block;" />
+                        <span class="dd" style="position: absolute; bottom: 10px; left: 10px; background: #F5C34B; color: #FFF; padding: 5px 10px; font-weight: bold; height: 26px; width: max-content;"><?php echo esc_html($first_post['news_category']); ?></span>
+                        <h2 class="thumbnail-title" style="position: absolute; bottom: 10px; left: 10px; color: #FFF; font-size: 24px;"><?php echo esc_html($first_post['title']); ?></h2>
                     </div>
                 </a>
-            <?php else: ?>
-                <p>No thumbnail available.</p>
-            <?php endif; ?>
+            </div>
+
+            <!-- Right Side: Next Two Posts -->
+            <div class="news-post-right" style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                <?php for ($i = 1; $i < count($news_posts); $i++): ?>
+                    <a href="<?php echo esc_url($news_posts[$i]['link']); ?>" class="thumbnail-link">
+                        <div class="thumbnail-overlay" style="position: relative; display: flex; flex-direction: column;">
+                            <img src="<?php echo esc_url($news_posts[$i]['thumbnail_url']); ?>" alt="<?php echo esc_attr($news_posts[$i]['title']); ?>" style="height: 245px; width: 100%; display: block;" />
+                            <h3 class="thumbnail-title" style="color: #FFF; font-size: 18px; padding: 10px;"><?php echo esc_html($news_posts[$i]['title']); ?></h3>
+                        </div>
+                    </a>
+                <?php endfor; ?>
+            </div>
         </div>
 <?php
 

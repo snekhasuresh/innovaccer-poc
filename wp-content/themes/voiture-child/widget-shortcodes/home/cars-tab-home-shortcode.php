@@ -70,8 +70,8 @@ function display_car_tab()
     // $car_data = fetch_recommended_cars_from_db();
 
     $car_tabs =  $car_tabs = [
-        'Mobil Terpopuler' => 'popular-content',
-        'Mobil Terbaru' => 'latest-content',
+        'Xe phổ biến' => 'popular-content',
+        'Xe mới nhất' => 'latest-content',
     ];
 
     foreach ($car_data as $model_key => $cars) {
@@ -85,6 +85,11 @@ function display_car_tab()
     }
 
     ob_start();
+
+$translate = [
+    'More' => 'Nhiều hơn',
+];
+
 ?>
     <div class="car-tabs">
         <div class="tabs-container">
@@ -94,7 +99,7 @@ function display_car_tab()
                 <?php endforeach; ?>
             </ul>
             <a href="<?php echo home_url('/cars'); ?>" class="more-button">
-                <span class="more">Lebih</span>
+                <span class="more"><?php echo $translate['More']; ?></span>
                  <svg class="more-button-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>

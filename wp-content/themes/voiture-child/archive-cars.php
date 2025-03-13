@@ -24,19 +24,19 @@ if ($post_type === 'mobil') {
         }
     }
 
-    $elementor_page_id = 237535;
-    $spec_spec_id = 237533;
-    $news_id = 237531;
-    $overview_id =  237529;
+    $elementor_page_id = 27111;
+    $spec_spec_id = 27107;
+    $news_id = 27108;
+    $overview_id =  27100;
 
-    $fuel_consumption_id = 327506;
-    $color_page_id = 327512;
+    $fuel_consumption_id = 31869;
+    $color_page_id = 31875;
 
 
     // variant pages
-    $variant_overview_page_id = 327477;
-    $variant_specs_page_id = 327485;
-    $variant_gallery_page_id = 327497;
+    $variant_overview_page_id = 30689;
+    $variant_specs_page_id = 30693;
+    $variant_gallery_page_id = 30699;
 	
 ?>
 
@@ -238,7 +238,7 @@ if ($post_type === 'mobil') {
         //         if (is_mobile_device()) {
         //             echo do_shortcode('[current_post_data is_amp=1]');
         //         } else {
-        $new_individual_page = 237531;
+        $new_individual_page = 30907;
         $elementor_query = new WP_Query(array('page_id' => $new_individual_page));
         if ($elementor_query->have_posts()) :
             while ($elementor_query->have_posts()) : $elementor_query->the_post();

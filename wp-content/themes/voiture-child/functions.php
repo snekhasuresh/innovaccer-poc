@@ -1854,7 +1854,7 @@ if (
 
 //motorcycle news page
 $current_url = $_SERVER['REQUEST_URI'];
-if (preg_match('/news-motorcycles/', $current_url) || wp_doing_ajax()) {
+if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
     function enqueue_custom_motor_scripts()
     {
         wp_enqueue_script('custom-motor-news-script', get_stylesheet_directory_uri() . '/js/custom-motor-news.js', array('jquery'), null, true);
@@ -2072,12 +2072,12 @@ function create_motors_post_type()
         'Motorcycles',
         array(
             'labels' => array(
-                'name' => __('Motorcycles'),
-                'singular_name' => __('Motorcycle'),
+                'name' => __('Xe-may'),
+                'singular_name' => __('Xe-may'),
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'motorcycles/%make%/%model%'), // Include the make and model in the rewrite
+            'rewrite' => array('slug' => 'xe-may/%make%/%model%'), // Include the make and model in the rewrite
             'supports' => array('title', 'editor', 'custom-fields'),
         )
     );
@@ -2117,8 +2117,8 @@ add_action('init', 'custom_cars_rewrite_rules');
 
 function custom_cars_rewrite_rules()
 {
-    add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=news&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=xe-oto&make=$matches[1]', 'top');
+    add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=tin-tuc&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=New Cars&make=$matches[1]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
@@ -2126,13 +2126,13 @@ function custom_cars_rewrite_rules()
     add_rewrite_rule('^mobil-baru/([^/]+)/?$', 'index.php?pagename=xe-oto&filter=$matches[1]', 'top');
 
     //motor rewrite url
-    add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=motorcycle-news&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=motor&make=$matches[1]', 'top');
-    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]', 'top');
-    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
-    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=motor&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
+    add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=tin-tuc-xe-may&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=new motorcycles&make=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
-    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=motor&filter=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=new motorcycles&filter=$matches[1]', 'top');
 
     //author
     add_rewrite_rule('^author/([^/]+)/?$', 'index.php?pagename=author&author_slug=$matches[1]', 'top');

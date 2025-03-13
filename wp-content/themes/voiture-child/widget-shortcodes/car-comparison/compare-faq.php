@@ -6,24 +6,24 @@ function compare_car_faqs_shortcode($atts)
     // Static FAQ data array
     $static_faqs = array(
         array(
-            'question' => 'เลือกซื้อรถยนต์อย่างไรให้เหมาะกับตัวเอง?',
-            'answer' => 'ด้วยเครื่องมือเปรียบเทียบรถยนต์ หลังจากที่คุณมีความเข้าใจโดยละเอียดเกี่ยวกับข้อมูลของรุ่นที่เปรียบเทียบกันแล้ว คุณสามารถตัดสินใจเลือกรถยนต์ที่เหมาะกับตัวเองได้'
+            'question' => 'So sánh những gì trên xe?',
+            'answer' => 'So sánh mã lực, tiêu hao nhiên liệu, công nghệ an toàn, phí dịch vụ vận chuyển và độ bền, đánh giá chấm điểm cho dễ so sánh'
         ),
         array(
-            'question' => 'การเปรียบเทียบประสิทธิภาพของรถยนต์มีอะไรบ้าง?',
-            'answer' => 'การเปรียบเทียบประสิทธิภาพส่วนใหญ่รวมถึงการเร่งความเร็ว การเบรก การควบคุมรถ และด้านออฟโรด'
+            'question' => 'Vì sao phải so sánh xe này với xe kia?',
+            'answer' => 'Vì khi so sánh, bạn biết được nên mua xe nào trong cùng phân khúc, xe nào bền hơn, xe nào hợp với bạn hơn'
         ),
         array(
-            'question' => 'เปรียบเทียบประกันรถยนต์อย่างไร?',
-            'answer' => 'คุณต้องขอใบเสนอราคาและเปรียบเทียบแผนบริการจากผู้ให้บริการหลายรายเพื่อได้รับราคาที่คุ้มค่าที่สุด'
+            'question' => 'Xe tốt nhất dành cho người mới lái tại Việt Nam?',
+            'answer' => 'Toyota Vios là chiếc xe có đầy đủ tính năng mà người mới lái cần, nó là một chiếc xe phù hợp để trở thành chiếc xe đầu đời của bạn'
         ),
         array(
-            'question' => 'สามารถเปรียบเทียบราคารถยนต์ได้ที่ไหน?',
-            'answer' => 'คุณสามารถใช้เครื่องมือเปรียบเทียบรถได้ที่ AutoFun เพื่อเปรียบเทียบราคารถ และรับข้อมูลการเปรียบเทียบราคา'
+            'question' => 'So sánh những mẫu SUV tại Việt Nam, xe nào tốt nhất?',
+            'answer' => 'Những chiếc SUV tốt nhất Việt Nam hiện tại gồm KIA Seltos, Mazda CX-5, Honda HR-V, Ford Ecosport, Hyundai Kona, Honda CR-V, Mitsubishi Outlander, Hyundai Tucson,,... Bạn có thể dễ dàng so sánh chúng thông qua công cụ hỗ trợ của Autofun'
         ),
         array(
-            'question' => 'ถคันไหนประหยัดน้ำมันที่สุด?',
-            'answer' => 'การเปรียบเทียบการบริโภคน้ำมันเชื้อเพลิงของรถยนต์ เราขอแนะนำรถที่ประหยัดน้ำมันที่สุดในประเทศไทย เพียงแค่เปรียบเทียบมากกว่ารถเพื่อให้ได้รับประหยัดน้ำมันของพวกเขาจะรู้คำตอบ.'
+            'question' => 'Sedan nào tốt nhất cho khách hàng gia đình?',
+            'answer' => 'Điều này còn tùy thuộc vào ngân sách. Ở hạng B có Toyota Vios, Honda City, Mazda 2; C có Honda Civic, Chevrolet Cruze, Mazda 3, Hyundai Ioniq. Hãy tìm ra chiếc xe phù hợp nhất với mình thông qua công cụ so sánh xe'
         ),
     );
 

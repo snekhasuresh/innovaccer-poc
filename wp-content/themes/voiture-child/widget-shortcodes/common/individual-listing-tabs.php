@@ -1,7 +1,7 @@
 <?php
 function enqueue_listing_tabs_css()
 {
-    wp_enqueue_style('listing-tabs-style', get_stylesheet_directory_uri() . '/widget-shortcodes/template-listings/css/individual-listing-tabs.css', array(), '1.0', 'all');
+    wp_enqueue_style('listing-tabs-style', get_stylesheet_directory_uri() . '/widget-shortcodes/common/css/individual-listing-tabs.css', array(), '1.0', 'all');
 }
 
 add_shortcode('individual_listing_tabs', 'individual_listing_tabs_shortcode');
@@ -14,7 +14,7 @@ function individual_listing_tabs_shortcode($atts)
         'model' => '',
         'section' => '',
         'variant_section' => '',
-        'selected_tab' => 'Ringkasan',
+        'selected_tab' => 'tong-quat',
     ), $atts);
 
     $make = get_query_var('make') ? get_query_var('make') : $atts['make'];
@@ -39,16 +39,16 @@ function individual_listing_tabs_shortcode($atts)
     $listing_post = $listing_post_query->post;
 
     if (!empty($variant_section)) {
-        $base_url = get_site_url() . '/mobil/' . $make . '/' . $model_name . '/' . $section;
+        $base_url = get_site_url() . '/xe-oto/' . $make . '/' . $model_name . '/' . $section;
     } else {
-        $base_url = get_site_url() . '/mobil/' . $make . '/' . $model_name;
+        $base_url = get_site_url() . '/xe-oto/' . $make . '/' . $model_name;
     }
 
     $urls = [
-        'ringkasan' => $base_url,
-        'berita' => $base_url . '/berita',
-        'spesifikasi' => $base_url . '/spesifikasi',
-        'gambar' => $base_url . '/gambar'
+        'tong-quat' => $base_url,
+        'tin-tuc' => $base_url . '/tin-tuc',
+        'thong-so-ky-thuat' => $base_url . '/thong-so-ky-thuat',
+        'hinh-anh' => $base_url . '/hinh-anh'
     ];
 
     ob_start();
@@ -62,22 +62,22 @@ function display_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
 {
     enqueue_listing_tabs_css();
     $overview_tabs = [
-        ['tab' => 'Ringkasan', 'url' => $urls['ringkasan']],
-        ['tab' => 'Berita', 'url' => $urls['berita']],
-        ['tab' => 'Spesifikasi', 'url' => $urls['spesifikasi']],
-        ['tab' => 'Gambar', 'url' => $urls['gambar']]
+        ['tab' => 'Tổng quát', 'url' => $urls['tong-quat']],
+        ['tab' => 'Tin tức', 'url' => $urls['tin-tuc']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thong-so-ky-thuat']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['hinh-anh']]
     ];
 
     $make = get_query_var('make') ? get_query_var('make') : '';
 
     switch ($selected_tab) {
-        case 'Berita':
+        case 'Tin tức':
             $title = $make ? 'Berita Mobil ' . $listing_name . ' di Indonesia ' : $listing_name;
             break;
-        case 'Spesifikasi':
+        case 'Thông số kỹ thuật':
             $title = $selected_tab . ' ' . $listing_name;
             break;
-        case 'Gambar':
+        case 'Hình ảnh':
             $title = 'Gambar Interior & Eksterior ' . $listing_name;
             break;
         default:

@@ -26,12 +26,21 @@ function populate_compare_cars()
 function selects_cars_shortcode()
 {
     ob_start();
+    $translate = [
+        'Compare Cars' => 'Perbandingan Mobil',
+        'Overview' => 'Overview',
+        'Select Car' => 'Pilih Mobil',
+        'Switch' => 'Beralih',
+        'Specs' => 'Spesifikasi',
+        'Specs Comparison' => 'Perbandingan Spek',
+        'Select at least two cars to compare' => 'Pilih setidaknya dua mobil untuk perbandingan',
+    ]
 ?>
 
-    <h1 class="comparision-title wa-title-text">Compare Cars</h1>
+    <h1 class="comparision-title wa-title-text"><?php echo $translate['Compare Cars']; ?></h1>
     <div class="tab-container" style="display: none;">
-        <button class="tab-button active" data-tab="overview">Overview</button>
-        <button class="tab-button" data-tab="specs">Specs</button>
+        <button class="tab-button active" data-tab="overview"><?php echo $translate['Overview']; ?></button>
+        <button class="tab-button" data-tab="specs"><?php echo $translate['Specs']; ?></button>
     </div>
 
     <div class="selects-cars-wrapper">
@@ -45,17 +54,17 @@ function selects_cars_shortcode()
                     <p class="variant-name"></p>
                     <p class="variant-price"></p>
                     <div class="switch-btn-container">
-                        <button class="switch-button" style="display: none;">Switch</button>
+                        <button class="switch-button" style="display: none;"><?php echo $translate['Switch']; ?></button>
                     </div>
                 </div>
 
-                <p class="select-car-text">Select Car</p>
+                <p class="select-car-text"><?php echo $translate['Select Car']; ?></p>
                 <?php populate_compare_cars(); ?>
             </div>
         <?php } ?>
     </div>
     <div class="error-message notification warning" style="display: none;">
-        <p>Select at least two cars to compare.</p>
+        <p><?php echo $translate['Select at least two cars to compare']; ?></p>
     </div>
     <!-- <button class="compare-button">Compare</button> -->
     <!-- <p class="error-message" style="color: red; display: none;">Select at least two cars to compare.</p> -->
@@ -72,7 +81,7 @@ function selects_cars_shortcode()
         </div>
         <div class="comparison-table-wrapper">
             <table class="comparison-table" style="width: 100%; border-collapse: collapse;">
-                <h4 class="specs-head" style="display: none;">Specs Comparison</h4>
+                <h4 class="specs-head" style="display: none;"><?php echo $translate['Specs Comparison']; ?></h4>
                 <!-- <thead>
                     <tr>
                         <th>Specs Comparison</th>
@@ -562,7 +571,7 @@ function selects_cars_shortcode()
                 const currentUrl = window.location.pathname;
 
                 if (currentUrl.includes("-vs-")) {
-                    const path = currentUrl.replace("/compare-cars/", "");
+                    const path = currentUrl.replace("/bandingkan-mobil/", "");
                     const [car1, car2] = path.split("-vs-");
 
                     if (car1 && car2) {
@@ -761,10 +770,9 @@ function selects_cars_shortcode()
                                 if (data.variant_data['retail_price']) {
                                     variant_price = data.variant_data['retail_price'];
                                     variant_price = variant_price == '' || variant_price == 0 ?
-                                        'TBC' :
-                                        'RM ' + formatNumber(variant_price);
+                                        'Belum Tersedia' : variant_price;
                                 } else {
-                                    variant_price = 'TBC';
+                                    variant_price = 'Belum Tersedia';
                                 }
                                 variantPriceElem.textContent = variant_price;
 
@@ -906,7 +914,7 @@ function selects_cars_shortcode()
 
 
                                         // Update breadcrumb with the selected model
-                                        selectedModel = 'Variant';
+                                        selectedModel = 'Varian';
                                         selectedVariant = '';
                                         updateBreadcrumb();
                                     } else {
@@ -928,7 +936,7 @@ function selects_cars_shortcode()
                                 if (xhr.status === 200) {
                                     const response = JSON.parse(xhr.responseText);
                                     if (response.success) {
-                                        data = response.data.data
+                                        const data = response.data.data
                                         variantImage.src = data.image_url;
                                         variantImage.style.display = 'block'; // Show the image
                                         variantNameElem.textContent = data.name;
@@ -936,12 +944,12 @@ function selects_cars_shortcode()
                                             $variant_price = data.variant_data['retail_price'];
 
                                             if ($variant_price == '' || $variant_price == 0) {
-                                                $variant_price = 'TBC';
+                                                $variant_price = 'Belum Tersedia';
                                             } else {
-                                                $variant_price = 'RM ' + $variant_price;
+                                                $variant_price = $variant_price;
                                             }
                                         } else {
-                                            $variant_price = 'TBC';
+                                            $variant_price = 'Belum Tersedia';
                                         }
 
                                         variantPriceElem.textContent = $variant_price;
@@ -1054,12 +1062,12 @@ function selects_cars_shortcode()
                                                 $variant_price = newVariantData.variant_data['retail_price'];
 
                                                 if ($variant_price == '' || $variant_price == 0) {
-                                                    $variant_price = 'TBC';
+                                                    $variant_price = 'Belum Tersedia';
                                                 } else {
-                                                    $variant_price = 'RM ' + $variant_price;
+                                                    $variant_price = $variant_price;
                                                 }
                                             } else {
-                                                $variant_price = 'TBC';
+                                                $variant_price = 'Belum Tersedia';
                                             }
                                             variantPriceElem.textContent = $variant_price;
                                             variantImage.style.display = 'block';
@@ -1107,11 +1115,11 @@ function selects_cars_shortcode()
                             nextVariantImage.src = nextVariant.image_url;
                             nextVariantImage.style.display = 'block';
                             nextVariantNameElem.textContent = nextVariant.name;
-                            nextVariantPriceElem.textContent = 'RM ' + nextVariant.variant_data['retail_price'];
+                            nextVariantPriceElem.textContent = nextVariant.variant_data['retail_price'];
                             if (nextVariant.variant_data['retail_price'] == '' || nextVariant.variant_data['retail_price'] == 0) {
-                                nextVariantPriceElem.textContent = 'TBC';
+                                nextVariantPriceElem.textContent = 'Belum Tersedia';
                             } else {
-                                nextVariantPriceElem.textContent = 'RM ' + nextVariant.variant_data['retail_price'];
+                                nextVariantPriceElem.textContent = nextVariant.variant_data['retail_price'];
                             }
 
                             // Update or create cancel icon for the shifted variant
@@ -1155,7 +1163,7 @@ function selects_cars_shortcode()
                 breadcrumbElement.addEventListener('click', function(event) {
                     const clickedText = event.target.textContent.trim();
                     // console.log('clickedText', clickedText);
-                    if (clickedText === 'Brand' && selectedBrand !== '') {
+                    if (clickedText === 'Merek' && selectedBrand !== '') {
                         dropdown.innerHTML = '';
                         dropdown.appendChild(breadcrumbElement);
                         loadbrands();
@@ -1209,7 +1217,7 @@ function selects_cars_shortcode()
                 }
 
                 function updateBreadcrumb() {
-                    let breadcrumb = 'Brand';
+                    let breadcrumb = 'Merek';
                     if (selectedBrand) breadcrumb += ' > ' + selectedBrand;
                     if (selectedModel) breadcrumb += ' > ' + selectedModel;
                     if (selectedVariant) breadcrumb += ' > ' + selectedVariant;
@@ -1254,7 +1262,7 @@ function selects_cars_shortcode()
                     if (!document.querySelector('.extra-div')) {
                         const extraDiv = document.createElement('div');
                         extraDiv.classList.add('extra-div');
-                        extraDiv.innerHTML = `<h4>Variants List</h4>`;
+                        extraDiv.innerHTML = `<h4>Daftar Varian</h4>`;
 
                         // Insert the extra div at the start of the selects-cars-wrapper
                         const wrapper = document.querySelector('.selects-cars-wrapper');
@@ -1269,45 +1277,45 @@ function selects_cars_shortcode()
                     comparisonTableBody.innerHTML = '';
 
                     const overview_specs = [{
-                            label: 'Body Type',
+                            label: 'Tipe bodi',
                             key: 'body_type', // Top-level property in selectedCars[i]
                             source: 'car' // Specifies this is top-level in the selectedCars array
                         },
                         {
-                            label: 'Segment',
+                            label: 'Segmen',
                             key: 'listing-segment', // From listing_data
                             source: 'listing_data'
                         },
                         {
-                            label: 'Transmission',
-                            key: 'transmission', // From variant_data
+                            label: 'Jenis penggerak',
+                            key: 'drive_type', // From variant_data
                             source: 'variant_data'
                         },
                         {
-                            label: 'Battery Capacity(kWh)',
-                            key: 'battery_capacity', // From variant_data
+                            label: 'Kapasitas mesin(L)',
+                            key: 'capacity_format', // From variant_data
                             source: 'variant_data'
                         },
                         {
-                            label: 'Horsepower(PS)',
-                            key: 'horsepower', // From variant_data
+                            label: 'Tenaga(PS)',
+                            key: 'engine_power', // From variant_data
                             source: 'variant_data'
                         },
                         {
-                            label: 'Torque (Nm)',
-                            key: 'torque', // From variant_data
+                            label: 'Torsi Maksimum (Nm)',
+                            key: 'engine_torque', // From variant_data
                             source: 'variant_data'
                         },
                         {
-                            label: '0-100 km/h (s)',
+                            label: 'akselerasi 0-100 km / jam(s))',
                             key: '0-100_kmph', // From variant_data
                             source: 'variant_data'
                         },
-                        {
-                            label: 'Overall User Rating',
-                            key: 'aggregated_user_rating',
-                            source: 'car'
-                        }
+                        //                         {
+                        //                             label: 'Overall User Rating',
+                        //                             key: 'aggregated_user_rating',
+                        //                             source: 'car'
+                        //                         }
                     ];
 
                     overview_specs.forEach(spec => {
@@ -1366,7 +1374,7 @@ function selects_cars_shortcode()
 
                         // Create first column with dimension label
                         const labelCell = document.createElement('td');
-                        labelCell.textContent = 'Dimensions Comparison';
+                        labelCell.textContent = 'Komparasi Dimensi';
                         row.appendChild(labelCell);
 
                         // Create cells for each selected car
@@ -1495,7 +1503,7 @@ function selects_cars_shortcode()
                         const rows = [];
 
                         // Create separate rows for exterior and interior
-                        ['exterior', 'interior'].forEach(type => {
+                        ['eksterior', 'interior'].forEach(type => {
                             const row = document.createElement('tr');
 
                             // Create label cell
@@ -1612,7 +1620,7 @@ function selects_cars_shortcode()
                         const dataCell = document.createElement('td');
                         if (selectedCars[i]) {
                             selectedCarPhotos.push({
-                                'exterior': selectedCars?.[i]?.exterior_images ?? null,
+                                'eksterior': selectedCars?.[i]?.exterior_images ?? null,
                                 'interior': selectedCars?.[i]?.interior_images ?? null,
 
                             })
@@ -1627,6 +1635,97 @@ function selects_cars_shortcode()
                     tableBody.appendChild(exteriorRow);
                     tableBody.appendChild(interiorRow);
 
+                    // Translation object mapping English specKeys to Thai
+                    const translations = {
+                        retail_price: "Giá",
+                        monthly_payment: "Trả Góp",
+                        insurance: "Bảo Hiểm",
+                        road_tax: "Pajak",
+                        otr_tax: "Asuransi OTR",
+                        brand: "Thương hiệu",
+                        Model: "Mẫu xe",
+                        variant_name: "Biến thể",
+                        body_type: "Loại xe",
+                        segment: "Phân khúc",
+                        fuel_type: "Loại năng lượng",
+                        launched_year: "Năm sản xuất",
+                        horsepower: "Công suất(PS)",
+                        torque: "Mô-men xoắn cực đại(Nm)",
+                        engine: "Động cơ",
+                        engine_power: "Công suất động cơ đốt trong (PS)",
+                        length_weight_height: "Kích thước tổng thể DxRxC",
+                        manufacturers_claim: "Mức tiêu thụ nhiên liệu",
+                        fuel_tank: "Dung tích bình xăng (lít)",
+                        on_sale: "Khuyến mãi",
+                        gearbox: "Hộp số",
+                        loading_system: "Hệ thống nạp",
+                        capacity_format: "Dung tích xy lanh(L)",
+                        horsepower_kw: "Công suất động cơ đốt trong(kW)",
+                        capacity: "Dung tích xy lanh(cc)",
+                        combined_engine_torgue: "Mô-men xoắn từ động cơ đốt trong",
+                        motor_type: "loại động cơ",
+                        motor_output_kw: "đầu ra động cơ(kW)",
+                        motor_output: "đầu ra động cơ(PS)",
+                        motor_torque: "Mô men xoắn động cơ(Nm)",
+                        front_motor_output: "đầu ra động cơ phía trước(kW)",
+                        front_motor_torque: "mô men xoắn động cơ phía trước(Nm)",
+                        rear_motor_output: "đầu ra động cơ phía sau(kW)",
+                        rear_motor_torque: "mô men xoắn động cơ phía sau(Nm)",
+                        combined_system_output: "kết hợp đầu ra hệ thống(PS)",
+                        combined_system_output_kw: "kết hợp đầu ra hệ thống(kW)",
+                        combined_system_torque: "kết hợp mô men xoắn hệ thống(Nm)",
+                        number_of_motors: "số lượng động cơ",
+                        motor_arrangement: "sắp xếp động cơ",
+                        battery_type: "loại pin",
+                        ev_range: "sân tập lái xe điện",
+                        battery_capacity: "dung lượng pin",
+                        power_consumption_per_100km: "điện năng tiêu thụ trên 100km (kWh/km)",
+                        battery_warranty: "bảo hành pin",
+                        quick_charge_time: "thời gian sạc nhanh",
+                        slow_charge_time: "thời gian sạc chậm",
+                        length: "Dài(mm)",
+                        width: "Rộng(mm)",
+                        height: "Cao(mm)",
+                        wheelbase: "Trục cơ sở(mm)",
+                        weight: "Trọng lượng (kg)",
+                        ground_clearance: "Khoảng sáng gầm(mm)",
+                        minimum_turning_radius: "Bán kính vòng quay tối thiểu(m)",
+                        doors: "Cửa xe",
+                        seats: "Ghế ngồi",
+                        storage_compartment_capacity: "Dung tích khoang chứa đồ (lít)",
+                        transmission: "Hộp số",
+                        front_tyres: "Lốp trước",
+                        rear_tyres: "Lốp sau",
+                        wheel_size: "Kích thước La zăng",
+                        front_suspension: "Hệ thống treo trước",
+                        rear_suspension: "Hệ thống treo sau",
+                        steering: "Trợ lực lái",
+                        front_light_cluster: "Cụm đèn trước",
+                        rear_light_cluster: "Cụm đèn sau",
+                        fog_lights: "Đèn sương mù",
+                        folding_wing_mirror: "Gương gập điện",
+                        anti_glare_rearview_mirror: "Gương chiếu hậu chống chói",
+                        interior_material: "Chất liệu nội thất",
+                        adjusting_the_driver_seat: "Điều chỉnh ghế lái",
+                        electronic_handbrake: "Phanh tay điện tử",
+                        air_conditioning_system: "Điều hòa tự động",
+                        rear_air_conditioner: "Điều hòa sau",
+                        lcd_screen: "Màn hình LCD",
+                        apple_carplay_and_android_auto: "Apple Carplay và Android Auto",
+                        speakers: "Hệ thống loa",
+                        sound_plus_functions: "Hệ thống âm thanh",
+                        airbags: "Túi khí",
+                        select_running_mode: "Tùy chọn chế độ lái",
+                        cruise_control: "Kiểm soát hành trình",
+                        abs: "Chống bó cứng phanh (ABS)",
+                        ba: "Hỗ trợ phanh khẩn cấp (BA)",
+                        esp: "Cân bằng điện tử (ESP)",
+                        ebd: "Phân bổ lực phanh điện tử (EBD)",
+                        eps: "Trợ lực điện (EPS)",
+                        reverse_camera: "Camera lùi",
+                        rear_parking_assist_sensor: "Cảm biến đỗ xe sau", 
+                        blind_spot_info_system: "Cảnh báo điểm mù"
+                    };
 
                     const specKeys = new Set();
                     selectedCars.forEach(car => {
@@ -1638,7 +1737,8 @@ function selects_cars_shortcode()
                     });
 
 
-                    const specs = Array.from(specKeys).sort();
+                    //  					const specs = Array.from(specKeys).sort();
+                    const specs = Object.keys(translations);
                     specTableBody.innerHTML = '';
 
 
@@ -1652,7 +1752,8 @@ function selects_cars_shortcode()
 
                         // Create the label cell
                         const specCell = document.createElement('td');
-                        specCell.textContent = specKey.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase()); // Example label transformation
+                        //                         specCell.textContent = specKey.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+                        specCell.textContent = translations[specKey] || specKey.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
                         row.appendChild(specCell);
 
 
@@ -1663,6 +1764,13 @@ function selects_cars_shortcode()
                                 let value = selectedCars[i].variant_data[specKey] ? selectedCars[i].variant_data[specKey][0] : '--';
                                 if (specKey === 'model') {
                                     value = selectedCars[i].listing_data['listing-model-name'][0];
+                                } else if (specKey === 'body_type') {
+                                    value = selectedCars[i]['body_type'];
+                                } else if (specKey === 'segment') {
+                                    value = selectedCars[i].listing_data?.['listing-segment'] || '--';
+                                    if (value !== '--') {
+                                        value = [...new Set(selectedCars[i].listing_data?.[specKey])];
+                                    }
                                 }
                                 dataCell.textContent = value;
                             } else {
@@ -1927,6 +2035,11 @@ function get_variant_details()
     $model_id = intval($_GET['model_id']);
     $variant_post = get_post($variant_id);
     $variant_meta = get_post_meta($variant_id);
+//     $retail_price = isset($variant_meta['retail_price'][0]) ? $variant_meta['retail_price'][0] : null;
+
+//     // Format the retail price in PHP
+//     $formatted_price = $retail_price ? format_price_in_idr($retail_price) : 'Belum Tersedia';
+
     // $image_id = get_post_meta($variant_id, 'image', true);
     $body_type_id = get_post_meta($model_id, '_listing_type', true);
     $body_type_term = get_term($body_type_id);
@@ -1944,13 +2057,15 @@ function get_variant_details()
     $aggregated_user_rating = $aggregated_user_rating_response['average_total_rating'] ?? 0;
     $json_ld = $aggregated_user_rating_response['json_ld'];
     $images = get_interior_exterior_images_of_variant($variant_id);
+
     // $image_url = $image_id ? wp_get_attachment_url($image_id) : '';
     if ($variant_post) {
         $response = [
             'success' => true,
             'data' => [
-                'variant_data' =>  $variant_meta,
-                'name' => $variant_post->post_title,
+//                 'variant_data' => array_merge($variant_meta, ['retail_price' => $formatted_price]), // Include formatted price
+                'variant_data' => $variant_meta,
+				'name' => $variant_post->post_title,
                 'image_url' => $guid,
                 'body_type' => $body_type_name ?? '--',
                 // 'segment' => $segment ?? '--',
@@ -1958,7 +2073,7 @@ function get_variant_details()
                 'id' => $variant_id,
                 'aggregated_user_rating' => $aggregated_user_rating,
                 'json_ld' => $json_ld,
-                'exterior_images' => $images['Exterior'],
+                'exterior_images' => $images['Eksterior'],
                 'interior_images' => $images['Interior']
             ]
         ];
@@ -1981,7 +2096,7 @@ function get_interior_exterior_images_of_variant($variant_id)
     $images = $wpdb->get_results($sql);
 
     $tabs = [
-        'Exterior' => [],
+        'Eksterior' => [],
         'Interior' => [],
     ];
 
@@ -1989,10 +2104,12 @@ function get_interior_exterior_images_of_variant($variant_id)
         $imageDataArray = json_decode($image->image_data);
         if ($imageDataArray) {
             foreach ($imageDataArray as $imgData) {
+                $type = $image->type === 'Exterior' ? 'Eksterior' : ($image->type === 'Interior' ? 'Interior' : null);
                 // Make sure the URL exists and limit the count to 5
-                if (isset($imgData->url) && isset($tabs[$image->type])) {
-                    if (count($tabs[$image->type]) < 5) {
-                        $tabs[$image->type][] = $imgData->url;
+                //                 if (isset($imgData->url) && isset($tabs[$image->type])) {
+                if ($type && isset($imgData->url) && isset($tabs[$type])) {
+                    if (count($tabs[$type]) < 5) {
+                        $tabs[$type][] = $imgData->url;
                     } else {
                         break; // Stop adding more images once the limit is reached
                     }

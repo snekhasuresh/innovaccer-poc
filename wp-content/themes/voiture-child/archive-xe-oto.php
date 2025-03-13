@@ -238,7 +238,7 @@ if ($post_type === 'xe-oto') {
         //         if (is_mobile_device()) {
         //             echo do_shortcode('[current_post_data is_amp=1]');
         //         } else {
-        $new_individual_page = 30907;
+        $new_individual_page = 30602;
         $elementor_query = new WP_Query(array('page_id' => $new_individual_page));
         if ($elementor_query->have_posts()) :
             while ($elementor_query->have_posts()) : $elementor_query->the_post();

@@ -13,12 +13,12 @@ function individual_variant_tabs_shortcode($atts)
 
     // read atts
     $atts = shortcode_atts(array(
-        'selected_tab' => 'Overview',
+        'selected_tab' => 'Tổng quát',
     ), $atts);
 
     $make = get_query_var('make');
     $model = get_query_var('model');
-    $base_url = get_site_url() . '/cars/' . $make . '/' . $model;
+    $base_url = get_site_url() . '/xe-oto/' . $make . '/' . $model;
 
     $make_term = get_term_by('slug', $make, 'listing_make');
     $make_logo_url = get_term_meta($make_term->term_id, 'listing_make_image', true);
@@ -35,12 +35,13 @@ function individual_variant_tabs_shortcode($atts)
     $variant_post_title = $variant_post->post_title;
     $variant_post_name = $variant_post->post_name;
 
-    $urls = [
-        'overview' => $base_url . '/' . $variant_post_name,
-        'news' => $base_url . '/news',
-        'specs' => $base_url . '/' . $variant_post_name . '/specs',
-        'gallery' => $base_url . '/' . $variant_post_name . '/gallery'
+ $urls = [
+        'tổng quát' => $base_url,
+        'tin tức' => $base_url . '/tin-tuc',
+        'thông số kỹ thuật' => $base_url . '/thong-so-ky-thuat',
+        'hình ảnh' => $base_url . '/hinh-anh'
     ];
+
 
     ob_start();
 
@@ -52,26 +53,25 @@ function individual_variant_tabs_shortcode($atts)
 function display_variant_tabs($urls, $selected_tab, $listing_name, $variant_name, $make_logo_url)
 {
     $overview_tabs = [
-        ['tab' => 'ภาพรวม', 'url' => $urls['overview']],
-        ['tab' => 'ข่าวสาร', 'url' => $urls['news']],
-        ['tab' => 'สเปค', 'url' => $urls['specs']],
-        ['tab' => 'รูปภาพ', 'url' => $urls['gallery']]
+        ['tab' => 'Tổng quát', 'url' => $urls['tong-quat']],
+        ['tab' => 'Tin tức', 'url' => $urls['tin-tuc']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thong-so-ky-thuat']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['hinh-anh']]
     ];
-
     $make = get_query_var('make') ? get_query_var('make') : '';
 
     switch ($selected_tab) {
-        case 'News':
-            $title = $make ? $listing_name . ' ' . $selected_tab . ' in Malaysia' : $listing_name;
+        case 'Tin tức':
+            $title = $make ? 'Berita Mobil ' . $listing_name . ' di Indonesia ' : $listing_name;
             break;
-        case 'Specs':
-            $title = $variant_name . ' ' . $selected_tab;
+        case 'Thông số kỹ thuật':
+            $title = $selected_tab . ' ' . $listing_name;
             break;
-        case 'Gallery':
-            $title = $variant_name . ' Interior & Exterior Images';
+        case 'Hình ảnh':
+            $title = 'Gambar Interior & Eksterior ' . $listing_name;
             break;
         default:
-            $title = $variant_name;
+            $title = $listing_name;
             break;
     }
 ?>

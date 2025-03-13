@@ -192,9 +192,15 @@ function add_gpt_script_to_head()
             cmd: []
         };
 
+
+
+
         function isMobileDevice() {
             return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent);
         }
+
+
+
 
         googletag.cmd.push(function() {
             const urlPath = window.location.pathname;
@@ -207,108 +213,168 @@ function add_gpt_script_to_head()
             const currentYear = new Date().getFullYear();
             const sections = ['overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors'];
 
+
+
+
             console.log({
                 newsSlug
             });
 
+
+
+
             if (!isMobileDevice()) {
                 // home
                 if (urlPath == '/' || urlPath == '') {
-                    googletag.defineSlot('/22557728108/my_hp_latestnews_above_pc', [728, 90], 'div-gpt-ad-1735282289883-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_hp_leaderboard_under_pc', [728, 90], 'div-gpt-ad-1735282878674-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_hp_latestnews_above_pc', [728, 90], 'div-gpt-ad-1740632169770-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_hp_leaderboard_under_pc', [728, 90], 'div-gpt-ad-1740632080264-0').addService(googletag.pubads());
                 }
 
-                // news
+
+
+
+                // news      
                 if ((urlPath.includes('/news') && !newsSlug) || urlPath === '/bm' || urlPath === '/zh') {
-                    googletag.defineSlot('/22557728108/my_news_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735653879968-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_news_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735653961511-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_news_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632194730-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_news_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740632271021-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // news individual
                 if (urlPath.includes('/news') && newsSlug) {
                     const categories = ['latest', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car'];
                     if (!categories.includes(newsSlug)) {
-                        googletag.defineSlot('/22557728108/my_article_fourthp_under_pc', [728, 90], 'div-gpt-ad-1735654226361-0').addService(googletag.pubads());
-                        googletag.defineSlot('/22557728108/my_article_relatedmodel_above_pc', [728, 90], 'div-gpt-ad-1735654253902-0').addService(googletag.pubads());
-                        googletag.defineSlot('/22557728108/my_article_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735654212658-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/th_article_fourthp_under_pc', [728, 90], 'div-gpt-ad-1735654226361-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_article_relatedmodel_above_pc', [728, 90], 'div-gpt-ad-1740632337418-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_article_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632363274-0').addService(googletag.pubads());
                     } else {
-                        googletag.defineSlot('/22557728108/my_news_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735653879968-0').addService(googletag.pubads());
-                        googletag.defineSlot('/22557728108/my_news_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735653961511-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_news_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632194730-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_news_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740632271021-0').addService(googletag.pubads());
                     }
                 }
 
 
+
+
+
+
+
+
                 // cars
                 if (urlPath === '/cars') {
-                    googletag.defineSlot('/22557728108/my_cars_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735653142904-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_cars_popularbrand_above_pc', [728, 90], 'div-gpt-ad-1735653172023-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_cars_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633276982-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_cars_popularbrand_above_pc', [728, 90], 'div-gpt-ad-1740633403925-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // cars - brand
                 if (make && !model) {
-                    googletag.defineSlot('/22557728108/my_brand_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735654872196-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_brand_modellist_under_pc', [728, 90], 'div-gpt-ad-1735654886584-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/my_brand_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740554034992-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_brand_modellist_under_pc', [728, 90], 'div-gpt-ad-1740632526161-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (make && model && !section) {
-                    googletag.defineSlot('/22557728108/my_model_usedcar_under_pc', [728, 90], 'div-gpt-ad-1735654675472-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_model_sidebar_1_pc', [300, 250], 'div-gpt-ad-1735654693715-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_model_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735654709039-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_usedcar_under_pc', [728, 90], 'div-gpt-ad-1740632392311-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_sidebar_1_pc', [300, 250], 'div-gpt-ad-1740632439887-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632468198-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (make && model && section && sections.includes(section)) {
                     switch (section) {
                         case 'overview':
-                            googletag.defineSlot('/22557728108/my_model_usedcar_under_pc', [728, 90], 'div-gpt-ad-1735654675472-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_model_sidebar_1_pc', [300, 250], 'div-gpt-ad-1735654693715-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_model_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735654709039-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_model_usedcar_under_pc', [728, 90], 'div-gpt-ad-1740632392311-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_model_sidebar_1_pc', [300, 250], 'div-gpt-ad-1740632439887-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_model_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632468198-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         case 'news':
                             break;
 
+
+
+
                         case 'specs':
                             break;
 
+
+
+
                         case 'gallery':
-                            googletag.defineSlot('/22557728108/MY_ModelImages_FirstScreen_LeftSide_PC', [160, 600], 'div-gpt-ad-1735655860170-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/MY_ModelImages_FirstScreen_RightSide_PC', [160, 600], 'div-gpt-ad-1735655884005-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_modelimages_sidebar_2_pc', [300, 250], 'div-gpt-ad-1735655900515-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/VN_ModelImages_FirstScreen_LeftSide_PC', [160, 600], 'div-gpt-ad-1740632678344-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/VN_ModelImages_FirstScreen_RightSide_PC', [160, 600], 'div-gpt-ad-1740632702902-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_modelimages_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632729238-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         case 'fuel-consumption':
-                            googletag.defineSlot('/22557728108/my_fuelconsumption_firstscreen_leftside_pc', [160, 600], 'div-gpt-ad-1735656348706-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_fuelconsumption_firstscreen_rightside_pc', [160, 600], 'div-gpt-ad-1735656362879-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_fuelconsumption_firstscreen_leftside_pc', [160, 600], 'div-gpt-ad-1740632846830-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_fuelconsumption_firstscreen_rightside_pc', [160, 600], 'div-gpt-ad-1740632878007-0').addService(googletag.pubads());
                             break;
 
+
+
+
                         case 'colors':
-                            googletag.defineSlot('/22557728108/my_colors_firstscreen_leftsides_pc', [160, 600], 'div-gpt-ad-1735656171643-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_colors_firstscreen_rightsides_pc', [160, 600], 'div-gpt-ad-1735656187085-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_colors_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735656201449-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_colors_firstscreen_leftsides_pc', [160, 600], 'div-gpt-ad-1740632757226-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_colors_firstscreen_rightsides_pc', [160, 600], 'div-gpt-ad-1740632784137-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_colors_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740632822287-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         default:
                             break;
                     }
                 }
 
+
+
+
                 if (make && model && section && !sections.includes(section)) {
-                    googletag.defineSlot('/22557728108/my_variant_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735656476865-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1735656489756-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_variant_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632931062-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632952583-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (make && model && section && variantSection) {
                     switch (variantSection) {
                         case 'overview':
-                            googletag.defineSlot('/22557728108/my_variant_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735656476865-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1735656489756-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_variant_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632931062-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632952583-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         case 'news':
                             break;
 
+
+
+
                         case 'specs':
                             break;
+
+
+
 
                         case 'gallery':
                             googletag.defineSlot('/22557728108/my_vairiantimages_firstscreen_rightside_pc', [160, 600], 'div-gpt-ad-1735656697579-0').addService(googletag.pubads());
@@ -316,169 +382,265 @@ function add_gpt_script_to_head()
                             googletag.defineSlot('/22557728108/my_vairiantimages_firstscreen_leftside_pc', [160, 600], 'div-gpt-ad-1735656732530-0').addService(googletag.pubads());
                             break;
 
+
+
+
                         case 'fuel-consumption':
                             break;
 
+
+
+
                         case 'colors':
                             break;
+
+
+
 
                         default:
                             break;
                     }
                 }
 
+
+
+
                 // Tools
                 if (urlPath === '/tools/loan-calculator') {
-                    googletag.defineSlot('/22557728108/my_loantool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735651122289-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_loantool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735648816882-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_loantool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633057034-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_loantool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633078701-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (urlPath === '/tools/insurance-calculator') {
-                    googletag.defineSlot('/22557728108/my_insurancetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735651629293-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_insurancetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735652516058-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_insurancetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633109519-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_insurancetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633133048-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (urlPath === '/tools/road-tax-calculator') {
                     googletag.defineSlot('/22557728108/my_taxtool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735652450620-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/my_taxtool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735652611596-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (urlPath === '/tools/fuel-cost-calculator') {
                     googletag.defineSlot('/22557728108/my_fuelcosttool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735652711805-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/my_fuelcosttool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735652767968-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (urlPath.includes('/compare-cars')) {
-                    googletag.defineSlot('/22557728108/my_compare_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735655148473-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_compare_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632581185-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/my_compare_smyebar_1_pc', [300, 250], 'div-gpt-ad-1735655162916-0').addService(googletag.pubads());
 
-                    // googletag.defineSlot('/22557728108/my_compareresult_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735655334632-0').addService(googletag.pubads());
+
+
+
+                    // googletag.defineSlot('/22557728108/vn_compareresult_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632627224-0').addService(googletag.pubads());
                     // googletag.defineSlot('/22557728108/my_compareresult_smyebar_1_pc', [300, 250], 'div-gpt-ad-1735655347796-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (urlPath === '/fuel-price') {
-                    googletag.defineSlot('/22557728108/my_fuelpricetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1735652953655-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_fuelpricetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1735652981337-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_fuelpricetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633212691-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_fuelpricetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633245602-0').addService(googletag.pubads());
                 }
             } else {
                 // mobile
                 // home
                 if (urlPath == '/' || urlPath == '') {
-                    googletag.defineSlot('/22557728108/my_hp_feed_1_wap', [300, 250], 'div-gpt-ad-1736066355206-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_hp_feed_4_wap', [336, 280], 'div-gpt-ad-1736066444674-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_hp_feed_1_wap', [300, 250], 'div-gpt-ad-1740573382277-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_hp_feed_4_wap', [336, 280], 'div-gpt-ad-1740550577623-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // article page
                 if (newsSlug) {
                     const categories = ['latest', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car'];
 
+
+
+
                     if (!categories.includes(newsSlug)) {
-                        googletag.defineSlot('/22557728108/my_article_fourthp_under_wap', [300, 250], 'div-gpt-ad-1735896007301-0').addService(googletag.pubads());
-                        googletag.defineSlot('/22557728108/my_article_rating_under_wap', [336, 280], 'div-gpt-ad-1735896078723-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_article_fourthp_under_wap', [300, 250], 'div-gpt-ad-1740573447077-0').addService(googletag.pubads());
+                        googletag.defineSlot('/22557728108/vn_article_rating_under_wap', [336, 280], 'div-gpt-ad-1740573472221-0').addService(googletag.pubads());
                     }
                 }
 
+
+
+
                 // car brand page
                 if (make && !model) {
-                    googletag.defineSlot('/22557728108/my_brand_usedcar_above_wap', [300, 250], 'div-gpt-ad-1736087462401-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_brand_usedcar_above_wap', [300, 250], 'div-gpt-ad-1740573598877-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // model overview page
                 if (make && model && !section) {
-                    googletag.defineSlot('/22557728108/my_model_variantlist_above_wap', [320, 100], 'div-gpt-ad-1736087234101-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_model_variantlist_under_wap', [300, 250], 'div-gpt-ad-1736087340666-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_model_gallery_under_wap', [336, 280], 'div-gpt-ad-1736087355647-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_variantlist_above_wap', [320, 100], 'div-gpt-ad-1740573497257-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_variantlist_under_wap', [300, 250], 'div-gpt-ad-1740573524077-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_model_gallery_under_wap', [336, 280], 'div-gpt-ad-1740573567656-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // model faq page
                 // googletag.defineSlot('/22557728108/my_faqs_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1736085201790-0').addService(googletag.pubads());
-                // googletag.defineSlot('/22557728108/my_faqs_carimages_under_wap', [336, 280], 'div-gpt-ad-1736085251845-0').addService(googletag.pubads());
+                // googletag.defineSlot('/22557728108/th_faqs_carimages_under_wap', [336, 280], 'div-gpt-ad-1740552372575-0').addService(googletag.pubads());
+
+
+
 
                 if (make && model && section && sections.includes(section)) {
                     switch (section) {
                         case 'overview':
                             break;
 
+
+
+
                         case 'gallery':
                             // model images page
-                            googletag.defineSlot('/22557728108/my_modelimages_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1736085408535-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_modelimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1736085437902-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_modelimages_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1740573668080-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_modelimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1740573691977-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         case 'fuel-consumption':
                             // model fuel consumption page
-                            googletag.defineSlot('/22557728108/my_fuelconsumption_othervariant_above_wap', [300, 250], 'div-gpt-ad-1736085715433-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_fuelconsumption_comparison_above_wap', [336, 280], 'div-gpt-ad-1736085765423-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_fuelconsumption_othervariant_above_wap', [300, 250], 'div-gpt-ad-1740573768696-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_fuelconsumption_comparison_above_wap', [336, 280], 'div-gpt-ad-1740573794429-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         case 'colors':
                             // model colors page
-                            googletag.defineSlot('/22557728108/my_colors_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1736087769167-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_colors_gallery_under_wap', [336, 280], 'div-gpt-ad-1736087824826-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_colors_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1740573717941-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_colors_gallery_under_wap', [336, 280], 'div-gpt-ad-1740573741895-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         default:
                             break
                     }
                 }
 
+
+
+
                 // user reviews page
-                // googletag.defineSlot('/22557728108/my_userreviews_relatedmodel_under_m_wap', [300, 250], 'div-gpt-ad-1736089065749-0').addService(googletag.pubads());
+                // googletag.defineSlot('/22557728108/vn_userreviews_relatedmodel_under_m_wap', [300, 250], 'div-gpt-ad-1740573817369-0').addService(googletag.pubads());
+
+
+
 
                 // variant overview page
                 if (make && model && section && !sections.includes(section) && !variantSection) {
-                    googletag.defineSlot('/22557728108/my_variant_dealer_above_wap', [300, 250], 'div-gpt-ad-1736086811544-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_variant_carimages_under_wap', [336, 280], 'div-gpt-ad-1736086885267-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_variant_dealer_above_wap', [300, 250], 'div-gpt-ad-1740573840591-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_variant_carimages_under_wap', [336, 280], 'div-gpt-ad-1740573865368-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (make && model && section && !sections.includes(section) && variantSection) {
                     switch (variantSection) {
                         case 'overview':
                             break;
 
+
+
+
                         case 'gallery':
                             // variant images page
-                            googletag.defineSlot('/22557728108/my_variantimages_related_above_wap', [300, 250], 'div-gpt-ad-1736087016480-0').addService(googletag.pubads());
-                            googletag.defineSlot('/22557728108/my_variantimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1736087032827-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_variantimages_related_above_wap', [300, 250], 'div-gpt-ad-1740573892425-0').addService(googletag.pubads());
+                            googletag.defineSlot('/22557728108/vn_variantimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1740573925132-0').addService(googletag.pubads());
                             break;
+
+
+
 
                         default:
                             break;
                     }
                 }
 
+
+
+
                 // Tools
                 if (urlPath === '/tools/loan-calculator') {
-                    googletag.defineSlot('/22557728108/my_loantool_moretools_above_wap', [300, 250], 'div-gpt-ad-1736085971131-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_loantool_faq_above_wap', [336, 280], 'div-gpt-ad-1736085904371-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_loantool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740573946847-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_loantool_faq_above_wap', [336, 280], 'div-gpt-ad-1740573972475-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (urlPath === '/tools/insurance-calculator') {
-                    googletag.defineSlot('/22557728108/my_insurancetool_moretools_above_wap', [300, 250], 'div-gpt-ad-1736086107711-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_insurancetool_faq_above_wap', [336, 280], 'div-gpt-ad-1736086125227-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_insurancetool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740631656194-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_insurancetool_faq_above_wap', [336, 280], 'div-gpt-ad-1740631680933-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (urlPath === '/tools/road-tax-calculator') {
-                    googletag.defineSlot('/22557728108/my_taxtool_moretools_above_wap', [300, 250], 'div-gpt-ad-1736086244957-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_taxtool_faq_above_wap', [336, 280], 'div-gpt-ad-1736086263623-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_taxtool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740553113403-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_taxtool_faq_above_wap', [336, 280], 'div-gpt-ad-1740553166075-0').addService(googletag.pubads());
                 }
+
+
+
 
                 if (urlPath === '/tools/fuel-cost-calculator') {
-                    googletag.defineSlot('/22557728108/my_fuelcosttool_moretools_above_wap', [300, 250], 'div-gpt-ad-1736086387218-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_fuelcosttool_faq_above_wap', [336, 280], 'div-gpt-ad-1736086403035-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_fuelcosttool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740553224039-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_fuelcosttool_faq_above_wap', [336, 280], 'div-gpt-ad-1740553272331-0').addService(googletag.pubads());
                 }
 
+
+
+
                 if (urlPath === '/fuel-price') {
-                    googletag.defineSlot('/22557728108/my_fuelpricetool_moretools_above_wap', [300, 250], 'div-gpt-ad-1736086526959-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_fuelpricetool_faq_above_wap', [336, 280], 'div-gpt-ad-1736086545811-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_fuelpricetool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740631810447-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/vn_fuelpricetool_faq_above_wap', [336, 280], 'div-gpt-ad-1740631838534-0').addService(googletag.pubads());
                 }
+
+
+
 
                 // Cars For Sale
                 if (urlPath === '/tools/used-car-market-value-guide') {
                     googletag.defineSlot('/22557728108/my_valuetool_faq_above_wap', [300, 250], 'div-gpt-ad-1736086673824-0').addService(googletag.pubads());
-                    googletag.defineSlot('/22557728108/my_tradeintool_popularbrand_above_wap', [300, 250], 'div-gpt-ad-1736086689531-0').addService(googletag.pubads());
+                    googletag.defineSlot('/22557728108/th_tradeintool_popularbrand_above_wap', [300, 250], 'div-gpt-ad-1740553417292-0').addService(googletag.pubads());
                 }
             }
+
+
+
 
             googletag.pubads().enableSingleRequest();
             googletag.enableServices();
@@ -488,114 +650,194 @@ function add_gpt_script_to_head()
 }
 add_action('wp_head', 'add_gpt_script_to_head');
 
+
+
+
 $ad_units_mapping = [
     // home
-    'MY_Hp_Leaderboard_Under_PC' => ['page' => 'home', 'id' => '1735282289883', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_HP_Latestnews_Above_PC' => ['page' => 'home', 'id' => '1735282878674', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Hp_Leaderboard_Under_PC' => ['page' => 'home', 'id' => '1740632080264', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_HP_Latestnews_Above_PC' => ['page' => 'home', 'id' => '1740632169770', 'size' => [728, 90], 'is_mobile' => false],
+
+
+
 
     // news
-    'MY_News_Breadcrumb_Above_PC' => ['page' => 'news', 'id' => '1735653879968', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_News_Sidebar_End_PC' => ['page' => 'news', 'id' => '1735653961511', 'size' => [300, 250], 'is_mobile' => false],
+    '   VN_News_Breadcrumb_Above_PC' => ['page' => 'news', 'id' => '1740632194730', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_News_Sidebar_End_PC' => ['page' => 'news', 'id' => '1740632271021', 'size' => [300, 250], 'is_mobile' => false],
     'MY_Article_Fourthp_Under_PC' => ['page' => 'article', 'id' => '1735654226361', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Article_Relatedmodel_Above_PC' => ['page' => 'article', 'id' => '1735654253902', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Article_Breadcrumb_Above_PC' => ['page' => 'article', 'id' => '1735654212658', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Article_Relatedmodel_Above_PC' => ['page' => 'article', 'id' => '1740632337418', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Article_Breadcrumb_Above_PC' => ['page' => 'article', 'id' => '1740632363274', 'size' => [728, 90], 'is_mobile' => false],
+
+
+
 
     // cars
-    'MY_Cars_Breadcrumb_Above_PC' => ['page' => 'cars', 'id' => '1735653142904', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Cars_Popularbrand_Above_PC' => ['page' => 'cars', 'id' => '1735653172023', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Cars_Breadcrumb_Above_PC' => ['page' => 'cars', 'id' => '1740633276982', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Cars_Popularbrand_Above_PC' => ['page' => 'cars', 'id' => '1740633403925', 'size' => [728, 90], 'is_mobile' => false],
     'MY_Brand_Breadcrumb_Above_PC' => ['page' => 'cars', 'id' => '1735654872196', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Brand_Modellist_Under_PC' => ['page' => 'cars', 'id' => '1735654886584', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Brand_Modellist_Under_PC' => ['page' => 'cars', 'id' => '1740632526161', 'size' => [728, 90], 'is_mobile' => false],
+
+
+
 
     // model
-    'MY_Model_Usedcar_Under_PC' => ['page' => 'model', 'id' => '1735654675472', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Model_Sidebar_1_PC' => ['page' => 'model', 'id' => '1735654693715', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Model_Breadcrumb_Above_PC' => ['page' => 'model', 'id' => '1735654709039', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_ModelImages_FirstScreen_LeftSide_PC' => ['page' => 'model', 'id' => '1735655860170', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_ModelImages_FirstScreen_RightSide_PC' => ['page' => 'model', 'id' => '1735655884005', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_ModelImages_Sidebar_2_PC' => ['page' => 'model', 'id' => '1735655900515', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Colors_FirstScreen_LeftSides_PC' => ['page' => 'model', 'id' => '1735656171643', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_Colors_FirstScreen_RightSides_PC' => ['page' => 'model', 'id' => '1735656187085', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_Colors_Sidebar_End_PC' => ['page' => 'model', 'id' => '1735656201449', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Fuelconsumption_FirstScreen_LeftSide_PC' => ['page' => 'model', 'id' => '1735656348706', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_Fuelconsumption_FirstScreen_RightSide_PC' => ['page' => 'model', 'id' => '1735656362879', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_Model_Usedcar_Under_PC' => ['page' => 'model', 'id' => '1740632392311', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Model_Sidebar_1_PC' => ['page' => 'model', 'id' => '1740632439887', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Model_Breadcrumb_Above_PC' => ['page' => 'model', 'id' => '1740632468198', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_ModelImages_FirstScreen_LeftSide_PC' => ['page' => 'model', 'id' => '1740632678344', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_ModelImages_FirstScreen_RightSide_PC' => ['page' => 'model', 'id' => '1740632702902', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_ModelImages_Sidebar_2_PC' => ['page' => 'model', 'id' => '1740632729238', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Colors_FirstScreen_LeftSides_PC' => ['page' => 'model', 'id' => '1740632757226', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_Colors_FirstScreen_RightSides_PC' => ['page' => 'model', 'id' => '1740632784137', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_Colors_Sidebar_End_PC' => ['page' => 'model', 'id' => '1740632822287', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Fuelconsumption_FirstScreen_LeftSide_PC' => ['page' => 'model', 'id' => '1740632846830', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_Fuelconsumption_FirstScreen_RightSide_PC' => ['page' => 'model', 'id' => '1740632878007', 'size' => [160, 600], 'is_mobile' => false],
+
+
+
 
     // variant
-    'MY_Variant_Breadcrumb_Above_PC' => ['page' => 'variant', 'id' => '1735656476865', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Variant_Sidebar_2_PC' => ['page' => 'variant', 'id' => '1735656489756', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_VariantImages_FirstScreen_RightSide_PC' => ['page' => 'variant', 'id' => '1735656697579', 'size' => [160, 600], 'is_mobile' => false],
-    'MY_VariantImages_Sidebar_2_PC' => ['page' => 'variant', 'id' => '1735656715250', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_VariantImages_FirstScreen_LeftSide_PC' => ['page' => 'variant', 'id' => '1735656732530', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_Variant_Breadcrumb_Above_PC' => ['page' => 'variant', 'id' => '1740632931062', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Variant_Sidebar_2_PC' => ['page' => 'variant', 'id' => '1740632952583', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_VariantImages_FirstScreen_RightSide_PC' => ['page' => 'variant', 'id' => '1740633003683', 'size' => [160, 600], 'is_mobile' => false],
+    'VN_VariantImages_Sidebar_2_PC' => ['page' => 'variant', 'id' => '1740633029739', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_VariantImages_FirstScreen_LeftSide_PC' => ['page' => 'variant', 'id' => '1740632976871', 'size' => [160, 600], 'is_mobile' => false],
+
+
+
 
     // tools
-    'MY_Loantool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735651122289', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Loantool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1735648816882', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Insurancetool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735651629293', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Insurancetool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1735652516058', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Loantool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1740633057034', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Loantool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1740633078701', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Insurancetool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1740633109519', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Insurancetool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1740633133048', 'size' => [300, 250], 'is_mobile' => false],
     'MY_Taxtool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735652450620', 'size' => [728, 90], 'is_mobile' => false],
     'MY_Taxtool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1735652611596', 'size' => [300, 250], 'is_mobile' => false],
     'MY_Fuelcosttool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735652711805', 'size' => [728, 90], 'is_mobile' => false],
     'MY_Fuelcosttool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1735652767968', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Fuelpricetool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735652953655', 'size' => [728, 90], 'is_mobile' => false],
-    'MY_Fuelpricetool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1735652981337', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Compare_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735655148473', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Fuelpricetool_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1740633212691', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Fuelpricetool_Sidebar_End_PC' => ['page' => 'tools', 'id' => '1740633245602', 'size' => [300, 250], 'is_mobile' => false],
+    'VN_Compare_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1740632581185', 'size' => [728, 90], 'is_mobile' => false],
     'MY_Compare_Smyebar_1_PC' => ['page' => 'tools', 'id' => '1735655162916', 'size' => [300, 250], 'is_mobile' => false],
-    'MY_Compareresult_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1735655334632', 'size' => [728, 90], 'is_mobile' => false],
+    'VN_Compareresult_Breadcrumb_Above_PC' => ['page' => 'tools', 'id' => '1740632627224', 'size' => [728, 90], 'is_mobile' => false],
     'MY_Compareresult_Smyebar_1_PC' => ['page' => 'tools', 'id' => '1735655347796', 'size' => [300, 250], 'is_mobile' => false],
 
 
 
+
+
+
+
+
+
+
+
+
     // Mobile
-    'MY_Hp_Feed_1_Wap' => ['page' => 'home', 'id' => '1736066355206', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Hp_Feed_4_Wap' => ['page' => 'home', 'id' => '1736066444674', 'size' => [336, 280], 'is_mobile' => true],
+    'VN_Hp_Feed_1_Wap' => ['page' => 'home', 'id' => '1740573382277', 'size' => [300, 250], 'is_mobile' => true],
+    'MY_Hp_Feed_4_Wap' => ['page' => 'home', 'id' => '1740550577623', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Article_Fourthp_Under_Wap' => ['page' => 'article', 'id' => '1735896007301', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Article_Rating_Under_Wap' => ['page' => 'article', 'id' => '1735896078723', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Model_Variantlist_Above_Wap' => ['page' => 'model', 'id' => '1736087234101', 'size' => [320, 100], 'is_mobile' => true],
-    'MY_Model_Variantlist_Under_Wap' => ['page' => 'model', 'id' => '1736087340666', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Model_Gallery_Under_Wap' => ['page' => 'model', 'id' => '1736087355647', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Brand_Usedcar_Above_Wap' => ['page' => 'cars', 'id' => '1736087462401', 'size' => [300, 250], 'is_mobile' => true],
 
-    'MY_Faqs_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1736085408535', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Faqs_Carimages_Under_Wap' => ['page' => 'model', 'id' => '1736085251845', 'size' => [336, 280], 'is_mobile' => true],
+    'VN_Article_Fourthp_Under_Wap' => ['page' => 'article', 'id' => '1740573447077', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Article_Rating_Under_Wap' => ['page' => 'article', 'id' => '1740573472221', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Modelimages_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1736085408535', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Modelimages_Carimages_Under_Wap' => ['page' => 'model', 'id' => '1736085437902', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Colors_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1736087769167', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Colors_Gallery_Under_Wap' => ['page' => 'model', 'id' => '1736087824826', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Fuelconsumption_Othervariant_Above_Wap' => ['page' => 'model', 'id' => '1736085715433', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Fuelconsumption_Comparison_Above_Wap' => ['page' => 'model', 'id' => '1736085765423', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Userreviews_Relatedmodel_Under_M_Wap' => ['page' => 'model', 'id' => '1736089065749', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Model_Variantlist_Above_Wap' => ['page' => 'model', 'id' => '1740573497257', 'size' => [320, 100], 'is_mobile' => true],
+    'VN_Model_Variantlist_Under_Wap' => ['page' => 'model', 'id' => '1740573524077', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Model_Gallery_Under_Wap' => ['page' => 'model', 'id' => '1740573567656', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Variant_Dealer_Above_Wap' => ['page' => 'variant', 'id' => '1736086811544', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Variant_Carimages_Under_Wap' => ['page' => 'variant', 'id' => '1736086885267', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Variantimages_Related_Above_Wap' => ['page' => 'variant', 'id' => '1736087016480', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Variantimages_Carimages_Under_Wap' => ['page' => 'variant', 'id' => '1736087032827', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Loantool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1736085971131', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Loantool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736085904371', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Insurancetool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1736086107711', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Insurancetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086125227', 'size' => [336, 280], 'is_mobile' => true],
+    'VN_Brand_Usedcar_Above_Wap' => ['page' => 'cars', 'id' => '1740573598877', 'size' => [300, 250], 'is_mobile' => true],
 
-    'MY_Taxtool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1736086244957', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Taxtool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086263623', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Fuelcosttool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1736086387218', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Fuelcosttool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086403035', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Fuelpricetool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1736086526959', 'size' => [300, 250], 'is_mobile' => true],
-    'MY_Fuelpricetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086545811', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Valuetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086673824', 'size' => [300, 250], 'is_mobile' => true],
+    'TH_Faqs_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1740552067348', 'size' => [300, 250], 'is_mobile' => true],
+    'TH_Faqs_Carimages_Under_Wap' => ['page' => 'model', 'id' => '1740552372575', 'size' => [336, 280], 'is_mobile' => true],
 
-    'MY_Tradeintool_Popularbrand_Above_Wap' => ['page' => 'tools', 'id' => '1736086689531', 'size' => [300, 250], 'is_mobile' => true],
+
+
+
+    'VN_Modelimages_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1740573668080', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Modelimages_Carimages_Under_Wap' => ['page' => 'model', 'id' => '1740573691977', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Colors_Relatedmodel_Above_Wap' => ['page' => 'model', 'id' => '1740573717941', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Colors_Gallery_Under_Wap' => ['page' => 'model', 'id' => '1740573741895', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Fuelconsumption_Othervariant_Above_Wap' => ['page' => 'model', 'id' => '1740573768696', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Fuelconsumption_Comparison_Above_Wap' => ['page' => 'model', 'id' => '1740573794429', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Userreviews_Relatedmodel_Under_M_Wap' => ['page' => 'model', 'id' => '1740573817369', 'size' => [300, 250], 'is_mobile' => true],
+
+
+
+
+    'VN_Variant_Dealer_Above_Wap' => ['page' => 'variant', 'id' => '1740573840591', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Variant_Carimages_Under_Wap' => ['page' => 'variant', 'id' => '1740573865368', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Variantimages_Related_Above_Wap' => ['page' => 'variant', 'id' => '1740573892425', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Variantimages_Carimages_Under_Wap' => ['page' => 'variant', 'id' => '1740573925132', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Loantool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1740573946847', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Loantool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1740573972475', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Insurancetool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1740631656194', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Insurancetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1740631680933', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'TH_Taxtool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1740553113403', 'size' => [300, 250], 'is_mobile' => true],
+    'TH_Taxtool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1740553166075', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'TH_Fuelcosttool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1740553224039', 'size' => [300, 250], 'is_mobile' => true],
+    'TH_Fuelcosttool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1740553272331', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'VN_Fuelpricetool_Moretools_Above_Wap' => ['page' => 'tools', 'id' => '1740631810447', 'size' => [300, 250], 'is_mobile' => true],
+    'VN_Fuelpricetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1740631838534', 'size' => [336, 280], 'is_mobile' => true],
+
+
+
+
+    'TH_Valuetool_Faq_Above_Wap' => ['page' => 'tools', 'id' => '1736086673824', 'size' => [300, 250], 'is_mobile' => true],
+
+
+
+
+    'TH_Tradeintool_Popularbrand_Above_Wap' => ['page' => 'tools', 'id' => '1740553417292', 'size' => [300, 250], 'is_mobile' => true],
 ];
+
+
 
 function ad_unit_shortcode($atts)
 {
@@ -603,7 +845,7 @@ function ad_unit_shortcode($atts)
 
     $atts = shortcode_atts(
         array(
-            'ad_id' => 'MY_Hp_Leaderboard_Under_PC',
+            'ad_id' => 'VN_Hp_Leaderboard_Under_PC',
         ),
         $atts
     );
@@ -1300,15 +1542,15 @@ if (strpos($_SERVER['REQUEST_URI'], 'so-sanh-xe') !== false || wp_doing_ajax()) 
 }
 
 //motor comparison pages:
-if (strpos($_SERVER['REQUEST_URI'], 'compare-motorcycles') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'so-sanh-xe-may') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-comparison/compare-popular-motor-tabs.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-comparison/motor_compare-faq.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-comparison/motor-compare-shortcode.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-comparison/motor-videos-comparisonpage.php';
 }
 if (
-    strpos($_SERVER['REQUEST_URI'], 'cars') !== false ||
-    strpos($_SERVER['REQUEST_URI'], 'news') !== false ||
+    strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false ||
+    strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false ||
     strpos($_SERVER['REQUEST_URI'], '/zh') === 0 ||
     strpos($_SERVER['REQUEST_URI'], '/bm') === 0 ||
     wp_doing_ajax()
@@ -2117,7 +2359,7 @@ add_action('init', 'custom_cars_rewrite_rules');
 
 function custom_cars_rewrite_rules()
 {
-    add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=tin-tuc&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=news&news_slug=$matches[1]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=New Cars&make=$matches[1]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
@@ -2325,7 +2567,7 @@ add_filter('post_type_link', function ($post_link, $post) {
         // Replace spaces with dashes for URL compatibility
         $make_slug = sanitize_title($make);
         $model_slug = sanitize_title($model);
-        return home_url("motor/$make_slug/$model_slug/");
+        return home_url("xe-may/$make_slug/$model_slug/");
     }
     return $post_link;
 }, 10, 2);
@@ -3766,7 +4008,7 @@ function display_current_page_url()
                             $full_slug = $model_post->post_name;
                             $model = trim(str_replace($make_slug, '', $full_slug));
                             $model_name = ltrim($model, '-');
-                            $model_data .= '[individual_listing_tabs make="' . esc_attr(strtolower(strtolower($make_slug))) . '" model="' . esc_attr(strtolower(strtolower($model_name))) . '" 											selected_tab="News"]';
+                            $model_data .= '[individual_listing_tabs make="' . esc_attr(strtolower(strtolower($make_slug))) . '" model="' . esc_attr(strtolower(strtolower($model_name))) . '" 											selected_tab="Tin tức"]';
                             $found_model = true;
                         }
                     }
@@ -5184,4 +5426,6 @@ $translate = [
     return ob_get_clean();
 }
 add_shortcode('motor_latest_news_shortcode', 'motor_latest_news_shortcode');
+
+
 

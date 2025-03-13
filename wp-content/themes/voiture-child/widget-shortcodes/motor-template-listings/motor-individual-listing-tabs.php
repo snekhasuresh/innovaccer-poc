@@ -14,7 +14,7 @@ function individual_listing_motor_tabs_shortcode($atts)
         'model' => '',
         'section' => '',
         'variant_section' => '',
-        'selected_tab' => 'ภาพรวม',
+        'selected_tab' => 'Tổng quát',
     ), $atts);
 
     $make = get_query_var('make') ? get_query_var('make') : $atts['make'];
@@ -39,17 +39,18 @@ function individual_listing_motor_tabs_shortcode($atts)
     $listing_post = $listing_post_query->post;
 
     if (!empty($variant_section)) {
-        $base_url = get_site_url() . '/motorcycles/' . $make . '/' . $model_name . '/' . $section;
+        $base_url = get_site_url() . '/xe-may/' . $make . '/' . $model_name . '/' . $section;
     } else {
-        $base_url = get_site_url() . '/motorcycles/' . $make . '/' . $model_name;
+        $base_url = get_site_url() . '/xe-may/' . $make . '/' . $model_name;
     }
 
-    $urls = [
-        'overview' => $base_url,
-        'news' => $base_url . '/news',
-        'specs' => $base_url . '/specs',
-        'gallery' => $base_url . '/gallery'
+ $urls = [
+        'tổng quát' => $base_url,
+        'tin tức' => $base_url . '/tin-tuc',
+        'thông số kỹ thuật' => $base_url . '/thong-so-ky-thuat',
+        'hình ảnh' => $base_url . '/hinh-anh'
     ];
+
 
     ob_start();
 
@@ -62,23 +63,22 @@ function display_motor_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
 {
     enqueue_listing_bike_tabs_css();
     $overview_tabs = [
-        ['tab' => 'ภาพรวม', 'url' => $urls['overview']],
-        ['tab' => 'ข่าวสาร', 'url' => $urls['news']],
-        ['tab' => 'สเปค', 'url' => $urls['specs']],
-        ['tab' => 'รูปภาพ', 'url' => $urls['gallery']]
+        ['tab' => 'Tổng quát', 'url' => $urls['tong-quat']],
+        ['tab' => 'Tin tức', 'url' => $urls['tin-tuc']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thong-so-ky-thuat']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['hinh-anh']]
     ];
-
     $make = get_query_var('make') ? get_query_var('make') : '';
 
-    switch ($selected_tab) {
-        case 'ข่าวสาร':
-            $title = 'ข่าวรถยนต์ ' . $make ? $listing_name . ' ในไทย' : $listing_name;
+   switch ($selected_tab) {
+        case 'Tin tức':
+            $title = $make ? 'Berita Mobil ' . $listing_name . ' di Indonesia ' : $listing_name;
             break;
-        case 'สเปค':
-            $title = 'สเปค ' . $listing_name;
+        case 'Thông số kỹ thuật':
+            $title = $selected_tab . ' ' . $listing_name;
             break;
-        case 'รูปภาพ':
-            $title = 'รูปภาพภายนอกและภายใน ' . $listing_name;
+        case 'Hình ảnh':
+            $title = 'Gambar Interior & Eksterior ' . $listing_name;
             break;
         default:
             $title = $listing_name;

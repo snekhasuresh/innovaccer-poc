@@ -4,7 +4,7 @@ $sidebar_configs = voiture_get_blog_layout_configs();
 
 
 // voiture_render_breadcrumbs();
-if ($post_type === 'motorcycles') {
+if ($post_type === 'xe-may') {
     // Retrieve query variables for make, model, and section
     $make = get_query_var('make');
     $model = get_query_var('model');

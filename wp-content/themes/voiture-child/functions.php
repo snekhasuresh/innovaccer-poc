@@ -2186,7 +2186,7 @@ function language_news_template_redirect()
         // Verify if the language is either 'zh' or 'bm'
         if (in_array($lang, ['zh', 'bm'])) {
             // Load the archive-cars.php template
-            $template = get_stylesheet_directory() . '/archive-cars.php';
+            $template = get_stylesheet_directory() . '/archive-xe-oto.php';
             if (file_exists($template)) {
                 load_template($template);
                 exit;
@@ -2207,7 +2207,7 @@ function load_archive_cars_for_news_slug($template)
     $news_slug = get_query_var('news_slug');
 
     if (($news_slug && !is_excluded_news_slug($news_slug))) {
-        return get_stylesheet_directory() . '/archive-cars.php';
+        return get_stylesheet_directory() . '/archive-xe-oto.php';
     }
 
     // 	print_r('above news slug condition');
@@ -2224,11 +2224,11 @@ add_filter('template_include', 'load_archive_motors_for_news_slug');
 function load_archive_motors_for_news_slug($template)
 {
     // 	print_r($_SERVER['REQUEST_URI']);
-    if (strpos($_SERVER['REQUEST_URI'], 'motor') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc-xe-may') !== false) {
+    if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc-xe-may') !== false) {
         $news_slug = get_query_var('news_slug');
 
         if (($news_slug && !is_excluded_news_slug($news_slug, true))) {
-            return get_stylesheet_directory() . '/archive-motorcycles.php';
+            return get_stylesheet_directory() . '/archive-xe-may.php';
         }
 
         if (is_excluded_news_slug($news_slug, true) && $news_slug) {

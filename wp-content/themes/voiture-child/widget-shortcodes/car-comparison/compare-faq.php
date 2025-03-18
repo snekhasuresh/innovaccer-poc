@@ -32,7 +32,7 @@ function compare_car_faqs_shortcode($atts)
     ob_start();
 ?>
     <div id="listing-detail-description" class="description inner compare-faq">
-        <h2 class="wa-title-text">Compare Cars FAQs</h2>
+        <h2 class="wa-title-text">Câu Hỏi Thường Gặp Về So Sánh Xe Ô Tô</h2>
         <div class="description-inner">
             <div class="description-inner-wrapper">
                 <div class="accordion">

@@ -25,11 +25,11 @@ function single_listing_news_shortcode($atts)
                 'value' => 's:' . strlen((string) $car_post->ID) . ':"' . $car_post->ID . '";',
                 'compare' => 'LIKE'
             ),
-            array(
-                'key'     => 'second_language',
-                'value'   => '',
-                'compare' => '='
-            )
+//             array(
+//                 'key'     => 'second_language',
+//                 'value'   => '',
+//                 'compare' => '='
+//             )
         )
     );
     $news_posts = new WP_Query($args);
@@ -70,7 +70,7 @@ function single_listing_news_shortcode($atts)
 ?>
         <div id="listing-detail-description" class="description inner">
             <div class="variant-news-title-con">
-                <h2 class="variant-news-title wa-title-text "><?php esc_html_e('ข่าวสาร '.$car_post->post_title, 'voiture'); ?></h2>
+                <h2 class="variant-news-title wa-title-text "><?php esc_html_e('Tin tức '.$car_post->post_title, 'voiture'); ?></h2>
             </div>
             <div class="news-cards">
                 <?php
@@ -91,7 +91,7 @@ function single_listing_news_shortcode($atts)
                                     <p class="author"><?php echo esc_html($post_data['author']); ?></p>
                                     <p class="date"><?php echo esc_html($post_data['date']); ?></p>
                                 </div>
-                                <a href='<?php echo esc_url($post_data['link']); ?>' class='read-more'>อ่านเพิ่มเติม</a>
+                                <a href='<?php echo esc_url($post_data['link']); ?>' class='read-more'>Đọc thêm</a>
                             </div>
                         </div>
                     </div>
@@ -105,8 +105,8 @@ function single_listing_news_shortcode($atts)
                 <div class="btn-more-container">
                     <button class="btn-more">
                         <?php $current_page_url = get_permalink($car_post->ID); ?>
-                        <a href="<?php echo esc_url($current_page_url . 'news'); ?>">
-                            ดูเพิ่มเติม <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"
+                        <a href="<?php echo esc_url($current_page_url . 'tin-tuc'); ?>">
+                            Xem thêm <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 320 512">
                                 <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5 12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                             </svg>

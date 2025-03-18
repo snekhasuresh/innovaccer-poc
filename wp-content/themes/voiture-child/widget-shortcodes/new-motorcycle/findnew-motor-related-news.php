@@ -26,7 +26,7 @@ function motor_related_news($atts)
 
     ob_start();
 
-    $title = $brand_name ? esc_html('วีดีโอ รถมอเตอร์ไซค์ '. $brand_name . ' ในไทย') : 'ข่าวล่าสุดของมอเตอร์ไซค์ในประเทศไทย';
+    $title = $brand_name ? esc_html('วีดีโอ รถมอเตอร์ไซค์ '. $brand_name . ' ในไทย') : 'Tin tức xe máy mới nhất';
 ?>
     <h2 class="wa-title-text find-car-news-title" ><?php echo $title; ?></h2>
      <div id="fuel-latest-news-section" style="margin-left:10px" class="fuel-news-section inner">
@@ -49,7 +49,7 @@ function motor_related_news($atts)
                         <p class="fuel-news-description"><?php echo esc_html($description); ?></p>
                         <div class="fuel-news-footer">
                             <p class="fuel-date"><?php echo $date; ?></p>
-                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Read More</a>
+                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Đọc thêm</a>
                         </div>
                     </div>
                 </div>

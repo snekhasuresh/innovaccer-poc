@@ -24,8 +24,8 @@ function motor_pros_and_cons()
     }
 
     // Get the image URLs for the icons
-    $pros_icon_url = wp_get_attachment_image_url(355936, 'props'); // Replace 123 with the actual ID of your "Pros" icon
-    $cons_icon_url = wp_get_attachment_image_url(355935, 'cons'); // Replace 124 with the actual ID of your "Cons" icon
+    $pros_icon_url = wp_get_attachment_image_url(32182, 'props'); // Replace 123 with the actual ID of your "Pros" icon
+    $cons_icon_url = wp_get_attachment_image_url(32183, 'cons'); // Replace 124 with the actual ID of your "Cons" icon
 
     ob_start();
 ?>

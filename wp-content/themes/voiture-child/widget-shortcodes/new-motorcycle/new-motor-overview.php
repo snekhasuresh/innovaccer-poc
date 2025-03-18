@@ -17,13 +17,12 @@ function newbike_overview($atts)
 ?>
     <div class="new-cars-overview">
         <span class="overview-text">
-            ค้นหาข้อมูลรถมอเตอร์ไซค์ใหม่ทั้งหมดในประเทศไทยในปี 2024 ได้ที่ AutoFun Thailand Motorcycles รวมทั้งราคารถจักรยานยนต์ล่าสุด ราคาบิ๊กไบค์ ราคารถมอเตอร์ไซค์ไฟฟ้า สเปครถจักรยานยนต์ รูปภาพ คุณสมบัติ ข่าว รีวิวโดยผู้เชี่ยวชาญ โปรโมชั่น สินเชื่อรถจักรยานยนต์ คู่มือการซื้อรถยนต์ และอื่นๆ ครอบคลุม Honda, Yamaha, GPX, Kawasaki, SUzuki, Aprilia, Bajaj, Benelli, Ducati, BMW, KYM, Vespa และรถมอเตอร์ไซค์แบรนด์ดังอื่นๆ'
+          Bạn muốn biết thêm về chiếc mô tô mơ ước của mình, nóng lòng muốnicầm lái chúng? AutoFun có thể giúp bạn! Tại đây bạn có thể xem mọi thông tin của các thương hiệu xe máy nổi tiếng. Tra cứu bảng giá bán, thông số kỹ thuật, màu sắc, hình ảnh và video xe máy mới nhất. Nếu bạn phân vân chưa biết mua chiếc xe máy nào, hãy sử dụng công cụ so sánh xe máy của chúng tôi để biết thêm nhiều thông'
             <span class="hidden-content">
-                รุ่นรถจักรยานยนต์ที่จำหน่ายในประเทศไทย ได้แก่ GPX Drone, Yamaha Aerox, Yamaha Finn, Yamaha Nmax, GPX Demon 150GR, Honda PCX, Honda Wave 110i, Yamaha Grand Filano, Honda Monkey, Yamaha XSR155, Honda Adv 150, Honda Super Cub, GPX Legend 200, Honda Scoopy i, GPX Legend 250 Twin, Ducati Scrambler, Honda Click 150i, Yamaha QBIX, Honda Rebel 300, Honda Click 125i, Kawasaki W175, KTM Duke 390, Vespa Sprint 150 I-GET, Ducati Panigale, Vespa Sprint 125 I-GET, Vespa Primavera 150 I-GET.
-                ยินดีต้อนรับสู่AutoFun! เรามีวิธีการที่หลากหลายเพื่อช่วยให้คุณตัดสินใจเลือกรถมอเตอร์ไซค์ที่คุณต้องการ คุณสามารถดูสเปกจักรยานแบบเต็ม คำวิจารณ์จากผู้เชี่ยวชาญ รูปภาพ วิดีโอ มุมมอง 360 องศา และคำวิจารณ์การทดสอบถนนจากผู้เชี่ยวชาญของเรา นอกจากนี้เรายังมีโปรโมชั่นสินเชื่อรถจักรยานยนต์และประกันภัยมอเตอร์ไซค์ที่น่าสนใจอีกมากมาย เราหวังว่าคุณจะพบรถมอเตอร์ไซค์ในฝันของคุณในประเทศไทย!
+              tin hữu ích như đánh giá của chuyên gia, đánh giá của người từng sử dụng để đưa ra sự chọn lựa thích hợp cho chính mình. . Ngoài ra bạn có thể chọn đại lý xe hai bánh gần nhất trên AutoFun và nhận báo giá.
             </span>
         </span>
-        <a class="toggle-content-btn">อ่านเพิ่มเติม</a>
+        <a class="toggle-content-btn">Đọc thêm</a>
     </div>
     <style>
         .new-cars-overview {
@@ -70,10 +69,10 @@ function newbike_overview($atts)
                 toggleButton.addEventListener('click', function() {
                     if (hiddenContent.style.display === 'none' || hiddenContent.style.display === '') {
                         hiddenContent.style.display = 'inline';
-                        toggleButton.textContent = 'ซ่อน';
+                        toggleButton.textContent = 'Ẩn';
                     } else {
                         hiddenContent.style.display = 'none';
-                        toggleButton.textContent = 'อ่านเพิ่มเติม';
+                        toggleButton.textContent = 'Đọc thêm';
                     }
                 });
             }

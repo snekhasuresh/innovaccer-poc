@@ -57,11 +57,10 @@
   }
   
   .news-thumbnail img {
-    width: 400px;
+    width: 300px;
     /* Adjust the size based on the design */
-    height: 230px;
-  
-    border-radius: 8px;
+    height: 200px;
+ 
     /* Rounded corners */
   }
   
@@ -122,6 +121,7 @@
   .news-avatar img {
     border-radius: 50%;
     height: 30px;
+	  width:30px;
     /* Makes the avatar round */
   }
   

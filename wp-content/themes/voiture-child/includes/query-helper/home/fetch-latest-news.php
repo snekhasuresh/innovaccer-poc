@@ -47,7 +47,7 @@ function fetch_single_thumbnail_news_data_from_db($args)
         $serialized_category = $required_meta[$post->ID]['news_category'][0] ?? null;
         $category_data = (is_string($serialized_category) && !empty($serialized_category)) ? unserialize($serialized_category) : [];
         $category_id = $category_data[0] ?? null;
-        $news_category = ($category_id && get_term($category_id)) ? get_term($category_id)->name : 'ข่าว';
+        $news_category = ($category_id && get_term($category_id)) ? get_term($category_id)->name : 'Tin tức';
 
         // Add post data to array
         $news_posts[] = [
@@ -83,7 +83,7 @@ function fetch_latest_news_data_from_db($args)
                 'type'    => 'DATETIME'
             )
         ),
-        'offset'         => 1,
+        'offset'         => 3,
         'meta_key'       => 'publish_time',
         'orderby'        => 'meta_value',
         'order'          => 'DESC',
@@ -121,7 +121,7 @@ function fetch_latest_news_data_from_db($args)
                 'author' => $author,
                 'content' => $content,
                 'thumbnail_url' => $thumbnail_url,
-                'post_date' => $publish_time,
+                'post_date' => date('F j, Y', strtotime($publish_time)),
                 'avatar' => $author_image_url,
                 'link'  => get_custom_post_link($news_id, ''),
                 'custom_author_link' => $custom_author_link,

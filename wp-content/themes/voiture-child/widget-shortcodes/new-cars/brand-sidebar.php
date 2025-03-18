@@ -44,7 +44,7 @@ function display_car_brands_alphabetically()
                                 $brand_logo = $brand->logo ?: 'https://via.placeholder.com/100';
                     ?>
                                 <div class="brand-item">
-                                    <a href="/mobil/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
+                                    <a href="/xe-oto/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
                                         <img src="<?= esc_url($brand_logo) ?>" alt="<?= esc_attr($brand->name) ?> logo">
                                         <span><?= esc_html($brand->name) ?></span>
                                     </a>
@@ -96,7 +96,7 @@ function render_new_cars_details($url)
 
     if (empty($selected_filters)) {
         // redirect to /cars if no filters are selected
-        wp_redirect('/cars');
+        wp_redirect('/xe-oto');
         exit;
     }
 
@@ -259,7 +259,7 @@ function show_all_cars()
     echo do_shortcode('[findnew_car_comparison]');
     echo '</div>';
 
-    echo '<h2 class="wa-title-text find-car-news-title" >The upcoming car</h2>';
+    echo '<h2 class="wa-title-text find-car-news-title" >Xe Ô Tô sắp ra mắt</h2>';
     echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px;">';
     echo do_shortcode('[upcoming_cars]');
     echo '</div>';
@@ -269,7 +269,7 @@ function show_all_cars()
     echo '</div>';
 
    	$current_year = date('Y'); // Get the current year dynamically
-	echo '<h1 class="wa-title-text find-new-cars-overview-title">New Cars in Indonesia ' . $current_year . '</h1>';
+	echo '<h1 class="wa-title-text find-new-cars-overview-title">Xe ô tô mới tại Việt Nam ' . $current_year . '</h1>';
     echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
     echo do_shortcode('[newcars_overview]');
     echo '</div>';

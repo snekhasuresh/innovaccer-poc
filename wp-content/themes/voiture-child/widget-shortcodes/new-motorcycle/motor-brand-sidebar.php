@@ -264,7 +264,7 @@ if (!function_exists('show_all_motors')) {
         echo do_shortcode('[findnew_bike_faqs_shortcode]');
         echo '</div>';
 
-        echo '<h1 class="wa-title-text find-new-cars-overview-title">รถมอเตอร์ไซค์ยอดนิยมในไทย</h1>';
+        echo '<h1 class="wa-title-text find-new-cars-overview-title">Xe máy mới phổ biến tại Việt Nam</h1>';
         echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[newbike_overview]');
         echo '</div>';

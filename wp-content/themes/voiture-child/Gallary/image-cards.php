@@ -49,7 +49,7 @@ function car_gallery_exterior_shortcode()
                 $images[] = [
                     'src' => $image->url,
                     'alt' => $post_title . ' Exterior ' . str_pad($exteriorIndex++, 3, '0', STR_PAD_LEFT),
-                    'title' => $post_title . ' ภายนอก ' . str_pad($exteriorIndex - 1, 3, '0', STR_PAD_LEFT),
+                    'title' => $post_title . ' Ngoại thất  ' . str_pad($exteriorIndex - 1, 3, '0', STR_PAD_LEFT),
                     // 'link' => '/cars/honda/hr-v/car-exterior-image-' . $exteriorIndex
                     'link' => $current_url
                 ];
@@ -63,7 +63,7 @@ function car_gallery_exterior_shortcode()
     // Start building the output
     ob_start();
 ?>
-    <h2 class="wa-title-text"><?php esc_html_e('รูปภาพภายนอก '.$post_title, 'voiture'); ?></h2>
+    <h2 class="wa-title-text"><?php esc_html_e('Hình ảnh ngoại thất '.$post_title, 'voiture'); ?></h2>
 
     <div class="gallery-list" data-total-images="<?php echo esc_attr($totalImages); ?>" data-listing-name="<?php echo esc_attr($post_name); ?>">
         <?php
@@ -82,7 +82,7 @@ function car_gallery_exterior_shortcode()
     <?php if ($totalImages > 9) : ?>
         <div class="view-more-container">
             <button class="view-more" data-offset="9" data-total="<?php echo esc_attr($totalImages); ?>">
-                ดูเพิ่มเติม
+                Xem thêm
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -156,7 +156,7 @@ function car_gallery_interior_shortcode()
                 $interior_images[] = [
                     'src' => $image->url,
                     'alt' => $post_title . ' Interior ' . str_pad($interiorIndex++, 3, '0', STR_PAD_LEFT),
-                    'title' => $post_title . ' ภายใน ' . str_pad($interiorIndex - 1, 3, '0', STR_PAD_LEFT),
+                    'title' => $post_title . '  Nội thất  ' . str_pad($interiorIndex - 1, 3, '0', STR_PAD_LEFT),
                     // 'link' => '/cars/honda/hr-v/car-interior-image-' . $interiorIndex
                     'link' => $current_url
                 ];
@@ -170,7 +170,7 @@ function car_gallery_interior_shortcode()
     // Start building the output
     ob_start();
 ?>
-    <h2 class="wa-title-text"><?php esc_html_e('รูปภาพภายใน '.$post_title, 'voiture'); ?></h2>
+    <h2 class="wa-title-text"><?php esc_html_e('Hình ảnh nội thất '.$post_title, 'voiture'); ?></h2>
 
     <div class="interior-gallery-list" id="interior-gallery">
         <?php foreach ($displayedInteriorImages as $image) { ?>
@@ -189,7 +189,7 @@ function car_gallery_interior_shortcode()
 
         <div class="interior-view-more-container">
             <button class="interior-view-more" data-offset="9" data-total="<?php echo esc_attr($totalImages); ?>">
-                ดูเพิ่มเติม
+                Xem thêm
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -297,7 +297,7 @@ function car_gallery_engineandother_shortcode()
     <?php if ($totalOtherImages > 9) : ?>
         <div class="other-img-view-more-container">
             <button class="other-img-view-more" data-offset="9" data-total="<?php echo esc_attr($totalImages); ?>">
-                ดูเพิ่มเติม
+              Xem thêm
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -376,7 +376,7 @@ function car_gallery_highlights_shortcode()
                 $images['interior'][] = [
                     'src' => $image->url,
                     'alt' => $post_title . ' Interior ' . $index,
-                    'title' => $post_title . ' ภายใน  ' . $index,
+                    'title' => $post_title . ' Nội thất   ' . $index,
                     // 'link' => '/cars/honda/hr-v/car-interior-image-' . $index
                     'link' => $current_url
                 ];
@@ -385,7 +385,7 @@ function car_gallery_highlights_shortcode()
                 $images['exterior'][] = [
                     'src' => $image->url,
                     'alt' => $post_title . ' Exterior ' . $index,
-                    'title' => $post_title . ' ภายนอก  ' . $index,
+                    'title' => $post_title . ' ngoại thất   ' . $index,
                     // 'link' => '/cars/honda/hr-v/car-exterior-image-' . $index
                     'link' => $current_url
                 ];
@@ -404,7 +404,7 @@ function car_gallery_highlights_shortcode()
     // Generate HTML output
     ob_start();
 ?>
-    <h2 class="wa-title-text"><?php esc_html_e('การดีไซน์ไฮไลท์ '.$post_title, 'voiture'); ?></h2>
+    <h2 class="wa-title-text"><?php esc_html_e('Thiết kế nổi bật '.$post_title, 'voiture'); ?></h2>
 
 
     <div class="gallery-list">

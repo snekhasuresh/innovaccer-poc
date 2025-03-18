@@ -31,7 +31,7 @@ function recommended_cars_shortcode_only()
         ob_start(); // Start output buffering to capture HTML output
 ?>
         <div class="recommended-cars-widget">
-            <h2 style="margin-bottom: 16px;" class="wa-title-text">Recommended Cars</h2>
+            <h2 style="margin-bottom: 16px;" class="wa-title-text">Các mẫu xe đề xuất</h2>
             <ul style="list-style: none; padding: 0;">
                 <?php while ($recommended_cars_query->have_posts()) : $recommended_cars_query->the_post(); ?>
                     <li style="display: flex; padding: 12px 0; border-bottom: 1px solid #e0e0e0;">

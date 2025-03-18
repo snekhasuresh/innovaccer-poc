@@ -100,7 +100,7 @@ function filter_widget()
 
     <div class="gallary-car-carousal-con ">
         <div class="container-filter-widget">
-            <h2 class="wa-title-text">รูปภาพรถยนต์ <?php echo $listing_make; ?></h3>
+            <h2 class="wa-title-text">Hình ảnh xe <?php echo $listing_make; ?></h3>
                 <div class="row">
                     <div class="">
                         <div class="carousel-filter-widget">
@@ -127,7 +127,7 @@ function filter_widget()
                                                 <span><?php echo $car['caption']; ?></span>
                                             </div>
                                             <div class="total-count">
-                                                <p><?php echo $car['total_images']; ?> รูปภาพ &#10095;</p>
+                                                <p><?php echo $car['total_images']; ?>  Hình ảnh  &#10095;</p>
                                             </div>
                                         </div>
                                     </a>

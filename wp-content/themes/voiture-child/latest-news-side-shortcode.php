@@ -7,7 +7,7 @@ function latest_news_shortcode($atts)
     ob_start();
 ?>
     <!-- Your HTML Structure for Related News -->
-    <h2 style="margin-bottom: 16px; " class="wa-title-text">Latest News</h2>
+    <h2 style="margin-bottom: 16px; " class="wa-title-text">Tin mới nhất</h2>
     <div id="buying-guide-news-container" style="list-style: none; padding: 0;">
         <?php foreach ($all_news as $news): ?>
             <?php
@@ -41,7 +41,7 @@ function latest_news_shortcode($atts)
     <!-- "View More" Button -->
     <div id="view-more-container" style="text-align: center; margin-top: 20px;">
         <a href="<?php echo home_url('/news/latest'); ?>" class="view-more">
-            View More
+          Xem thêm
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>

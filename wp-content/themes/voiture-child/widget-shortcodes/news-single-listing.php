@@ -132,6 +132,11 @@ function news_single_listing_shortcode($atts)
             }
         }
     endif;
+$translate = [
+    
+'latest' => 'Mới nhất',
+
+];
 ?>
     <div id="loader" style="display: none;">
         <i class="fas fa-spinner fa-spin"></i> Loading...
@@ -140,7 +145,7 @@ function news_single_listing_shortcode($atts)
         <!-- Tab navigation -->
         <div class="single-listing-news-tabs">
             <ul class="single-listing-tabs-nav">
-                <li class="single-listing-tab-link active" data-tab="latest">Latest</li>
+                <li class="single-listing-tab-link active" data-tab="latest"><?php echo $translate['latest']; ?></li>
                 <?php if (!empty($category_names)) :
                     $all_subcategory_ids = [];
                     foreach ($category_names as $category) :
@@ -435,14 +440,14 @@ function news_single_listing_shortcode($atts)
         }
 
         .single-listing-tab-content {
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         /* News items */
         .single-listing-news-item {
             display: flex;
             align-items: center;
-            padding: 40px 0;
+            padding: 15px 0;
         }
 
         .single-listing-news-thumbnail {
@@ -452,9 +457,8 @@ function news_single_listing_shortcode($atts)
         }
 
         .single-listing-news-thumbnail img {
-            width: 400px;
-            height: 230px;
-            border-radius: 8px;
+            width: 300px;
+            height: 200px;
         }
 
         .single-listing-news-content {
@@ -501,7 +505,7 @@ function news_single_listing_shortcode($atts)
         .single-listing-news-meta {
             display: flex;
             align-items: center;
-            margin-top: 70px;
+            margin-top: 45px;
         }
 
         .single-listing-news-author {
@@ -515,6 +519,7 @@ function news_single_listing_shortcode($atts)
         .single-listing-news-avatar {
             border-radius: 50% !important;
     		height: 30px !important;
+			width:30px !important;
         }
 
         .single-listing-news-date {

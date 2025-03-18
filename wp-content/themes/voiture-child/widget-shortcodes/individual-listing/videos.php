@@ -50,8 +50,14 @@ function individual_listing_videos_shortcode($atts, $content = null)
         }
 
         $video_query = new WP_Query($args);
-
+		
+ 		if (!$video_query->have_posts()) {
+        	return;
+    	}
 ?>
+		<div class="variants-videos-title-con">
+			<h2 class="variants-videos-title wa-title-text"><?php esc_html_e($listing_post->post_title, 'voiture'); ?> Xe Ô Tô Video</h2>
+		</div>
         <div class="single-listing-car-videos-container single-listing-carousel">
             <?php if ($video_query->have_posts()) : ?>
                 <?php while ($video_query->have_posts()) : $video_query->the_post(); ?>

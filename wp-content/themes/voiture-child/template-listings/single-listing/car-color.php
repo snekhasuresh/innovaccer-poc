@@ -46,9 +46,9 @@ function get_car_colors_data()
     <div>
         <div class=" individual-color-title-con">
             <?php if ($is_car_colors_page) : ?>
-                <h1 class="individual-color-title"><?php echo esc_html($post_title . ' Colors'); ?></h1>
+                <h1 class="individual-color-title"><?php echo esc_html(' Màu sắc ' .$post_title  ); ?></h1>
             <?php else : ?>
-                <span class="individual-color-title"><?php echo esc_html($post_title . ' Colors'); ?></span>
+                <span class="individual-color-title"><?php echo esc_html( ' Màu sắc ' .$post_title ); ?></span>
             <?php endif; ?>
         </div>
         <div class="main-color-container">

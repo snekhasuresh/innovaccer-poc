@@ -18,7 +18,12 @@ function car_gallery_shortcode()
 
     $make_slug = $global_listing_post_data['listing_make_term']->slug;
     $model_slug = $listing_post->post_name;
-    $base_url = home_url('/cars/') . $make_slug . '/' . $model_slug . '/';
+	// Remove the make name from the model slug if it exists
+	if (strpos($model_slug, $make_slug) !== false) {
+		$model_slug = trim(str_replace($make_slug, '', $model_slug), '-');
+	}
+
+    $base_url = home_url('/xe-oto/') . $make_slug . '/' . $model_slug . '/';
 
     if (empty($images)) {
         return;
@@ -42,7 +47,11 @@ function car_gallery_shortcode()
         }
     }
 
-    ob_start();
+    ob_start();$translate = [
+    
+'Change car model' => 'Đổi mẫu xe',
+
+];
 ?>
     <div class="gallery-tabs-container container">
         <div class="dropdown-container">
@@ -50,9 +59,20 @@ function car_gallery_shortcode()
             <!-- Dropdown for Switch Variants -->
             <div class="custom-dropdown">
                 <select name="car_variant" id="car_variant_dropdown" onchange="location.href = this.value;">
-                    <option value="">เปลี่ยนรุ่นรถt</option>
-                    <?php foreach ($variants as $variant): ?>
-                        <option value="<?php echo $base_url . $variant->post_name . '/gallery'; ?>">
+                    <option value=""><?php echo $translate['Change car model']; ?></option>
+                    <?php foreach ($variants as $variant): 
+						$variant_post_name = $variant->post_name;
+						// Check if make or model slug exists in the variant post_name
+						if (!empty($make_slug) && strpos($variant_post_name, $make_slug) !== false) {
+							$variant_post_name = str_replace($make_slug, '', $variant_post_name);
+						}
+
+						if (!empty($model_slug) && strpos($variant_post_name, $model_slug) !== false) {
+							$variant_post_name = str_replace($model_slug, '', $variant_post_name);
+						}
+						$variant_post_name = trim($variant_post_name, '-'); // Remove any extra hyphens
+					?>
+                        <option value="<?php echo $base_url . $variant_post_name . '/hinh-anh'; ?>">
                             <?php echo $variant->post_title; ?>
                         </option>
                     <?php endforeach; ?>
@@ -65,11 +85,11 @@ function car_gallery_shortcode()
                 <li class="nav-item">
                     <a class="nav-link <?php echo $tabName === 'Exterior' ? 'active' : ''; ?>" id="<?php echo strtolower($tabName); ?>-tab" data-toggle="tab" href="#<?php echo strtolower($tabName); ?>" role="tab" onclick="setActiveTab('<?php echo strtolower($tabName); ?>')">
                          <?php if ($tabName === 'Exterior') {
-                            echo 'ภายนอก';
+                            echo 'Ngoại thất';
                         } elseif($tabName === 'Interior'){
-		echo 'ภายใน';
+		echo ' Nội thất';
 	}else {
-                            echo 'อื่นๆ';
+                            echo '';
                         }; ?>
                     </a>
                 </li>

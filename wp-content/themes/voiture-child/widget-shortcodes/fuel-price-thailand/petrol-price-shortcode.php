@@ -147,7 +147,7 @@ function fuel_price_template_shortcode()
 
 ?>
     <div class="fuel-price-wrapper">
-        <h2 class="wa-title-text">ราคาน้ำมันวันนี้</h2>
+        <h2 class="wa-title-text">Giá Xăng Dầu Ngày Hôm Nay ở Việt Nam</h2>
         <div class="fuel-price-section">
             <?php foreach ($petrol_prices as $petrol) : ?>
                 <div class="fuel-price-item">
@@ -168,7 +168,7 @@ function fuel_price_template_shortcode()
 
 
 
-        <h2 class="wa-title-text">ราคาน้ำมันดีเซล</h2>
+        <h2 class="wa-title-text">Giá Dầu Diesel Ngày Hôm Nay ở Việt Nam</h2>
         <div class="fuel-price-section">
             <?php foreach ($diesel_prices as $diesel) : ?>
                 <div class="fuel-price-item">
@@ -187,7 +187,7 @@ function fuel_price_template_shortcode()
             <?php endforeach; ?>
         </div>
         
-        <h2 class="wa-title-text">ราคาแก๊ส</h2>
+        <h2 class="wa-title-text">Giá Dầu Hỏa Ngày Hôm Nay ở Việt Nam</h2>
         <div class="fuel-price-section">
             <?php foreach ( $gas_prices as $gas) : ?>
                 <div class="fuel-price-item">
@@ -207,19 +207,19 @@ function fuel_price_template_shortcode()
         </div>
 
         <div class="fuel-note">
-            <p>ราคาน้ำมัน ราคาน้ำมันวันนี้ของประเทศไทยสำหรับเบนซินแก๊สโซฮอล์ 95 แก๊สโซฮอล์ 91 ฯลฯและดีเซลจะอัปเดตในหน้านี้ จะประกาศการคาดการณ์ราคาล่าสุดล่วงหน้า 1 วัน(ถ้าเป็นไปได้) ตารางด้านบนแสดงราคาขายปลีกล่าสุดสำหรับเบนซินแก๊สโซฮอล์ 95 แก๊สโซฮอล์ 91 ฯลฯและดีเซลที่ที่อ้างอิงมาจากรายงานโดยสำนักนโยบายปิโตรเลียมและปิโตรเคมี หรือ สนพ. โดยมีอัปเกรทราคาน้ำมันทุกครั้งทีมีการประกาศเปลี่ยนแปลงราคาน้ำมันตอนตี 5(5:00 น.) ของวันที่มีการประกาศเปลี่ยนแปลงราคา ราคาน้ำมันในหน้านี้ทำหน้าที่เป็นการอ้างอิงเท่านั้น และไม่ถือเป็นการประกาศอย่างเป็นทางการสำหรับหน่วยงานหรือฝ่ายใด ๆ ที่เกี่ยวข้องกับการดำเนินการปรับราคาน้ำมัน autofun.co.th จะไม่รับผิดชอบต่อความเสียหายใดๆ ที่เกิดขึ้นกับคุณโดยความไม่ถูกต้อง (ถ้ามี) ของเนื้อหาที่โพสต์บนเว็บไซต์นี้</p>
+            <p>Giá xăng RON95, RON92 và dầu diesel tại Việt Nam sẽ được cập nhật tại trang này. Dự báo và dự đoán giá xăng mới nhất tuần sau sẽ được công bố vào ngày hôm trước (nếu có). Bảng trên là giá bán lẻ xăng RON95, RON92 và dầu diesel mới nhất do Tổng Công ty Dầu Việt Nam - CTCP công bố. Giá xăng dầu chính thức tại Việt Nam sẽ được công bố hàng tuần hoặc Tổng công ty Dầu Việt Nam - CTCP công bố. Giá xăng dầu trên trang này chỉ dùng tham khảo, không được coi là trang chính thức của bất kỳ cơ quan hoặc bên liên quan nào liên quan đến việc điều chỉnh giá xăng dầu. autofun.vn sẽ không chịu trách nhiệm với bạn về bất kỳ tổn thất hoặc thiệt hại nào gây ra cho bạn bởi nội dung không chính xác (nếu có) được công bố trên trang web này.</p>
         </div>
-        <h2 class="list-title"><span>ราคาน้ำมันย้อนหลัง 2566</span></h2>
+        <h2 class="list-title"><span>Bảng Lịch Sử Giá Xăng Dầu Tại Việt Nam</span></h2>
         <div class="scroll-bar" style="max-height: 519px; overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
             <div class="scroll-bar" style="max-height: 519px; overflow-y: scroll;overflow-y: scroll; scrollbar-width: none; -ms-overflow-style: none;">
                 <table style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
                     <thead>
                         <tr>
-                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0; text-align:center;">วันที่</th>
-                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">เบนซิน 95</th>
-                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">แก๊สโซฮอล์ 95</th>
-                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">แก๊สโซฮอล์ 91</th>
-                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">แก๊สโซฮอล์_E20 </th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0; text-align:center;">Giá nhiên liệu	</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">Xăng RON 95 1 lít	</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">Xăng E5 RON 92 1 lít	</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">Dầu Diesel 1 lít	</th>
+                            <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">Dầu Hỏa 1 lít </th>
                             <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">แก๊สโซฮอล์ E85</th>
                             <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">ดีเซลพรีเมี่ยม</th>
                             <th style="border: 1px solid #ddd; padding: 8px; background-color: #f2f2f2; position: sticky; top: 0;text-align:center;">ดีเซล B20</th>

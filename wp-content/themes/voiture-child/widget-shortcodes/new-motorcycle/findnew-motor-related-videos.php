@@ -30,7 +30,7 @@ function findnew_motor_videos_carousal($atts)
     if ($brand_name) {
         echo '<h2 class="wa-title-text find-new-car-video-title">วีดีโอ รถมอเตอร์ไซค์ ' . $brand_name . ' ในไทย</h2>';
     } else {
-        echo '<h2 class="wa-title-text find-new-car-video-title">วีดีโอรถมอเตอร์ไซค์ใหม่ล่าสุดในไทย</h2>';
+        echo '<h2 class="wa-title-text find-new-car-video-title">Video Xe Ô Tô</h2>';
     }
 
 ?>

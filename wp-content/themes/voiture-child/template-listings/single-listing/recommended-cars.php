@@ -40,18 +40,18 @@ function single_listing_recommended_cars()
     ));
     $formatted_related_brand_car_models = format_car_response_by_posts($related_brand_car_models, true);
 
-    $related_body_type_cars = get_posts(array(
-        'post_type' => 'listing',
-        'meta_query' => array(
-            array(
-                'key' => '_listing_type',
-                'value' => strval($listing_type_id),
-                'compare' => '='
-            ),
-        ),
-        'posts_per_page' => 10,
-    ));
-    $formatted_related_body_type_cars = format_car_response_by_posts($related_body_type_cars, true);
+//     $related_body_type_cars = get_posts(array(
+//         'post_type' => 'listing',
+//         'meta_query' => array(
+//             array(
+//                 'key' => '_listing_type',
+//                 'value' => strval($listing_type_id),
+//                 'compare' => '='
+//             ),
+//         ),
+//         'posts_per_page' => 10,
+//     ));
+//     $formatted_related_body_type_cars = format_car_response_by_posts($related_body_type_cars, true);
 
     $upcoming_cars = get_posts(array(
         'post_type' => 'listing',
@@ -63,16 +63,16 @@ function single_listing_recommended_cars()
 
     // Prepare tabs array
     $tabs = [
-        ['id' => 'recommended-multi-popular-content', 'label' => ' ยอดนิยม '],
-        ['id' => 'recommended-multi-latest-content', 'label' => ' ล่าสุด '],
-        ['id' => 'recommended-multi-RM20k-80k-content', 'label' => ' รุ่นรถ ' . $listing_make],
-        ['id' => 'recommended-multi-RMover80k-content', 'label' => $listing_type . " อันดับรถซีดาน "],
-        ['id' => 'recommended-multi-suv-content', 'label' => 'อัพเดท'],
+        ['id' => 'recommended-multi-popular-content', 'label' => ' Phổ biến '],
+        ['id' => 'recommended-multi-latest-content', 'label' => ' Mới nhất '],
+        ['id' => 'recommended-multi-RM20k-80k-content', 'label' =>  $listing_make . ' Mô hình xe '],
+//         ['id' => 'recommended-multi-RMover80k-content', 'label' => $listing_type . " Mô hình xe "],
+        ['id' => 'recommended-multi-suv-content', 'label' => 'Cập Nhật'],
 
     ];
 ?>
     <div class="recommended-multi-car-tabs">
-        <h2 class="recommended-multi-tab-heading wa-title-text">รถแนะนำสำหรับคุณ</h2>
+        <h2 class="recommended-multi-tab-heading wa-title-text">Các mẫu xe đề xuất</h2>
         <ul class="recommended-multi-tabs">
             <?php foreach ($tabs as $index => $tab): ?>
                 <li>
@@ -96,9 +96,9 @@ function single_listing_recommended_cars()
 
                 <?php display_recommendedcar_posts($formatted_related_brand_car_models); ?>
             </div>
-            <div id="recommended-multi-RMover80k-content" class="recommended-multi-tab-pane">
+<!--             <div id="recommended-multi-RMover80k-content" class="recommended-multi-tab-pane">
                 <?php display_recommendedcar_posts($formatted_related_body_type_cars); ?>
-            </div>
+            </div> -->
             <div id="recommended-multi-suv-content" class="recommended-multi-tab-pane">
                 <?php display_recommendedcar_posts($formatted_upcoming_cars); ?>
             </div>
@@ -217,7 +217,7 @@ function display_recommendedcar_posts($cars)
     }
 
     $listing_states = [
-        'On Sale' => ['label' => 'On Sale', 'color' => '#F53030'],
+        'On Sale' => ['label' => ' Nóng ', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
         'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
     ];
@@ -247,14 +247,15 @@ function display_recommendedcar_posts($cars)
                 $home_url = get_home_url();
                 $make = strtolower(str_replace(' ', '-', $listing_make));
                 $model = strtolower(str_replace(' ', '-', $post_name));
-                $base_url = $home_url . '/cars/' . $make . '/' . $model . '/';
+				$model_name = get_query_var('model');
+                $base_url = $home_url . '/xe-oto/' . $make . '/' . $model_name . '/';
 
                 // Check if the car is hot
                 $is_hot = false;
                 if (in_array($post_id, $top_car_model_ids)) {
                     $is_hot = true;
                 }
-                $state = $is_hot ? ['label' => 'Hot', 'color' => '#F53030'] : $listing_states[$listing_state];
+                $state = $is_hot ? ['label' => 'Nóng', 'color' => '#F53030'] : $listing_states[$listing_state];
             ?>
                 <div class="wa-single-car-item">
                     <a href="<?php echo esc_url($permalink); ?>" class="car-link">
@@ -271,14 +272,14 @@ function display_recommendedcar_posts($cars)
                             <p><?php echo $price; ?></p>
                         </span>
                         <span class="car-button">
-                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">View Model</a>
+                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">  Xem dòng xe </a>
                         </span>
                     </a>
 
 
                     <div class="car-variant-dropdown">
                         <div class="variant-header" onclick="toggleVariants('<?php echo esc_js($post_id); ?>')">
-                            <span class="variant-count"><?php echo $variants_count; ?> รุ่นย่อย </span>
+                            <span class="variant-count"><?php echo $variants_count; ?>   mẫu xe  </span>
                             <button class="variant-toggle" data-id="<?php echo esc_attr($post_id); ?>">
                                 <i class="fas fa-chevron-down"></i> <!-- Font Awesome down icon -->
                             </button>

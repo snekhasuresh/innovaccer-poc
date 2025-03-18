@@ -9,7 +9,7 @@ global $wpdb;
 if (get_post_type() == 'listing') {
 ?>
     <div>
-        <h2 class="title"><?php echo esc_html($post->post_title . ' Colors'); ?></h2>
+        <h2 class="title"><?php echo esc_html(' Màu sắc' .$post->post_title); ?></h2>
         <div class="car-image-gallery">
             <?php if (have_rows('color_library')):
                 $first_image_displayed = false; ?>

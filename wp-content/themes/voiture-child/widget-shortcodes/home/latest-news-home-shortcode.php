@@ -76,6 +76,9 @@ $translate = [
             .news-avatar img {
                 border-radius: 50% !important;
             }
+			.news-date {
+				margin-right:20px;
+			}
         </style>
     <?php
 

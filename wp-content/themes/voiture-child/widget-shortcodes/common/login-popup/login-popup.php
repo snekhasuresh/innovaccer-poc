@@ -25,6 +25,8 @@ function login_popup_shortcode()
     ob_start();
     $google_client_id = GOOGLE_CLIENT_ID;
     $token = isset($_COOKIE["wapcar_token"]) ? $_COOKIE["wapcar_token"] : null;
+	$login_icon_url = wp_get_attachment_image_url(32285, 'login'); 
+
 
     if (empty($token)) {
         $token = '';
@@ -38,9 +40,16 @@ function login_popup_shortcode()
         return ob_get_clean();
     }
 ?>
-    <div class="login-trigger-button">
-        <button onclick="openLoginPopup()">Sign Up / Login</button>
-    </div>
+<div class="login-trigger-button">
+    <button class="login-text" onclick="openLoginPopup()">
+        <span><?php echo 'Đăng ký/Đăng nhập'; ?></span>
+    </button>
+</div>
+<div class="login-trigger-button-icon">
+		<button class="login-icon"  onclick="openLoginPopup()">
+        <img src="<?php echo esc_url($login_icon_url); ?>" alt="Login Icon" class="login-icon" style="width: 20px; height: 20px;">
+    </button>
+</div>
 
     <div id="login-popup" class="login-popup">
         <div class="login-popup-content">
@@ -88,6 +97,28 @@ function login_popup_shortcode()
                 </p>
             </form>
         </div>
+					<style>
+	.login-trigger-button-icon {
+        display: none;
+    }
+
+    .login-icon {
+		width: 40px !important;
+		height: 29px !important;
+		background: none;
+		border: none;
+		margin-left: 39px !important;
+    }
+
+    @media (max-width: 768px) { /* Mobile view */
+        .login-trigger-button {
+            display: none;
+        }
+        .login-trigger-button-icon {
+            display: block;
+        }
+    }
+		</style>
     </div>
 <?php
     return ob_get_clean();

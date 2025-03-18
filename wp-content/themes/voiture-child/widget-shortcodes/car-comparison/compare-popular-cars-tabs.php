@@ -23,12 +23,12 @@ function compare_cars_comparison_page()
 
     // Prepare tabs array
     $tabs = [
-        ['id' => 'recommended-multi-popular-content', 'label' => 'Popular Cars'],
-        ['id' => 'recommended-multi-latest-content', 'label' => 'Latest Cars'],
+        ['id' => 'recommended-multi-popular-content', 'label' => 'Phổ biến'],
+        ['id' => 'recommended-multi-latest-content', 'label' => 'Sedan'],
     ];
 ?>
     <div class="recommended-multi-car-tabs">
-        <h2 class="recommended-multi-tab-heading wa-title-text">Compare Cars</h2>
+        <h2 class="recommended-multi-tab-heading wa-title-text">So Sánh Xe Phổ Biến</h2>
         <ul class="recommended-multi-tabs">
             <?php foreach ($tabs as $index => $tab): ?>
                 <li>

@@ -12,6 +12,13 @@ function related_model_shortcode($atts)
     );
 
     ob_start();
+$translate = [
+    
+'Related model' => 'Dòng xe liên quan',
+
+];
+
+
 ?>
     <style>
         .title {
@@ -141,7 +148,7 @@ function related_model_shortcode($atts)
         }
     </style>
     <div class="container-demo">
-        <span class="title">Related Models</span>
+        <span class="title"><?php echo $translate['Related model']; ?></span>
         <div class="card-demo">
             <div class="image-con">
                 <img src="<?php echo esc_url($atts['image_url']); ?>" alt="<?php echo esc_attr($atts['name']); ?>" class="car-image">

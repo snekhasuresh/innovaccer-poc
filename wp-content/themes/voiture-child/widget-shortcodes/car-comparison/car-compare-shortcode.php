@@ -27,9 +27,9 @@ function selects_cars_shortcode()
 {
     ob_start();
     $translate = [
-        'Compare Cars' => 'Perbandingan Mobil',
+        'Compare Cars' => 'So Sánh Xe Ô Tô',
         'Overview' => 'Overview',
-        'Select Car' => 'Pilih Mobil',
+        'Select Car' => 'Chọn ô tô',
         'Switch' => 'Beralih',
         'Specs' => 'Spesifikasi',
         'Specs Comparison' => 'Perbandingan Spek',
@@ -37,7 +37,7 @@ function selects_cars_shortcode()
     ]
 ?>
 
-    <h1 class="comparision-title wa-title-text"><?php echo $translate['Compare Cars']; ?></h1>
+    <h1 class="comparision-title wa-title-text"><?php echo $translate['So Sánh Xe Phổ Biến']; ?></h1>
     <div class="tab-container" style="display: none;">
         <button class="tab-button active" data-tab="overview"><?php echo $translate['Overview']; ?></button>
         <button class="tab-button" data-tab="specs"><?php echo $translate['Specs']; ?></button>

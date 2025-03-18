@@ -59,7 +59,7 @@ function fuel_price_news_shortcode($atts)
             }
 
             .latest-fuel-news-card img {
-                width: 100%;
+                width: 110px;
                 height: 70px;
                 object-fit: cover;
                 border-radius: 5px;

@@ -11,15 +11,29 @@ if ($post_type === 'xe-oto') {
 
     // if section is not equal to 'overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors'
     // check if variant exists with that name
-    $individual_pages = ['overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors', ''];
+    $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac', ''];
     if (!in_array($section, $individual_pages)) {
+		$listing_name = $make . '-' . $model;
+
+		// Add listing_name to the variant section if not already present
+		if (strpos($section, $listing_name) === false) {
+			$section = $listing_name . '-' . $section;
+		}
+		
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'variant',
             'posts_per_page' => 1
         ));
+	
         if (!empty($variant_post)) {
-            $section = 'overview';
+            if($variant_section === 'thong-so-ky-thuat'){
+				$section = 'thong-so-ky-thuat';
+			} elseif($variant_section === 'hinh-anh'){
+				$section = 'hinh-anh';
+			}else{
+            	$section = 'tong-quat';
+			}
             $variant_section = $variant_post[0]->post_name;
         }
     }
@@ -49,7 +63,7 @@ if ($post_type === 'xe-oto') {
                 <div id="main" class="site-main layout-blog" role="main">
                     <?php
                     switch ($section) {
-                        case 'overview':
+                        case 'tong-quat':
                             if ($variant_section) {
                                 $elementor_query = new WP_Query(array('page_id' => $variant_overview_page_id));
                                 if ($elementor_query->have_posts()) :
@@ -74,7 +88,7 @@ if ($post_type === 'xe-oto') {
                             endif;
                             break;
 
-                        case 'news':
+                        case 'tin-tuc':
                             //echo WP_CarDealer_Template_Loader::get_template_part('single-listing/news');
 
                             $elementor_query = new WP_Query(array('page_id' => $news_id));
@@ -88,7 +102,7 @@ if ($post_type === 'xe-oto') {
                             endif;
                             break;
 
-                        case 'gallery':
+                        case 'hinh-anh':
                             if ($variant_section) {
                                 $elementor_query = new WP_Query(array('page_id' => $variant_gallery_page_id));
                                 if ($elementor_query->have_posts()) :
@@ -113,7 +127,7 @@ if ($post_type === 'xe-oto') {
                             endif;
                             break;
 
-                        case 'specs':
+                        case 'thong-so-ky-thuat':
                             if ($variant_section) {
                                 $elementor_query = new WP_Query(array('page_id' => $variant_specs_page_id));
                                 if ($elementor_query->have_posts()) :
@@ -139,7 +153,7 @@ if ($post_type === 'xe-oto') {
 
                             // echo WP_CarDealer_Template_Loader::get_template_part('single-listing/spec');
                             break;
-                        case 'fuel-consumption':
+                        case 'tieu-hao-nhien-lieu':
                             $elementor_query = new WP_Query(array('page_id' => $fuel_consumption_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();
@@ -152,7 +166,7 @@ if ($post_type === 'xe-oto') {
                             // echo WP_CarDealer_Template_Loader::get_template_part('single-listing/fuel-consumption');
                             break;
 
-                        case 'colors':
+                        case 'mau-sac':
                             $elementor_query = new WP_Query(array('page_id' => $color_page_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();

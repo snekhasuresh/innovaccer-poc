@@ -69,16 +69,16 @@ function display_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
     ];
 
     $make = get_query_var('make') ? get_query_var('make') : '';
-
+	
     switch ($selected_tab) {
         case 'Tin tức':
-            $title = $make ? 'Berita Mobil ' . $listing_name . ' di Indonesia ' : $listing_name;
+            $title = $make ? 'Tin tức Xe Ô Tô ' . $listing_name . '  tại Việt Nam ' : $listing_name;
             break;
         case 'Thông số kỹ thuật':
-            $title = $selected_tab . ' ' . $listing_name;
+            $title = 'Thông số ' . $listing_name;
             break;
         case 'Hình ảnh':
-            $title = 'Gambar Interior & Eksterior ' . $listing_name;
+            $title = 'Hình ảnh nội thất và ngoại thất ' . $listing_name;
             break;
         default:
             $title = $listing_name;
@@ -86,25 +86,28 @@ function display_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
     }
 ?>
 
-    <div class="car-header">
-        <span><img src="<?php echo $make_logo_url; ?>" alt="Logo" /></span>
-        <span>
-            <h1 class="tab-car-title"><?php echo esc_html($title); ?></h1>
-        </span>
-    </div>
+  <div id="listing-tabs" class="listing-tabs">
+  		<span class="car-header container p-l-0">
+			<span><img src="<?php echo $make_logo_url; ?>" alt="Logo" /></span>
+			<span>
+				<h1 class="tab-car-title"><?php echo esc_html($title); ?></h1>
+			</span>
+		</span>
+		<section class="header-tabs">
+			<ul class="container header-tabs-container">	
+				<?php foreach ($overview_tabs as $tab) { ?>
+					<li class="">
+						<a class="header-tab <?php echo $tab['tab'] === $selected_tab ? 'active' : ''; ?>"
+						   onclick="changeTab('<?php echo $tab['url']; ?>')"
+						   href="<?php echo $tab['url']; ?>">
+							<?php echo $tab['tab']; ?>
+						</a>
+					</li>
+				<?php } ?>
+				</ul>
+			
+		</section>
 
-    <div id="listing-tabs">
-        <div class="header-tabs">
-            <?php foreach ($overview_tabs as $tab) { ?>
-                <div class="inner-container">
-                    <a class="header-tab <?php echo $tab['tab'] === $selected_tab ? 'active' : ''; ?>"
-                        onclick="changeTab('<?php echo $tab['url']; ?>')"
-                        href="<?php echo $tab['url']; ?>">
-                        <?php echo $tab['tab']; ?>
-                    </a>
-                </div>
-            <?php } ?>
-        </div>
 
         <script>
             function changeTab(tab) {

@@ -2,13 +2,6 @@
 get_header();
 $sidebar_configs = voiture_get_blog_layout_configs();
 $current_url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-if ($current_url === 'zh') {
-    $second_lang = 'my-zh';
-} elseif ($current_url === 'bm') {
-    $second_lang = 'my-my';
-} else {
-    $second_lang = '';
-}
 
 // $second_lang = get_category_status() ? '' : get_current_language();
 ?>
@@ -27,7 +20,7 @@ if ($current_url === 'zh') {
 <div class="container" style="display: flex; align-items: center; padding-bottom: 15px;">
 
     <span>
-        <h1 class="wa-title-text archive-news-latest-news">Latest News</h1>
+        <h1 class="wa-title-text archive-news-latest-news">AutoFun Tin tức</h1>
     </span>
     <span>
         <?php
@@ -56,20 +49,20 @@ if ($current_url === 'zh') {
                 $base_url = home_url() . '/zh';
                 $label = '最新';
             } else {
-                $base_url = home_url() . '/news/latest';
-                $label = 'Latest';
+                $base_url = home_url() . '/tin-tuc/moi-nhat';
+                $label = 'Mới nhất';
             }
 			
 			$url_path = $_SERVER['REQUEST_URI'];
-            if (strpos($url_path, '/news') !== false) {
-                $base_url = home_url() . '/news/latest';
-                $label = 'Latest';
+            if (strpos($url_path, '/tin-tuc') !== false) {
+                $base_url = home_url() . '/tin-tuc/moi-nhat';
+                $label = 'Mới nhất';
             }
 
             ?>
             <ul id="category-tabs" class="category-tabs  ">
                 <li
-                    class="tab-link <?php echo ($current_url == 'news/latest' || $current_url == 'bm' || $current_url == 'zh') ? 'selected' : ''; ?> <?php echo ($current_url == 'news') ? 'selected' : ''; ?>"
+                    class="tab-link <?php echo ($current_url == 'tin-tuc/moi-nhat' || $current_url == 'bm' || $current_url == 'zh') ? 'selected' : ''; ?> <?php echo ($current_url == 'tin-tuc') ? 'selected' : ''; ?>"
                     data-category="0"
                     onclick="window.location.href='<?php echo $base_url; ?>';">
                     <?php echo $label; ?>
@@ -79,11 +72,11 @@ if ($current_url === 'zh') {
                     'hide_empty' => false,
                     'parent' => 0,
                     'meta_query' => array(
-                        array(
-                            'key'     => 'second_lang',
-                            'value'   => $second_lang, // Empty value
-                            'compare' => 'IN', // Either empty or not set
-                        ),
+//                         array(
+//                             'key'     => 'second_lang',
+//                             'value'   => $second_lang, // Empty value
+//                             'compare' => 'IN', // Either empty or not set
+//                         ),
                         array(
                             'key'     => 'state',
                             'value'   => '1', // Value of the 'state' field should be 1
@@ -101,7 +94,7 @@ if ($current_url === 'zh') {
                 ));
                 foreach ($categories as $category) :
                     $category_slug = sanitize_title($category->name);
-                    $category_url = 'news/' . $category_slug;
+                    $category_url = 'tin-tuc/' . $category_slug;
                     $is_selected = ($current_url == $category_url) ? 'selected' : '';
                 ?>
                     <li class="tab-link <?php echo $is_selected; ?>"
@@ -127,7 +120,7 @@ if ($current_url === 'zh') {
     <div id="loader" class="loader">
         <i class="spinner"></i>
     </div>
-    <input type="hidden" name="parent-category" id="selected-category-id" value=""></input>
+    <input type="hidden" name="parent-category" id="selected-category-id" value="" />
 </section>
 <section id="main-container" class="main-content <?php echo apply_filters('voiture_blog_content_class', 'container'); ?> inner">
     <?php voiture_before_content($sidebar_configs); ?>
@@ -154,7 +147,7 @@ if ($current_url === 'zh') {
                 </div>
                 <div class="view-more" style="display: flex; justify-content:center; text-align: center;">
                     <a href="#" id="load-more-link" style="display:none; text-decoration:none; color:#576b95; display:block; text-align:center; margin:20px 0;font-weight:600;">
-                        ดูเพิ่มเติม <i class="fas fa-chevron-down" style="margin-left:5px;"></i>
+                        Xem thêm <i class="fas fa-chevron-down" style="margin-left:5px;"></i>
                     </a>
                     <div id="loader" style="display:none; margin:20px 0;">
                         <i class="fas fa-spinner fa-spin" style="font-size:20px; color:#576b95 ;"></i>
@@ -165,7 +158,9 @@ if ($current_url === 'zh') {
         <!-- <h3> Popular Models</h3> -->
         <div class="col-sm-12 col-md-4 col-lg-3 col-xs-12 recommended-cars-wrapper">
             <?php echo do_shortcode('[recommended_cars]'); ?>
-            <?php echo do_shortcode('[popular_car_videos]'); ?>
+            <?php 
+// 			echo do_shortcode('[popular_car_videos]'); 
+			?>
 			<?php echo do_shortcode('[dynamic_ad_unit ad_id="VN_News_Sidebar_End_PC"]'); ?>
         </div>
     </div>
@@ -183,7 +178,7 @@ if ($current_url === 'zh') {
     </script>
 
     <?php echo do_shortcode('[elementor-template id="4891"]'); ?>
-    <?php echo do_shortcode('[elementor-template id="727006"]'); ?>
+    <?php echo do_shortcode('[elementor-template id="31611"]'); ?>
 </section>
 <style>
     .recommended-cars-wrapper {

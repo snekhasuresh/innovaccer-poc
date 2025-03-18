@@ -76,8 +76,8 @@ function car_image_gallery_shortcode()
             $capacity = $variant_meta['capacity'][0];
         }
 
-        if (isset($variant_meta['seats'][0])) {
-            $seats = $variant_meta['seats'][0];
+        if (isset($variant_meta['fuel_type'][0])) {
+            $fuel_type = $variant_meta['fuel_type'][0];
         }
 
         if (isset($variant_meta['transmission'][0])) {
@@ -97,67 +97,67 @@ function car_image_gallery_shortcode()
     $transmissions = array_unique($transmissions);
     // Transmission or Motor Output
     if (!empty($transmissions)) {
-        $transmission_label = 'ประเภทการส่งกำลัง';
+        $transmission_label = 'Hộp số';
         $transmission_display = implode(', ', $transmissions);
     } elseif (!empty($motor_output)) {
         $transmission_label = 'Motor Output';
         $transmission_display = $motor_output . ' PS';
     } else {
-        $transmission_label = 'ประเภทการส่งกำลัง';
+        $transmission_label = 'Hộp số';
         $transmission_display = '-';
     }
 
     // Capacity or EV Range
     if (!empty($capacity)) {
-        $capacity_label = 'ความจุ';
+        $capacity_label = 'Dung tích';
         $capacity_display = $capacity . ' L';
     } elseif (!empty($ev_range)) {
         $capacity_label = 'EV Range';
         $capacity_display = $ev_range . ' km';
     } else {
-        $capacity_label = 'ความจุ';
+        $capacity_label = 'Dung tích';
         $capacity_display = '- L';
     }
 
     // Horsepower or Battery Capacity
     if (!empty($horsepower)) {
-        $horsepower_label = 'แรงม้า';
+        $horsepower_label = 'Công suất cực đại';
         $horsepower_display = $horsepower . ' PS';
     } elseif (!empty($battery_capacity)) {
         $horsepower_label = 'Batery Capacity';
         $horsepower_display = $battery_capacity . ' kWh';
     } else {
-        $horsepower_label = 'แรงม้า';
+        $horsepower_label = 'Công suất cực đại';
         $horsepower_display = '- PS';
     }
     $specs = array(
-        'เซ็กเมนต์' => $segment,
-        'ประเภทของร่างกาย' => $body_type->name,
-        $transmission_label => $transmission_display,
-        $capacity_label => $capacity_display,
+		'Loại cơ thể' => $body_type->name,
+        'phân đoạn' => $segment,
+		$capacity_label => $capacity_display,
         $horsepower_label => $horsepower_display,
-        'ที่นั่ง' => $seats,
+        $transmission_label => $transmission_display,
+        'Loại năng lượng' => $fuel_type,
     );
 
     $make = $global_listing_post_data['listing_make_term']->name;
     $model = $global_listing_post->post_title;
     add_car_json_ld($make, $model, $specs);
 
-    $segment_icon = wp_get_attachment_image_url(355928, 'Segment');
-    $Body_Type_icon = wp_get_attachment_image_url(355926, 'body type');
-    $Transmission = wp_get_attachment_image_url(355924, 'Transmission');
-    $Capacity = wp_get_attachment_image_url(355925, 'Capacity');
-    $Horsepower = wp_get_attachment_image_url(355929, 'horse power');
-    $Seats = wp_get_attachment_image_url(355927, 'seat');
+    $segment_icon = wp_get_attachment_image_url(32256, 'Segment');
+    $Body_Type_icon = wp_get_attachment_image_url(32254, 'body type');
+    $Transmission = wp_get_attachment_image_url(32252, 'Transmission');
+    $Capacity = wp_get_attachment_image_url(32253, 'Capacity');
+    $Horsepower = wp_get_attachment_image_url(32259, 'horse power');
+    $fuel_type = wp_get_attachment_image_url(32260, 'seat');
 
 
     $icons = [
-        'เซ็กเมนต์' => $segment_icon,
-        'ประเภทของร่างกาย' => $Body_Type_icon,
+		'Loại cơ thể' => $Body_Type_icon,
+        'phân đoạn' => $segment_icon,
+		$capacity_label     => $Capacity,
+		$horsepower_label   => $Horsepower,
         $transmission_label => $Transmission,
-        $capacity_label     => $Capacity,
-        $horsepower_label   => $Horsepower,
-        'ที่นั่ง'       => $Seats,
+        'Loại năng lượng'       => $fuel_type,
     ];
 
     ob_start();
@@ -219,7 +219,6 @@ function car_image_gallery_shortcode()
                     // Process the images data
                     foreach ($imagesdata as $image) {
                         $imageDataArray = json_decode($image->image_data);
-
                         if ($imageDataArray) {
                             foreach ($imageDataArray as $imgData) {
                                 // Store one image for Interior and one for Exterior
@@ -227,20 +226,20 @@ function car_image_gallery_shortcode()
                                     $galleryImages['Exterior'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Exterior",
-                                        "text" => "ภายนอก"
+                                        "text" => " Ngoại thất"
                                     ];
                                 } elseif ($image->type === "Interior" && $galleryImages['Interior'] === null) {
                                     $galleryImages['Interior'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Interior",
-                                        "text" => "ภายใน"
+                                        "text" => "Nội thất"
                                     ];
                                 }
                                 if ($image->type === "Others" && $galleryImages['Others'] === null) {
                                     $galleryImages['Others'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Gallery",
-                                        "text" => $totalImageCount++ . " แกลเลอรี่",
+                                        "text" => $totalImageCount++ . " hình ảnh",
                                     ];
                                     // $backgroundImageUrl = $imgData->url;
                                 }
@@ -249,12 +248,18 @@ function car_image_gallery_shortcode()
                             }
                         }
                     }
-
+					if ($galleryImages) {
+                        $galleryImages[] = [
+                            "url" => $imgData->url,
+                            "alt" => "images",
+                            "text" => $totalImageCount . " hình ảnh",
+                        ];
+                    }
                     // Display the images for Interior and Exterior
                     foreach ($galleryImages as $image):
                         if ($image): // Check if the image exists
                     ?>
-                            <a href="<?php echo get_permalink($post_id) . 'gallery/'; ?>" target="_blank" class="thumbnail-link">
+                            <a href="<?php echo get_permalink($post_id) . 'hinh-anh/'; ?>" target="_blank" class="thumbnail-link">
                                 <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="thumbnail-gal-individual">
                                 <span class="image-text"><?php echo $image['text']; ?></span> <!-- Text on the thumbnail -->
                             </a>
@@ -271,7 +276,7 @@ function car_image_gallery_shortcode()
                 <div style="margin-top: -10px;">
                     <div class="price-range"><?php echo $price; ?></div>
 
-                    <span class="widget-title"><?php esc_html_e('สเปค '.$post_title, 'voiture'); ?></span>
+                    <span class="widget-title"><?php esc_html_e(' Thông số kỹ thuật '.$post_title, 'voiture'); ?></span>
 
                     <div class="specs-container">
                         <?php foreach ($specs as $key => $value) : ?>
@@ -294,8 +299,8 @@ function car_image_gallery_shortcode()
                     </div>
 
                     <div class="buttons-container-spec">
-                        <button class="view-specs-button"><a href="<?php echo get_permalink($post_id) . 'specs'; ?>"> เช็คสเปค <?php echo $post_title ?></a></button>
-                        <button class="trade-in-button"><a href="<?php echo home_url('/book-test-drive') . '/?make=' . urlencode($make) . '&model=' . urlencode($model); ?>">ขายรถคันเดิมเพื่อแลกกับคันนี้ </a></button>
+                        <button class="view-specs-button"><a href="<?php echo get_permalink($post_id) . 'thong-so-ky-thuat'; ?>"> Xem thông <?php echo $post_title ?></a></button>
+<!--                         <button class="trade-in-button"><a href="<?php echo home_url('/book-test-drive') . '/?make=' . urlencode($make) . '&model=' . urlencode($model); ?>">ขายรถคันเดิมเพื่อแลกกับคันนี้ </a></button> -->
                     </div>
 
                 </div>

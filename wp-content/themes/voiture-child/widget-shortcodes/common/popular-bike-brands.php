@@ -57,7 +57,7 @@ function display_popular_bike_brands()
     // }
 
 ?>
-    <h2 class="car-brands-title wa-title-text"><?php echo esc_html__('แบรนด์รถมอเตอร์ไซค์ยอดนิยมในไทย', 'voiture'); ?></h2>
+    <h2 class="car-brands-title wa-title-text"><?php echo esc_html__('Hãng Xe máy phổ biến ở Việt Nam', 'voiture'); ?></h2>
 
     <div class="car-brands">
         <?php foreach ($sorted_brands as $brand):
@@ -77,7 +77,7 @@ function display_popular_bike_brands()
     </div>
 
     <div class="view-more-container">
-        <a href="<?php echo esc_url(home_url('/motorcycles')); ?>" class="view-more-button"><?php echo esc_html__('ดูเพิ่มเติม', 'voiture'); ?> <span>&#8250;</span></a>
+        <a href="<?php echo esc_url(home_url('/motorcycles')); ?>" class="view-more-button"><?php echo esc_html__('xem thêm', 'voiture'); ?> <span>&#8250;</span></a>
     </div>
 <?php
 

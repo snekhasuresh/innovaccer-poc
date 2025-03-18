@@ -59,22 +59,49 @@ function mega_gallery_shortcode()
         return ''; // No valid images found, return nothing
     }
 
+	// Get count for each type
+    $imageCounts = array_map('count', $images);
+
+    // Process each type of image
+    foreach ($images as $type => $imageGroup) {
+        // Determine the label
+        $label = isset($labels[$type]) ? $labels[$type] : ucfirst($type);
+        // Format the count for this image type
+        $count = count($imageGroup);
+        $formattedCounts[] = " {$count} hình ảnh {$label}";
+    }
+
+    // Get total count
+    $totalCount = array_sum($imageCounts);
+    $current_year = date("Y");
+	
+	// Format the description
+	$description = sprintf(
+		'%s %s có %d hình ảnh, trong đó có %s và các ảnh khác. Cùng xem đa góc nhìn phía trước, phía sau, bên hông và đầu xe của %s %s mới tại đây.',
+		$post_title,
+		$current_year,
+		$totalCount,
+		implode(', ', $formattedCounts),
+		$post_title,
+		$current_year
+	);
+	
     ob_start();
 ?>
     <div class="mega-gal-con">
-        <span class="mega-gallary-title wa-title-text"><?php esc_html_e('รูปภาพ '.$post_title, 'voiture'); ?></span>
+        <span class="mega-gallary-title wa-title-text"><?php esc_html_e('Hình ảnh '.$post_title, 'voiture'); ?></span>
         <div class="gallary-des">
-            <span><?php esc_html_e( $post_title . '2025 มีรูปภาพและรูปถ่ายทั้งหมด 333 รูป รวมรูปภาพ & รูปถ่ายภายใน 142 รูป รูปภาพ & รูปถ่ายภายนอก 159 รูป รูปเครื่องยนต์และทอื่นๆ 32 รูป ชมมุมมองด้านหน้า มุมมองด้านหลัง ด้านข้างและมุมมองด้านบนของ' . $post_title . ' 2025 รุ่นใหม่ได้ที่นี่.', 'voiture'); ?> </span>
+             <span><?php esc_html_e($description, 'voiture'); ?></span>
         </div>
         <div class="custom-tabs-header-gallary">
             <button class="custom-tab-btn-gallary custom-tab-active-gallary" data-tab="exterior">
-                ภายนอก 
+                Ngoại thất
             </button>
             <button class="custom-tab-btn-gallary " data-tab="interior">
-                 ภายใน 
+                 Nội thất
             </button>
             <button class="custom-tab-btn-gallary " data-tab="others">
-                 อื่นๆ 
+<!--                  อื่นๆ  -->
             </button>
         </div>
 

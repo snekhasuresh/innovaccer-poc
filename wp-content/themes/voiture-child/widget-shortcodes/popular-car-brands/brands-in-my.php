@@ -55,9 +55,16 @@ function display_popular_car_brands()
             set_transient($cache_key, $sorted_brands, HOUR_IN_SECONDS);
         }
     }
+$translate = [
+    
+'Famous Car Brands' => 'Hãng Xe Ô Tô phổ biến ở Việt Nam',
+
+];
+
+
 
 ?>
-    <h2 class="car-brands-title wa-title-text"><?php echo esc_html__('Famous Car Brands in Indonesia', 'voiture'); ?></h2>
+    <h2 class="car-brands-title wa-title-text"> <?php echo $translate['Famous Car Brands']; ?></h2>
 
     <div class="car-brands">
         <?php foreach ($sorted_brands as $brand):
@@ -65,7 +72,7 @@ function display_popular_car_brands()
             $logo_url = get_term_meta($brand->term_id, 'listing_make_image', true);
         ?>
             <div class="car-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="<?php echo esc_url(home_url('/cars/' . $brand->slug)); ?>" class="brand-link">
+                <a href="<?php echo esc_url(home_url('/xe-oto/' . $brand->slug)); ?>" class="brand-link">
                     <?php if ($logo_url): ?>
                         <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($brand->name); ?> logo" class="brand-logo">
                     <?php endif; ?>
@@ -77,7 +84,7 @@ function display_popular_car_brands()
     </div>
 
     <div class="view-more-container">
-        <a href="<?php echo esc_url(home_url('/cars')); ?>" class="view-more-button"><?php echo esc_html__('See More', 'voiture'); ?> <span>&#8250;</span></a>
+        <a href="<?php echo esc_url(home_url('/xe-oto')); ?>" class="view-more-button"><?php echo esc_html__('Xem thêm', 'voiture'); ?> <span>&#8250;</span></a>
     </div>
 <?php
 

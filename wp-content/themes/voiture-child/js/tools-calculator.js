@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
     // Clear previous data from dropdown menus
     $tab.find(".model-menu").empty();
     $tab.find(".variant-menu").empty();
-    $tab.find("#select-cars").text("กรุณาเลือกรถของคุณ");
+    $tab.find("#select-cars").text("Chọn xe của bạn");
 
     // Handle clicks on brand items
     $tab.on("click", ".brand-data", function (e) {

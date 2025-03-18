@@ -5,19 +5,31 @@ function car_loan_data($atts)
 {
     $current_year = date('Y');
     $loan_data = [
-        ['bank_name' => 'Bank Bukopin', 'interest_rate' => '6,78%'],
-        ['bank_name' => 'OCBC NISP', 'interest_rate' => '4,9%'],
-        ['bank_name' => 'Panin Bank', 'interest_rate' => '4,25%'],
-        ['bank_name' => 'Mandiri', 'interest_rate' => '4,95%'],
-//         ['bank_name' => 'Hong Leong Bank', 'interest_rate' => '3.24% p.a.'],
-//         ['bank_name' => 'Maybank', 'interest_rate' => '3.4% p.a.'],
+        ['bank_name' => 'Techcombank', 'interest_rate' => '6.7%/năm'],
+        ['bank_name' => 'VPBank', 'interest_rate' => '6.8%/năm'],
+        ['bank_name' => 'MBBank', 'interest_rate' => '6.6%/năm'],
+        ['bank_name' => 'TPBank', 'interest_rate' => '7.3%/năm'],
+        ['bank_name' => 'VIB', 'interest_rate' => '7.4%/năm'],
+        ['bank_name' => 'OCB', 'interest_rate' => '8%/năm'],
+        ['bank_name' => 'Shinhan', 'interest_rate' => '6%/năm'],
+        ['bank_name' => 'SHB', 'interest_rate' => '7.49%/năm'],
+        ['bank_name' => 'SCB', 'interest_rate' => '7.9%/năm'],
+        ['bank_name' => 'LienVietPostBank', 'interest_rate' => '8%/năm'],
+        ['bank_name' => 'HongLeong', 'interest_rate' => '7.29%/năm'],
+        ['bank_name' => 'BaoVietBank', 'interest_rate' => '6.99%/năm'],
+        ['bank_name' => 'HDBank', 'interest_rate' => '7.9%/năm'],
+        ['bank_name' => 'Bac A Bank', 'interest_rate' => '6.39%/năm'],
+        ['bank_name' => 'MSB', 'interest_rate' => '6.99%/năm'],
+        ['bank_name' => 'PVcomBank', 'interest_rate' => '6.49%/năm'],
+		
+		
     ];
 ?>
-    <h2 class="wa-title-text">Public Bank Car Loan Interest Rate <?php echo $current_year; ?></h2>
+    <h2 class="wa-title-text">Lãi Suất Mua Xe Trả Góp <?php echo $current_year; ?></h2>
     <div class="loan-data-container">
         <div class="loan-data-row loan-data-header">
-            <div class="loan-data-label">Bank Name</div>
-            <div class="loan-data-value">Interest Rate</div>
+            <div class="loan-data-label">Ngân Hàng</div>
+            <div class="loan-data-value">Lãi suất</div>
         </div>
         <?php
         // Loop through the array to display the data
@@ -105,120 +117,17 @@ function car_payment_faqs()
     // FAQ data
    $faqs = [
     [
-        'question' => 'Apa itu Kredit Mobil?',
-        'answer' => 'Kredit mobil adalah cara membeli mobil dengan metode pembayaran dicicil atau diangsur. Metode kredit mobil ini bisa dilakukan untuk pembelian mobil baru maupun mobil bekas dari lembaga pembiayaan, seperti leasing dan lembaga perbankan.
-Opsi kredit mobil bisa menjadi pilihan ketika kamu tidak memiliki dana yang cukup ketika harus membeli mobil. Produknya biasanya berupa kredit kendaraan bermotor (KKB).'
+        'question' => 'Mua xe ô tô trả góp phải trả trước bao nhiêu tiền?',
+        'answer' => 'Thông thường bạn sẽ phải trả trước tối thiểu 10% đến 30% trên tổng giá trị của chiếc xe.'
     ],
     [
-        'question' => 'Bagaimana cara kerja kredit mobil di Indonesia?',
-        'answer' => 'Biasanya ada dua pilihan, yaitu leasing dan lembaga perbankan.
-
-Baik bank maupun leasing memang akan memiliki konsep dan peran yang sama untuk menyediakan dana talangan saat Anda ingin memiliki mobil tapi tidak mempunyai dana yang cukup untuk membayar kontan. Bank atau leasing ini akan membayarkan dahulu sebagian dari harga mobil yang diinginkan, kemudian secara berkala Anda akan membayar hutang dengan cicilan tiap bulan.
-Selain cara kerja yang sama seperti yang disebutkan sebelumnya, persamaan kredit antara bank dan leasing adalah sama-sama mensyaratkan DP minimal 30% dari harga jual mobil yang sudah disepakati antara penjual dan pembeli.
-Ketentuan ini sendiri telah diatur oleh Bank Indonesia yang tercantum dalam Surat Edaran Ekstern Nomor 14/10/DPNP yang menetapkan uang muka minimal 30% untuk pembelian kendaraan bermotor roda empat non produktif.'
+        'question' => 'Mua xe ô tô trả góp có cần chứng minh thu nhập không?',
+        'answer' => 'Người vay Bắt Buộc phải chứng minh thu nhập khi muốn mua xe trả góp.'
     ],
     [
-        'question' => 'Berapa jumlah kredit yang bisa saya dapatkan?',
-        'answer' => 'Perhitungan angsuran pinjaman berdasar harga kendaraan bermotor. Untuk uang muka biasanya bank mensyaratkan minimal 30% dari harga mobil. Untuk bunga, biasanya bank menggunakan perhitungan bunga flat. Bunga flat kelihatannya kecil, namun bila dikonversi ke bunga efektif bisa jadi sangat besar.'
+        'question' => 'Có nên mua xe ô tô trả góp không?',
+        'answer' => 'Nếu bạn có thể mua ngay thì không cần nghĩ đến việc mua xe trả góp. Nếu bạn không đủ tiền và đủ khả năng trả nợ, bạn có thể cân nhắc mua xe trả góp.'
     ],
-    [
-        'question' => 'Apakah mengajukan kredit mobil dapat menpengaruhi nilai kredit Anda?',
-        'answer' => 'Tidak, mengajukan kredit mobil tidak akan menpengaruhi nilai kredit Anda asal Anda membayar cicilan tiap bulan tepat waktu dan jumlah. Selain itu, kalau Anda bisa bayar cicilan dengan lancar, ini mungkin bisa membantu menambah nilai kreditmu. Pada masa depan kalau kamu mau meminjam uang dari bank akan menjadi semakin gampang. '
-    ],
-    [
-        'question' => 'Bank mana yang memberikan kredit mobil terbaik?',
-        'answer' => 'Berikut beberapa pilihan tempat untuk kredit mobil paling murah yang bisa membantu kita menemukan tempat kredit yang tepat.
-
-a. Bank Bukopin KKB
-
-b. Berdasarkan berbagai sumber yang dikumpulkan, Bank Bukopin merupakan penyedia kredit mobil yang paling murah. Dengan membayarkan DP minimum 30% dan suku bunga 4% per tahun, kita sudah bisa memiliki mobil baru maupun bekas. Jangka waktu yang berlaku hingga 5 tahun.
-
-c. Panin Bank KPM
-KPM Panin memberikan fasilitas kredit dengan sistem pinjaman. Persyaratan yang berlaku di bank ini cukup fleksibel serta mudah. Hanya dengan mengeluarkan down payment sebesar 30% dan suku bunga hanya 4,15% per tahun, mobil idaman kita sudah bisa dibawa pulang. Jangka waktu pinjamannya hingga 5 tahun.
-
-d. Bank Jasa Jakarta KPM Pribadi
-Agak berbeda dari sebelumnya, Bank Jasa Jakarta KPM Pribadi ini menerapkan suku bunga sebesar 4,20% per tahun dengan uang muka minimal sebesar 30%. Lebih istimewanya lagi, bank ini tidak menerapkan sistem penalti kalau kita ingin melakukan pelunasan di awal.
-
-e. Bank Jasa Jakarta KPM In Advance
-Bank Jasa Jakarta KPM In Advance akan membantu kita dalam mewujudkan impian untuk mendapatkan mobil baru dengan suku bunga sebesar 4,48% per tahun dan DP minimum 30%. Hal ini berlaku untuk kredit mobil pribadi maupun niaga.
-
-f. BRI KKB Mobil
-Dari pihak BRI KKB menawarkan pinjaman dana untuk kredit mobil baru ataupun bekas dengan persyaratan yang cukup mudah, cepat dan dilengkapi juga dengan fasilitas asuransi kendaraan. DP yang harus kita bayar hanya sebesar 25%, dengan beban suku bunga sebesar 4,99% per tahun dan tenor hingga 5 tahun.
-
-g. CIMB Niaga KPM Smart Reguler
-Kredit mobil idaman kita dapat diwujudkan dengan meminjam dana dari CIMB Niaga KPM. Dengan suku bunga yang ringan sebesar 5,55% per tahun dan down payment minimal 25%, serta persyaratan pengajuan yang cukup mudah akan semakin mendekatkan impian kita untuk mempunyai sebuah mobil baru. Di sini ada beragam masa tenor yang bisa kita pilih.
-
-h. Bank OCBC-NISP KPM
-Kita dapat menikmati kemudahan pengajuan pinjaman untuk kredit mobil hingga nominal 2 milyar rupiah. Dengan proses pengajuannya yang tidak sulit, kita bisa langsung mengendarai mobil idaman dengan DP sebesar 30% dan suku bunga sebesar 5,99% per tahun. Pihak Bank menyediakan beberapa varian tenor yang dapat disesuaikan dengan kebutuhan kita.
-
-i. OTO Multiartha KPM
-Perusahaan bidang otomotif yang satu ini, menyediakan fasilitas kredit dengan menawarkan suku bunga sebesar 8,25% per tahun dan juga uang muka sebesar 30%. Pelayanannya pun ramah, fleksibel dan mudah memanjakan kita sebagai konsumen.
-
-j. BCA Finance KPM
-BCA Finance KPM memberikan berbagai kemudahan buat kita untuk kredit mobil baru, hanya dengan minimum DP 30% dan suku bunganya sekitar 15% per tahun. Di sini tersedia juga kredit untuk mobil bekas dengan kualitas yang masih gres. Masa tenornya hingga 6 tahun. Yang lebih oke lagi, persyaratan pengajuannya mudah, cepat dan sistematis.'
-    ],
-    [
-        'question' => 'Membeli mobil melalui mendaftar kredit mobil atau bayar sekaligus?',
-        'answer' =>  "Keuntungan Membeli Mobil Secara Kredit:
-
-a. Bila Untuk Tujuan Produktif, bisa Menambah Perputaran Modal. Dengan membeli kredit, tentu tak perlu membayar keseluruhan harga. Cukup dengan memberikan DP, sisanya bisa diangsur. 
-
-b. Secara Psikologis ada Kesan Ringan. Ada kesan bahwa mencicil lebih ringan dibandingkan membayar langsung secara tunai.
-
-c. Faktor Kecepatan Menjadi Salah Satu Alasan. Bagi sebagian orang, keinginan untuk segera memiliki sebuah mobil bisa jadi berubah jadi kebutuhan. Lewat leasing atau kredit cukup dengan membayar DP dan melengkapi persyaratan saja, sebuah mobil bisa langsung dikendarai.
-
-d. Tak Perlu Membayar Total Harga Keseluruhan. Mengeluarkan uang sekali dengan besaran ratusan juta jelas akan mengurangi kemampuan ekonomi dalam satu waktu.
-
-Kerugian Membeli Mobil Secara Kredit:
-
-a. Menjadi Beban Keuangan Tambahan. Membeli apapun dengan cara kredit, termasuk mobil sekalipun tentu menghadirkan beban  tersendiri. Sebab meski mobil idaman sudah dimiliki, tapi ini belum sepenuhnya menjadi milik pribadi. 
-
-b. Menambah Utang, secara Tidak Langsung. Dari segi ekonomi, keuangan yang sehat adalah bebas dari utang. Mencicil mobil sebenarnya sama saja dengan menambah beban utang yang muncul dari setiap angsuran pembayaran mobil tersebut.
-
-c. Bila Bunga Tinggi dan Kondisi Sosio Politik Tidak Stabil maka Beban akan Semakin Besar. Di mana kondisi perkreditan sangat terkait dengan kestabilan perbankan dalam negeri. Pada saat yang sama bila muncul hal yang mengguncang kondisi sosio politik dalam negeri tentu bisa saja kredit mobil yang sedang berjalan turut terdampak. Setidaknya imbas yang paling mungkin adalah bila terjadi kenaikan suku bunga kredit.
-
-Bayar sekaligus
-
-Beli Mobil Tunai, Bebas Dari Beban Utang, Bahkan Ada DiskonJika mampu membeli mobil secara tunai, sebaiknya Anda tidak perlu mengambil kredit kendaraan. Jangan tergoda untuk membeli banyak produk namun secara kredit. Lebih baik Anda fokus membeli secara tunai produk yang memang Anda butuhkan. Beberapa keuntungan membeli mobil secara tunai berikut ini bisa menjadi motivasi tersendiri bagi Anda untuk tidak tergoda membeli mobil secara kredit.
-
-a. Bebas Beban, Mudah Untuk Diuangkan Kembali.
-
-b. Hindari Shock Therapy, dengan Tidak ada Suku Bunga Menanjak.
-
-c. Beberapa Dealer Punya Program Diskon untuk Pembelian secara Tunai."
-    ],
-//     [
-//         'question' => 'Balloon Payment คืออะไร?',
-//         'answer' => 'การผ่อนแบบ Balloon คือ การลดภาระเงินต้นครึ่งหนึ่ง เช่น กู้เงิน 500,000 บาท แบงก์จะให้ชำระเพียง 250,000 บาทก่อน และงวดสุดท้ายต้องจ่ายส่วนที่เหลือ  
-
-// เหมาะกับรถที่มีราคาขายต่อสูง หรือบริษัทที่ต้องการเปลี่ยนรถใหม่ทุกครั้งที่ครบสัญญา'
-//     ],
-//     [
-//         'question' => 'ต่อประกันรถยนต์รายปีอย่างไร?',
-//         'answer' => 'บริษัทไฟแนนซ์จะเก็บเงินค่าประกันภัยปีละครั้ง หากต้องการเปลี่ยนบริษัทประกัน ต้องแจ้งไฟแนนซ์และดำเนินการด้วยตนเอง'
-//     ],
-//     [
-//         'question' => 'ต่อภาษีรถยนต์รายปีอย่างไร?',
-//         'answer' => 'เล่มทะเบียนรถจะอยู่กับไฟแนนซ์จนกว่าผ่อนครบ ดังนั้นบริษัทไฟแนนซ์จะเป็นผู้ดำเนินการต่อภาษีรถให้ และเรียกเก็บค่าภาษีจากเราทุกปี'
-//     ],
-//     [
-//         'question' => 'ประกันชีวิตจำเป็นหรือไม่?',
-//         'answer' => 'การทำประกันชีวิตระหว่างผ่อนรถเป็นทางเลือกเสริม ไม่บังคับ หากเลือกทำจะช่วยคุ้มครองหากเกิดอุบัติเหตุหรือเสียชีวิต โดยประกันจะช่วยชำระค่างวดที่เหลือ'
-//     ],
-//     [
-//         'question' => 'ขาดผ่อนรถได้กี่เดือน?',
-//         'answer' => 'หากขาดผ่อน 3 เดือนติดต่อกัน จะมีช่วงเวลา 30 วันในการติดตามหนี้ หากยังไม่ชำระ รถจะถูกยึดและเครดิตเสียทันที'
-//     ],
-//     [
-//         'question' => 'สามารถคืนรถระหว่างผ่อนชำระได้หรือไม่?',
-//         'answer' => 'หากไม่สามารถผ่อนต่อได้ ควรเจรจากับบริษัทไฟแนนซ์เพื่อปรับโครงสร้างหนี้ หากคืนรถ ไฟแนนซ์จะนำไปขาย หากราคาขายต่ำกว่ายอดหนี้ที่เหลือ เราต้องชดเชยส่วนต่าง'
-//     ],
-//     [
-//         'question' => 'รีไฟแนนซ์คืออะไร?',
-//         'answer' => 'รีไฟแนนซ์คือการขอลดค่างวดโดยขยายระยะเวลาผ่อน เช่น เหลือ 30 งวด ผ่อนเดือนละ 10,000 บาท หากรีไฟแนนซ์เป็น 48 งวด จะเหลือเดือนละ 6,250 บาท  
-
-// ทั้งนี้ ควรศึกษารายละเอียดของแต่ละธนาคารก่อนตัดสินใจ'
-//     ]
 ];
 
 
@@ -229,7 +138,7 @@ c. Beberapa Dealer Punya Program Diskon untuk Pembelian secara Tunai."
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7h6p3+NFldf3NOK5GT6Z3F68b9cJ2+Qp8V3b" crossorigin="anonymous" />
 
-    <h2 class="wa-title-text">FAQ Kredit Mobil dan Cicilan Mobil</h2>
+    <h2 class="wa-title-text">Câu Hỏi Thường Gặp về Mua Xe Trả Góp</h2>
 
     <div class="car-payment-faq-container">
         <?php foreach ($faqs as $faq): ?>
@@ -346,40 +255,37 @@ function car_loan_intro_shortcode()
     ob_start();
 ?>
 <div class="intro-section">
-        <h2 class="wa-title-text">Buying a Car and Applying for a Loan</h2>
+        <h2 class="wa-title-text">Mua Xe Trả Góp - Bảng Tính Chi Phí Mua Xe Ô Tô Trả Góp</h2>
         <div class="content-box">
-            <h4>Buying a car and applying for a loan: an easy matter that is easy to understand</h4>
-            <p>When buying cars and motorcycles in Thailand, financial service providers play a crucial role. Since most customers must pay for their cars in installments,
+<!--             <h4>Buying a car and applying for a loan: an easy matter that is easy to understand</h4> -->
+            <p>Mua xe ô tô trả góp là hình thức dễ dàng nhất để bạn có thể sở hữu một chiếc từ 4 chỗ trở lên. Không áp lực tài chính, thủ tục đơn giản, thực hiện nhanh chóng. Nếu bạn đang có ý định mua xe trả góp thì dưới đây là vài điều cần lưu ý. 
                 <span id="dots">...</span>
             </p>
             <div id="more-text" class="hidden-text">
                 <p>the leasing company acts as a middleman, paying the car manufacturer before allowing customers to pay in installments along with interest. While wealthy individuals may purchase cars with cash, car financing is essential for most people.
                 </p>
-                <h4>What is Car Financing?</h4>
+                <h4>Mua xe ô tô trả góp là gì?</h4>
                 <p>
-                    Car financing is similar to borrowing money through various financial sources. Whether the finance application is approved depends on the company's policies. In a hire purchase agreement, the buyer is considered a lessee who must pay installments and interest until full ownership is achieved.
+                   Sau khi chọn được chiếc xe mong muốn, bạn sẽ phải thanh toán trước một phần tiền tự có. Phần còn lại dưới dạng một khoản vay mà bạn làm việc với ngân hàng. Khoản này sẽ trả dần theo thỏa thuận với bên ngân hàng. Thời gian vay kéo dài từ 1 - 5 năm tùy mức mà có thể bạn chi trả từng tháng. Đây chính là hình thức mua xe ô tô trả góp đang áp dụng tại thị trường Việt Nam.
+                </p>
+            <p>
+				
+				Trong thời gian trả góp, chiếc xe là vật thế chấp cho ngân hàng. Ngân hàng sẽ giữ bản gốc đăng ký xe ô tô. Một số ngân hàng có thể cho vay đến 8 năm nên bạn hoàn toàn không cần lo lắng.
+				</p>
+                <h4>Mua xe ô tô trả góp cần quan tâm những vấn đề gì?</h4>
+                <p>
+                   Trước khi muốn mua xe trả góp, bạn cần cân nhắc khá nhiều vấn đề. Đầu tiên là khả năng tài chính cá nhân, đã có sẵn bao nhiêu tiền. Cân nhắc lựa chọn mẫu xe phù hợp với bản thân.
+
                 </p>
                 <p>
-                    Financing is divided into two main types:
-                    <ul>
-                        <li>Car financing directly from the car company.</li>
-                        <li>Financing from financial service providers.</li>
-                    </ul>
-                    Many service providers also offer financing for used cars, either directly from used car dealers or between individual buyers and sellers who need financial assistance.
-                </p>
-                <h4>Steps to Apply for Car Financing</h4>
-                <p>
-                    Car dealerships, both new and used, typically assist buyers in preparing the necessary documents for a loan application, making the process smoother. 
+                   Thứ hai là cần phải vay thêm bao nhiêu tiền để đủ mua chiếc ô tô mình mong muốn. Lựa chọn tổ chức tín dụng/ngân hàng phù hợp. Tham khảo về mức lãi suất mình cần phải trả. 
                 </p>
                 <p>
-                    Required documents usually include ID cards, employment certificates, and other financial documents depending on the loan type. Once submitted, the service provider will assess them thoroughly.
-                </p>
-                <p>
-                    The approval process typically takes no more than seven working days. If there are no issues, the loan will be approved. However, if rejected, applicants may attempt to secure financing from other providers.
+                    Cuối cùng là khả năng chi trả khoản vay cá nhân. Ban cần mất bao nhiêu thời gian để chi trả? Mức trả hàng tháng có vượt quá khả năng chi tiêu hay không?
                 </p>
             </div>
             <div class="read-more-btn-loan">
-                <button id="read-more-btn" class="read-more-btn">Read More</button>		
+                <button id="read-more-btn" class="read-more-btn">Đọc thêm</button>		
             </div>
         </div>
     </div>
@@ -393,11 +299,11 @@ function car_loan_intro_shortcode()
             if (moreText.classList.contains("hidden-text")) {
                 moreText.classList.remove("hidden-text");
                 dots.style.display = "none";
-                btnText.innerHTML = "Read Less";
+                btnText.innerHTML = "Ẩn";
             } else {
                 moreText.classList.add("hidden-text");
                 dots.style.display = "inline";
-                btnText.innerHTML = "Read More";
+                btnText.innerHTML = "Đọc thêm";
             }
         });
     </script>

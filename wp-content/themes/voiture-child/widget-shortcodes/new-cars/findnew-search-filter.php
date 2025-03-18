@@ -111,9 +111,17 @@ function car_search_filter_shortcode()
     $all_filters['seats'] = array('label' => 'Seats', 'values' => $seats);
     $all_filters['drive_type'] = array('label' => 'Drive Type', 'values' => $drive_types);
     ob_start();
+$translate = [
+    
+'Search Filters' => 'Bộ lọc tìm kiếm',
+'More Options' => 'Lựa chọn khác',
+'Close Options' => 'Đóng các tùy chọn',
+];
+
+
 ?>
     <div class="car-search-filters">
-        <h2 class="wa-title-text">Search Filters</h2>
+        <h2 class="wa-title-text"><?php echo $translate['Search Filters']; ?></h2>
         <div id="car-search-filters"></div>
         <?php foreach ($all_filters as $key => $value): ?>
             <div class="filter-group">
@@ -135,7 +143,7 @@ function car_search_filter_shortcode()
     <div class="more-options-container">
         <div class="line"></div>
         <button class="more-options-toggle">
-            More Options <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>
+           <?php echo $translate['More Options']; ?> <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>
         </button>
         <div class="line"></div>
     </div>
@@ -146,8 +154,8 @@ function car_search_filter_shortcode()
         document.addEventListener('DOMContentLoaded', function() {
             const moreOptionsToggle = document.querySelector('.more-options-toggle');
             const filterGroups = document.querySelectorAll('.filter-group');
-            const moreOptionsText = 'More Options <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>';
-            const closeOptionsText = 'Close Options <span style="margin-left: 5px;"><i class="fas fa-chevron-up"></i></span>';
+            const moreOptionsText = 'Lựa chọn khác <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>';
+            const closeOptionsText = 'Đóng các tùy chọn <span style="margin-left: 5px;"><i class="fas fa-chevron-up"></i></span>';
 
             // Initially hide all filters after the first five
             filterGroups.forEach((group, index) => {

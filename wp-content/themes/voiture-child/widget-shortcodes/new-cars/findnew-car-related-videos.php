@@ -29,9 +29,9 @@ function findnew_car_videos_carousal($atts)
     ob_start();
 
     if ($brand_id != 0) {
-        echo '<h2 class="wa-title-text find-new-car-video-title">วีดีโอรถยนต์ ' . $brand_name . ' ในไทย</h2>';
+        echo '<h2 class="wa-title-text find-new-car-video-title">' . $brand_name . ' Xe Ô Tô Video</h2>';
     } else {
-        echo '<h2 class="wa-title-text find-new-car-video-title">Latest Car Videos</h2>';
+        echo '<h2 class="wa-title-text find-new-car-video-title"> Video Xe Ô Tô</h2>';
     }
 
 ?>

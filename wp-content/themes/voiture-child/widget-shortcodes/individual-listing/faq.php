@@ -67,7 +67,7 @@ function display_faq($faq_posts, $listing_post)
 {
     if (! empty($faq_posts)) {
 ?>
-        <h2 class="title wa-title-text">FAQ <?php echo $listing_post->post_title; ?></h2>
+        <h2 class="title wa-title-text">Câu hỏi thường gặp về  <?php echo $listing_post->post_title; ?></h2>
         <div class="description-inner">
             <div class="description-inner-wrapper">
                 <div class="accordion">

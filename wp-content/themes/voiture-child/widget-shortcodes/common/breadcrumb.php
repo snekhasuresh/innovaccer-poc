@@ -246,7 +246,7 @@ function get_breadcrumb()
     }
 
     if ($news_slug) {
-        $categories = ['latest', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car', 'good-reads', 'car-tips', 'culture'];
+        $categories = ['moi-nhat', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car', 'good-reads', 'car-tips', 'culture'];
         $breadcrumb_arr = ['Trang chủ' => '/', 'Tin tức' => '/tin-tuc/'];
 
         // if news slug not in categories
@@ -294,8 +294,8 @@ function get_breadcrumb()
         $breadcrumb_arr = ['Trang chủ' => '/', 'So Sánh Xe Ô Tô' => '/so-sanh-xe/'];
     }
 
-    if ($url_path == '/dung-cu/gia-xang-dau') {
-        $breadcrumb_arr = ['Trang chủ' => '/','Dụng Cụ' => '/dung-cu/','Giá Xăng Dầu' => '/dung-cu/gia-xang-dau/'];
+    if ($url_path == '/gia-xang-dau') {
+        $breadcrumb_arr = ['Trang chủ' => '/','Dụng Cụ' => '/dung-cu/','Giá Xăng Dầu' => '/gia-xang-dau/'];
     }
 	
 	//others

@@ -74,7 +74,7 @@ function brand_description_shortcode($atts)
                         </div>
                     </div>
                 </div>
-                <button id="desc-read-more-btn" class="desc-read-more-btn">อ่านเพิ่มเติม</button>
+                <button id="desc-read-more-btn" class="desc-read-more-btn"> Đọc thêm</button>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@ function brand_description_shortcode($atts)
                 const isHidden = moreText.classList.contains("brand-hidden-text");
 
                 moreText.classList.toggle("brand-hidden-text");
-                moreTextToggle.innerHTML = isHidden ? "ซ่อน" : "อ่านเพิ่มเติม";
+                moreTextToggle.innerHTML = isHidden ? "trốn" : " Đọc thêm";
 
                 brandPreview.style.maxHeight = isHidden ? "none" : "150px";
                 brandPreview.style.overflowY = isHidden ? "auto" : "hidden";

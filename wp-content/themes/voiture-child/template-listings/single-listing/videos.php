@@ -44,7 +44,7 @@ function single_listing_videos()
 
 ?>
     <div class="variants-videos-title-con">
-        <h2 class="variants-videos-title wa-title-text"><?php esc_html_e('วีดีโอคลิป '.$post_title, 'voiture'); ?></h2>
+        <h2 class="variants-videos-title wa-title-text"><?php esc_html_e($post_title, 'voiture'); ?> Xe Ô Tô Video</h2>
     </div>
     <div class="single-listing-car-videos-container single-listing-carousel">
         <?php foreach ($video_query->posts as $post) : ?>

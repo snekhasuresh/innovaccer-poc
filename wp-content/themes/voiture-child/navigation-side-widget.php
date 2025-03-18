@@ -1,6 +1,14 @@
 <?php
 function dynamic_navigation_shortcode()
 {
+$translate = [
+    
+'You May Also Like' => 'Cùng Mục',
+'View Model' => 'Xem dòng xe',
+'News Navigation' => 'Điều hướng Tin tức',
+'News' => 'Tin tức'
+
+];
     // Array for "You May Also Like"
     $make = get_query_var('make');
     $model = get_query_var('model');
@@ -17,10 +25,10 @@ function dynamic_navigation_shortcode()
     $make_id = get_post_meta($post_id, '_listing_make', true);
 
     $may_also_like = [
-        ['title' => $post_title . ' Images', 'link' => '/cars/' . $make . '/' . $model . '/gallery'],
-        ['title' => $post_title . ' Specs', 'link' => '/cars/' . $make . '/' . $model . '/specs'],
-        ['title' => $post_title . ' Fuel Consumption', 'link' => '/cars/' . $make . '/' . $model . '/fuel-consumption'],
-        ['title' => $post_title . ' Colors', 'link' => '/cars/' . $make . '/' . $model . '/colors'],
+        ['title' => ' Hình ảnh ' . $post_title ,'link' => '/xe-oto/' . $make . '/' . $model . '/hinh-anh'],
+        ['title' => ' Thông số kỹ thuật '  . $post_title  , 'link' => '/xe-oto/' . $make . '/' . $model . '/thong-so-ky-thuat'],
+        ['title' => ' Tiêu thụ nhiên liệu ' . $post_title  , 'link' => '/xe-oto/' . $make . '/' . $model . '/tieu-hao-nhien-lieu'],
+        ['title' => ' Màu sắc ' . $post_title  , 'link' => '/xe-oto/' . $make . '/' . $model . '/mau-sac'],
     ];
 
     // Array for "News Navigation"
@@ -41,16 +49,16 @@ function dynamic_navigation_shortcode()
         $name_array = explode("-", $post_name);
         // remove first element and append other with hyphen
         $post_name = implode("-", array_slice($name_array, 1));
-        $news_navigation[] = ['title' => $related_brand_model->post_title . ' News', 'link' => '/cars/' . $make . '/' . $post_name . '/news'];
+        $news_navigation[] = ['title' => $related_brand_model->post_title . ' tin-tuc', 'link' => '/xe-oto/' . $make . '/' . $post_name . '/tin-tuc'];
 
-        $price_list[] = ['title' => $related_brand_model->post_title . ' Price', 'link' => '/cars/' . $make . '/' . $post_name];
+        $price_list[] = ['title' => $related_brand_model->post_title . ' Giá', 'link' => '/xe-oto/' . $make . '/' . $post_name];
     }
 
     // HTML Output
     ob_start(); ?>
 
     <div class="dynamic-navigation">
-        <h2 class="wa-title-text nav-head">You May Also Like</h2>
+        <h2 class="wa-title-text nav-head"><?php echo $translate['You May Also Like']; ?></h2>
         <ul class="also-like">
             <?php foreach ($may_also_like as $item): ?>
                 <li><a href="<?php echo esc_url($item['link']); ?>">
@@ -60,7 +68,7 @@ function dynamic_navigation_shortcode()
             <?php endforeach; ?>
         </ul>
 
-        <h2 class="wa-title-text nav-head">News Navigation</h2>
+        <h2 class="wa-title-text nav-head"> <?php echo $translate['News Navigation']; ?></h2>
         <ul class="news-navigation">
             <?php foreach ($news_navigation as $item): ?>
                 <li><a href="<?php echo esc_url($item['link']); ?>">
@@ -70,7 +78,7 @@ function dynamic_navigation_shortcode()
             <?php endforeach; ?>
         </ul>
 
-        <h2 class="wa-title-text nav-head"> <?php echo ucfirst($make); ?> Price List</h2>
+        <h2 class="wa-title-text nav-head"> Bảng Giá Xe ô tô <?php echo ucfirst($make); ?> </h2>
         <ul class="price-list">
             <?php foreach ($price_list as $item): ?>
                 <li><a href="<?php echo esc_url($item['link']); ?>">

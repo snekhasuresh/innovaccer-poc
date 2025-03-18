@@ -18,6 +18,8 @@ function individual_variant_tabs_shortcode($atts)
 
     $make = get_query_var('make');
     $model = get_query_var('model');
+	$section = get_query_var('section');
+	
     $base_url = get_site_url() . '/xe-oto/' . $make . '/' . $model;
 
     $make_term = get_term_by('slug', $make, 'listing_make');
@@ -35,13 +37,12 @@ function individual_variant_tabs_shortcode($atts)
     $variant_post_title = $variant_post->post_title;
     $variant_post_name = $variant_post->post_name;
 
- $urls = [
-        'tổng quát' => $base_url,
+ 	$urls = [
+        'tổng quát' => $base_url . '/' . $section,
         'tin tức' => $base_url . '/tin-tuc',
-        'thông số kỹ thuật' => $base_url . '/thong-so-ky-thuat',
-        'hình ảnh' => $base_url . '/hinh-anh'
+        'thông số kỹ thuật' => $base_url . '/' . $section . '/thong-so-ky-thuat',
+        'hình ảnh' => $base_url . '/' . $section . '/hinh-anh'
     ];
-
 
     ob_start();
 
@@ -53,10 +54,10 @@ function individual_variant_tabs_shortcode($atts)
 function display_variant_tabs($urls, $selected_tab, $listing_name, $variant_name, $make_logo_url)
 {
     $overview_tabs = [
-        ['tab' => 'Tổng quát', 'url' => $urls['tong-quat']],
-        ['tab' => 'Tin tức', 'url' => $urls['tin-tuc']],
-        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thong-so-ky-thuat']],
-        ['tab' => 'Hình ảnh', 'url' => $urls['hinh-anh']]
+        ['tab' => 'Tổng quát', 'url' => $urls['tổng quát']],
+        ['tab' => 'Tin tức', 'url' => $urls['tin tức']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thông số kỹ thuật']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['hình ảnh']]
     ];
     $make = get_query_var('make') ? get_query_var('make') : '';
 
@@ -68,10 +69,10 @@ function display_variant_tabs($urls, $selected_tab, $listing_name, $variant_name
             $title = $selected_tab . ' ' . $listing_name;
             break;
         case 'Hình ảnh':
-            $title = 'Gambar Interior & Eksterior ' . $listing_name;
+            $title = 'Hình ảnh nội thất và ngoại thất ' . $listing_name;
             break;
         default:
-            $title = $listing_name;
+            $title = $variant_name;
             break;
     }
 ?>

@@ -73,9 +73,15 @@ function findnew_car_comparison($atts)
     if ($num_posts < 2) {
         return;
     }
+$translate = [
+    
+'Compare' => 'So Sánh Xe Ô Tô',
+
+];
+
 
 ?>
-    <h2 class="wa-title-text find-new-cars-compare-title">Compare Cars  <?php echo esc_html($brand_name); ?></h2>
+    <h2 class="wa-title-text find-new-cars-compare-title"> <?php echo esc_html($translate['Compare']) . ' ' . esc_html($brand_name); ?></h2>
     <div class="findnew-comparison-wrapper">
         <div class="findnew-comparison-carousel">
             <?php

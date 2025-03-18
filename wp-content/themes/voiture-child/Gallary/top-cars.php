@@ -83,7 +83,7 @@ function top_cars_shortcode($atts)
     // Start output buffering
     ob_start();
 ?>
-    <h2 class="wa-title-text"><?php echo 'อันดับรถยนต์  ' . $term_name ?></h2>
+    <h2 class="wa-title-text"><?php echo 'Xe ' . $term_name . ' hàng đầu' ?></h2>
     <?php if (!empty($sedan_cars)) : ?>
         <div class="top-cars-sedan-carousel">
             <ul class="top-cars-sedan-list">
@@ -130,17 +130,20 @@ function top_cars_shortcode($atts)
 //                             }
 							if (get_post_meta($variant->ID, 'state', true) == 1 && get_post_meta($variant->ID, 'on_sale', true) == 'Yes') {
 								$price = (float)get_post_meta($variant->ID, 'retail_price', true);
-								$lowest_price = is_null($lowest_price) ? $price : min($lowest_price, $price);
-								$highest_price = is_null($highest_price) ? $price : max($highest_price, $price);
+								 // Skip if price is zero
+								if ($price > 0) {
+									$lowest_price = is_null($lowest_price) ? $price : min($lowest_price, $price);
+									$highest_price = is_null($highest_price) ? $price : max($highest_price, $price);
+								}
 							}
                         }
 							$price = !is_null($lowest_price) && !is_null($highest_price) ?
 								($lowest_price === $highest_price ?
-									'THB ' . number_format($lowest_price) :
-									'THB ' . number_format($lowest_price) . ' - ' . number_format($highest_price)
-								) : 'ยังไม่คอนเฟิร์ม';
+									format_price_vietnam($lowest_price) :
+									format_price_vietnam($lowest_price) . ' - ' . format_price_vietnam($highest_price)
+								) : 'Đang cập nhật';
                     } else {
-                        $price = 'ยังไม่คอนเฟิร์ม';
+                        $price = 'Đang cập nhật';
                     }
                     ?>
                     <li class="car-sedan-item">
@@ -162,7 +165,7 @@ function top_cars_shortcode($atts)
                                 <span><?php echo esc_html($price); ?></span>
                             </div>
                             <div class="view-model-button">
-                                <a href="<?php echo get_permalink($car_post->ID); ?>"> ดูรุ่นรถ </a>
+                                <a href="<?php echo get_permalink($car_post->ID); ?>">  Xem dòng xe  </a>
                             </div>
                         </div>
                     </li>

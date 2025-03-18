@@ -22,9 +22,9 @@ function single_listing_car_comparison()
     $post_permalink = get_permalink($post_id);
     $post_price = $global_listing_post_data['min_price'];
     if ($post_price) {
-        $post_price = 'RM ' . format_number_with_commas($post_price);
+        $post_price = format_price_vietnam($post_price);
     } else {
-        $post_price = 'TBC';
+        $post_price = 'Đang cập nhật';
     }
 
     // WP Query to retrieve other listings for comparison
@@ -44,7 +44,7 @@ function single_listing_car_comparison()
     $comparison_car_meta = get_post_meta_with_thumbnail_guid($comparison_car_ids);
 ?>
     <div class="individual-comparison-wrapper">
-        <h2 class='wa-title-text'><span class="icon"></span>เปรียบเทียบ <?php echo $post_title; ?></h2>
+        <h2 class='wa-title-text'><span class="icon"></span>So sánh  <?php echo $post_title; ?></h2>
         <div class="individual-comparison-carousel">
 
             <?php foreach ($comparison_query->posts as $comparison_post) : ?>
@@ -84,7 +84,7 @@ function single_listing_car_comparison()
                         </div>
 
                     </div>
-                    <a href="<?php echo home_url('/compare-cars/') . $comparison_slug; ?>" class="compare-button">
+                    <a href="<?php echo home_url('/so-sanh-xe/') . $comparison_slug; ?>" class="compare-button">
                         <?php echo esc_html($post_title); ?> vs <?php echo $comparison_post_title; ?>
                     </a>
                 </div>

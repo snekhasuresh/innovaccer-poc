@@ -47,7 +47,7 @@ if (!function_exists('get_author_details_shortcode')) {
 ?>
                 <div class="author-box">
                     <div class="author-avatar">
-                        <img src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_name); ?>" width="64" height="64" style="border-radius: 50%;">
+                        <img src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_name); ?>"style="border-radius:50%;">
                     </div>
                     <div class="author-info">
                         <h3 class="author-name">
@@ -67,15 +67,18 @@ if (!function_exists('get_author_details_shortcode')) {
                         background-color: #fff;
                     }
 
-                    .author-avatar {
-                   
-                        padding: 10px;
-                    }
+                  .author-avatar{
+					   width: 180px;
+					}
 
                     .author-avatar img {
-                        border-radius: 50%;
-                        width: 120px;
-                        height: 100px;
+                         max-width:120px !important;
+							max-height:120px !important;
+							border: 3px solid #fff !important;
+							border-radius: 50% !important;
+							object-fit: cover !important;
+							cursor: pointer !important;
+						padding:10px;
                     }
 
                     .author-info {
@@ -225,7 +228,7 @@ if (!function_exists('get_latest_news_shortcode')) {
         ?>
         <div style="display: flex; align-items: center;">
             <span>
-                <h2 class="wa-title-text">Latest News</h2>
+                <h2 class="wa-title-text"> Tin mới nhất</h2>
             </span>
         </div>
         <ul class="latest-news-list">
@@ -283,7 +286,7 @@ if (!function_exists('get_latest_news_shortcode')) {
 		background: #fff;
 	}
 	.news-meta-authour{
-		margin-top:111px;
+		margin-top:95px;
 		display:flex;
 	}
 		@media screen and (max-width: 768px) {

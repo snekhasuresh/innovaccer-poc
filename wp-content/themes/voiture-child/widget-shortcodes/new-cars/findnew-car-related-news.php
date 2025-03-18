@@ -20,7 +20,7 @@ function car_related_news($atts)
 
     ob_start();
 
-    $title = $brand_id != 0 ? esc_html('ข่าวรถยนต์ '. $brand_name . ' ในไทย') : 'Latest Car News';
+    $title = $brand_id != 0 ? esc_html('Tin tức Xe Ô Tô'. $brand_name . ' tại Việt Nam') : 'Tin tức Xe Ô Tô mới nhất';
 ?>
     <h2 class="wa-title-text find-car-news-title" ><?php echo $title; ?></h2>
      <div id="fuel-latest-news-section" style="margin-left:10px" class="fuel-news-section inner">
@@ -43,7 +43,7 @@ function car_related_news($atts)
                         <p class="fuel-news-description"><?php echo esc_html($description); ?></p>
                         <div class="fuel-news-footer">
                             <p class="fuel-date"><?php echo $date; ?></p>
-                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Read More</a>
+                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Đọc thêm</a>
                         </div>
                     </div>
                 </div>

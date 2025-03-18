@@ -11,7 +11,7 @@ function videos_shortcode($atts)
     ob_start();
 ?>
     <div class="youtube-videos-container">
-        <h2 class="wa-title-text">Cars Videos</h2>
+        <h2 class="wa-title-text">Video Xe Ô Tô</h2>
 
         <?php foreach ($video_posts as $video_post) :
             $video_id = $video_post->video_youtube_id;

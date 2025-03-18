@@ -39,22 +39,22 @@ function recommended_cars_horizontal_shortcode($atts)
 
     // Prepare tabs array
     $tabs = [
-        ['id' => 'recommended-multi-popular-content', 'label' => 'Popular Cars'],
-        ['id' => 'recommended-multi-latest-content', 'label' => 'Latest Cars'],
+        ['id' => 'recommended-multi-popular-content', 'label' => 'Phổ biến'],
+        ['id' => 'recommended-multi-latest-content', 'label' => 'Mới nhất'],
     ];
     if (is_page('tools')) {
-        $tabs[] = ['id' => 'recommended-multi-update-content', 'label' => 'Updates'];
+        $tabs[] = ['id' => 'recommended-multi-update-content', 'label' => 'Cập Nhật'];
     }
 ?>
     <div class="recommended-multi-car-tabs">
         <?php
         if (is_page('tools')) {
         ?>
-            <h2 class="recommended-multi-tab-heading wa-title-text">Popular Cars</h2>
+            <h2 class="recommended-multi-tab-heading wa-title-text">Xe phổ biến</h2>
         <?php
         } else {
         ?>
-            <h2 class="recommended-multi-tab-heading wa-title-text">Recommended Cars</h2>
+            <h2 class="recommended-multi-tab-heading wa-title-text">Các mẫu xe đề xuất</h2>
         <?php
         }
         ?>
@@ -200,7 +200,7 @@ function display_recommendedcar_posts_common($cars)
     }
 
     $listing_states = [
-        'On Sale' => ['label' => 'On Sale', 'color' => '#F53030'],
+        'On Sale' => ['label' => ' Nóng ', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
         'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
     ];
@@ -254,14 +254,14 @@ function display_recommendedcar_posts_common($cars)
                             <p><?php echo $price; ?></p>
                         </span>
                         <span class="car-button">
-                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">View Model</a>
+                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model"> Xem dòng xe </a>
                         </span>
                     </a>
 
 
                     <div class="car-variant-dropdown">
                         <div class="variant-header" onclick="toggleVariants('<?php echo esc_js($post_id); ?>')">
-                            <span class="variant-count"><?php echo $variants_count; ?> Variants</span>
+                            <span class="variant-count"><?php echo $variants_count; ?>   mẫu xe </span>
                             <button class="variant-toggle" data-id="<?php echo esc_attr($post_id); ?>">
                                 <i class="fas fa-chevron-down"></i> <!-- Font Awesome down icon -->
                             </button>

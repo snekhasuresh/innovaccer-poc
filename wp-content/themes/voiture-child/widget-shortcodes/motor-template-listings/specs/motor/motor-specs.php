@@ -28,94 +28,95 @@ function display_motor_custom_page()
     $variant_posts = array_slice($variant_posts, 0, 4);
 
     $variant_spec_groups = [
-        'ราคา' => [['label' => 'Price', 'key' => 'price']],
-        'ต้นทุน' => [
-            ['label' => 'การชำระเงินรายเดือน', 'key' => 'monthly_payment']
+        'Giá' => [['label' => 'Giá', 'key' => 'price']],
+        'Chi Phí' => [
+            ['label' => 'Trả Góp', 'key' => 'monthly_payment']
         ],
-        'สเปคหลัก' => [
-            ['label' => 'Brand', 'key' => 'make'],
-            ['label' => 'Model', 'key' => 'model'],
-            ['label' => 'ประเภท', 'key' => 'body_type'],
-            ['label' => 'Launch Time', 'key' => 'year'],
-            ['label' => 'เครื่องยนต์', 'key' => 'capacity_main'],
-            ['label' => 'กำลังไฟสูงสุด(พีเอส)', 'key' => 'maximum_power'],
-            ['label' => 'ตัวเลือกการเปิดเครื่องยนต์', 'key' => 'engine_opening_option'],
-            ['label' => 'On Sale', 'key' => 'on_sale'],
-            ['label' => 'รูปแบบเกียร์', 'key' => 'gear_box'],
-            ['label' => 'ประเภทน้ำมันเชื้อเพลิง', 'key' => 'fuel_type'],
-            ['label' => 'อัตราสิ้นเปลืองน้ำมันเชื้อเพลิง(L/100km)', 'key' => 'fuel_consumption'],
+        'Thông số kỹ thuật quan trọng' => [
+            ['label' => 'Thương hiệu', 'key' => 'make'],
+            ['label' => 'Dòng xe', 'key' => 'model'],
+            ['label' => 'Công suất tối đa(PS)', 'key' => 'maximum_power'],
+            ['label' => 'Năm sản xuất', 'key' => 'year'],
+            ['label' => 'Loại động cơ', 'key' => 'engine_type'],
+			['label' => 'Bắt đầu các tùy chọn', 'key' => 'start_option'],
+			['label' => 'Loại', 'key' => 'body_type'],
+            ['label' => 'Khuyến mãi', 'key' => 'on_sale'],
+            ['label' => 'Mức tiêu thụ nhiên liệu(L/100km)', 'key' => 'fuel_consumption'],
+            ['label' => ' Kiểu truyền tải', 'key' => 'transmission'],
+            ['label' => 'Loại nhiên liệu', 'key' => 'fuel_type'],
         ],
-        'เครื่อง&คุณสมบัติ' => [
-            ['label' => 'ปริมาตรกระบอกสูบ (ซีซี)', 'key' => 'capacity'],
-            ['label' => 'แบบเครื่องยนต์', 'key' => 'engine_type'],
-            ['label' => 'แรงบิดสูงสุด(นิวตัน-เมตร)', 'key' => 'maximum_torque'],
-            ['label' => 'กำลังไฟสูงสุด(พีเอส)', 'key' => 'maximum_power'],
-            ['label' => 'รอบต่อนาที ณ ความแรงเครื่องสูงสุด(รอบต่อนาที)', 'key' => 'rpm_at_max_engine_strength'],
-            ['label' => 'ความเร็วสูงสุด', 'key' => 'speed'],
-            ['label' => 'จำนวนของกระบอกสูบ', 'key' => 'number_of_cylinders'],
-            ['label' => 'ชนิดของคลัทช์', 'key' => 'clutch_type'],
-            ['label' => 'รอบต่อนาที ณ ความแรงบิดสูงสุด(รอบต่อนาที)', 'key' => 'maximum_power_speed'],
-            ['label' => 'ความจุถังน้ำมันเชื้อเพลิง', 'key' => 'fuel_tank_capacity'],
+        'Động cơ và hiệu suất' => [
+            ['label' => 'Tốc độ tối đa', 'key' => 'maximum_speed'],
+            ['label' => 'Mô-men xoắn cực đại RPM (RPM)', 'key' => 'rpm_maximum_torque'],
+            ['label' => 'số xi lanh', 'key' => 'number_of_cylinders'],
+            ['label' => 'Công suất tối đa RPM (RPM)', 'key' => 'rpm_maximum_power'],
+            ['label' => 'Mô-men xoắn cực đại(Nm)', 'key' => 'maximum_torque'],
+            ['label' => 'Số kì', 'key' => 'number_of_strokes'],
+            ['label' => 'Dung tích(cc)', 'key' => 'capacity'],
         ],
-        'ขนาด' => [
-            ['label' => 'ความยาว', 'key' => 'length'],
-            ['label' => 'ขนาด (ยาวxกว้างxสูง มม.)', 'key' => 'size'],
-            ['label' => 'ความกว้าง', 'key' => 'width'],
-            ['label' => 'ความสูง', 'key' => 'height'],
-            ['label' => 'ความสูงใต้ท้องรถ', 'key' => 'height_under_the_car'],
-            ['label' => 'ฐานล้อ', 'key' => 'wheelbase'],
-            ['label' => 'น้ำหนักตัวรถ', 'key' => 'car_body_weight'],
-            ['label' => 'ความสูงที่นั่ง', 'key' => 'seat_height'],
-            ['label' => 'ความจุของถังน้ำมัน', 'key' => 'oil_tank_capacity'],
-            ['label' => 'จำนวนที่นั่ง', 'key' => 'seat'],
-            ['label' => 'ขนาดเครื่องยนต์', 'key' => 'capacity'],
+        'Kích thước' => [
+            ['label' => 'Dài(mm)', 'key' => 'length'],
+            ['label' => 'Cao(mm)', 'key' => 'height'],
+            ['label' => 'Rộng(mm)', 'key' => 'width'],
+            ['label' => 'Trọng lượng(kg)', 'key' => 'weight'],
+            ['label' => 'Yên xe', 'key' => 'seat'],
+            ['label' => 'Dung tích bình xăng', 'key' => 'fuel_tank_capacity'],
         ],
-        'ระบบเกียร์' => [
-            ['label' => 'ระบบขับเคลื่อน', 'key' => 'drive_system'],
-            ['label' => 'ระบบเกียร์', 'key' => 'gearbox'],
+        'Bánh răng và hộp số' => [
+            ['label' => 'Hộp số', 'key' => 'gear_box'],
+            ['label' => 'Kiểu truyền tải', 'key' => 'transmission'],
+            ['label' => 'Loại ổ', 'key' => 'jenis_penggerak'],
+			
         ],
-        'แชสซี&ช่วงล่าง' => [
-            ['label' => 'ระบบกันสะเทือนด้านหน้า', 'key' => 'front_suspension'],
-            ['label' => 'ระบบกันสะเทือนด้านหลัง', 'key' => 'rear_suspension'],
+        'Loại khung và hệ thống treo' => [
+            ['label' => 'Khoảng sáng gầm xe', 'key' => 'ground_clearance'],
+            ['label' => 'Chiều cao yên', 'key' => 'chair_height'],
+            ['label' => 'Hệ thống treo sau', 'key' => 'rear_suspension'],
+            ['label' => 'Hệ thống treo trước', 'key' => 'front_suspension'],
+            ['label' => 'Điều chỉnh hệ thống treo điện tử', 'key' => 'electronic_suspension_adjustment'],
+			
         ],
-        'ระบบไฟฟ้า' => [
-            ['label' => 'ไฟหน้ารถ', 'key' => 'headlight'],
-            ['label' => 'โคมไฟด้านหลัง', 'key' => 'lamp_back'],
-            ['label' => 'ระบบปรับไฟหน้า สูง / ต่ำ', 'key' => 'high_low_headlight_adjustment_system'],
-            ['label' => 'ไฟแสดงสถานะ', 'key' => 'indicator_light'],
+        'Hệ thống điện' => [
+            ['label' => 'Đầu đèn', 'key' => 'head_lamp'],
+            ['label' => 'Đèn xi nhan', 'key' => 'indicator_light'],
+            ['label' => 'Đèn sau xe', 'key' => 'taillight'],
         ],
-        'ระบบควบคุม' => [
-            ['label' => 'ระบบล๊อกรอบออกตัว', 'key' => 'frame_lock_system'],
-            ['label' => 'สวิทช์ปรับไฟสูง', 'key' => 'high_beam_adjustment_switch'],
-            ['label' => 'มาตรวัดระยะทาง', 'key' => 'odometer'],
-            ['label' => 'หน้าจอแสดงผล', 'key' => 'display_screen'],
-            ['label' => 'ระบบนำทางเนวิเกเตอร์', 'key' => 'navigation'],
-            ['label' => 'เครื่องวัดความเร็วรอบ', 'key' => 'tachometer'],
-            ['label' => 'ระบบเปิด-ปิด เครื่องยนต์ด้วยกุญแจอัจฉริยะ', 'key' => 'smart_key_engine_on-off_system'],
+        'Bảng điều khiển lưu trữ' => [
+            ['label' => 'Chỉ báo nhiên liệu', 'key' => 'bbm_indicator'],
+            ['label' => 'Công tơ mét', 'key' => 'speedometer'],
+            ['label' => 'Đèn báo thay dầu', 'key' => 'oil_change_indicator'],
+            ['label' => 'Bảng điều khiển', 'key' => 'instrument_panel'],
+            ['label' => 'Đồng hồ tua máy', 'key' => 'tachometer'],
+            ['label' => 'Màn hình hiển thị', 'key' => 'display_screen'],
+            ['label' => 'Công tắc điều chỉnh độ sáng', 'key' => 'dimmer_switch'],
+            ['label' => 'Khóa trung tâm', 'key' => 'central_locking'],
+			
         ],
-        'ล้อ&ยาง' => [
-            ['label' => 'ประเภทยางรถยนต์', 'key' => 'tire_type'],
-            ['label' => 'ขนาดของล้อหน้า', 'key' => 'front_wheel_size'],
-            ['label' => 'ระบบกันสะเทือน', 'key' => 'suspension'],
-            ['label' => 'ขนาดของล้อหลัง', 'key' => 'rear_wheel_size'],
-            ['label' => 'ยางล้อหน้า', 'key' => 'front_tire'],
-            ['label' => 'ยางล้อหลัง', 'key' => 'rear_tire'],
+        'Kích thước bánh xe và lốp' => [
+            ['label' => 'Kích thước bánh sau', 'key' => 'rear_wheel_size'],
+            ['label' => 'Kích thước bánh trước', 'key' => 'front_wheel_size'],
+            ['label' => 'lốp trước', 'key' => 'front_tire'],
+            ['label' => 'Lốp sau', 'key' => 'rear_tire'],
+            ['label' => 'Loại lốp', 'key' => 'tire_type'],
         ],
-        'เบรค' => [
-            ['label' => 'เบรคหน้า', 'key' => 'front_brake'],
-            ['label' => 'ด้านหลังเบรค', 'key' => 'rear_brake'],
+        'Phanh' => [
+            ['label' => 'Phanh trước/Thắng trước', 'key' => 'front_brake'],
+            ['label' => 'Phanh sau/thắng sau', 'key' => 'rear_brake'],
         ],
-        'ความปลอดภัย' => [
-            ['label' => 'ตัวบอกสถานะการเปลี่ยนน้ำมันเครื่อง', 'key' => 'engine_oil_change_indicator'],
-            ['label' => 'ระบบควบคุุมเสถียรภาพการทรงตัวของรถ', 'key' => 'system_to_control_the_stability_of_the_vehicle'],
-            ['label' => 'เอบีเอส หรือ ระบบป้องกันเบรคจนล้อล๊อคตาย', 'key' => 'abs'],
-            ['label' => 'ระบบป้องกันการลื่นไถลของรถ', 'key' => 'anti-skid_system'],
+        'Các tính năng an toàn và bảo mật' => [
+            ['label' => 'Hệ thống chống bó cứng phanh', 'key' => 'abs'],
+            ['label' => 'Hệ thống chống trôm', 'key' => 'immobilizer'],
+            ['label' => 'Kiểm soát ổn định', 'key' => 'stability_control'],
+            ['label' => 'Cảnh báo kiểm tra động cơ', 'key' => 'engine_check_warning'],
+            ['label' => 'Báo thức', 'key' => 'alarm'],
+            ['label' => 'Khóa bánh trước / sau', 'key' => 'front__rear_wheel_lock'],
+            ['label' => 'Đèn xi nhan', 'key' => 'side_standard_indicator'],
+            ['label' => 'Kiểm soát lực kéo', 'key' => 'traction_control'],
         ],
-        'ฟีเจอร์พิเศษ' => [
-            ['label' => 'ระบบควบคุมความเร็วอัตโนมัติ', 'key' => 'automatic_speed_control'],
-            ['label' => 'การปรับช่วงล่างด้วยระบบไฟฟ้า', 'key' => 'adjusting_the_suspension_electrically'],
-            ['label' => 'เบาะที่นั่งปรับความสูงได้', 'key' => 'height_adjustable_seat_cushion'],
-            ['label' => 'โหมดการขับขี่', 'key' => 'driving_mode'],
+        'Các tính năng đặc biệt hiện có' => [
+            ['label' => 'Chế độ lái', 'key' => 'driving_mode'],
+            ['label' => 'Kiểm soát hành trình', 'key' => 'cruise_control'],
+            ['label' => 'Đèn pha có thể điều chỉnh', 'key' => 'adjustable_headlights'],
         ],
     ];
 
@@ -176,7 +177,7 @@ function display_motor_custom_page()
                         if (($value == '0' || $value == '-')) {
                             $value = 'ยังไม่คอนเฟิร์ม';
                         } else {
-                            $value = 'THB ' .format_number_with_commas($value);
+                            $value = 'Triệu' .format_number_with_commas($value);
                         }
                     }
 
@@ -212,7 +213,7 @@ function display_motor_custom_page()
                                             <input type="checkbox">
                                             <span class="specs-slider"></span>
                                         </label>
-                                        <span>ซ่อนข้อมูลเดียวกัน</span>
+                                        <span>Ẩn giống nhau</span>
                                     </div>
                                 </td>
                             </tr>
@@ -250,8 +251,8 @@ function display_motor_custom_page()
                                             <div class="varient-id" data-tooltip="Your tooltip text here">
                                                 <span><?= $variant_id ?> </span>
                                             </div>
-                                            <button class="body-col-span-button" onclick="window.location.href='<?php echo esc_url(home_url('/compare-cars')); ?>'">
-                                                <a href="<?php echo home_url('/compare-motorcycles'); ?>">+ เปรียบเทียบ</a>
+                                            <button class="body-col-span-button" onclick="window.location.href='<?php echo esc_url(home_url('/so-sanh-xe-may')); ?>'">
+                                                <a href="<?php echo home_url('/so-sanh-xe-may'); ?>">+  So sánh </a>
                                             </button>
 
                                         </div>

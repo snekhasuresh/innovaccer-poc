@@ -25,7 +25,9 @@
          button.body-col-span-button a:hover {
 			color:#ffb400;
 		}
-
+ button.body-col-span-button a {
+			color:#ffb400;
+		}
         .parent-comparision .close-button {
             background: none;
             border: none;
@@ -328,10 +330,11 @@
         }
 
         .sectioning h2 {
-            font-size: 19px;
-            color: black;
+            font-size: 18px;
+            color: #262626;
             border: none;
             margin: 8px 0px 8px 0px;
+			font-family:'Roboto';
         }
 
         table {

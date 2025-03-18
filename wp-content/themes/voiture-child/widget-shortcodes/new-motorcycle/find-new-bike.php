@@ -24,8 +24,8 @@ function popular_bike_in_new_bikes($atts)
         $popular_bikes = get_popular_bikes_data();
         $latest_bikes = get_latest_bikes_data();
 
-        $popular_cars_in_malaysia['เป็นที่นิยม'] = $popular_bikes;
-        $popular_cars_in_malaysia['ล่าสุด'] = $latest_bikes;
+        $popular_cars_in_malaysia['Phổ biến'] = $popular_bikes;
+        $popular_cars_in_malaysia['Mới nhất'] = $latest_bikes;
     } else {
         $grouped_cars = get_grouped_by_type_motors_data($brand_id); //fetch_grouped_by_type_cars_data_from_db();
         $grouped_cars = array_map(function ($cars) {
@@ -37,10 +37,17 @@ function popular_bike_in_new_bikes($atts)
     }
 
     ob_start();
+$translate = [
+    
+'bike' => 'Bảng Giá Xe Máy Mới Phổ Biến Tại Việt Nam',
+
+];
+
+
 
 ?>
     <div class="fruit-tabs" . $brand_id>
-        <h2 class="wa-title-text"><?php echo $brand_id == 0 ? 'รายการราคารถมอเตอร์ไซค์ใหม่ยอดนิยมในไทย' :  ''; ?></h2>
+        <h2 class="wa-title-text"><?php echo $translate['bike']; ?></h2>
         <ul class="tabs">
             <div class="tab">
                 <?php if (!empty($popular_cars_in_malaysia)) : ?>
@@ -280,7 +287,7 @@ function display_popular_bike_posts($bikes, $brand_id = 0)
             echo '<div><div class="popular-cars-find">' . esc_html($bike_title) . '</div></div>';
             echo '<span><div class="find-new-cars-price">' . $price . '</div></span>';
             echo '</div>';
-            echo '<button class="view-model-button">  ดูรุ่นรถ </button>';
+            echo '<button class="view-model-button">  Xem xe máy </button>';
             echo '</a>';
             echo '</div>';
         }

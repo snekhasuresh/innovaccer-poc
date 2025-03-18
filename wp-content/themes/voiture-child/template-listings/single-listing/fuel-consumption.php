@@ -45,14 +45,14 @@ function overview_fuel_consumption()
 ?>
         <div>
             <div class="individula-fuel-title-con">
-                <h2 class="individula-fuel-title wa-title-text">อัตราสิ้นเปลืองเชื้อเพลิง <?php echo esc_html($post_title); ?></h2>
+                <h2 class="individula-fuel-title wa-title-text">Tiêu thụ nhiên liệu <?php echo esc_html($post_title); ?></h2>
             </div>
             <table class="fuel-consumption-table" border="1">
                 <thead>
                     <tr>
-                        <th>ประเภทเชื้อเพลิง</th>
-                        <th>รูปแบบเกียร์</th>
-                        <th>ผู้ผลิตเรียกร้อง</th>
+                        <th>Loại năng lượng</th>
+                        <th>Hộp số</th>
+                        <th>NSX công bố</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,11 +66,11 @@ function overview_fuel_consumption()
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <?php if (count($table_data) > 3): ?>
-                <div class="btn-more-container" id="fuel-consumption-view-more-btn" data-url="<?php echo esc_url(home_url('/fuel-consumption')); ?>">
+            <?php if ($table_data): ?>
+                <div class="btn-more-container" id="fuel-consumption-view-more-btn" data-url="<?php echo esc_url(home_url('/tieu-hao-nhien-lieu')); ?>">
                     <button class="btn-more">
-                        <a href="<?php echo esc_url(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . '/fuel-consumption'); ?>">
-                            ดูเพิ่มเติม
+                        <a href="<?php echo esc_url(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . '/tieu-hao-nhien-lieu'); ?>">
+                           Xem thêm
                             <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 320 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                                 <path

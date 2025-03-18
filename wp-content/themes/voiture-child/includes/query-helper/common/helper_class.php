@@ -67,7 +67,7 @@ function get_price_range_of_listing($listing_post_id)
 	", $listing_post_id));
 
     if (empty($prices)) {
-        return 'ยังไม่คอนเฟิร์ม';
+        return 'Đang cập nhật';
     }
 
     // Convert to float and find min/max
@@ -76,10 +76,10 @@ function get_price_range_of_listing($listing_post_id)
     $highest_price = max($prices);
 
     if ($lowest_price === $highest_price) {
-        return 'THB ' . format_number_with_commas($highest_price);
+        return format_price_vietnam($highest_price);
     }
 
-    return 'THB ' . format_number_with_commas($lowest_price) . ' - THB ' . format_number_with_commas($highest_price);
+    return format_price_vietnam($lowest_price) . ' - ' . format_price_vietnam($highest_price);
 }
 
 /**
@@ -607,7 +607,7 @@ function get_motor_price_range_of_listing($listing_post_id)
     ));
 
     if (empty($variants)) {
-        return 'ยังไม่คอนเฟิร์ม';
+        return 'Đang cập nhật';
     }
 
     // Use existing helper function to fetch all meta data for variants
@@ -625,7 +625,7 @@ function get_motor_price_range_of_listing($listing_post_id)
     }
 
     if (empty($prices)) {
-        return 'ยังไม่คอนเฟิร์ม';
+        return 'Đang cập nhật';
     }
 
     // Calculate price range
@@ -633,10 +633,10 @@ function get_motor_price_range_of_listing($listing_post_id)
     $highest_price = max($prices);
 
     if ($lowest_price === $highest_price) {
-        return 'THB ' . format_number_with_commas($highest_price);
+        return format_price_vietnam($highest_price);
     }
 
-    return 'THB ' . format_number_with_commas($lowest_price) . ' - THB ' . format_number_with_commas($highest_price);
+    return format_price_vietnam($lowest_price) . ' - ' . format_price_vietnam($highest_price);
 }
 
 function get_motor_variant_info($listing_post_id)

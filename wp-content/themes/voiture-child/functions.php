@@ -957,8 +957,8 @@ require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/usermenu-top/usermenu-top.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/usermenu-history/usermenu-history.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/usermenu-add-car/usermenu-add-car.php';
-require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/login-popup/login-popup.php';
-require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/login-popup/helpers/validate-token.php';
+// require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/login-popup/login-popup.php';
+// require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/login-popup/helpers/validate-token.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/car-popup/car-popup.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/user-cars/user-cars.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/fuel-consumption-info/motor-fuel-consumtion-info.php';
@@ -1169,7 +1169,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
                         'src' => $image->url,
                         'alt' => $listing_name . ' Exterior ' . str_pad($exteriorIndex++, 3, '0', STR_PAD_LEFT),
                         'title' => $listing_name . ' Exterior ' . str_pad($exteriorIndex - 1, 3, '0', STR_PAD_LEFT),
-                        'link' => '/cars/honda/hr-v/car-exterior-image-' . $exteriorIndex
+                        'link' => '/xe-oto/honda/hr-v/car-exterior-image-' . $exteriorIndex
                     ];
                 }
             }
@@ -1237,7 +1237,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
                 $image_url = esc_url($image->url);
                 $alt_text = esc_attr($listing_name . ' Interior ' . str_pad($interiorIndex++, 3, '0', STR_PAD_LEFT));
                 $title = esc_attr($listing_name . ' Interior ' . str_pad($interiorIndex - 1, 3, '0', STR_PAD_LEFT));
-                $link = esc_url('/cars/honda/hr-v/car-interior-image-' . $interiorIndex);
+                $link = esc_url('/xe-oto/honda/hr-v/car-interior-image-' . $interiorIndex);
 
                 $interior_images_html .= '
                 <div class="interior-gallery-list-item">
@@ -1315,7 +1315,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
                 $image_url = esc_url($image->url);
                 $alt_text = esc_attr($listing_name . ' Other Image ' . str_pad($otherImgIndex++, 3, '0', STR_PAD_LEFT));
                 $title = esc_attr($listing_name . ' Other Image ' . str_pad($otherImgIndex - 1, 3, '0', STR_PAD_LEFT));
-                $link = esc_url('/cars/honda/hr-v/car-other-image-' . $otherImgIndex);
+                $link = esc_url('/xe-oto/honda/hr-v/car-other-image-' . $otherImgIndex);
 
                 $other_img_images_html .= '
                 <div class="other-img-gallery-list-item">
@@ -1435,100 +1435,100 @@ if (strpos($_SERVER['REQUEST_URI'], '/gia-xang-dau') !== false || wp_doing_ajax(
 }
 
 // motor calculater pages
-if (strpos($_SERVER['REQUEST_URI'], 'dung-cu') !== false || wp_doing_ajax()) {
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-template-calculators.php';
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-car-loan-data.php';
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-buying-guide-news.php';
+// if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/dung-cu/mua-xe-tra-gop' || wp_doing_ajax()) {
+//     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-template-calculators.php';
+//     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-car-loan-data.php';
+//     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator-motor/motor-buying-guide-news.php';
 
-    //calculator page 
-    function fetch_motor_models()
-    {
-        global $wpdb;
-        $brand_id = intval($_POST['brand_id']); // Get selected brand ID
+//     //calculator page 
+//     function fetch_motor_models()
+//     {
+//         global $wpdb;
+//         $brand_id = intval($_POST['brand_id']); // Get selected brand ID
 
-        // Fetch models for the selected brand
-        $motor_models = $wpdb->get_results($wpdb->prepare("
-          SELECT p.ID, p.post_title
-          FROM {$wpdb->posts} p
-          INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
-          WHERE pm.meta_key = 'make' 
-          AND pm.meta_value = %d
-          ORDER BY p.post_title
-      ", $brand_id));
+//         // Fetch models for the selected brand
+//         $motor_models = $wpdb->get_results($wpdb->prepare("
+//           SELECT p.ID, p.post_title
+//           FROM {$wpdb->posts} p
+//           INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
+//           WHERE pm.meta_key = 'make' 
+//           AND pm.meta_value = %d
+//           ORDER BY p.post_title
+//       ", $brand_id));
 
-        if (!empty($motor_models)) {
-            wp_send_json_success($motor_models); // Send models data
-        } else {
-            wp_send_json_error('No models found');
-        }
-    }
+//         if (!empty($motor_models)) {
+//             wp_send_json_success($motor_models); // Send models data
+//         } else {
+//             wp_send_json_error('No models found');
+//         }
+//     }
 
-    function fetch_motor_variants()
-    {
-        global $wpdb;
-        $model_id = intval($_POST['model_id']); // Get selected model ID
+//     function fetch_motor_variants()
+//     {
+//         global $wpdb;
+//         $model_id = intval($_POST['model_id']); // Get selected model ID
 
-        // Fetch variants for the selected model using LIKE to search in serialized data
-        $motor_variants = $wpdb->get_results($wpdb->prepare("
-          SELECT p.post_title, p.ID
-          FROM {$wpdb->posts} p
-          INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
-          WHERE pm.meta_key = 'model'
-          AND pm.meta_value LIKE %s
-      ", '%"' . $model_id . '"%')); // Adjusted for serialized data
+//         // Fetch variants for the selected model using LIKE to search in serialized data
+//         $motor_variants = $wpdb->get_results($wpdb->prepare("
+//           SELECT p.post_title, p.ID
+//           FROM {$wpdb->posts} p
+//           INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id
+//           WHERE pm.meta_key = 'model'
+//           AND pm.meta_value LIKE %s
+//       ", '%"' . $model_id . '"%')); // Adjusted for serialized data
 
-        if (!empty($motor_variants)) {
-            wp_send_json_success($motor_variants); // Send variants data
-        } else {
-            wp_send_json_error('No variants found');
-        }
-    }
+//         if (!empty($motor_variants)) {
+//             wp_send_json_success($motor_variants); // Send variants data
+//         } else {
+//             wp_send_json_error('No variants found');
+//         }
+//     }
 
-    // Register the AJAX actions
-    add_action('wp_ajax_fetch_motor_models', 'fetch_motor_models');
-    add_action('wp_ajax_fetch_motor_variants', 'fetch_motor_variants');
+//     // Register the AJAX actions
+//     add_action('wp_ajax_fetch_motor_models', 'fetch_motor_models');
+//     add_action('wp_ajax_fetch_motor_variants', 'fetch_motor_variants');
 
-    add_action('wp_ajax_fetch_motor_variant_data', 'fetch_motor_variant_data');
-    add_action('wp_ajax_nopriv_fetch_motor_variant_data', 'fetch_motor_variant_data');
+//     add_action('wp_ajax_fetch_motor_variant_data', 'fetch_motor_variant_data');
+//     add_action('wp_ajax_nopriv_fetch_motor_variant_data', 'fetch_motor_variant_data');
 
-    function fetch_motor_variant_data()
-    {
-        if (isset($_POST['variant_id'])) {
-            $variant_id = intval($_POST['variant_id']);
+//     function fetch_motor_variant_data()
+//     {
+//         if (isset($_POST['variant_id'])) {
+//             $variant_id = intval($_POST['variant_id']);
 
-            // Retrieve the Manufacturers Claim meta value
-            $car_price = get_post_meta($variant_id, 'price', true);
-            $fuel_consumption = get_post_meta($variant_id, 'manufacturers_claim', true);
-            $capacity = get_post_meta($variant_id, 'capacity', true);
+//             // Retrieve the Manufacturers Claim meta value
+//             $car_price = get_post_meta($variant_id, 'price', true);
+//             $fuel_consumption = get_post_meta($variant_id, 'manufacturers_claim', true);
+//             $capacity = get_post_meta($variant_id, 'capacity', true);
 
-            if (empty($fuel_consumption)) {
-                $fuel_consumption = 0;
-            }
-            if (empty($capacity)) {
-                $capacity = 0;
-            }
-            if (empty($car_price)) {
-                $car_price = 0;
-            }
+//             if (empty($fuel_consumption)) {
+//                 $fuel_consumption = 0;
+//             }
+//             if (empty($capacity)) {
+//                 $capacity = 0;
+//             }
+//             if (empty($car_price)) {
+//                 $car_price = 0;
+//             }
 
-            wp_send_json_success(['car_price' => $car_price, 'fuel_consumption' => $fuel_consumption, 'capacity' => $capacity]);
-        } else {
-            wp_send_json_error(['message' => 'Invalid request']);
-        }
+//             wp_send_json_success(['car_price' => $car_price, 'fuel_consumption' => $fuel_consumption, 'capacity' => $capacity]);
+//         } else {
+//             wp_send_json_error(['message' => 'Invalid request']);
+//         }
 
-        wp_die();
-    }
+//         wp_die();
+//     }
 
-    function tools_form_motor_calculator_script()
-    {
-        wp_enqueue_script('tools-form-calculator-script', get_stylesheet_directory_uri() . 'widget-shortcodes/calculator-motor/js/motor-calculator.js', array('jquery'), null, true);
+//     function tools_form_motor_calculator_script()
+//     {
+//         wp_enqueue_script('tools-form-calculator-script', get_stylesheet_directory_uri() . '/widget-shortcodes/calculator-motor/js/motor-calculator.js', array('jquery'), null, true);
 
-        wp_localize_script('tools-form-calculator-script', 'ajax_data', array(
-            'ajax_url' => admin_url('admin-ajax.php')
-        ));
-    }
-    add_action('wp_enqueue_scripts', 'tools_form_motor_calculator_script');
-}
+//         wp_localize_script('tools-form-calculator-script', 'ajax_data', array(
+//             'ajax_url' => admin_url('admin-ajax.php')
+//         ));
+//     }
+//     add_action('wp_enqueue_scripts', 'tools_form_motor_calculator_script');
+// }
 
 //compare cars
 // if (is_page('compare-cars') && preg_match('#^/compare-cars/?#', $_SERVER['REQUEST_URI']) || wp_doing_ajax()) {
@@ -1742,12 +1742,12 @@ $news_categories = get_terms(array(
 $is_news_related = false;
 
 // Check if the URL contains 'news/latest' or any news category
-if (strpos($_SERVER['REQUEST_URI'], 'news/latest') !== false) {
+if (strpos($_SERVER['REQUEST_URI'], 'tin-tuc/moi-nhat') !== false) {
     $is_news_related = true;
 } else {
     foreach ($news_categories as $category) {
         if (is_object($category) && isset($category->slug)) {
-            if (strpos($_SERVER['REQUEST_URI'], '/news/' . $category->slug) !== false) {
+            if (strpos($_SERVER['REQUEST_URI'], '/tin-tuc/' . $category->slug) !== false) {
                 // Ensure it is not part of another path like '/cars/honda/city/news/'
                 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
                 $segments = explode('/', trim($path, '/'));
@@ -1765,7 +1765,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'news/latest') !== false) {
 /***************************redirection rules *************************************/
 function custom_amp_rewrite_rule()
 {
-    add_rewrite_rule('^news/([0-9]+)/amp/?$', 'index.php?custom_amp_news_id=$matches[1]', 'top');
+    add_rewrite_rule('^tin-tuc/([0-9]+)/amp/?$', 'index.php?custom_amp_news_id=$matches[1]', 'top');
 }
 add_action('init', 'custom_amp_rewrite_rule');
 
@@ -1793,11 +1793,11 @@ function custom_amp_template_redirect()
         $post = get_post($result);
         if ($post) {
             $post_name = $post->post_name;
-            $redirection_url = home_url('/news/' . $post_name . '-' . $news_id);
+            $redirection_url = home_url('/tin-tuc/' . $post_name . '-' . $news_id);
             header("Location: $redirection_url", true, 302);
             exit;
         } else {
-            $redirection_url = home_url('/news/');
+            $redirection_url = home_url('/tin-tuc/');
             header("Location: $redirection_url", true, 302);
         }
 
@@ -1821,7 +1821,7 @@ function wapcar_custom_rewrite_rules()
     );
 
     add_rewrite_rule(
-        '^cars/([^/]+)/amp/?$',
+        '^xe-oto/([^/]+)/amp/?$',
         'index.php?car_make=$matches[1]',
         'top'
     );
@@ -1879,8 +1879,8 @@ function wapcar_handle_redirections()
     }
 
     // AMP Redirection
-    if (preg_match('#^/cars/([^/]+)/amp$#', $current_url, $matches)) {
-        wp_redirect(home_url('/cars/' . $matches[1]), 301);
+    if (preg_match('#^/xe-oto/([^/]+)/amp$#', $current_url, $matches)) {
+        wp_redirect(home_url('/xe-oto/' . $matches[1]), 301);
         exit;
     }
 
@@ -1893,7 +1893,7 @@ function wapcar_handle_redirections()
     // News Images Redirection
     if (get_query_var('news_image')) {
         $news_slug = preg_replace('/-[a-f0-9]{32}$/', '', get_query_var('news_image'));
-        wp_redirect(home_url('/news/' . $news_slug), 301);
+        wp_redirect(home_url('/tin-tuc/' . $news_slug), 301);
         exit;
     }
 }
@@ -1903,12 +1903,7 @@ add_action('template_redirect', 'wapcar_handle_redirections');
 
 // Example usage of the unified condition
 $current_url = $_SERVER['REQUEST_URI'];
-if (
-    preg_match('/^\/news(\/|$)/', $current_url) ||
-    wp_doing_ajax() ||
-    strpos($_SERVER['REQUEST_URI'], '/zh') === 0 ||
-    strpos($_SERVER['REQUEST_URI'], '/bm') === 0
-) {
+if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
     function enqueue_custom_scripts()
     {
         wp_enqueue_script('custom-news-script', get_stylesheet_directory_uri() . '/js/custom-news.js', array('jquery'), null, true);
@@ -1930,7 +1925,7 @@ if (
 
         // Check if the current URL contains 'news'
         if (
-            strpos($current_url, 'news') !== false ||
+            strpos($current_url, 'tin-tuc') !== false ||
             strpos($current_url, '/zh') !== false ||
             strpos($current_url, '/bm') !== false
         ) {
@@ -1969,25 +1964,23 @@ if (
 
         // Get subcategories for the selected category
         if ($category_id != 0) {
-            global $wpdb;
+			global $wpdb;
 
-            $query = $wpdb->prepare("
-            SELECT DISTINCT t.*
-            FROM {$wpdb->terms} AS t
-            INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id
-            LEFT JOIN {$wpdb->termmeta} AS tm1 ON t.term_id = tm1.term_id AND tm1.meta_key = %s
-            LEFT JOIN {$wpdb->termmeta} AS tm2 ON t.term_id = tm2.term_id AND tm2.meta_key = %s
-            LEFT JOIN {$wpdb->termmeta} AS tm3 ON t.term_id = tm3.term_id AND tm3.meta_key = %s
-            WHERE tt.parent = %d
-              AND tt.taxonomy = %s
-              AND (tm1.meta_value = '' OR tm1.meta_value IS NULL)  -- second_lang is empty
-              AND tm2.meta_value = %s                              -- state = '1'
-              AND tm3.meta_value = %s                              -- type = '1'
-            ORDER BY CAST(tm1.meta_value AS UNSIGNED) ASC          -- sort by 'sort' meta value numerically
-        ", 'second_lang', 'state', 'type', $category_id, 'news-category', '1', '1');
+			$query = $wpdb->prepare("
+			SELECT DISTINCT t.*
+			FROM {$wpdb->terms} AS t
+			INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id
+			LEFT JOIN {$wpdb->termmeta} AS tm2 ON t.term_id = tm2.term_id AND tm2.meta_key = %s
+			LEFT JOIN {$wpdb->termmeta} AS tm3 ON t.term_id = tm3.term_id AND tm3.meta_key = %s
+			WHERE tt.parent = %d
+			  AND tt.taxonomy = %s
+			  AND tm2.meta_value = %s                              -- state = '1'
+			  AND tm3.meta_value = %s                              -- type = '1'
+			ORDER BY t.term_id ASC                                  -- sort by term_id numerically
+		", 'state', 'type', $category_id, 'news-category', '1', '1');
 
-            $subcategories = $wpdb->get_results($query);
-        }
+			$subcategories = $wpdb->get_results($query);
+		}
 
         $subcategory_html = '';
 
@@ -1995,11 +1988,37 @@ if (
             $subcategory_html .= '<div class="subcategory-row">';
             $subcategory_html .= '<div class="subcategory-tab sub-active first-sub" data-category="' . esc_attr($category_id) . '"data-subcategory="' . esc_attr($category_id) . '"><a>All</a></div>';
             foreach ($subcategories as $subcategory) {
-                $subcategory_html .= '<div class="subcategory-tab" 
-                data-subcategory="' . esc_attr($subcategory->term_id) . '"
-                data-subcategoryname="' . esc_attr($subcategory->name) . '"
-                data-categoryname="' . esc_attr($category->name) . '"><a>'
-                    . esc_html($subcategory->name) . '</a></div>';
+                // Check if the subcategory has posts
+				$subcategory_posts = new WP_Query(array(
+					'post_type'      => 'news',
+					'posts_per_page' => 1,
+					'post_status'    => 'publish',
+					'meta_query'     => array(
+						array(
+							'key'     => 'news_category',
+							'value'   => sprintf(':"%d";', $subcategory->term_id),
+							'compare' => 'LIKE',
+						)
+					)
+				));
+
+				if ($subcategory_posts->have_posts()) {
+					$subcategory_html .= '<div class="subcategory-tab" 
+					data-subcategory="' . esc_attr($subcategory->term_id) . '"
+					data-subcategoryname="' . esc_attr($subcategory->name) . '"
+					data-categoryname="' . esc_attr($category->name) . '"><a>'
+						. esc_html($subcategory->name) . '</a></div>';
+				}else{
+					 $terms = get_terms(array(
+						'taxonomy'   => 'news-category',
+						'name'       => 'Others',
+						'hide_empty' => false,
+						'parent' => $category_id,
+					));
+
+					$subcategory_id = $terms[0]->term_id;
+				}
+				wp_reset_postdata(); // Always reset post data after a query
             }
             $subcategory_html .= '</div>';
         } else {
@@ -2020,11 +2039,11 @@ if (
             'post_status'    => 'publish',
 
             'meta_query'     => array(
-                array(
-                    'key'     => 'second_language',
-                    'value'   => '',
-                    'compare' => '='
-                ),
+//                 array(
+//                     'key'     => 'second_language',
+//                     'value'   => '',
+//                     'compare' => '='
+//                 ),
                 array(
                     'key'     => 'publish_time',
                     'value'   => current_time('mysql'),
@@ -2311,7 +2330,7 @@ add_action('init', 'create_cars_post_type');
 function create_motors_post_type()
 {
     register_post_type(
-        'Motorcycles',
+        'Xe-may',
         array(
             'labels' => array(
                 'name' => __('Xe-may'),
@@ -2346,9 +2365,9 @@ function is_excluded_news_slug($slug, $is_motorcycle = false)
     }, $news_categories);
 
     if ($is_motorcycle) {
-        $excluded_slugs = array('latest', 'review', 'buying-guide', 'tips');
+        $excluded_slugs = array('moi-nhat', 'review', 'buying-guide', 'tips', 'opinions');
     } else {
-		$excluded_slugs = array('latest', 'reviews', 'buying-guides', 'evs', 'tips', 'used-car', 'comments');
+		$excluded_slugs = array('moi-nhat', 'reviews', 'buying-guides', 'evs', 'tips', 'used-car', 'opinions');
     }
 
     return in_array($slug, $excluded_slugs);
@@ -2360,12 +2379,12 @@ add_action('init', 'custom_cars_rewrite_rules');
 function custom_cars_rewrite_rules()
 {
     add_rewrite_rule('^tin-tuc/([^/]+)/?$', 'index.php?post_type=news&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=New Cars&make=$matches[1]', 'top');
+    add_rewrite_rule('^xe-oto/([^/]+)/?$', 'index.php?pagename=xe-oto&make=$matches[1]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
     add_rewrite_rule('^xe-oto/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-oto&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
-    add_rewrite_rule('^mobil-baru/([^/]+)/?$', 'index.php?pagename=xe-oto&filter=$matches[1]', 'top');
+    add_rewrite_rule('^xe-hoi-moi/([^/]+)/?$', 'index.php?pagename=xe-oto&filter=$matches[1]', 'top');
 
     //motor rewrite url
     add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=tin-tuc-xe-may&news_slug=$matches[1]', 'top');
@@ -3821,7 +3840,7 @@ function display_sitemap_brands_shortcode()
 
         foreach ($brands->terms as $brand) {
             echo '<div class="news-item">';
-            echo '<a href="' . esc_url(home_url('/cars/' . $brand->slug)) . '" >' . esc_html($brand->name) . '</a>';
+            echo '<a href="' . esc_url(home_url('/xe-oto/' . $brand->slug)) . '" >' . esc_html($brand->name) . '</a>';
             echo '</div>';
         }
 
@@ -4556,8 +4575,6 @@ function get_listing_from_query_vars()
         return $cached_data;
     }
 
-
-
     // Set transient to "loading" to prevent duplicate queries
     // set_transient($cache_key, 'loading', 5 * MINUTE_IN_SECONDS);
 
@@ -4647,12 +4664,12 @@ function get_listing_from_query_vars()
         $listing_post_response['max_price'] = $max_price;
         if ($min_price && $max_price) {
             if ($min_price == $max_price) {
-                $price = 'THB ' . number_format($min_price);
+                $price = format_price_vietnam($min_price);
             } else {
-                $price = 'THB ' . number_format($min_price) . ' - THB ' . number_format($max_price);
+                $price = format_price_vietnam($min_price) . ' - ' . format_price_vietnam($max_price);
             }
         } else {
-            $price = 'ยังไม่คอนเฟิร์ม';
+            $price = 'Đang cập nhật';
         }
         $listing_post_response['price'] = $price;
         $listing_post_response['variant_meta_data'] = $variant_meta_data;
@@ -4698,8 +4715,11 @@ function get_variant_from_query_vars()
 
     $listing_name = $make . '-' . $model;
 
-    $individual_pages = ['overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors'];
+    $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac'];
     if (!in_array($section, $individual_pages)) {
+		if (strpos($section, $listing_name) === false) {
+			$section = $listing_name . '-' . $section;
+		}
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'variant',
@@ -4885,7 +4905,7 @@ function customize_yoast_sitemap_post_urls($url, $post)
 
         if ($make_slug && $model_slug && $variant_slug) {
             // Construct the URL: cars/{make}/{model}/{variant}
-            $url = home_url("cars/" . sanitize_title($make_slug) . "/" . $model_slug . "/" . $variant_slug);
+            $url = home_url("xe-oto/" . sanitize_title($make_slug) . "/" . $model_slug . "/" . $variant_slug);
         }
     }
 
@@ -4975,7 +4995,7 @@ function generate_listing_make_sitemap($wp)
         if (! is_wp_error($terms) && ! empty($terms)) {
             foreach ($terms as $term) {
                 $make_slug = $term->slug; // Get the slug of the make
-                $custom_url = home_url('/cars/' . $make_slug . '/'); // Format: car/make-name
+                $custom_url = home_url('/xe-oto/' . $make_slug . '/'); // Format: car/make-name
 
                 echo '<url>';
                 echo '<loc>' . esc_url($custom_url) . '</loc>';
@@ -5123,11 +5143,9 @@ function get_motor_listing_from_query_vars()
 
     // Try getting cached data from WordPress Transients
     $cached_data = get_transient($cache_key);
-//     if ($cached_data) {
-//         return $cached_data;
-//     }
-
-
+    if ($cached_data) {
+        return $cached_data;
+    }
 
     // Set transient to "loading" to prevent duplicate queries
     // set_transient($cache_key, 'loading', 5 * MINUTE_IN_SECONDS);
@@ -5223,12 +5241,12 @@ function get_motor_listing_from_query_vars()
         $listing_post_response['max_price'] = $max_price;
         if ($min_price && $max_price) {
             if ($min_price == $max_price) {
-                $price = 'THB  ' . number_format($min_price);
+                $price = format_price_vietnam($min_price);
             } else {
-                $price = 'THB  ' . number_format($min_price) . ' - THB  ' . number_format($max_price);
+                $price = format_price_vietnam($min_price) . ' -  ' . format_price_vietnam($max_price);
             }
         } else {
-            $price = 'ยังไม่คอนเฟิร์ม';
+            $price = 'Đang cập nhật';
         }
         $listing_post_response['price'] = $price;
         $listing_post_response['variant_meta_data'] = $variant_meta_data;
@@ -5270,10 +5288,10 @@ function get_motor_variant_from_query_vars()
     $cache_key = 'variant_post_' . $make . '_' . $model . '_' . $variant_section;
 
     // Try getting cached data from WordPress Transients
-    // $cached_data = get_transient($cache_key);
-    // if ($cached_data) {
-    //     return $cached_data;
-    // }
+    $cached_data = get_transient($cache_key);
+    if ($cached_data) {
+        return $cached_data;
+    }
 
     // Set transient to "loading" to prevent duplicate queries
     // set_transient($cache_key, 'loading', 5 * MINUTE_IN_SECONDS);
@@ -5427,5 +5445,21 @@ $translate = [
 }
 add_shortcode('motor_latest_news_shortcode', 'motor_latest_news_shortcode');
 
+function format_price_vietnam($price)
+{
+    if ($price >= 1000000000) {
+        // Convert to 'Tỷ' (Billion)
+        $formatted_price = number_format($price / 1000000000, 3, '.', ''); // Keep 3 decimal places
+        $formatted_price = rtrim(rtrim($formatted_price, '0'), '.'); // Remove trailing zeros and dot if not needed
+        $formatted_price .= ' Tỷ';
+    } elseif ($price >= 1000000) {
+        // Convert to 'Triệu' (Million)
+        $formatted_price = number_format($price / 1000000, 0, '.', '') . ' Triệu';
+    } else {
+        // Handle smaller values, if needed
+        $formatted_price = number_format($price) . ' VND';
+    }
 
+    return $formatted_price;
+}
 

@@ -57,7 +57,7 @@ function car_competitors_shortcode()
     ob_start();
 ?>
     <div class="competitors">
-        <span class="title-com"><?php esc_html_e($post_title . ' Competitors', 'voiture'); ?> </span>
+        <span class="title-com"><?php esc_html_e('Đối Thủ Của ' . $post_title, 'voiture'); ?> </span>
         <div id="competitorsList">
             <?php foreach ($competitors as $competitor) : ?>
                 <a href="<?php echo $competitor['car_url']; ?>" class="competitor">

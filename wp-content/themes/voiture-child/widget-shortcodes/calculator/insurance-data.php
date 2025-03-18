@@ -6,70 +6,16 @@ function insurance_faqs()
     // FAQ data
     $faqs = [
         [
-            'question' => 'What is the purpose of car insurance?',
-            'answer' => 'Car insurance serves to offer financial protection to the parties involved in a traffic incident. The priority is the well-being of the other person involved in the accident. Depending on the type of coverage, some parties are not protected (usually yourself).'
+            'question' => 'Bảo hiểm xe ô tô bắt buộc là gì?',
+            'answer' => 'Bảo hiểm ô tô bắt buộc hay còn gọi là bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới đối với bên thứ ba. Loại bảo hiểm này là loại bảo hiểm bắt buộc đối với chủ xe bởi nó sẽ giúp bảo vệ và giảm thiểu thiệt hại cho bên thứ ba và cho chính chủ xe. Theo Nghị định 46 năm 2016, nếu không mang bảo hiểm TNDS, chủ xe ô tô sẽ bị xử phạt 400.000 – 600.000 VNĐ.'
         ],
         [
-            'question' => 'Is a car insurance compulsory in Malaysia?',
-            'answer' => 'Yes. Car insurance is compulsory in Malaysia. Without a car insurance policy, you are unable to obtain a road tax. No insurance means no road tax. Without a road tax, it is illegal to drive your car on public roads.'
+            'question' => 'Mua bảo hiểm vật chất xe ô tô ở đâu?',
+            'answer' => 'Hiện nay có rất nhiều sản phẩm bảo hiểm ô tô và đơn vị cung cấp bảo hiểm ô tô tại Việt Nam.'
         ],
         [
-            'question' => 'What are the three types of car insurance?',
-            'answer' => 'The three types of car insurance in Malaysia are:
-Third-party insurance
-Third-party, fire, and theft insurance
-Comprehensive insurance'
-        ],
-        [
-            'question' => 'What is covered in a third-party car insurance?',
-            'answer' => 'A third-party car insurance only covers the financial losses of the other person involved in accident with you. Your car’s damages and your medical bills are not covered.'
-        ],
-        [
-            'question' => 'What does a comprehensive insurance cover?',
-            'answer' => 'It covers the financial cost of damage to your own car on top of the financial damage to the other party in the event of a traffic accident. Fire and theft insurance are included in a comprehensive insurance. Windscreen insurance is usually not included in a comprehensive insurance.'
-        ],
-        [
-            'question' => 'Do I need to insure my car if I’m not using it?',
-            'answer' => 'If it is only parked in a private property, an insurance is not required. You will need a car insurance if the car is used on public roads. A minimum of a third-party insurance is required to make the car road legal. '
-        ],
-        [
-            'question' => 'How are insurance premiums calculated in Malaysia?',
-            'answer' => 'Insurance premiums are calculated based on the sum insured on the car and what type of coverage is being subscribed to. Risk factors affecting the insurance premium of the car include the car price (current value), car type (sports car/family car), car registration location, age of driver, and car engine displacement.'
-        ],
-        [
-            'question' => 'How do I get cheap car insurance?',
-            'answer' => 'The less the sum insured, the cheaper the insurance premium will be. Cheaper cars generally cost less to insure. The insurance premium can also be lowered if you are assessed to be at lower risk of an accident.
-Aa a matter of fact, discounts are given to drivers who prove to be at lower risk in the form of NCD'
-        ],
-        [
-            'question' => 'What is an NCD?',
-            'answer' => 'The NCD is a no-claim discount that is given to drivers that have never claimed their insurance/be involved in an incident. After 1 year of no claims, a 25% discount is given on the premium on the following year. The discounted amount increases up to 55% after 5 years of no insurance claims.'
-        ],
-        [
-            'question' => 'How do I renew my car insurance in Malaysia?',
-            'answer' => 'Your car insurance can be renewed online on the websites of the respective insurance providers. You will just need to fill in the details of yourself and your car to get a quotation. Different car insurance providers will offer different rates. Once you’ve decided which car insurance you’d like to purchase, you can do so at the respective website.'
-        ],
-        [
-            'question' => 'How do I claim my insurance in the event of an accident?',
-            'answer' => 'In the event of an accident, check if you and the other party have suffered from any injuries first. You will need to contact your insurance provider, lodge a police report, document the accident, gather relevant documents, and submit the relevant documents to your insurer.'
-        ],
-        [
-            'question' => 'Do you have to pay insurance on a used car in Malaysia?',
-            'answer' => 'All cars that are used on public roads are required to have an insurance policy. The insurance policy is non-transferrable since a new owner will be assessed at a different risk level.'
-        ],
-        [
-            'question' => 'Do used cars cost more to insure in Malaysia?',
-            'answer' => 'It depends. It could be less and it could be more depending on the insurance provider.'
-        ],
-        [
-            'question' => 'What happens if I get into an accident without car insurance?',
-            'answer' => 'This usually happens when you drive a car that you do not own (borrowed). You are not an insured driver. In this case, you will have to bear the financial damage yourself. Car rentals are usually insured (as long as you are the insured driver) so you don’t have to worry about that 
-
-Do you really need full coverage for auto insurance?'
-        ],
-        [
-            'question' => 'Does my car insurance cover me in the event of a flood?',
-            'answer' => 'Unfortunately, the standard third-party insurance and comprehensive insurance do not cover the damages to your car in the event of a flood. You will need to subscribe to special perils insurance for natural disasters like so.'
+            'question' => 'Phí bảo hiểm xe ô tô là bao nhiêu?',
+            'answer' => 'Mức phí bảo hiểm trách nhiệm dân sự ô tô với từng loại xe sẽ khác nhau, dao động từ 437.000 – 4.850.000 VNĐ.'
         ],
     ];
 
@@ -80,7 +26,7 @@ Do you really need full coverage for auto insurance?'
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7h6p3+NFldf3NOK5GT6Z3F68b9cJ2+Qp8V3b" crossorigin="anonymous" />
 
-    <h2 class="wa-title-text">Insurance FAQ</h2>
+    <h2 class="wa-title-text">Câu Hỏi Thường Gặp về Bảo Hiểm Xe</h2>
 
     <div class="insurance-faq-container">
         <?php foreach ($faqs as $faq): ?>
@@ -210,79 +156,173 @@ add_shortcode('insurance_faqs', 'insurance_faqs');
 <?php
 function insurance_intro_shortcode()
 {
-    $no_claim_discount = [
-        ['coverage_duration' => '1st year', 'discount' => '25%'],
-        ['coverage_duration' => '2nd year', 'discount' => '30%'],
-        ['coverage_duration' => '3rd year', 'discount' => '38.33%'],
-        ['coverage_duration' => '4th year', 'discount' => '45%'],
-        ['coverage_duration' => '5th year', 'discount' => '55%'],
-    ];
+//     $no_claim_discount = [
+//         ['coverage_duration' => '1st year', 'discount' => '25%'],
+//         ['coverage_duration' => '2nd year', 'discount' => '30%'],
+//         ['coverage_duration' => '3rd year', 'discount' => '38.33%'],
+//         ['coverage_duration' => '4th year', 'discount' => '45%'],
+//         ['coverage_duration' => '5th year', 'discount' => '55%'],
+//     ];
     ob_start();
 ?>
     <div class="intro-section">
 
-        <h2 class="wa-title-text">Insurance Introduction</h2>
+        <h2 class="wa-title-text">Bảo Hiểm Xe - Máy Tính Bảo Hiểm Việt Nam | AutoFun</h2>
         <div class="insurance-content-box">
-            <h4>Car Insurance Introduction</h4>
-            <p>Car insurance provides financial protection in the event of a traffic accident that causes physical damage or injury. Car insurance is
+<!--             <h4>Car Insurance Introduction</h4> -->
+            <p>Chủ xe phải mua các loại bảo hiểm ô tô bắt buộc để có thể sử dụng xe tại Việt Nam. Ngoài ra còn có các loại bảo hiểm tự nguyện giúp giảm thiểu thiệt hại nếu xe gặp sự cố. Dưới đây là những loại bảo hiểm xe ô tô mà chủ xe nên quan tâm.
                 <span id="insurance-dots">...</span>
             </p>
             <div id="insurance-more-text" class="insurance-hidden-text">
-                <p>compulsory in Malaysia with the minimum requirement being the third-party insurance. Without a car insurance policy, the road tax could not be renewed for your car.</p>
-                <h4>Types of Car Insurance in Malaysia</h4>
-                <p>There are three main types of car insurance in Malaysia:</p>
-                <p>Third party insurance</p></br>
-                <p>Third party, fire, and theft</p><br>
-                <p>Comprehensive</p><br>
-                <h4>Third Party Insurance</h4>
-                <p>In the event of injury or physical damage caused by a traffic collision where you are at fault, your insurance is used to compensate the financial losses caused to other party involved. Hence the name third party insurance. A police report will have to be made prior to making an insurance claim. </p>
-                <br>
-                <p>The third-party insurance is the most basic form of car insurance that only compensates the damages of the other party involved. Your personal damages are not covered.</p>
-                <h4>Third party, fire, and theft insurance</h4>
-                <p>“Third party, fire, and theft insurance” is a step up from the basic third-party insurance with fire and theft insurance included. As the name suggests, damage to your own car in a collision is still not covered. </p>
-                <h4>Comprehensive insurance</h4>
-                <p>Comprehensive insurance is the most complete form of car insurance. In addition to the coverage provided by “third party insurance” and “third party, fire, and theft insurance”, damage to your own vehicle is also covered by the insurance policy.</p>
-                <h4>Factors affecting car insurance premium</h4>
-                <p>The insurance premium for your car will be affected by several factors like:</p>
-                <br>
-                <p>Car gross market value</p>
-                <p>Type of car insurance</p>
-                <p>Car engine displacement</p>
-                <p>Your location</p>
-                <p>The car’s depreciation will reduce its gross market value, a higher insurance coverage will incur a higher premium, and a bigger engine displacement incur a higher premium.</p>
-                <p>Your location will determine the risk of an incident, thus affecting the insurance premium. All of these factors are assessed when you use our insurance calculator.</p>
-                <h4>No-claim discount (NCD)</h4>
-                <p>A no-claim discount is a discount that you will receive if the car insurance has never been claimed. The car is assessed to be at a lower risk of an incident. The NCD starts at 25% after one year and increases up to 55 % after 5 years of no claims.</p>
+<!--                 <p>compulsory in Malaysia with the minimum requirement being the third-party insurance. Without a car insurance policy, the road tax could not be renewed for your car.</p> -->
+                <h4>Các loại bảo hiểm xe ô tô bắt buộc và tự nguyện hiện nay</h4>
+                <h4>Bảo hiểm Trách nhiệm dân sự (TNDS) bắt buộc cho xe ô tô</h4>
+				<p>Chủ xe cơ giới cần phải mua Bảo hiểm Trách nhiệm dân sự theo Nghị định số 03/2021/NĐ-CP. Bảo hiểm TNDS là bảo hiểm ô tô bắt buộc áp dụng cho mọi loại xe tại Việt Nam. Loại bảo hiểm này nhằm bảo vệ quyền lợi cho nạn nhân vì những thiệt hại gây ra bởi chủ xe.</p><br>
+<p>Phạm vi bồi thường thiệt hại:</p><br>
+				<p>Thiệt hại về sức khỏe và tính mạng của hành khách do xe gây ra</p><br>
+				<p>Thiệt hại về sức khỏe và tính mạng, tài sản của bên thứ 3 - nạn nhân do xe gây ra.</p><br>
+<p>Bảo hiểm sẽ chi trả 100 triệu đồng/người/vụ tai nạn. Nếu thiệt hại tài sản thì sẽ được bồi thường 50 triệu đồng/vụ.</p><br>
+               <h4>
+				   Bảo hiểm tai nạn cho người lái và hành khách trên xe
+				</h4>
+				<p>
+					Loại này là bảo hiểm ô tô tự nguyện. Bảo hiểm sẽ chịu thiệt hại về tính mạng, thân thể do tai nạn giao thông. Phạm vi chi trả tùy vào chính sách công ty, quyền lợi của gói bảo hiểm mà khách đã mua.
+				</p>
+				<h4>
+					Bảo hiểm vật chất xe ô tô
+				</h4>
+				<p>
+					Bảo hiểm vật chất xe ô tô là một loại bảo hiểm ô tô tự nguyện. Bảo hiểm chịu trách nhiệm bảo vệ thân vỏ, thiết bị của xe ô tô.  Nếu có tai nạn xảy ra, dịch vụ bảo hiểm sẽ hỗ trợ chi phí để khắc phục thiệt hại. Các thiệt hại bao gồm trầy xước, móp méo, cháy nổ,… sẽ được hỗ trợ một phần hoặc toàn phần. Giá trị bảo hiểm đa dạng nên mức chi trả cũng tùy vào gói mà khách chọn mua.
+				</p><br>
+				<p>
+					Bảo hiểm vật chất xe ô tô không chi trả nếu người lái vi phạm luật giao thông. Một số tai nạn do vận chuyển hàng cấm, do bị tác động ngoại lực không được chi trả. Bảo hiểm cũng không chi trả tổn thất nếu xe bị mất cắp ngoài lãnh thổ Việt Nam.
+				</p>
+				<h4>
+					Bảo hiểm vật chất mở rộng
+				</h4>
+				<p>
+					Gói này nhằm tăng thêm phạm vi bảo hiểm vật chất xe ô tô. Nó sẽ chi trả cho các trường hợp ngoài gói bảo hiểm nói trên. Ví dụ như: mất cắp bộ phận, xe bị ngập nước…
+				</p>
+				<h4>
+					Bảo hiểm TNDS tự nguyện
+				</h4>
+				<p>
+					Đây là bảo hiểm thể hiện trách nhiệm tăng thêm ngoài mức bảo hiểm bắt buộc của nhà nước. Bảo hiểm sẽ trả lại phần tiền chênh lệch mà chủ xe bồi thường cho người bị hại. Mức chi trả dựa trên số tiền mà chủ xe đã đóng bảo hiểm.
+				</p>
+				<h4>
+					Bảo hiểm TNDS hàng hóa
+				</h4>
+				<p>
+					Bảo hiểm này chi trả thiệt hại về hàng hóa do tai nạn gây ra trong quá trình vận chuyển. Mức bồi thường sẽ được căn cứ theo quy định của Luật dân sự.
+				</p><br>
+				<p>
+					Chủ xe nên mua cùng lúc bảo hiểm 2 chiều: Bảo hiểm TNDS và Bảo hiểm vật chất ô tô. Khi xảy ra tai nạn, bảo hiểm TNDS sẽ chi trả cho người bị hại. Còn bảo hiểm vật chất sẽ bồi thường tổn thất của xe.
+				</p>
+				<h4>
+					Mức phạt khi không có bảo hiểm xe ô tô bắt buộc
+				</h4>
+				<p>
+					Xe lưu thông trên lãnh thổ Việt Nam mà không có bảo hiểm TNDS sẽ bị vi phạm hành chính. Phạt tiền từ 400.000 – 600.000 đồng cho mỗi lần vi phạm.
+				</p>
+				<h4>
+					Bảo hiểm ô tô bắt buộc không chi trả cho những trường hợp nào?
+				</h4>
+				<p>
+					Chủ xe cố ý gây thiệt hại cho xe mình sở hữu.
+				</p><br>
+				<p>
+					Lái xe cố ý bỏ chạy khi lỡ gây ra tai nạn.
+				</p><br><p>
+					Tài xế không có giấy phép lái xe gây tai nạn giao thông.
+				</p><br><p>
+					Tài sản bị mất cắp, bị cướp khi xảy ra tai nạn sẽ không được bảo hiểm chi trả.
+				</p><br><p>
+					Tài sản có giá trị cao như vàng, bạc, đá quý, tiền, đồ cổ… không được đền bù.
+				</p><br>
+				<h4>
+					Kinh nghiệm mua bảo hiểm ô tô chủ xe cần lưu ý
+				</h4>
+				<p>
+					Các bảo hiểm bắt buộc thì nhất định phải mua để tránh bị phạt hành chính.
+				</p><br>
+				<p>
+					Các loại bảo hiểm tự nguyện thì chủ xe có thể cân nhắc. Tùy vào khả năng tài chính mà chủ xe có thể mua nhiều hoặc ít loại.
+				</p><br>
+				<p>
+					Kinh nghiệm cho thấy chủ xe tốt nhất nên mua 3 loại Bảo hiểm. Đầu tiên là Bảo hiểm Trách nhiệm dân sự bắt buộc. Loại thứ 2 là Bảo hiểm vật chất xe ô tô (có cả gói mở rộng). Loại thứ 3 là Bảo hiểm tai nạn người lái và hành khách trên xe.
+				</p><br>
+				<p>
+					Xe ô tô mới mua, trong 3 năm đầu nên mua bảo hiểm ô tô 2 chiều.
+				</p><br>
+				<p>
+					Xe ô tô cũ thì phải mua Bảo hiểm TNDS là đương nhiên. Ngoài ra cũng có thể cân nhắc mua thêm Bảo hiểm vật chất xe ô tô.
+				</p><br>
+				<p>
+					Đối với loại xe giá trị cao trên 700 triệu, nên mua thêm bảo hiểm mất cắp bộ phận.
+				</p><br>
+				<p>
+					Các loại xe ô tô chạy dịch vụ… vận hành liên tục sẽ dễ gặp tai nạn và mất cắp hơn. Do đó không thể xem thường chuyện mua bảo hiểm.
+				</p><br>
+				<p>
+					Xe ô tô cá nhân thì có thể cân nhắc nên hay không nên mua bảo hiểm tự nguyện.
+				</p><br>
+				<p>
+					Xe hay di chuyển ở nơi đô thị đông đúc thì nên mua bảo hiểm vật chất ô tô. Mật độ xe lưu thông cao không thể tránh khỏi va chạm ngoài ý muốn.
+				</p><br>
+				<p>
+					Xe thường xuyên di chuyển trên các tuyến đường lớn, cao tốc… cũng nên mua bảo hiểm vật chất.
+				</p><br>
+				<p>
+					Nếu ở môi trường dễ bị ngập lụt thì nên mua Bảo hiểm thủy kích ô tô.
+				</p><br>
+				<h4>
+					Thủ tục mua bảo hiểm xe ô tô
+				</h4>
+				<p>
+					Chủ xe có thể mua bảo hiểm ô tô của công ty liên kết với đại lý bán xe. Thủ tục đỡ rắc rối và quá trình mua diễn ra suôn sẻ, bớt mất thời gian. Hoặc cũng có thể mua của công ty liên kết với Xưởng bảo dưỡng xe mà mình tin tưởng.
+				</p><br>
+				<p>
+					Hạn chế mua các loại bảo hiểm ô tô có hình thức ứng tiền trước khi khắc phục tổn thất.
+				</p><br>
+				<p>
+					Nên đọc kỹ hợp đồng để nắm rõ các quy định của bảo hiểm trước khi mua. Đặc biệt nên chú ý đến các trường hợp bảo hiểm không bồi thường để tránh bị thiệt thòi.
+				</p>
+				<h4>
+					Các hãng bảo hiểm ô tô uy tín nhất hiện nay
+				</h4>
+				<p>
+					Bảo hiểm ô tô Bảo Việt: Công ty thành lập từ năm 1965, lâu đời nhất tại Việt Nam. Hãng bán tất cả các loại bảo hiểm xe ô tô, gồm: 
+				</p><br>
+				<p>
+					Bảo hiểm bắt buộc: Bảo hiểm Trách nhiệm dân sự theo Luật hiện hành. </p><br>
+				<p>Bảo hiểm phổ thông: Bảo hiểm vật chất xe cơ bản, Bảo hiểm tai nạn hành khách trên xe. </p><br>
+<p>Bảo hiểm nâng cao: Gói bảo hiểm vật chất mở rộng, Bảo hiểm mất cắp bộ phận, Bảo hiểm thủy kích…
+				</p><br>
+				<p>
+				Bảo hiểm ô tô PVI: Một trong những doanh nghiệp bảo hiểm số 1 Việt Nam, thành lập từ 2011. Ngoài các gói bảo hiểm trên, PVI còn bán gói Bảo hiểm hàng hóa vận chuyển trên xe ô tô.</p><br>
 
-                <div class="dis-container">
-                    <div class="dis-row dis-header">
-                        <div class="dis-label">Coverage Duration</div>
-                        <div class="dis-value">Discount</div>
-                    </div>
-                    <?php
-                    // Loop through the array to display the data
-                    foreach ($no_claim_discount as $loan) {
-                    ?>
-                        <div class="dis-row">
-                            <div class="dis-label"><?php echo $loan['coverage_duration']; ?></div>
-                            <div class="dis-value"><?php echo $loan['discount']; ?></div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <h4>Insurance add-ons</h4>
-                <p>On top of the three insurance types mentioned earlier, add-on car insurances can also be subscribed to such as:</p>
-                <br>
-                <p>Windscreen insurance</p>
-                <p>Driver insurance</p>
-                <p>Audio system insurance</p>
-                <p>(Special Perils) (Natural disaster) insurance</p>
-                <p>Strike, riot, and civil commotion insurance</p>
-                <p>Legal liability for Passenger Act of Negligence</p>
-                <p>Different drivers will have different insurance needs. With a good insurance package, you can have peace of mind in case of any unexpected incidents.</p>
+<p>
+	Bảo hiểm ô tô Liberty: Bảo hiểm Mỹ có mặt tại Việt Nam từ 2003. Hãng bán đầy đủ các gói bảo hiểm cần thiết, ngoài ra còn trợ giúp giao thông 24/7.
+				</p><br>
+
+<p>
+	Bảo hiểm ô tô PJICO: Hãng thành lập năm 1995, là bảo hiểm phi nhân thọ hàng đầu Việt Nam.
+				</p><br>
+
+<p>Bảo hiểm ô tô Bưu điện PTI: Hãng kết nối với hệ thống 485 garage sửa xe chính hãng trên toàn quốc. Ngoài ra còn hỗ trợ cẩu kéo xe miễn phí trong bán kính 100 km.</p><br>
+
+<p>Bảo hiểm ô tô Quân đội MIC: Hãng thành lập năm 2007, cung cấp các gói bảo hiểm tốt nhất cho đơn vị thuộc Bộ Quốc Phòng.</p><br>
+				<h4>
+					Kết luận
+				</h4>
+				<p>
+					Bảo hiểm ô tô là hình thức quản lý rủi ro thông minh mà chủ xe nên đầu tư. Bởi một khi xảy ra tai nạn mà không được hỗ trợ chi trả, thiệt hại sẽ lớn vô cùng.
+				</p><br>
+				<p>
+					Xem thêm:<a href="https://www.autofun.vn/tin-tuc/skills-that-new-drivers-can-not-ne-achieved-54886"> 5 kỹ năng mà tài xế mới lái khó có thể có được</a>
+				</p>
             </div>
-            <button id="insurance-read-more-btn" class="insurance-read-more-btn">Read More</button>
+            <button id="insurance-read-more-btn" class="insurance-read-more-btn">Đọc thêm</button>
         </div>
     </div>
     <script>
@@ -295,11 +335,11 @@ function insurance_intro_shortcode()
             if (moreText.classList.contains("insurance-hidden-text")) {
                 moreText.classList.remove("insurance-hidden-text");
                 dots.style.display = "none";
-                btnText.innerHTML = "Read Less";
+                btnText.innerHTML = "Ẩn";
             } else {
                 moreText.classList.add("insurance-hidden-text");
                 dots.style.display = "inline";
-                btnText.innerHTML = "Read More";
+                btnText.innerHTML = "Đọc thêm";
             }
         });
     </script>
@@ -373,7 +413,7 @@ function insurance_intro_shortcode()
         .insurance-read-more-btn {
             background: none;
             border: none;
-            color: #007bff;
+            color: #576b95;
             cursor: pointer;
             font-size: 14px;
             padding: 0;

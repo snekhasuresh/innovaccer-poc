@@ -79,15 +79,24 @@ function car_gallery_variants_side_shortcode()
     ob_start();
 
     // HTML structure for the widget
+
+$translate = [
+    
+'news model' => 'Nội thất & Ngoại thất của mẫu xe ',
+'image' => 'Hình ảnh'
+
+];
 ?>
-    <h2 class="wa-title-text">รูปภาพภายในและภายนอกของรุ่นย่อย <?php echo $listing_post[0]->post_title; ?></h2>
+   <h2 class="wa-title-text">
+    <?php echo $translate['news model'] . ' ' . $listing_post[0]->post_title; ?>
+</h2>
 
     <div class="honda-hrv-widget">
         <ul class="honda-hrv-list">
             <?php foreach ($variants as $variant) : ?>
                 <li>
                     <a href="#" class="variant-name"><?php echo esc_html($variant['name']); ?></a>
-                    <a href="#" class="variant-images"><?php echo esc_html($variant['images']); ?> รูปภาพ</a>
+                    <a href="#" class="variant-images">  <?php echo esc_html($variant['images']) . ' ' . esc_html($translate['image']); ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

@@ -27,7 +27,7 @@ function comaprison_news($atts)
 
     ob_start(); ?>
 
-    <h2 class="wa-title-text">Car Comparison News</h2>
+    <h2 class="wa-title-text">Đánh Giá So Sánh Xe Ô Tô</h2>
     <div id="fuel-latest-news-section" class="fuel-news-section inner">
         <div class="fuel-news-cards">
             <?php foreach ($news_posts as $news_post) {
@@ -49,7 +49,7 @@ function comaprison_news($atts)
                         <p class="fuel-news-description"><?php echo esc_html($description); ?></p>
                         <div class="fuel-news-footer">
                             <p class="fuel-date"><?php echo $publish_time; ?></p>
-                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Read More</a>
+                            <a href='<?php echo esc_url($news_href); ?>' class='fuel-read-more'>Đọc thêm</a>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@ function comaprison_news($atts)
 
     <div style="display: flex; justify-content: center;">
         <a href="<?php echo esc_url(home_url('/news')); ?>" id="view-more-btn" style="background-color: white; border:none" class="button">
-            View More <span class="icon">&#10095;</span>
+            Xem thêm <span class="icon">&#10095;</span>
         </a>
     </div>
 

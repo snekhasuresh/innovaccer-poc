@@ -18,9 +18,9 @@ function display_car_posts($cars)
     }
 
     $listing_states = [
-        'On Sale' => ['label' => '', 'color' => '#32D0C6'],
+        'On Sale' => ['label' => 'Nóng', 'color' => '#f53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
-        'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
+        'Upcoming' => ['label' => 'Sắp ra mắt', 'color' => '#ffb400']
     ];
 
     $top_car_model_data = get_option('top_car_models', []);
@@ -36,7 +36,7 @@ function display_car_posts($cars)
             $is_hot = in_array($car['id'], $top_car_model_ids);
             $listing_state = get_post_meta($car['id'], 'listing-state', true);
             $state = $is_hot ?
-                ['label' => 'ฮิต', 'color' => '#F53030'] :
+                ['label' => 'Nóng', 'color' => '#f53030'] :
                 $listing_states[$listing_state];
         ?>
             <a href="<?php echo esc_url($car['permalink']); ?>" class="tab-car-item">

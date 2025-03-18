@@ -10,16 +10,16 @@ function fuel_car_faqs_shortcode($atts)
     // Static array of FAQs (replace this array with your actual questions and answers)
     $faqs = array(
         array(
-            'question' => 'ราคาน้ำมันขายปลีกประกอบไปด้วยปัจจัยอะไรบ้าง',
-            'answer'   => 'ราคาน้ำมัน ณ สถานีบริการน้ำมันประกอบด้วยต้นทุนการผลิต ภาษีสรรพสามิต ภาษีอื่นๆ และเงินสมทบกองทุนของรัฐบาล และค่าการตลาด (ค่าใช้จ่ายในการขาย ดำเนินการ การขนส่ง กำไร และอื่นๆ)'
+            'question' => 'Xăng 92 và 95 là gì?',
+            'answer'   => 'Các con số 92, 95 là chỉ số octan - chỉ số biểu thị khả năng chống kích nổ của xăng. Theo đó, chỉ số octan càng cao đồng nghĩa với khả năng chống kích nổ càng cao. Xăng là một loại chất lỏng dễ cháy có nguồn gốc từ dầu mỏ, được sử dụng làm nhiên liệu cho hầu hết các loại động cơ đốt trong. Hiện nay, cùng với xăng sinh học E5, xăng 92 và 95 là 3 loại xăng phổ biến trên thị trường.'
         ),
         array(
-            'question' => 'เหตุใดราคาน้ำมันเบนซินจึงแพงกว่าราคาน้ำมันดีเซล',
-            'answer'   => 'ราคาน้ำมันดีเซลมีราคาถูกกว่าราคาน้ำมันเบนซินเพราะอัตราภาษีสรรพสามิตสำหรับน้ำมันดีเซลต่ำกว่า'
+            'question' => 'Dầu diesel là gì?',
+            'answer'   => 'Dầu diesel còn được biết đến với tên gọi khác là dầu gazole (DO), đặc điểm dầu diesel là một loại nhiên liệu lỏng, được tinh chế từ dầu mỏ có thành phần chưng cất nằm giữa dầu hỏa và dầu bôi trơn công nghiệp. Chúng thường có trọng lượng nặng hơn xăng và dầu lửa, nhiệt độ bốc hơi từ 175 - 370 độ C. Hiện nay, các phương tiện tại Việt Nam đang sử dụng 2 loại dầu diesel phổ biến là DO 0,25%S và DO 0,005%S. Dầu diesel được biết đến như là một loại nhiên liệu đa năng, khi có thể sử dụng cho phần lớn các loại phương tiện giao thông hiện nay, từ đường bộ, đường thủy.'
         ),
         array(
-            'question' => 'เหตุใดราคาน้ำมันจึงเพิ่มสูงขึ้นเมื่อเทียบกับปีก่อนๆ',
-            'answer'   => 'ราคาน้ำมันดิบและน้ำมันสำเร็จรูปมีการปรับตัวสูงขึ้น จึงมีผลทำให้ราคาน้ำมันเชื้อเพลิงหน้าปั๊มเพิ่มสูงขึ้นตามกัน ทั้งนี้ราคาน้ำมันดิบและราคาน้ำมันสำเร็จรูปจะปรับตัวไปตามอิทธิพลของปัจจัยต่างๆ เช่น ความต้องการใช้น้ำมันที่เพิ่มขึ้น อุปสงค์การใช้น้ำมัน ขีดความสามารถและกำลังในการกลั่น ความต้องการน้ำมันตามฤดูกาล ภาวะการเมืองระหว่างประเทศ และสภาพอากาศที่รุนแรงหรือภัยธรรมชาติต่างๆ ปัจจัยเหล่านี้ส่งผลกระทบต่อปริมาณผลผลิตจากโรงกลั่น หรืออุปทานของน้ำมันเชื้อเพลิงในตลาดนั่นเอง'
+            'question' => 'Dầu diesel hay xăng tốt hơn?',
+            'answer'   => 'So với động cơ xăng thì động cơ dầu/diesel có hiệu suất cao hơn 1,5 lần mà giá thành lại rẻ hơn. Bên cạnh đó, động cơ dầu diesel an toàn hơn vì dầu không bốc cháy ở nhiệt độ thường nên ít gây nguy hiểm do hỏa hoạn so với động cơ xăng.'
         )
     );
 
@@ -31,7 +31,7 @@ function fuel_car_faqs_shortcode($atts)
 ?>
 
         <div id="fuel-listing-detail-description" class="fuel-description inner">
-            <h2 class="wa-title-text">คำถามที่พบบ่อยราคาน้ำมัน</h2>
+            <h2 class="wa-title-text">Câu Hỏi Thường Gặp về Giá Xăng Dầu</h2>
             <div class="fuel-description-inner">
                 <div class="fuel-description-inner-wrapper">
                     <div class="accordion">

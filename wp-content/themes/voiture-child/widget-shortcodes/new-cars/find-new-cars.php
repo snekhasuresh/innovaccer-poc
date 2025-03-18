@@ -28,8 +28,8 @@ function popular_cars_in_new_cars($atts)
 //         $top_5_suv_cars = $top_car_models['suv_cars'];
 //         $top_10_petrol_cars = $top_car_models['petrol_cars'];
 
-        $popular_cars_in_malaysia['Popular'] = $popular_cars;
-        $popular_cars_in_malaysia['Latest'] = $latest_cars;
+        $popular_cars_in_malaysia['Phổ biến'] = $popular_cars;
+        $popular_cars_in_malaysia['Mới nhất'] = $latest_cars;
 //         $popular_cars_in_malaysia['Top 10 SUV Cars'] = $top_5_suv_cars;
 //         $popular_cars_in_malaysia['Top 10 Gasoline Cars'] = $top_10_petrol_cars;
     } else {
@@ -43,10 +43,16 @@ function popular_cars_in_new_cars($atts)
     }
 
     ob_start();
+$translate = [
+    
+'List of Popular New Car Prices in Indonesia' => 'Bảng Giá Xe Ô Tô Mới Phổ Biến Tại Việt Nam',
+
+];
+
 
 ?>
     <div class="fruit-tabs" . $brand_id>
-        <h2 class="wa-title-text"><?php echo $brand_id == 0 ? 'List of Popular New Car Prices in Indonesia' :  ''; ?></h2>
+        <h2 class="wa-title-text"> <?php echo $translate['List of Popular New Car Prices in Indonesia']; ?></h2>
         <ul class="tabs">
             <div class="tab">
                 <?php if (!empty($popular_cars_in_malaysia)) : ?>
@@ -284,7 +290,7 @@ function display_popular_car_posts($cars, $brand_id = 0)
             echo '<div><div class="popular-cars-find">' . esc_html($car_title) . '</div></div>';
             echo '<span><div class="find-new-cars-price">' . $price . '</div></span>';
             echo '</div>';
-            echo '<button class="view-model-button">  View Cars </button>';
+            echo '<button class="view-model-button">  Xem dòng xe </button>';
             echo '</a>';
             echo '</div>';
         }

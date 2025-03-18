@@ -42,7 +42,7 @@ function findnew_bike_faqs_shortcode($atts)
     add_faq_json_ld($json_ld_faqs);
 
     ob_start();
-	$title = !empty($brand_name) ? esc_html('คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์ ' . $brand_name . ' ' . date('Y')) : 'คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์';
+	$title = !empty($brand_name) ? esc_html('คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์ ' . $brand_name . ' ' . date('Y')) : 'Câu hỏi thường gặp về xe máy';
     echo "<h2 class='wa-title-text find-new-faq-title' >$title</h2>";
 ?>
     <div id="listing-detail-description " class="description inner find-new-faq-con">

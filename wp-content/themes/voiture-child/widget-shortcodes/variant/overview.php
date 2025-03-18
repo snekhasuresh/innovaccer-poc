@@ -19,10 +19,10 @@ function car_variant_overview_shortcode()
     $variant_post_meta = $global_variant_post_data['variant_post_meta'];
     $image_url = $global_variant_post_data['variant_image_url'];
 
-    $retail_price = isset($variant_post_meta['retail_price'][0]) ? 'RM ' . number_format($variant_post_meta['retail_price'][0]) : 'TBC';
-    $road_tax = isset($variant_post_meta['road_tax'][0]) ? 'RM ' . number_format($variant_post_meta['road_tax'][0]) : 'TBC';
-    $insurance = isset($variant_post_meta['insurance'][0]) ? 'RM ' . number_format($variant_post_meta['insurance'][0]) : 'TBC';
-    $fuel_cost = isset($variant_post_meta['fuel_cost'][0]) ? 'RM ' . number_format($variant_post_meta['fuel_cost'][0]) : 'TBC';
+    $retail_price = isset($variant_post_meta['retail_price'][0]) ? format_price_vietnam($variant_post_meta['retail_price'][0]) : 'Đang cập nhật';
+    $monthly_payment = isset($variant_post_meta['monthly_payment'][0]) ? format_price_vietnam($variant_post_meta['monthly_payment'][0]) : 'Đang cập nhật';
+    $insurance = isset($variant_post_meta['insurance'][0]) ? format_price_vietnam($variant_post_meta['insurance'][0]) : 'Đang cập nhật';
+    $fuel_cost = isset($variant_post_meta['fuel_cost'][0]) ? format_price_vietnam($variant_post_meta['fuel_cost'][0]) : 'Đang cập nhật';
 
     $book_test_drive_url = home_url('/book-test-drive') . '/?make=' . $make . '&model=' . $model;
 
@@ -33,7 +33,7 @@ function car_variant_overview_shortcode()
             <!-- Gallery Section (Left side) -->
             <div class="col-md-5">
                 <div class="image-container-variant">
-                    <a href="<?php echo $_SERVER['REQUEST_URI'] . '/gallery'; ?>">
+                    <a href="<?php echo $_SERVER['REQUEST_URI'] . '/hinh-anh'; ?>">
                         <img src="<?php echo $image_url; ?>" alt="Variant Image">
                     </a>
                 </div>
@@ -44,41 +44,41 @@ function car_variant_overview_shortcode()
                 <div style="margin-top: -10px;">
                     <div class="price-range"><?php echo $retail_price; ?></div>
 
-                    <span class="widget-title"><?php esc_html_e($variant_post_title . ' Price in Malaysia', 'voiture'); ?></span>
+                    <span class="widget-title"><?php esc_html_e('Giá ' . $variant_post_title . ' ở Việt Nam', 'voiture'); ?></span>
 
                     <div id="listing-detail-description" class="description inner">
-                        <div class="ownership-cost-title-con">
+<!--                         <div class="ownership-cost-title-con">
                             <h2 class="ownership-cost-title wa-title-text"><?php esc_html_e($variant_post_title . ' Ownership Cost', 'voiture'); ?></h2>
 
-                        </div>
+                        </div> -->
                         <div class="container-ownership-cost">
                             <div class="costs-container">
                                 <div class="cost-item">
                                     <div class="cost-icon road-tax-icon"></div>
-                                    <span class="cost-label"><?php esc_html_e('Road Tax Cost*', 'your-textdomain'); ?></span>
+                                    <span class="cost-label"><?php esc_html_e('Thanh toán hàng tháng*', 'your-textdomain'); ?></span>
                                     <div class="price-con">
-                                        <span class="cost-value"><?php echo $road_tax; ?></span>
+                                        <span class="cost-value"><?php echo $monthly_payment; ?></span>
                                         <span class="cost-period">/year</span>
                                     </div>
                                 </div>
 
                                 <div class="cost-item">
                                     <div class="cost-icon insurance-icon"></div>
-                                    <span class="cost-label"><?php esc_html_e('Insurance Cost*', 'your-textdomain'); ?></span>
+                                    <span class="cost-label"><?php esc_html_e('Bảo hiểm*', 'your-textdomain'); ?></span>
                                     <div class="price-con">
                                         <span class="cost-value"> <?php echo $insurance; ?></span>
                                         <span class="cost-period">/year</span>
                                     </div>
                                 </div>
 
-                                <div class="cost-item">
+<!--                                 <div class="cost-item">
                                     <div class="cost-icon fuel-cost-icon"></div>
                                     <span class="cost-label"><?php esc_html_e('Fuel Cost*', 'your-textdomain'); ?></span>
                                     <div class="price-con">
                                         <span class="cost-value"> <?php echo $fuel_cost; ?></span>
                                         <span class="cost-period">/year</span>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                             <p class="footnote">* For reference only, you can adjust your real situation with the calculator.</p>
@@ -87,8 +87,8 @@ function car_variant_overview_shortcode()
 
 
                     <div class="buttons-container-spec">
-                        <button class="view-specs-button"><a href="<?php echo $_SERVER['REQUEST_URI'] . 'specs'; ?>">View Specs</a></button>
-                        <button class="trade-in-button"><a href="<?php echo $book_test_drive_url; ?>">Book Test Drive</a></button>
+                        <button class="view-specs-button"><a href="<?php echo $_SERVER['REQUEST_URI'] . '/thong-so-ky-thuat'; ?>"> Xem thông số </a></button>
+<!--                         <button class="trade-in-button"><a href="<?php echo $book_test_drive_url; ?>">Book Test Drive</a></button> -->
                     </div>
 
                 </div>

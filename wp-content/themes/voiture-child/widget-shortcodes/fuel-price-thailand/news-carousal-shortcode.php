@@ -86,7 +86,7 @@ function latest_news_fuel_shortcode($atts)
     ob_start(); ?>
 
     <div id="fuel-latest-news-section" class="fuel-news-section inner">
-        <h2 class="wa-title-text"><?php esc_html_e('ข่าวสารอัตราสิ้นเปลืองเชื้อเพลิง', 'voiture'); ?></h2>
+        <h2 class="wa-title-text"><?php esc_html_e('Tin tức về tiêu hao nhiên liệu', 'voiture'); ?></h2>
         <div class="fuel-news-cards">
             <?php foreach ($news_posts_data as $news_post) { ?>
                 <div class="fuel-news-card">
@@ -96,7 +96,7 @@ function latest_news_fuel_shortcode($atts)
                         <p class="fuel-news-description"><?php echo esc_html($news_post['desc']); ?></p>
                         <div class="fuel-news-footer">
                             <p class="fuel-date"><?php echo esc_html($news_post['date']); ?></p>
-                            <a href='<?php echo esc_url($news_post['href']); ?>' class='fuel-read-more'>Read More</a>
+                            <a href='<?php echo esc_url($news_post['href']); ?>' class='fuel-read-more'> Đọc thêm</a>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@ function latest_news_fuel_shortcode($atts)
         </div>
 
         <div class="fuel-btn-more-container">
-            <button class="fuel-btn-more">ดูเพิ่มเติม
+            <button class="fuel-btn-more">Xem thêm
                 <svg width="13" height="13" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                     <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
                 </svg>

@@ -16,7 +16,6 @@ function gallery_motor_faqs_shortcode($atts)
 
     $args = array(
         'post_type'      => 'motorcycle-faq',
-        // 'posts_per_page' => 6,  
         'orderby'        => 'date',
         'order'          => 'DESC',
     );
@@ -57,38 +56,34 @@ function gallery_motor_faqs_shortcode($atts)
                             <?php
                             while ($faq_posts->have_posts()) {
                                 $faq_posts->the_post();
-                                $post_id = get_the_ID(); // Retrieve the current post ID
-                                $meta_data = get_post_meta($post_id); // Use the retrieved ID to get post meta
-                                // Check if 'question' and 'answer' exist in the meta data
+                                $post_id = get_the_ID();
+                                $meta_data = get_post_meta($post_id);
+
                                 $question = isset($meta_data['question'][0]) ? esc_html($meta_data['question'][0]) : 'No question available';
                                 $answer = isset($meta_data['answer'][0]) ? wp_kses_post($meta_data['answer'][0]) : 'No answer available';
-
-                                echo '<div class="accordion-item">';
-                                echo '<input type="checkbox" id="faq-question-' . $post_id . '">';
-                                echo '<div class="accordion-header" id="faq-question-' . $post_id . '">
-										 <div class="question">' . $question . '</div>
-										 <div class="arrow">›</div>
-									</div>';
-
-                                echo '<div class="accordion-content">' . $answer . '</div>';
-                                echo '</div>';
+                            ?>
+                                <div class="accordion-item">
+                                    <input type="checkbox" id="faq-question-<?php echo $post_id; ?>" class="accordion-toggle">
+                                    <label for="faq-question-<?php echo $post_id; ?>" class="accordion-header">
+                                        <div class="question"><?php echo $question; ?></div>
+                                        <div class="arrow">›</div>
+                                    </label>
+                                    <div class="accordion-content"><?php echo $answer; ?></div>
+                                </div>
+                            <?php
                             }
                             wp_reset_postdata();
                             ?>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
 <?php
-
     } else {
         echo '<p>' . esc_html__('No FAQs found.', 'voiture') . '</p>';
     }
 
-    $output = ob_get_clean(); // Get the buffered content
-
-    return $output; // Return the content for the shortcode
+    return ob_get_clean();
 }
 add_shortcode('gallery_motor_faqs_shortcode', 'gallery_motor_faqs_shortcode');

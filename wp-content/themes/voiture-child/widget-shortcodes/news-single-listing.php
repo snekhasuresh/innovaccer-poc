@@ -54,7 +54,7 @@ function render_news_tab_content($query_args, $is_ajax = false, $page = 1, $post
             </li>';
         endwhile;
     } else {
-        $output .= '<li>No news content available.</li>';
+        $output .= '<li>Không có nội dung</li>';
     }
 
     wp_reset_postdata();
@@ -211,7 +211,7 @@ $translate = [
 
             echo ' <div class="view-more-container">
                           <a  class="view-more" data-page="1" data-tab-id="latest">
-                               View More
+                              Xem thêm
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                              </svg>
@@ -542,14 +542,12 @@ $translate = [
             font-size: 14px;
         }
 
-        .view-more-button:hover {
-            background-color: #2ACDAE;
-        }
+      
 		@media (min-width: 768px) and (max-width: 1024px) {
             .single-listing-news-item {
     display: flex;
     align-items: center;
-    padding: 40px 0;
+    padding: 15px 0;
     flex-direction: column;
 }
 		.single-listing-news-content {

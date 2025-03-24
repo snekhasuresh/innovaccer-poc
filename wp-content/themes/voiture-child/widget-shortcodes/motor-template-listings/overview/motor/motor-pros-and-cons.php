@@ -31,14 +31,14 @@ function motor_pros_and_cons()
 ?>
     <div id="listing-detail-description" class="description inner" style="max-width: 1200px; margin: 0 auto;">
 
-        <h2 class="wa-title-text" style="font-size: 24px; margin-bottom: 20px;"><?php esc_html_e('Pros & Cons', 'voiture'); ?></h2>
+        <h2 class="wa-title-text" style="font-size: 24px; margin-bottom: 20px;"><?php esc_html_e('Ưu điểm & nhược điểm ', 'voiture'); ?></h2>
         <div class="description-inner props-and-cons-con">
 
             <!-- Pros Section -->
             <div class="pros-section" style="flex: 1; min-width: 45%; padding: 20px; background-color: #F7FAFF; border: 1px solid #E0EFFF; border-radius: 4px; display: flex; flex-direction: column;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                     <img src="<?php echo esc_url($pros_icon_url); ?>" alt="Pros Icon" style="width: 20px; height: 20px;">
-                    <h4 class="title" style="margin: 0; color: #007BFF; font-family: Roboto, sans-serif;"><?php esc_html_e('Pros', 'voiture'); ?></h4>
+                    <h4 class="title" style="margin: 0; color: #007BFF; font-family: Roboto, sans-serif;"><?php esc_html_e('Ưu điểm', 'voiture'); ?></h4>
                 </div>
                 <div class="pros-content">
                     <?php echo format_wysiwyg_content_motor($pros, '#007BFF'); ?>
@@ -49,7 +49,7 @@ function motor_pros_and_cons()
             <div class="cons-section" style="flex: 1; min-width: 45%; padding: 20px; background-color: #FFF8F5; border: 1px solid #FFE7D9; border-radius: 8px; display: flex; flex-direction: column;">
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
                     <img src="<?php echo esc_url($cons_icon_url); ?>" alt="Cons Icon" style="width: 20px; height: 20px;">
-                    <h4 class="title" style="margin: 0; color: #FF5722; font-family: Roboto, sans-serif;"><?php esc_html_e('Cons', 'voiture'); ?></h4>
+                    <h4 class="title" style="margin: 0; color: #FF5722; font-family: Roboto, sans-serif;"><?php esc_html_e('Nhược điểm', 'voiture'); ?></h4>
                 </div>
                 <div class="cons-content">
                     <?php echo format_wysiwyg_content_motor($cons, '#FF5722'); ?>

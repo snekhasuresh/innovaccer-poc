@@ -80,14 +80,14 @@ function motor_gallery_variants_side_shortcode()
 
     // HTML structure for the widget
 ?>
-    <h2 class="wa-title-text">รูปภาพของรุ่นย่อย <?php echo $listing_post[0]->post_title; ?></h2>
+    <h2 class="wa-title-text">Hình ảnh mẫu xe của <?php echo $listing_post[0]->post_title; ?></h2>
 
     <div class="honda-hrv-widget">
         <ul class="honda-hrv-list">
             <?php foreach ($variants as $variant) : ?>
                 <li>
                     <a href="#" class="variant-name"><?php echo esc_html($variant['name']); ?></a>
-                    <a href="#" class="variant-images"><?php echo esc_html($variant['images']); ?> รูปภาพ</a>
+                    <a href="#" class="variant-images"><?php echo esc_html($variant['images']); ?> Hình ảnh</a>
                 </li>
             <?php endforeach; ?>
         </ul>

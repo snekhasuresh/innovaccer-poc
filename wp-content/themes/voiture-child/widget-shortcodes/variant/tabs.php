@@ -124,131 +124,145 @@ function display_variant_tabs($urls, $selected_tab, $listing_name, $variant_name
             }
         </script>
 		  <style>
-            .car-header {
-                display: flex;
-                justify-content: left;
-                align-items: center;
-            }
+        .car-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
 
-            .car-header img {
-                width: 53px;
-                height: 53px;
-                border-radius: 50%;
-                margin-right: 20px;
-                margin-left: 10px;
-            }
+.car-header img {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-left: 10px;
+}
 
-            .tab-car-title {
-                font-size: 32px;
-                line-height: 38px;
-                font-family: "Roboto Condensed";
-                color: #262626;
-                font-weight: 700;
-            }
-			
-			ul {
-				list-style-type: none; /* Removes default bullets */
-				padding: 0;
-			}
+.tab-car-title {
+    font-size: 32px;
+    line-height: 38px;
+    font-family: "Roboto Condensed";
+    color: #262626;
+    font-weight: 700;
+}
 
-			li {
-				display: inline; /* Makes the list items appear in a single line */
-				margin-right: 10px; /* Optional: Adds space between items */
-			}
-            /* Container for the tab headers */
-            .inner-container {
-                position: relative;
-                left: 140px;
-            }
+ul {
+    list-style-type: none;
+    /* Removes default bullets */
+    padding: 0;
+}
 
-            .header-tabs {
-                background-color: #2e2e2e;
-                display: flex;
-                align-items: center;
-                padding: 0;
-                width: 100%;
-              	margin: 0px;
-                height: 64px;
-            }
-			
-			.p-l-0{
-				padding-left: 0px;
-			}
+li {
+    display: inline;
+    /* Makes the list items appear in a single line */
+    margin-right: 10px;
+    /* Optional: Adds space between items */
+}
 
-            .header-tab {
-                padding: 21px 45px;
-				top: 6px;
-                cursor: pointer;
-                font-size: 20px;
-                font-weight: bold;
-                color: white;
-                text-decoration: none;
-                position: relative;
-                font-family: 'Roboto';
-				margin-left:13px;
-            }
+/* Container for the tab headers */
+.inner-container {
+    position: relative;
+    left: 140px;
+}
 
-            .header-tab.active {
-                color: #ffb400;
-                background-color: white;
-            }
+.header-tabs {
+    background-color: #2e2e2e;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    margin: 0px;
+    height: 64px;
+}
 
-            .header-tab:hover {
-                background-color: rgba(255, 255, 255, .15);
-                color: white;
-            }
+.p-l-0 {
+    padding-left: 0px;
+}
 
-            .header-tab.active:hover {
-                background-color: white;
-                color: #ffb400;
-            }
+.header-tab {
+    padding: 21px 45px;
+    top: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-family: 'Roboto';
+}
 
-            .header-tab.active::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 4px;
-                background-color: #ffb400;
-            }
-			@media screen and (max-width: 768px) {
-				 .header-tab {
-					padding: 21px 45px;
-					cursor: pointer;
-					font-size: 20px;
-					font-weight: bold;
-					color: white;
-					text-decoration: none;
-					position: relative;
-					font-family: 'Roboto';
-					white-space: nowrap;
-				}
-				.header-tabs {
-					background-color: #2e2e2e;
-					display: flex;
-					text-align: center;
-					align-items: center;
-					padding: 0;
-					width: 100%;
-					overflow-x: scroll;
-					margin: 10px 0;
-					height: 64px;
-					scrollbar-width: none;
-				}
-				.header-tabs-container{
-					display: flex;
-					
-				}
-				.tab-car-title {
-					font-size: 32px;
-					line-height: 38px;
-					font-family: "Roboto Condensed";
-					color: #262626;
-					font-weight: 700;
-					margin-left: 33px;
-				}
-			}
+.header-tab.active {
+    color: #ffb400;
+    background-color: white;
+}
+
+.header-tab:hover {
+    background-color: rgba(255, 255, 255, .15);
+    color: white;
+}
+
+.header-tab.active:hover {
+    background-color: white;
+    color: #ffb400;
+}
+
+.header-tab.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ffb400;
+}
+.header-tabs li{
+			margin-right:0px;
+		}
+@media screen and (max-width: 768px) {
+    .header-tab {
+        padding: 21px 8px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        position: relative;
+        font-family: 'Roboto';
+        white-space: nowrap;
+    }
+
+    .header-tabs {
+        background-color: #2e2e2e;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        overflow-x: scroll;
+        margin: 10px 0;
+        height: 64px;
+        scrollbar-width: none;
+    }
+
+    .header-tabs-container {
+        display: flex;
+    }
+	.header-tab {
+		margin-left:6px;
+	}
+    .tab-car-title {
+        font-size: 32px;
+        line-height: 38px;
+        font-family: "Roboto Condensed";
+        color: #262626;
+        font-weight: 700;
+        margin-left: 15px;
+    }
+
+    .car-header img {
+        margin-right: 0;
+    }
+}
         </style>
     </div>
 

@@ -116,14 +116,23 @@ function fetch_latest_bikes_data_from_db($args){
 
     if (!empty($bike_models_data) && is_array($bike_models_data)) {
         foreach ($bike_models_data as $category => $category_data) {
-            if ($category === 'Popular' && isset($category_data['bike_models']) && is_array($category_data['bike_models'])) {
-                // Extract only the first 10 models from the popular category
-                $popular_bikes = array_slice($category_data['bike_models'], 0, 10);
-
-                foreach ($popular_bikes as $model) {
-                    if (isset($model['id'])) {
-                        $latest_bike_ids[] = $model['id'];
+            if ($category === 'popular' && isset($category_data['bike_models']) && is_array($category_data['bike_models'])) {
+                foreach ($category_data['bike_models'] as $model) {
+                    if (is_array($model) && isset($model['id']) && isset($model['type'])) {
+                        // Collect the model IDs where type = 2
+                        if ($model['type'] == 2 && $model['sort'] >= 0 && $model['sort'] <= 9) {
+                            $filtered_models[] = $model;
+                        }
                     }
+                }
+                // Sort the models by 'sort' in ascending order
+                usort($filtered_models, function ($a, $b) {
+                    return $a['sort'] - $b['sort'];   // Ascending order by 'sort'
+                });
+
+                // Now, add the sorted models to the popular_bike_ids array
+                foreach ($filtered_models as $model) {
+                    $latest_bike_ids[] = $model['id'];
                 }
             }
         }

@@ -44,7 +44,7 @@ function individual_listing_motor_tabs_shortcode($atts)
         $base_url = get_site_url() . '/xe-may/' . $make . '/' . $model_name;
     }
 
- $urls = [
+ 	$urls = [
         'tổng quát' => $base_url,
         'tin tức' => $base_url . '/tin-tuc',
         'thông số kỹ thuật' => $base_url . '/thong-so-ky-thuat',
@@ -63,22 +63,22 @@ function display_motor_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
 {
     enqueue_listing_bike_tabs_css();
     $overview_tabs = [
-        ['tab' => 'Tổng quát', 'url' => $urls['tong-quat']],
-        ['tab' => 'Tin tức', 'url' => $urls['tin-tuc']],
-        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thong-so-ky-thuat']],
-        ['tab' => 'Hình ảnh', 'url' => $urls['hinh-anh']]
+        ['tab' => 'Tổng quát', 'url' => $urls['tổng quát']],
+        ['tab' => 'Tin tức', 'url' => $urls['tin tức']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['thông số kỹ thuật']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['hình ảnh']]
     ];
     $make = get_query_var('make') ? get_query_var('make') : '';
 
-   switch ($selected_tab) {
+     switch ($selected_tab) {
         case 'Tin tức':
-            $title = $make ? 'Berita Mobil ' . $listing_name . ' di Indonesia ' : $listing_name;
+            $title = $make ? 'Tin tức Xe Ô Tô ' . $listing_name . ' tại Việt Nam ' : $listing_name;
             break;
         case 'Thông số kỹ thuật':
             $title = $selected_tab . ' ' . $listing_name;
             break;
         case 'Hình ảnh':
-            $title = 'Gambar Interior & Eksterior ' . $listing_name;
+            $title = 'Hình ảnh & Màu sắc về ' . $listing_name;
             break;
         default:
             $title = $listing_name;
@@ -220,43 +220,50 @@ function display_motor_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
                 height: 4px;
                 background-color: #ffb400;
             }
-			@media screen and (max-width: 768px) {
-				 .header-tab {
-					padding: 21px 45px;
-					cursor: pointer;
-					font-size: 20px;
-					font-weight: bold;
-					color: white;
-					text-decoration: none;
-					position: relative;
-					font-family: 'Roboto';
-					white-space: nowrap;
-				}
-				.header-tabs {
-					background-color: #2e2e2e;
-					display: flex;
-					text-align: center;
-					align-items: center;
-					padding: 0;
-					width: 100%;
-					overflow-x: scroll;
-					margin: 10px 0;
-					height: 64px;
-					scrollbar-width: none;
-				}
-				.header-tabs-container{
-					display: flex !important;
-					justify-content:flex-start;
-				}
-				.tab-car-title {
-					font-size: 32px;
-					line-height: 38px;
-					font-family: "Roboto Condensed";
-					color: #262626;
-					font-weight: 700;
-					margin-left: 33px;
-				}
-			}
+	@media screen and (max-width: 768px) {
+    .header-tab {
+        padding: 12px 23px !important;
+        cursor: pointer;
+        font-size: 14px !important;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        position: relative;
+        font-family: 'Roboto';
+        white-space: nowrap;
+    }
+
+    .header-tabs {
+        background-color: #2e2e2e;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+        overflow-x: scroll;
+        margin: 10px 0;
+        height: 40px !important;
+        scrollbar-width: none;
+    }
+
+    .header-tabs-container {
+        display: flex;
+    }
+
+    .tab-car-title {
+        font-size: 32px;
+        line-height: 38px;
+        font-family: "Roboto Condensed";
+        color: #262626;
+        font-weight: 700;
+        margin-left: 15px;
+    }
+
+    .car-header img {
+        margin-right: 0;
+    }
+}
+
 	 </style>
     </div>
 

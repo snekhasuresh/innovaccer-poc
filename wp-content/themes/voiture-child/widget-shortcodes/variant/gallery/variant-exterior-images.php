@@ -66,7 +66,7 @@ function variant_gallery_exterior_shortcode()
     <?php if ($totalImages > 9) : ?>
         <div class="view-more-container">
             <button class="view-more" data-offset="9" data-total="<?php echo esc_attr($totalImages); ?>">
-                View More
+               Xem thêm
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>

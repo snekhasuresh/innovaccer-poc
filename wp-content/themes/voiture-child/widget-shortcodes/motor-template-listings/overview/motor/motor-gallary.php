@@ -16,17 +16,17 @@ function motor_image_gallery_shortcode()
     global $wpdb;
 
     $global_listing_post_data = get_motor_listing_from_query_vars();
-// 	print_r($global_listing_post);
+
     if (!$global_listing_post_data || !is_array($global_listing_post_data)) {
         return;
     }
 
     $global_listing_post = $global_listing_post_data['post'];
-// print_r($global_listing_post);
+
     $post_id = $global_listing_post->ID;
     $post_title = $global_listing_post->post_title;
     $post_meta_data = $global_listing_post_data['post_meta'];
-// print_r($post_meta_data);
+
     // $segment = $post_meta_data['listing-segment'][0];
 //     $body_type_id = $post_meta_data['listing_type'][0];
 	$body_type_id_serialized = $post_meta_data['listing_type'][0];
@@ -45,24 +45,24 @@ function motor_image_gallery_shortcode()
 			$body_type_id_serialized
 		);
 	}
-// print_r($body_type_id_serialized);
+
 	// Now unserialize the data
 	$body_type_id_array = maybe_unserialize($body_type_id_serialized);
-// print_r($body_type_id_array);
+
 	// Check if the unserialized data is an array and get the first value
 	if (is_array($body_type_id_array) && !empty($body_type_id_array)) {
 		$body_type_id = $body_type_id_array[0]; // Assuming you want the first value
 	} else {
 		$body_type_id = $body_type_id_serialized; // Fallback to original value if not serialized
 	}
-// 	print_r($body_type_id);
+
     $body_type = get_term($body_type_id, 'motorcycle-listing-type');
-// print_r($body_type);
+
     $variant_posts = $global_listing_post_data['variant_posts'];
     $variant_ids = array_map(function ($variant) {
         return $variant->ID;
     }, $variant_posts);
-// print_r($variant_ids);
+
     $imagesdata = $global_listing_post_data['image_data'];
 
     // Fetch images based on listing ID if no variant images are found
@@ -75,7 +75,7 @@ function motor_image_gallery_shortcode()
             $post_id
         );
         $listing_gallery = $wpdb->get_var($listing_gallery_query);
-// 		print_r($listing_gallery);
+
         if ($listing_gallery) {
             $gallery_ids = explode(',', $listing_gallery);
             $gallery_ids = maybe_unserialize($listing_gallery);
@@ -84,7 +84,7 @@ function motor_image_gallery_shortcode()
     }
 
     $price = $global_listing_post_data['price'] ?? '';
-// print_r($price);
+
 //     $transmissions = array();
     $maximum_power = 0;
     $odometer = 0;
@@ -94,27 +94,27 @@ function motor_image_gallery_shortcode()
 //     $battery_capacity = 0;
 
     $variants_meta_data = $global_listing_post_data['variant_meta_data'] ?? '';
-// 	print_r($variants_meta_data);
+
     foreach ($variant_ids as $variant_id) {
         $variant_meta = $variants_meta_data[$variant_id];
+
+        if (isset($variant_meta['number_of_strokes'][0])) {
+            $number_of_strokes = $variant_meta['number_of_strokes'][0];
+        }
+
+        if (isset($variant_meta['instrument_panel'][0])) {
+            $instrument_panel = $variant_meta['instrument_panel'][0];
+        }
 
         if (isset($variant_meta['maximum_power'][0])) {
             $maximum_power = $variant_meta['maximum_power'][0];
         }
 
-        if (isset($variant_meta['odometer'][0])) {
-            $odometer = $variant_meta['odometer'][0];
-        }
-
-        if (isset($variant_meta['capacity'][0])) {
-            $capacity = $variant_meta['capacity'][0];
-        }
-
         // if (isset($variant_meta['transmission'][0])) {
         //     $transmissions[] = $variant_meta['transmission'][0];
         // }
-        if (isset($variant_meta['engine_opening_option'][0])) {
-            $engine_opening_option = $variant_meta['engine_opening_option'][0];
+        if (isset($variant_meta['start_option'][0])) {
+            $engine_opening_option = $variant_meta['start_option'][0];
         }
         if (isset($variant_meta['abs'][0])) {
             $abs = $variant_meta['abs'][0];
@@ -161,11 +161,11 @@ function motor_image_gallery_shortcode()
     //     $horsepower_display = '- PS';
     // }
     $specs = array(
-        'ประเภท' => $body_type->name,
-        'กำลังไฟสูงสุด' => $maximum_power,
-        'มาตรวัดระยะทาง' => $odometer,
-        'ความจุของเครื่องยนต์' => $capacity,
-        'ตัวเลือกการเปิดเครื่องยนต์' => $engine_opening_option,
+        'Loại' => $body_type->name,
+        'Số bước' => $number_of_strokes,
+        'Bảng điều khiển dụng cụ' => $instrument_panel,
+        'Công suất tối đa' => $maximum_power,
+        'Bắt đầu các tùy chọn' => $engine_opening_option,
         'ABS' => $abs,
     );
 
@@ -173,20 +173,20 @@ function motor_image_gallery_shortcode()
     $model = $global_listing_post->post_title;
 //     add_car_json_ld($make, $model, $specs);
 
-    $Body_Type_icon = wp_get_attachment_image_url(355928, 'Segment');
-    $maximum_power_icon = wp_get_attachment_image_url(355926, 'body type');
-    $odometer_icon = wp_get_attachment_image_url(355924, 'Transmission');
-    $Capacity_icon = wp_get_attachment_image_url(355925, 'Capacity');
-    $engine_opening_option_icon = wp_get_attachment_image_url(355929, 'horse power');
-    $abs_icon = wp_get_attachment_image_url(355927, 'seat');
+    $Body_Type_icon = wp_get_attachment_image_url(32253, 'Segment');
+    $maximum_power_icon = wp_get_attachment_image_url(32266, 'body type');
+    $odometer_icon = wp_get_attachment_image_url(32260, 'Transmission');
+    $Capacity_icon = wp_get_attachment_image_url(32259, 'Capacity');
+    $engine_opening_option_icon = wp_get_attachment_image_url(32387, 'horse power');
+    $abs_icon = wp_get_attachment_image_url(32265, 'seat');
 
 
     $icons = [
-        'ประเภท' => $Body_Type_icon,
-        'กำลังไฟสูงสุด'   => $maximum_power_icon,
-        'มาตรวัดระยะทาง' => $odometer_icon,
-        'ความจุของเครื่องยนต์'     => $Capacity_icon,
-        'ตัวเลือกการเปิดเครื่องยนต์' => $engine_opening_option_icon,
+        'Loại' => $Body_Type_icon,
+        'Số bước'   => $maximum_power_icon,
+        'Bảng điều khiển dụng cụ' => $odometer_icon,
+        'Công suất tối đa'     => $Capacity_icon,
+        'Bắt đầu các tùy chọn' => $engine_opening_option_icon,
         'ABS'        => $abs_icon,
     ];
 
@@ -257,7 +257,7 @@ function motor_image_gallery_shortcode()
                                     $galleryImages['Exterior'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Exterior",
-                                        "text" => "ภายนอก"
+                                        "text" => "Ngoại thất"
                                     ];
                                 } elseif ($image->type === "Interior" && $galleryImages['Interior'] === null) {
                                     $galleryImages['Interior'] = [
@@ -270,14 +270,14 @@ function motor_image_gallery_shortcode()
                                     $galleryImages['Colour'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Colour",
-                                        "text" => "สี"
+                                        "text" => "Màu sắc"
                                     ];
                                 }
                                 if ($image->type === "Others" && $galleryImages['Others'] === null) {
                                     $galleryImages['Others'] = [
                                         "url" => $imgData->url,
                                         "alt" => "Gallery",
-                                        "text" => $totalImageCount++ . " Gallery",
+                                        "text" => $totalImageCount++ . " hình ảnh ",
                                     ];
                                     // $backgroundImageUrl = $imgData->url;
                                 }
@@ -290,14 +290,14 @@ function motor_image_gallery_shortcode()
                         $galleryImages[] = [
                             "url" => $imgData->url,
                             "alt" => "images",
-                            "text" => " รูปภาพ " . $totalImageCount,
+                            "text" => $totalImageCount . ' hình ảnh ',
                         ];
                     }
                     // Display the images for Interior and Exterior
                     foreach ($galleryImages as $image):
                         if ($image): // Check if the image exists
                     ?>
-                            <a href="<?php echo get_permalink($post_id) . 'gallery/'; ?>" target="_blank" class="thumbnail-link">
+                            <a href="<?php echo get_permalink($post_id) . 'hinh-anh/'; ?>" target="_blank" class="thumbnail-link">
                                 <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="thumbnail-gal-individual">
                                 <span class="image-text"><?php echo $image['text']; ?></span> <!-- Text on the thumbnail -->
                             </a>
@@ -314,7 +314,7 @@ function motor_image_gallery_shortcode()
                 <div style="margin-top: -10px;">
                     <div class="price-range"><?php echo $price; ?></div>
 
-                    <span class="widget-title"><?php esc_html_e('สเปค ' . $post_title, 'voiture'); ?></span>
+                    <span class="widget-title"><?php esc_html_e('Thông số kỹ thuật ' . $post_title, 'voiture'); ?></span>
 
                     <div class="specs-container">
                         <?php foreach ($specs as $key => $value) : ?>
@@ -337,7 +337,7 @@ function motor_image_gallery_shortcode()
                     </div>
 
                     <div class="buttons-container-spec">
-                        <button class="view-specs-button"><a href="<?php echo get_permalink($post_id) . 'specs'; ?>">เช็คสเปค <?php echo $post_title ?></a></button>
+                        <button class="view-specs-button"><a href="<?php echo get_permalink($post_id) . 'thong-so-ky-thuat'; ?>">Xem thông số <?php echo $post_title ?></a></button>
                         <!-- <button class="trade-in-button"><a href="<?php echo home_url('/book-test-drive') . '/?make=' . urlencode($make) . '&model=' . urlencode($model); ?>">Book Test Drive</a></button> -->
                     </div>
 

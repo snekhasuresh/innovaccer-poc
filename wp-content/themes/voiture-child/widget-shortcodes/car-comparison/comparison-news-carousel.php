@@ -13,7 +13,7 @@ function comaprison_news($atts)
     enqueue_comparison_news_css();
     $atts = shortcode_atts(
         array(
-            'category' => 'Comparison',
+            'category' => 'Đánh giá',
             'is_ev' => '1',
             'posts_per_page' => 5,
         ),

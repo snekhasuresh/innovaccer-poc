@@ -33,7 +33,7 @@ function motor_variant_specification_shortcode($atts)
     $engine_opening_option = isset($variant_post_meta['engine_opening_option'][0]) ? $variant_post_meta['engine_opening_option'][0] : '-';
 
     $price = isset($variant_post_meta['price'][0]) ? 'THB ' . format_number_with_commas($variant_post_meta['price'][0]) : 'ยังไม่คอนเฟิร์ม';
-    $monthly_payment = isset($variant_post_meta['monthly_payment'][0]) ? 'THB ' . format_number_with_commas($variant_post_meta['monthly_payment'][0]) . '/เดือน' : 'ยังไม่คอนเฟิร์ม';
+    $monthly_payment = isset($variant_post_meta['monthly_payment'][0]) ? 'THB ' . format_number_with_commas($variant_post_meta['monthly_payment'][0]) . '/tháng' : 'ยังไม่คอนเฟิร์ม';
 
 	$images_sql = $wpdb->prepare(
                     "SELECT type, image_data FROM car_image WHERE variant_post_id = %d",
@@ -77,7 +77,7 @@ function motor_variant_specification_shortcode($atts)
             <div class="variant-motor-product-title">
                 <h1><?php echo $model_title; ?></h1>
                 <div class="variant-motor-dropdown">
-                    <button class="variant-motor-change-model">เปลี่ยนรุ่นรถ</button>
+                    <button class="variant-motor-change-model">Đổi mẫu xe</button>
                     <div class="variant-motor-dropdown-content">
                         <?php foreach ($filtered_variants as $variant): ?>
                             <a href="<?php echo $base_url . $variant->post_name; ?>"><?php echo $variant->post_title; ?></a>
@@ -109,31 +109,31 @@ function motor_variant_specification_shortcode($atts)
                     <span class="variant-motor-monthly-price"><?php echo $monthly_payment; ?></span>
                 </div>
                 <div>
-                    <button class="variant-motor-compare"><a href="<?php echo home_url('compare-motorcycles'); ?>">+ เช็คสเปค</a></button>
+                    <button class="variant-motor-compare"><a href="<?php echo home_url('compare-motorcycles'); ?>">+ So sánh</a></button>
                 </div>
             </div>
-            <p class="variant-motor-subtitle">ราคา รถมอเตอร์ไซค์ <?php echo $variant_post_title; ?> ที่ไทย</p>
+            <p class="variant-motor-subtitle">Giá <?php echo $variant_post_title; ?> ở Việt Nam</p>
             <div>
-                <div class="variant-motor-title">สเปค <?php echo $variant_post_title; ?></div>
+                <div class="variant-motor-title">Thông số kỹ thuật <?php echo $variant_post_title; ?></div>
                 <div class="variant-motor-specs">
                     <div class="variant-motor-spec-pair">
-                        <div class="variant-motor-specs-label">ประเภท</div>
+                        <div class="variant-motor-specs-label">Loại</div>
                         <div class="variant-motor-specs-value"><?php echo $body_type; ?></div>
                     </div>
                     <div class="variant-motor-spec-pair">
-                        <div class="variant-motor-specs-label">ความจุของเครื่องยนต์</div>
+                        <div class="variant-motor-specs-label">Số bước</div>
                         <div class="variant-motor-specs-value"><?php echo $capacity; ?></div>
                     </div>
                     <div class="variant-motor-spec-pair">
-                        <div class="variant-motor-specs-label">กำลังไฟสูงสุด</div>
+                        <div class="variant-motor-specs-label">Công suất tối đa</div>
                         <div class="variant-motor-specs-value"><?php echo $maximum_power; ?></div>
                     </div>
                     <div class="variant-motor-spec-pair">
-                        <div class="variant-motor-specs-label">ตัวเลือกการมีดเครื่องยนต์</div>
+                        <div class="variant-motor-specs-label">Bắt đầu các tùy chọn</div>
                         <div class="variant-motor-specs-value"><?php echo $engine_opening_option; ?></div>
                     </div>
                 </div>
-				<button class="variant-motor-cta-button"><a href="<?php echo $base_url . $variant->post_name; ?>">เช็คสเปค</a></button>
+				<button class="variant-motor-cta-button"><a href="<?php echo $base_url . $variant->post_name; ?>">Xem thông số </a></button>
             </div>
         </div>
     </div>

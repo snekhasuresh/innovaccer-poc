@@ -43,11 +43,11 @@ $translate = [
 
 ];
 
-
-
 ?>
     <div class="fruit-tabs" . $brand_id>
-        <h2 class="wa-title-text"><?php echo $translate['bike']; ?></h2>
+		<?php if($brand_id == 0){ ?>
+        	<h2 class="wa-title-text"><?php echo $translate['bike']; ?></h2>
+		<?php } ?>
         <ul class="tabs">
             <div class="tab">
                 <?php if (!empty($popular_cars_in_malaysia)) : ?>
@@ -228,7 +228,7 @@ function display_popular_bike_posts($bikes, $brand_id = 0)
     $total_bikes = count($bikes);
     $total_pages = ceil($total_bikes / $posts_per_page);
     $listing_states = [
-        'On Sale' => ['label' => 'ฮิต', 'color' => '#F53030'],
+        'On Sale' => ['label' => ' Nóng ', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
         'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
     ];
@@ -274,13 +274,13 @@ function display_popular_bike_posts($bikes, $brand_id = 0)
                 $is_hot = true;
             }
 
-            $state = $is_hot ? ['label' => 'ฮิต', 'color' => '#F53030'] : $listing_states[$listing_state];
+            $state = $is_hot ? ['label' => ' Nóng ', 'color' => '#F53030'] : $listing_states[$listing_state];
 
             echo '<div class="car-item page-' . $page_number . '" style="display: ' . ($page_number == 1 ? 'block' : 'none') . ';">';
             echo '<a href="' . esc_url($permalink) . '" class="car-link">';
-            if ($brand_id != 0) {
-                echo '<span class="listing-state" style="background-color: ' . $state['color'] . ';">' . $state['label'] . '</span>';
-            }
+//             if ($brand_id != 0) {
+//                 echo '<span class="listing-state" style="background-color: ' . $state['color'] . ';">' . $state['label'] . '</span>';
+//             }
             echo '<span><img src="' . esc_url($guid) . '" alt="' . esc_attr($bike_title) . '" loading="lazy"></span>';
             echo '<div class="title-and-post">';
             echo '<p class="popular-new-car-find"><span class="car-brand-icon">.</span>' . esc_html($listing_make) . '</p>';

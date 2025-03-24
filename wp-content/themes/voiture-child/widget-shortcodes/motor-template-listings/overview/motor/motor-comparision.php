@@ -22,9 +22,9 @@ function single_listing_motor_comparison()
     $post_permalink = get_permalink($post_id);
     $post_price = $global_listing_post_data['min_price'];
     if ($post_price) {
-        $post_price = 'THB ' . format_number_with_commas($post_price);
+        $post_price = format_price_vietnam($post_price);
     } else {
-        $post_price = 'ยังไม่คอนเฟิร์ม';
+        $post_price = 'Đang cập nhật';
     }
 
     // WP Query to retrieve other listings for comparison
@@ -44,7 +44,7 @@ function single_listing_motor_comparison()
     $comparison_car_meta = get_post_meta_with_thumbnail_guid($comparison_car_ids);
 ?>
     <div class="individual-comparison-wrapper">
-        <h2 class='wa-title-text'><span class="icon"></span>เปรียบเทียบ <?php echo $post_title; ?></h2>
+        <h2 class='wa-title-text'><span class="icon"></span>So sánh <?php echo $post_title; ?></h2>
         <div class="individual-comparison-carousel">
 
             <?php foreach ($comparison_query->posts as $comparison_post) : ?>

@@ -126,7 +126,7 @@ function display_custom_page()
             foreach ($specs as $spec) {
                 $key = $spec['key'];
 
-                if ($group == 'Overview') {
+                if ($group == 'Thông số cơ bản') {
                     switch ($spec['key']) {
                         case 'make':
                             $variant_spec_data[$variant_post->post_title][$group][$key] = ucfirst($make);
@@ -163,9 +163,9 @@ function display_custom_page()
                     $price_keys = ['retail_price', 'insurance', 'road_tax', 'monthly_payment'];
                     if (in_array($key, $price_keys)) {
                         if (($value == '0' || $value == '-')) {
-                            $value = 'TBC';
+                            $value = 'Đang cập nhật';
                         } else {
-                            $value = format_number_with_commas($value);
+                            $value = format_price_vietnam($value);
                         }
                     }
 

@@ -51,9 +51,9 @@ function get_motor_tab_variant_data($posts)
 
 		$price_range = !is_null($lowest_price) && !is_null($highest_price) ?
 			($lowest_price === $highest_price ?
-				'THB ' . number_format($lowest_price) :
-				'THB ' . number_format($lowest_price) . ' - ' . number_format($highest_price)
-			) : 'ยังไม่คอนเฟิร์ม';
+				format_price_vietnam($lowest_price) :
+				format_price_vietnam($lowest_price) . ' - ' . format_price_vietnam($highest_price)
+			) : 'Đang cập nhật';
 
         $make_names = wp_list_pluck(wp_get_post_terms($motor_id, 'make'), 'name');
         $cars_data[] = [

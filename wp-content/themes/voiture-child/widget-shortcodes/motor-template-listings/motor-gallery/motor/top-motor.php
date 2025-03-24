@@ -83,7 +83,7 @@ function top_motor_shortcode($atts)
     // Start output buffering
     ob_start();
 ?>
-    <h2 class="wa-title-text"><?php echo 'อันดับมอเตอร์ไซค์ ' . $term_name ?></h2>
+	<h2 class="wa-title-text"><?php echo 'Xe máy ' . $term_name . ' hàng đầu'; ?></h2>
     <?php if (!empty($top_bikes)) : ?>
         <div class="top-cars-sedan-carousel">
             <ul class="top-cars-sedan-list">
@@ -131,12 +131,12 @@ function top_motor_shortcode($atts)
                         }
 
                         if ($highest_price == $lowest_price && $highest_price != 0) {
-                            $price = 'THB ' . number_format($lowest_price);
+                            $price = format_price_vietnam($lowest_price);
                         } else {
-                            $price = 'THB ' . number_format($lowest_price) . ' - THB ' . number_format($highest_price);
+                            $price = format_price_vietnam($lowest_price) . ' - ' . format_price_vietnam($highest_price);
                         }
                     } else {
-                        $price = 'ยังไม่คอนเฟิร์ม';
+                        $price = 'Đang cập nhật';
                     }
                     ?>
                     <li class="car-sedan-item">
@@ -158,7 +158,7 @@ function top_motor_shortcode($atts)
                                 <span><?php echo esc_html($price); ?></span>
                             </div>
                             <div class="view-model-button">
-                                <a href="<?php echo get_permalink($bike_post->ID); ?>"> ดูรุ่นรถ </a>
+                                <a href="<?php echo get_permalink($bike_post->ID); ?>">  Xem xe máy  </a>
                             </div>
                         </div>
                     </li>

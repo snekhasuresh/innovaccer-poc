@@ -65,7 +65,7 @@ function variant_engine_and_other_images_shortcode()
     <?php if ($totalOtherImages > 9) : ?>
         <div class="other-img-view-more-container">
             <button class="other-img-view-more" data-offset="9" data-total="<?php echo esc_attr($totalOtherImages); ?>">
-                View More
+                Xem thêm
             </button>
         </div>
     <?php endif; ?>

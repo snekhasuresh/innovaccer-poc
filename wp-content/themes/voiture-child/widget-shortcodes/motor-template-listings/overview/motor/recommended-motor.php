@@ -68,16 +68,16 @@ function single_listing_recommended_motor()
 
     // Prepare tabs array
     $tabs = [
-        ['id' => 'recommended-multi-popular-content', 'label' => 'ยอดนิยม'],
-        ['id' => 'recommended-multi-latest-content', 'label' => 'ล่าสุด'],
-        ['id' => 'recommended-multi-RM20k-80k-content', 'label' => 'รุ่นรถมอเตอร์ไซค์ ' . $listing_make],
+        ['id' => 'recommended-multi-popular-content', 'label' => 'Phổ biến'],
+        ['id' => 'recommended-multi-latest-content', 'label' => 'Mới nhất'],
+        ['id' => 'recommended-multi-RM20k-80k-content', 'label' => 'Mô hình xe máy ' . $listing_make],
         // ['id' => 'recommended-multi-RMover80k-content', 'label' => 'Top 10 ' . $listing_type . " Cars"],
-        ['id' => 'recommended-multi-suv-content', 'label' => 'อัพเดท'],
+        ['id' => 'recommended-multi-suv-content', 'label' => 'Cập Nhật'],
 
     ];
 ?>
     <div class="recommended-multi-car-tabs">
-        <h2 class="recommended-multi-tab-heading wa-title-text">รถมอเตอร์ไซค์แนะนำสำหรับคุณ</h2>
+        <h2 class="recommended-multi-tab-heading wa-title-text">Các mẫu xe máy đề xuất</h2>
         <ul class="recommended-multi-tabs">
             <?php foreach ($tabs as $index => $tab): ?>
                 <li>
@@ -219,7 +219,7 @@ function display_recommended_motor($cars)
     }
 
     $listing_states = [
-        'On Sale' => ['label' => 'ฮิต', 'color' => '#F53030'],
+        'On Sale' => ['label' => '  Nóng ', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
         'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
     ];
@@ -256,7 +256,7 @@ function display_recommended_motor($cars)
                 if (in_array($post_id, $top_car_model_ids)) {
                     $is_hot = true;
                 }
-                $state = $is_hot ? ['label' => 'ฮิต', 'color' => '#F53030'] : $listing_states[$listing_state];
+                $state = $is_hot ? ['label' => ' Nóng ', 'color' => '#F53030'] : $listing_states[$listing_state];
             ?>
                 <div class="wa-single-car-item">
                     <a href="<?php echo esc_url($permalink); ?>" class="car-link">
@@ -273,14 +273,14 @@ function display_recommended_motor($cars)
                             <p><?php echo $price; ?></p>
                         </span>
                         <span class="car-button">
-                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model"> ดูรุ่นรถ </a>
+                            <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">  Xem dòng xe  </a>
                         </span>
                     </a>
 
 
                     <div class="car-variant-dropdown">
                         <div class="variant-header" onclick="toggleMotorVariants('<?php echo esc_js($post_id); ?>')">
-                            <span class="variant-count"><?php echo $variants_count; ?> รุ่นย่อย</span>
+                            <span class="variant-count"><?php echo $variants_count; ?>  mẫu xe</span>
                             <button class="variant-toggle" data-id="<?php echo esc_attr($post_id); ?>">
                                 <i class="fas fa-chevron-down"></i> <!-- Font Awesome down icon -->
                             </button>

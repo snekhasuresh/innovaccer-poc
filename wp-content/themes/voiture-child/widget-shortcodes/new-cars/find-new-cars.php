@@ -8,7 +8,6 @@ function enqueue_find_new_cars_css()
 
 function popular_cars_in_new_cars($atts)
 {
-	print_r("sss");
     enqueue_find_new_cars_css();
     $atts = shortcode_atts(
         array(
@@ -52,7 +51,12 @@ $translate = [
 
 ?>
     <div class="fruit-tabs" . $brand_id>
-        <h2 class="wa-title-text"> <?php echo $translate['List of Popular New Car Prices in Indonesia']; ?></h2>
+        <h2 class="wa-title-text"> <?php 
+			if($brand_id === 0){
+				echo $translate['List of Popular New Car Prices in Indonesia']; 
+			}
+			?>
+		</h2>
         <ul class="tabs">
             <div class="tab">
                 <?php if (!empty($popular_cars_in_malaysia)) : ?>
@@ -231,9 +235,9 @@ function display_popular_car_posts($cars, $brand_id = 0)
     $total_cars = count($cars);
     $total_pages = ceil($total_cars / $posts_per_page);
     $listing_states = [
-        'On Sale' => ['label' => 'ฮิต', 'color' => '#F53030'],
+        'On Sale' => ['label' => 'Nóng', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
-        'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
+        'Upcoming' => ['label' => 'Sắp ra mắt', 'color' => '#32D0C6']
     ];
 
     $initial_page = 1;
@@ -277,7 +281,7 @@ function display_popular_car_posts($cars, $brand_id = 0)
                 $is_hot = true;
             }
 
-            $state = $is_hot ? ['label' => 'ฮิต', 'color' => '#F53030'] : $listing_states[$listing_state];
+            $state = $is_hot ? ['label' => 'Nóng', 'color' => '#F53030'] : $listing_states[$listing_state];
 
             echo '<div class="car-item page-' . $page_number . '" style="display: ' . ($page_number == 1 ? 'block' : 'none') . ';">';
             echo '<a href="' . esc_url($permalink) . '" class="car-link">';

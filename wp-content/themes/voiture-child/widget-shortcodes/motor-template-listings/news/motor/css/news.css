@@ -60,14 +60,14 @@
         }
 
         .single-listing-tab-content {
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         /* News items */
         .single-listing-news-item {
             display: flex;
             align-items: center;
-            padding: 40px 0;
+            padding: 15px 0;
         }
 
         .single-listing-news-thumbnail {
@@ -77,9 +77,9 @@
         }
 
         .single-listing-news-thumbnail img {
-            width: 400px;
-            height: 230px;
-            border-radius: 8px;
+            width: 300px;
+            height: 200px;
+           
         }
 
         .single-listing-news-content {
@@ -126,7 +126,7 @@
         .single-listing-news-meta {
             display: flex;
             align-items: center;
-            margin-top: 70px;
+            margin-top: 50px;
         }
 
         .single-listing-news-author {

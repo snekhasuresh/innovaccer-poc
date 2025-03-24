@@ -128,7 +128,7 @@ function findnew_bike_comparison($atts)
                                 <div class="findnew-car-price"><?php echo esc_html($listing2_price); ?></div>
                             </a>
                         </div>
-                        <a href="<?php echo home_url('/compare-motorcycles/') . $comparison_slug; ?>" class="findnew-compare-button">
+                        <a href="<?php echo home_url('/so-sanh-xe/') . $comparison_slug; ?>" class="findnew-compare-button">
                             <?php
                             // Split titles by spaces
                             $listing1_parts = explode(' ', $listing1_title);

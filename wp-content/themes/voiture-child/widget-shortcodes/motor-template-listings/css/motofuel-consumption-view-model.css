@@ -133,7 +133,7 @@
      width: 6px;
      height: 6px;
      border-radius: 50%;
-     background-color: #00bfa5;
+     background-color: #ffb400;
  }
 
  .car-make {
@@ -166,25 +166,21 @@
      width: 100%;
  }
 
- .car-button .btn-view-model {
+  .btn-view-model {
      width: 100%;
      text-align: center;
      font-weight: bold;
      padding: 8px;
      border-radius: 4px;
      background-color: #fff;
-     color: #00bfa5;
-     border: 1px solid #00bfa5;
+     color: #ffb400;
+     border: 1px solid #ffb400;
      text-decoration: none;
      display: inline-block;
      transition: background-color 0.3s ease, color 0.3s ease;
      margin-top: 10px;
  }
 
- .car-button .btn-view-model:hover {
-     color: #00bfa5;
-     background-color: #F3FCFC;
- }
 
  .variant-count {
      font-family: "Roboto";

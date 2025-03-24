@@ -140,7 +140,7 @@ function motor_news_single_listing_shortcode($atts)
         <!-- Tab navigation -->
         <div class="single-listing-news-tabs">
             <ul class="single-listing-tabs-nav">
-                <li class="single-listing-tab-link active" data-tab="latest">ล่าสุด</li>
+                <li class="single-listing-tab-link active" data-tab="latest"> Mới nhất</li>
                 <?php if (!empty($category_names)) :
                     $all_subcategory_ids = [];
                     foreach ($category_names as $category) :
@@ -206,7 +206,7 @@ function motor_news_single_listing_shortcode($atts)
 
             echo ' <div class="view-more-container">
                           <a  class="view-more" data-page="1" data-tab-id="latest">
-                               ดูเพิ่มเติม
+                               Xem thêm
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                              </svg>
@@ -452,9 +452,8 @@ function motor_news_single_listing_shortcode($atts)
         }
 
         .single-listing-news-thumbnail img {
-            width: 400px;
-            height: 230px;
-            border-radius: 8px;
+            width: 300px;
+            height: 200px;
         }
 
         .single-listing-news-content {
@@ -501,7 +500,7 @@ function motor_news_single_listing_shortcode($atts)
         .single-listing-news-meta {
             display: flex;
             align-items: center;
-            margin-top: 70px;
+            margin-top: 50px;
         }
 
         .single-listing-news-author {

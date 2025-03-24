@@ -63,7 +63,6 @@ li {
     text-decoration: none;
     position: relative;
     font-family: 'Roboto';
-    margin-left: 13px;
 }
 
 .header-tab.active {
@@ -90,12 +89,14 @@ li {
     height: 4px;
     background-color: #ffb400;
 }
-
+.header-tabs li{
+			margin-right:0px;
+		}
 @media screen and (max-width: 768px) {
     .header-tab {
-        padding: 21px 8px;
+        padding: 12px 23px !important;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 14px !important;
         font-weight: bold;
         color: white;
         text-decoration: none;
@@ -113,7 +114,7 @@ li {
         width: 100%;
         overflow-x: scroll;
         margin: 10px 0;
-        height: 64px;
+        height: 40px !important;
         scrollbar-width: none;
     }
 

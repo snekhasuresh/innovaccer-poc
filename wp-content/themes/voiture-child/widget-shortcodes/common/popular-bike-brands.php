@@ -65,7 +65,7 @@ function display_popular_bike_brands()
             $logo_url = get_term_meta($brand->term_id, 'motorcycle_make_image', true);
         ?>
             <div class="car-brand" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="<?php echo esc_url(home_url('/motorcycles/' . $brand->slug)); ?>" class="brand-link">
+                <a href="<?php echo esc_url(home_url('/xe-may/' . $brand->slug)); ?>" class="brand-link">
                     <?php if ($logo_url): ?>
                         <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($brand->name); ?> logo" class="brand-logo">
                     <?php endif; ?>
@@ -77,7 +77,7 @@ function display_popular_bike_brands()
     </div>
 
     <div class="view-more-container">
-        <a href="<?php echo esc_url(home_url('/motorcycles')); ?>" class="view-more-button"><?php echo esc_html__('xem thêm', 'voiture'); ?> <span>&#8250;</span></a>
+        <a href="<?php echo esc_url(home_url('/xe-may')); ?>" class="view-more-button"><?php echo esc_html__('xem thêm', 'voiture'); ?> <span>&#8250;</span></a>
     </div>
 <?php
 

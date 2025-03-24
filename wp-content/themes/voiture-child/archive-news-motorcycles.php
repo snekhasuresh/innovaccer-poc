@@ -2,13 +2,24 @@
 get_header();
 $sidebar_configs = voiture_get_blog_layout_configs();
 $current_url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-// print_r('motorcycle news page accessed...........');
-error_log('motorcycle news page accessed...........');
-echo do_shortcode('[breadcrumb]');
+$translate = [
+	'news' => 'AutoFun Tin tức',
+	'latest' => 'Mới nhất',
+]
 ?>
-<section>
+<div class="news-breadcrumb container">
+    <?php
+    echo do_shortcode('[breadcrumb]');
+    ?>
+</div>
+<div class="container" style="display: flex; align-items: center; padding-bottom: 15px;">
+    <span>
+        <h1 class="wa-title-text archive-news-latest-news"><?php echo $translate['news']; ?></h1>
+    </span>
+</div>
+<section class="category-subcategory">
     <div id="news-categories-tabs" class="news-categories-tabs">
-        <div class="navbarcls">
+        <div class="navbarcls container">
             <!-- Scroll Left Button -->
             <div class="button-container-left">
                 <button id="scroll-left" class="scroll-btn-left" aria-label="Scroll left" style="margin-right: 10px">
@@ -17,17 +28,17 @@ echo do_shortcode('[breadcrumb]');
             </div>
             <!-- Category Tabs -->
             <ul id="category-tabs" class="category-tabs">
-                <li class="tab-link <?php echo ($current_url == 'news-motorcycles/latest') ? 'selected' : ''; ?> <?php echo ($current_url == 'news-motorcycles') ? 'selected' : ''; ?>" data-category="0">ล่าสุด</li>
+                <li class="tab-link <?php echo ($current_url == 'tin-tuc-xe-may/latest') ? 'selected' : ''; ?> <?php echo ($current_url == 'tin-tuc-xe-may') ? 'selected' : ''; ?>" data-category="0"><?php echo $translate['latest']; ?></li>
                 <?php
                 $categories = get_terms('motorcycle-news-category', array(
                     'hide_empty' => false,
                     'parent' => 0,
                     'meta_query' => array(
-                        array(
-                            'key'     => 'second_lang',
-                            'value'   => '', // Empty value
-                            'compare' => 'IN', // Either empty or not set
-                        ),
+//                         array(
+//                             'key'     => 'second_lang',
+//                             'value'   => '', // Empty value
+//                             'compare' => 'IN', // Either empty or not set
+//                         ),
                         array(
                             'key'     => 'state',
                             'value'   => '1', // Value of the 'state' field should be 1
@@ -46,7 +57,7 @@ echo do_shortcode('[breadcrumb]');
                 foreach ($categories as $category) :
 //                     $category_slug = sanitize_title($category->name);
 					$category_slug = sanitize_title($category->slug);
-                    $category_url = 'news-motorcycles/' . $category_slug;
+                    $category_url = 'tin-tuc-xe-may/' . $category_slug;
                     $is_selected = ($current_url == $category_url) ? 'selected' : '';
                 ?>
                     <li class="tab-link <?php echo $is_selected; ?>" data-category="<?php echo esc_attr($category->term_id); ?>">
@@ -64,16 +75,16 @@ echo do_shortcode('[breadcrumb]');
             </div>
         </div>
     </div>
-    <div id="subcategories-container" class="subcategories-container" style="margin-left: 103px">
+    <div id="subcategories-container" class="subcategories-container container">
     </div>
     <div id="loader" class="loader">
         <i class="spinner"></i>
     </div>
-    <input type="hidden" name="parent-category" id="selected-category-id" value=""></input>
+    <input type="hidden" name="parent-category" id="selected-category-id" value="" />
 </section>
 <section id="main-container" class="main-content <?php echo apply_filters('voiture_blog_content_class', 'container'); ?> inner">
     <?php voiture_before_content($sidebar_configs); ?>
-    <div class="row responsive-medium archive-news-col ">
+    <div class="row responsive-medium archive-news-col">
         <?php voiture_display_sidebar_left($sidebar_configs); ?>
         <div id="main-content" class="main-blog col-sm-12 <?php echo esc_attr($sidebar_configs['main']['class']); ?>">
             <div id="main" class="site-main layout-blog" role="main">
@@ -94,9 +105,9 @@ echo do_shortcode('[breadcrumb]');
                     endif;
                     ?>
                 </div>
-                <div style="display: flex; justify-content:center; text-align: center;">
-                    <a href="#" id="load-more-link" style="display:none; text-decoration:none; font-size:14px; color:#576b95; display:block; text-align:center; margin:20px 0;font-weight:700">
-                        View More <i class="fas fa-chevron-down" style="margin-left:5px;"></i>
+                <div class="view-more" style="display: flex; justify-content:center; text-align: center;">
+                    <a href="#" id="load-more-link" style="display:none; text-decoration:none; font-size:14px; color:#576b95; display:block; text-align:center; margin:20px 0;font-weight:600">
+                        Xem Thêm <i class="fas fa-chevron-down" style="margin-left:5px;"></i>
                     </a>
                     <div id="loader" style="display:none; margin:20px 0;">
                         <i class="fas fa-spinner fa-spin" style="font-size:20px; color:#576b95;"></i>
@@ -115,6 +126,7 @@ echo do_shortcode('[breadcrumb]');
     </div>
 
     <?php echo do_shortcode('[elementor-template id="4891"]'); ?>
+    <?php echo do_shortcode('[elementor-template id="31654"]'); ?>
 </section>
 <style>
     .recommended-cars-wrapper {

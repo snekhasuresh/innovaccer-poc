@@ -47,7 +47,7 @@ if (!function_exists('get_author_details_shortcode')) {
 ?>
                 <div class="author-box">
                     <div class="author-avatar">
-                        <img src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_name); ?>"style="border-radius:50%;">
+                        <img class="author-image-con" src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_name); ?>">
                     </div>
                     <div class="author-info">
                         <h3 class="author-name">
@@ -58,6 +58,9 @@ if (!function_exists('get_author_details_shortcode')) {
                     </div>
                 </div>
                 <style>
+					.author-avatar{
+					   width: 180px;
+					}
                     .author-box {
                         display: flex;
                         align-items: center;
@@ -67,19 +70,15 @@ if (!function_exists('get_author_details_shortcode')) {
                         background-color: #fff;
                     }
 
-                  .author-avatar{
-					   width: 180px;
-					}
-
-                    .author-avatar img {
-                         max-width:120px !important;
+                    	.author-image-con{
+						   max-width:120px !important;
 							max-height:120px !important;
 							border: 3px solid #fff !important;
 							border-radius: 50% !important;
 							object-fit: cover !important;
 							cursor: pointer !important;
 						padding:10px;
-                    }
+					}
 
                     .author-info {
                         flex-grow: 1;
@@ -174,15 +173,15 @@ if (!function_exists('get_latest_news_shortcode')) {
 
         $args = array(
             'author'         => $author_id,
-            'post_type'      => 'news',
+            'post_type'      => ['news', 'motorcycle-news'],
             'posts_per_page' => $atts['number'],
             'paged'          => $atts['page'],  // Add pagination here
             'meta_query' => array(
-                array(
-                    'key'     => 'second_language',
-                    'value'   => '',
-                    'compare' => '==',
-                ),
+//                 array(
+//                     'key'     => 'second_language',
+//                     'value'   => '',
+//                     'compare' => '==',
+//                 ),
             ),
             'meta_key'       => 'publish_time',
             'orderby'        => 'meta_value',
@@ -228,7 +227,7 @@ if (!function_exists('get_latest_news_shortcode')) {
         ?>
         <div style="display: flex; align-items: center;">
             <span>
-                <h2 class="wa-title-text"> Tin mới nhất</h2>
+                <h2 class="wa-title-text">Tin tức mới nhất</h2>
             </span>
         </div>
         <ul class="latest-news-list">
@@ -259,7 +258,7 @@ if (!function_exists('get_latest_news_shortcode')) {
 
         <!-- Load More Button -->
         <div class="load-more-container">
-            <button class="load-more-btn" data-page="<?php echo $atts['page'] + 1; ?>" data-author-id="<?php echo $author_id; ?>">Load More News</button>
+            <button class="load-more-btn" data-page="<?php echo $atts['page'] + 1; ?>" data-author-id="<?php echo $author_id; ?>">Tải thêm tin tức</button>
         </div>
 <style>
 	.load-more-container{
@@ -274,10 +273,9 @@ if (!function_exists('get_latest_news_shortcode')) {
 	}
 	.load-more-btn{
 		border-radius: 5px;
-		border: 1px solid #32d0c6;
+		border: 1px solid #ffb400;
 		font-family: "Roboto";
-		color: #32d0c6;
-		font-weight: 700;
+		color: #ffb400;
 		font-size: 16px;
 		text-align: center;
 		box-sizing: border-box;
@@ -346,15 +344,15 @@ function load_more_news()
 
         $args = array(
             'author'         => $author_id,
-            'post_type'      => 'news',
+            'post_type'      => ['news', 'motorcycle-news'],
             'posts_per_page' => 10,
             'paged'          => $page,
             'meta_query' => array(
-                array(
-                    'key'     => 'second_language',
-                    'value'   => '',
-                    'compare' => '==',
-                ),
+//                 array(
+//                     'key'     => 'second_language',
+//                     'value'   => '',
+//                     'compare' => '==',
+//                 ),
             ),
             'meta_key'       => 'publish_time',
             'orderby'        => 'meta_value',

@@ -571,7 +571,7 @@ function selects_cars_shortcode()
                 const currentUrl = window.location.pathname;
 
                 if (currentUrl.includes("-vs-")) {
-                    const path = currentUrl.replace("/bandingkan-mobil/", "");
+                    const path = currentUrl.replace("/so-sanh-xe/", "");
                     const [car1, car2] = path.split("-vs-");
 
                     if (car1 && car2) {

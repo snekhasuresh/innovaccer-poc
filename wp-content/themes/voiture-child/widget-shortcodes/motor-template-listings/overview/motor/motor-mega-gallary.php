@@ -64,9 +64,9 @@ function motore_mega_gallery_shortcode()
 
     // Prepare labels mapping for predefined labels
     $labels = [
-        'exterior' => esc_html__('ภายนอก', 'voiture'),
+        'exterior' => esc_html__('Ngoại thất ', 'voiture'),
         'interior' => esc_html__('Interior', 'voiture'),
-        'colour' => esc_html__('สี', 'voiture')
+        'colour' => esc_html__('Màu sắc', 'voiture')
     ];
 
     // Initialize the variables for formatted counts and tab buttons
@@ -100,9 +100,10 @@ function motore_mega_gallery_shortcode()
     ob_start();
 ?>
     <div class="mega-gal-con">
-        <span class="mega-gallary-title wa-title-text"><?php esc_html_e('รูปภาพ ' . $post_title, 'voiture'); ?></span>
+        <span class="mega-gallary-title wa-title-text"><?php esc_html_e('Hình ảnh ' . $post_title, 'voiture'); ?></span>
         <div class="gallary-des">
-            <span><?php esc_html_e($post_data->post_title . ' ' . $current_year . '  มีรูปภาพและรูปถ่ายทั้งหมด ' . $totalCount . ' ' . implode(', ', $formattedCounts)  . ' ตรวจสอบรูปถ่ายรถมอเตอร์ไซค์ ' . $post_data->post_title . ' ล่าสุดได้ที่นี่ รวมทั้งเครื่องยนต์ เครื่องมือวัด ไฟหน้า ใบหน้าด้านข้าง ฯลฯ กระจกมองหลัง แร็คท้าย ไฟท้าย เบาะนั่ง ท่อไอเสีย ถังน้ำมัน แป้นเหยียบ ล้อ ยาง ผ้าเบรก มือจับ', 'voiture'); ?> </span>
+            <span><?php esc_html_e($post_data->post_title . ' ' . $current_year . ' có tổng cộng ' . $totalCount . ' hình ảnh và ảnh chụp ' . implode(', ', $formattedCounts) . '. Kiểm tra ảnh chụp xe máy ' . $post_data->post_title . ' mới nhất tại đây, bao gồm động cơ, đồng hồ đo, đèn pha, mặt bên, gương chiếu hậu, giá để hành lý, đèn hậu, yên xe, ống xả, bình xăng, bàn đạp, bánh xe, lốp, má phanh, tay cầm.', 'voiture'); ?> </span>
+
         </div>
         <div class="custom-tabs-header-gallary">
             <?php

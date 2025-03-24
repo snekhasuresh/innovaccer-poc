@@ -46,7 +46,7 @@ function display_bike_brands_alphabetically()
                                 $brand_logo = $brand->logo ?: 'https://via.placeholder.com/100';
                     ?>
                                 <div class="brand-item">
-                                    <a href="/motorcycles/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
+                                    <a href="/xe-may/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
                                         <img src="<?= esc_url($brand_logo) ?>" alt="<?= esc_attr($brand->name) ?> logo">
                                         <span><?= esc_html($brand->name) ?></span>
                                     </a>
@@ -275,15 +275,16 @@ if (!function_exists('apply_bike_brand_filter')) {
     function apply_bike_brand_filter($brand)
     {
         ob_start();
-        echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
-        echo do_shortcode('[ev_top_banner_for_newcars]');
-        echo '</div>';
+        
+           echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
+			echo do_shortcode('[breadcrumb]');
+			echo '</div>';
 
         echo '<div class="widget-container populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[bike_brand_description brand_id="' . $brand->term_id . '"]');
         echo '</div>';
 
-        echo '<h2 class="wa-title-text find-car-news-title">รถมอเตอร์ไซค์ ' . $brand->name . ' ในไทย</h2>';
+        echo '<h2 class="wa-title-text find-car-news-title">Xe máy ' . $brand->name . '  Tại Việt Nam</h2>';
 
         echo '<div class="widget-container  populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[popular_bike_in_new_bikes brand_id="' . $brand->term_id . '"]');

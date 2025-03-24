@@ -202,7 +202,7 @@ function display_recommendedcar_posts_common($cars)
     $listing_states = [
         'On Sale' => ['label' => ' Nóng ', 'color' => '#F53030'],
         'Not On Sale' => ['label' => 'Not On Sale', 'color' => '#AAAAAA'],
-        'Upcoming' => ['label' => 'Upcoming', 'color' => '#32D0C6']
+        'Upcoming' => ['label' => 'Sắp ra mắt', 'color' => '#32D0C6']
     ];
     $top_car_model_data = get_option('top_car_models', []);
     $all_car_models = $top_car_model_data;
@@ -230,14 +230,19 @@ function display_recommendedcar_posts_common($cars)
                 $home_url = get_home_url();
                 $make = strtolower(str_replace(' ', '-', $listing_make));
                 $model = strtolower(str_replace(' ', '-', $post_name));
-                $base_url = $home_url . '/cars/' . $make . '/' . $model . '/';
+	
+				// Remove the make from the model if it exists
+				if (strpos($model, $make) === 0) { // Check if the model starts with the make
+					$model = trim(str_replace($make, '', $model), '-');
+				}
+                $base_url = $home_url . '/xe-oto/' . $make . '/' . $model . '/';
 
                 // Check if the car is hot
                 $is_hot = false;
                 if (in_array($post_id, $top_car_model_ids)) {
                     $is_hot = true;
                 }
-                $state = $is_hot ? ['label' => 'Hot', 'color' => '#F53030'] : $listing_states[$listing_state];
+                $state = $is_hot ? ['label' => 'Nóng', 'color' => '#F53030'] : $listing_states[$listing_state];
             ?>
                 <div class="wa-single-car-item">
                     <a href="<?php echo esc_url($permalink); ?>" class="car-link">

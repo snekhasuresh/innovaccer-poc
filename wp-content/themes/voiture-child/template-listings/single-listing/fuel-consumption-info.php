@@ -52,33 +52,35 @@ function fuel_consumption_info_shortcode()
         }
     }
 
-    echo '<h1>' . $car_post->post_title . ' Fuel Consumption</h1>';
+    echo '<h1 class="wa-title-text"> Mức Tiêu Hao Nhiên Liệu Của Xe ' . $car_post->post_title . ' </h1>';
 
     echo '<div class="fuel-consumption-container">';
-    echo "<p>The fuel consumption of the " . $car_post->post_title . " is " . $lowest_manufacturer_claim . " (the most fuel-efficient), and the highest fuel consumption is " . $highest_manufacturer_claim . ".</p>";
-    echo "<p>Fuel consumption is most intuitively measured as the fuel required to travel a unit distance, which is known as L/100 kilometers.</p>";
+    echo "<p>Mức tiêu hao nhiên liệu của xe " . $car_post->post_title . "  là  " . $lowest_manufacturer_claim . "  (tiết kiệm nhiên liệu nhất), và mức tiêu hao nhiên liệu cao nhất là  " . $highest_manufacturer_claim . ".</p>";
+    echo "<p> Định mức tiêu hao nhiên liệu là thông số kỹ thuật được các nhà sản xuất xe đưa ra qua việc tính toán mức nhiên liệu mà xe sẽ tiêu thụ khi chạy trên quãng đường nhất định (100km), trong điều kiện tiêu chuẩn, ký hiệu L / 100 km. </p>";
 
     echo "<div id='fuel-consumption-content'>";
-    echo "<p>Here are the fuel consumption rates for " . $car_post->post_title . " cars, according to " . ucfirst($make) . " official:</p>";
+  echo "<p>Dưới đây là mức tiêu thụ nhiên liệu của xe " . $car_post->post_title . ", theo thông tin chính thức từ " . ucfirst($make) . ":</p>";
 
-    foreach ($table_data as $variant => $data) {
-        echo '<p>The fuel consumption of ' . $variant . ' is ' . $data[0]['consumption'] . '.</p>';
-    }
 
-    echo "<p>Fuel economy, as the inverse of fuel consumption, is another common indicator, which is calculated as the distance traveled per unit of fuel, such as kilometers/liter or miles/gallon.</p>";
-    echo "<p>The fuel consumption of a car mainly depends on its power technology and size. These variables include:</p>";
-    echo "<ul>
-            <li>1. Road, traffic, and weather conditions</li>
-            <li>2. Driving style</li>
-            <li>3. Vehicle speed, load, and condition</li>
-          </ul>";
-    echo "<p>The following formula is used to calculate fuel consumption in liters/100km, which is the most commonly used measure of fuel consumption:</p>";
-    echo "<p>(Liters used × 100) ÷ km traveled = litres per 100 kilometers.</p>";
-    echo "<p>In this way, you can easily get the monthly fuel cost of " . $car_post->post_title . " by using our fuel cost calculator.</p>";
-    echo "</div>";
+   foreach ($table_data as $variant => $data) {
+    echo '<p>Mức tiêu thụ nhiên liệu của ' . $variant . ' là ' . $data[0]['consumption'] . '.</p>';
+}
 
-    echo '<span id="toggle-button" onclick="toggleContent()">View More</span>';
-    echo '</div>';
+echo "<p>Hiệu suất nhiên liệu, hay còn gọi là mức tiêu hao nhiên liệu nghịch đảo, là một chỉ số phổ biến khác, được tính bằng quãng đường di chuyển trên một đơn vị nhiên liệu, chẳng hạn như km/lít hoặc dặm/gallon.</p>";
+echo "<p>Mức tiêu thụ nhiên liệu của một chiếc xe phụ thuộc chủ yếu vào công nghệ động cơ và kích thước của nó. Các yếu tố ảnh hưởng bao gồm:</p>";
+echo "<ul>
+        <li>1. Điều kiện đường xá, giao thông và thời tiết</li>
+        <li>2. Phong cách lái xe</li>
+        <li>3. Tốc độ, tải trọng và tình trạng xe</li>
+      </ul>";
+echo "<p>Công thức sau được sử dụng để tính mức tiêu thụ nhiên liệu theo lít/100km, đây là cách đo phổ biến nhất:</p>";
+echo "<p>(Lít nhiên liệu đã sử dụng × 100) ÷ số km đã đi = lít trên 100 km.</p>";
+echo "<p>Bằng cách này, bạn có thể dễ dàng tính chi phí nhiên liệu hàng tháng của " . $car_post->post_title . " bằng cách sử dụng công cụ tính chi phí nhiên liệu của chúng tôi.</p>";
+echo "</div>";
+
+echo '<span id="toggle-button" onclick="toggleContent()">Đọc thêm</span>';
+echo '</div>';
+
 
 ?>
     <script>
@@ -88,22 +90,26 @@ function fuel_consumption_info_shortcode()
 
             if (content.style.display === "none" || content.style.display === "") {
                 content.style.display = "block";
-                button.innerText = "Hide";
+                button.innerText = "Ẩn";
             } else {
                 content.style.display = "none";
-                button.innerText = "View More";
+                button.innerText = "Đọc thêm";
             }
         }
     </script>
     <style>
-        .fuel-consumption-container {
+         .fuel-consumption-container {
             background-color: #f0f0f0;
             /* Light grey background */
             padding: 20px;
             border-radius: 8px;
             position: relative;
         }
-
+		.fuel-consumption-container p{
+			color:#262626;
+			font-family:"Roboto";
+			font-size:14px;
+		}
         .fuel-consumption-table {
             font-family: 'Roboto' !important;
             color: #262626 !important;
@@ -116,7 +122,9 @@ function fuel_consumption_info_shortcode()
 
         #toggle-button {
             font-weight: bold;
-            color: #5D3A3A;
+            color: #576b97;
+			font-family:"Roboto";
+			font-size:16px;
             /* Brinjal color */
             cursor: pointer;
             position: absolute;

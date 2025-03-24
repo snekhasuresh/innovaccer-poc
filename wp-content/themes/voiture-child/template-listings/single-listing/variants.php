@@ -85,7 +85,7 @@ $translate = [
                 <h2 class=" wa-title-text"><?php esc_html_e('Bảng giá (mẫu xe) '.$post_title, 'voiture'); ?></h2>
 
                 <div class="tabs-container-varient">
-                    <?php if (!empty($variants_on_sale)) { ?>
+                    <?php if (!empty($variants_on_sale) && count($variants_on_sale) > 1) { ?>
                        <div class="price-dec">
     				 <?php 
                         // Dynamically generate the description

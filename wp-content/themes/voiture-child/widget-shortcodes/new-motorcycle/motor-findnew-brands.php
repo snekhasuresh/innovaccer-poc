@@ -31,7 +31,7 @@ function findnew_bike_brands()
     </div>
 
     <div class="view-more-container">
-        <a href="#" class="view-more-button"><?php echo esc_html__('View More', 'voiture'); ?> <span>&#8250;</span></a>
+        <a href="#" class="view-more-button"><?php echo esc_html__('Xem thêm', 'voiture'); ?> <span>&#8250;</span></a>
     </div>
     <style>
         /* Add this CSS to your theme's stylesheet */

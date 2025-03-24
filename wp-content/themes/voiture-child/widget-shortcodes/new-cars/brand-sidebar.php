@@ -293,7 +293,7 @@ function apply_brand_filter($brand)
     echo do_shortcode('[brand_description brand_id="' . $brand->term_id . '"]');
     echo '</div>';
 
-    echo '<h2 class="wa-title-text find-car-news-title">รถยนต์ ' . $brand->name . ' ในไทย</h2>';
+    echo '<h2 class="wa-title-text find-car-news-title">Xe Ô Tô ' . $brand->name . ' Tại Việt Nam</h2>';
 
     echo '<div class="widget-container  populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
     echo do_shortcode('[popular_cars_in_new_cars brand_id="' . $brand->term_id . '"]');

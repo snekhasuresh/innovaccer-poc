@@ -57,7 +57,7 @@ function motor_display_single_car_post()
     );
     $other_models = new WP_Query($other_model_args);
 
-    echo '<h2 class="wa-title-text">Related Models</h2>';
+    echo '<h2 class="wa-title-text">Dòng xe liên quan</h2>';
 ?>
     <div class="single-car">
         <div class="car-item">
@@ -74,12 +74,12 @@ function motor_display_single_car_post()
                     <p><?php echo $price; ?></p>
                 </span>
                 <span class="car-button">
-                    <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">View Model</a>
+                    <a href="<?php echo esc_url($permalink); ?>" class="btn-view-model">Xem dòng xe</a>
                 </span>
             </a>
             <div class="car-variant-dropdown">
                 <div class="variant-header" onclick="toggleVariants('<?php echo esc_js($post_id); ?>')">
-                    <span class="variant-count"><?php echo count($other_models->posts) . ' Other ' . ucfirst($make); ?> Models</span>
+                    <span class="variant-count"><?php echo count($other_models->posts) . '  dòng xe  ' . ucfirst($make); ?> khác </span>
                     <button class="variant-toggle" data-id="<?php echo esc_attr($post_id); ?>">
                         <i class="fas fa-chevron-down"></i> <!-- Font Awesome down icon -->
                     </button>

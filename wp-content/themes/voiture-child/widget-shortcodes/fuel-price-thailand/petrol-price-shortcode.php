@@ -9,7 +9,7 @@ function fuel_price_template_shortcode()
     ]);
 
     // Get terms for petrol and diesel
-    $petrol_term = get_term_by('slug', 'petrol', 'fuel-type');
+    $petrol_term = get_term_by('slug', 'oil', 'fuel-type');
     $diesel_term = get_term_by('slug', 'diesel', 'fuel-type');
     $gasoline_term = get_term_by('slug', 'gas', 'fuel-type');
 
@@ -81,63 +81,63 @@ function fuel_price_template_shortcode()
         ['วันที่' => '06.10.2023', 'เบนซิน_95' => '46.04', 'แก๊สโซฮอล์_95' => '38.25', 'แก๊สโซฮอล์_91' => '37.98', 'แก๊สโซฮอล์_E20' => '35.94', 'แก๊สโซฮอล์_E85' => '35.59', 'ดีเซลพรีเมี่ยม' => '40.24', 'ดีเซล_B20' => '29.94', 'ดีเซล' => '29.94', 'ดีเซล_B7' => '29.94', 'แก๊ส_NGV' => '17.59'],
     ];
 
-  $Gasohol_95 = wp_get_attachment_image_url(356175, '95');
-    $Gasoline_95 = wp_get_attachment_image_url(356171, 'Gasoline 95');
-    $Gasohol_91 = wp_get_attachment_image_url(356176, 'Gasohol 91');
-    $Gasohol_E20 = wp_get_attachment_image_url(356172, 'Gasohol E20');
-    $Gasohol_E85 = wp_get_attachment_image_url(356177, 'Gasohol E85');
-    $Diesel_B7 = wp_get_attachment_image_url(356180, 'Diesel B7');
-	$Diesel = wp_get_attachment_image_url(356179, 'Diesel');
-	$Diesel_B20 = wp_get_attachment_image_url(356178, 'Diesel B20');
-	$Premium_Diesel = wp_get_attachment_image_url(356173, 'Premium Diesel');
-    $NGV_gas = wp_get_attachment_image_url(356174, 'NGV gas');
+  $Gasohol_95 = wp_get_attachment_image_url(32361, '95');
+    $Gasoline_95 = wp_get_attachment_image_url(32361, 'Gasoline 95');
+    $Gasohol_91 = wp_get_attachment_image_url(32361, 'Gasohol 91');
+    $Gasohol_E20 = wp_get_attachment_image_url(32361, 'Gasohol E20');
+    $Gasohol_E85 = wp_get_attachment_image_url(32361, 'Gasohol E85');
+    $Diesel_B7 = wp_get_attachment_image_url(32361, 'Diesel B7');
+	$Diesel = wp_get_attachment_image_url(32361, 'Diesel');
+	$Diesel_B20 = wp_get_attachment_image_url(32361, 'Diesel B20');
+	$Premium_Diesel = wp_get_attachment_image_url(32361, 'Premium Diesel');
+    $NGV_gas = wp_get_attachment_image_url(32361, 'NGV gas');
 
     $petrol_colors = [
-        'แก๊สโซฮอล์ 95' => [
+        'Xăng E5 RON 92-II' => [
             'color' => '#FFc000',
             'icon' =>  $Gasohol_95,
         ],
-        'เบนซิน 95' => [
-            'color' => '#f8a61f',
+        'Xăng RON 95-III' => [
+            'color' => '#FFc000',
             'icon' => $Gasoline_95,
         ],
         'แก๊สโซฮอล์ 91' => [
-            'color' => '#179e6c',
+            'color' => '#FFc000',
             'icon' => $Gasohol_91,
         ],
         'แก๊สโซฮอล์ E20' => [
-            'color' => '#8fc107',
+            'color' => '#FFc000',
             'icon' =>  $Gasohol_E20,
         ],
 		 'แก๊สโซฮอล์ E85' => [
-            'color' => '#ae208f',
+            'color' => '#FFc000',
             'icon' =>  $Gasohol_E85,
         ],
     ];
 
     // Define colors and icons for diesel variants
     $diesel_colors = [
-        'ดีเซล B7' => [
-            'color' => '#474747',
+        'Dầu DO 0,05S-II' => [
+            'color' => '#FFc000',
             'icon' => $Diesel_B7,
         ],
         'ดีเซล' => [
-            'color' => '#1c83d9',
+            'color' => '#FFc000',
             'icon' => $Diesel,
         ],
 		  'ดีเซล B20' => [
-            'color' => '#293790',
+            'color' => '#FFc000',
             'icon' => $Diesel_B20,
         ],
         'ดีเซลพรีเมี่ยม' => [
-            'color' => '#104D80',
+            'color' => '#FFc000',
             'icon' => $Premium_Diesel,
         ],
     ];
 
     $gas_colors = [
-        'EURO 5 B10' => [
-            'color' => '#6232C5',
+        'Dầu KO' => [
+            'color' => '#FFc000',
             'icon' => $NGV_gas,
         ],
     ];
@@ -159,7 +159,7 @@ function fuel_price_template_shortcode()
                             <?php echo esc_html($petrol['variant']); ?>
                         </p>
                         <p class="fuel-price">
-                            THB <?php echo esc_html($petrol['price']); ?>
+                            <?php echo esc_html(format_price_vietnam($petrol['price'])); ?>
                         </p>
                     </div>
                 </div>
@@ -180,7 +180,7 @@ function fuel_price_template_shortcode()
                             <?php echo esc_html($diesel['variant']); ?>
                         </p>
                         <p class="fuel-price">
-                            THB <?php echo esc_html($diesel['price']); ?>
+                            <?php echo esc_html(format_price_vietnam($diesel['price'])); ?>
                         </p>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ function fuel_price_template_shortcode()
                             <?php echo esc_html($gas['variant']); ?>
                         </p>
                         <p class="fuel-price">
-                            THB <?php echo esc_html($gas['price']); ?>
+                           <?php echo esc_html(format_price_vietnam($gas['price'])); ?>
                         </p>
                     </div>
                 </div>

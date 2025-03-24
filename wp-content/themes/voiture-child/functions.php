@@ -234,7 +234,7 @@ function add_gpt_script_to_head()
 
 
                 // news      
-                if ((urlPath.includes('/news') && !newsSlug) || urlPath === '/bm' || urlPath === '/zh') {
+                if ((urlPath.includes('/tin-tuc') && !newsSlug) || urlPath === '/bm' || urlPath === '/zh') {
                     googletag.defineSlot('/22557728108/vn_news_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632194730-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_news_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740632271021-0').addService(googletag.pubads());
                 }
@@ -243,7 +243,7 @@ function add_gpt_script_to_head()
 
 
                 // news individual
-                if (urlPath.includes('/news') && newsSlug) {
+                if (urlPath.includes('/tin-tuc') && newsSlug) {
                     const categories = ['latest', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car'];
                     if (!categories.includes(newsSlug)) {
                         googletag.defineSlot('/22557728108/th_article_fourthp_under_pc', [728, 90], 'div-gpt-ad-1735654226361-0').addService(googletag.pubads());
@@ -263,7 +263,7 @@ function add_gpt_script_to_head()
 
 
                 // cars
-                if (urlPath === '/cars') {
+                if (urlPath === '/xe-oto') {
                     googletag.defineSlot('/22557728108/vn_cars_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633276982-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_cars_popularbrand_above_pc', [728, 90], 'div-gpt-ad-1740633403925-0').addService(googletag.pubads());
                 }
@@ -291,7 +291,7 @@ function add_gpt_script_to_head()
 
                 if (make && model && section && sections.includes(section)) {
                     switch (section) {
-                        case 'overview':
+                        case 'tong-quat':
                             googletag.defineSlot('/22557728108/vn_model_usedcar_under_pc', [728, 90], 'div-gpt-ad-1740632392311-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_model_sidebar_1_pc', [300, 250], 'div-gpt-ad-1740632439887-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_model_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632468198-0').addService(googletag.pubads());
@@ -300,19 +300,19 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'news':
+                        case 'tin-tuc':
                             break;
 
 
 
 
-                        case 'specs':
+                        case 'thong-so-ky-thuat':
                             break;
 
 
 
 
-                        case 'gallery':
+                        case 'hinh-anh':
                             googletag.defineSlot('/22557728108/VN_ModelImages_FirstScreen_LeftSide_PC', [160, 600], 'div-gpt-ad-1740632678344-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/VN_ModelImages_FirstScreen_RightSide_PC', [160, 600], 'div-gpt-ad-1740632702902-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_modelimages_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632729238-0').addService(googletag.pubads());
@@ -321,7 +321,7 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'fuel-consumption':
+                        case 'tieu-hao-nhien-lieu':
                             googletag.defineSlot('/22557728108/vn_fuelconsumption_firstscreen_leftside_pc', [160, 600], 'div-gpt-ad-1740632846830-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_fuelconsumption_firstscreen_rightside_pc', [160, 600], 'div-gpt-ad-1740632878007-0').addService(googletag.pubads());
                             break;
@@ -329,7 +329,7 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'colors':
+                        case 'mau-sac':
                             googletag.defineSlot('/22557728108/vn_colors_firstscreen_leftsides_pc', [160, 600], 'div-gpt-ad-1740632757226-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_colors_firstscreen_rightsides_pc', [160, 600], 'div-gpt-ad-1740632784137-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_colors_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740632822287-0').addService(googletag.pubads());
@@ -356,27 +356,24 @@ function add_gpt_script_to_head()
 
                 if (make && model && section && variantSection) {
                     switch (variantSection) {
-                        case 'overview':
+                        case 'tong-quat':
                             googletag.defineSlot('/22557728108/vn_variant_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632931062-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632952583-0').addService(googletag.pubads());
                             break;
 
-
-
-
-                        case 'news':
+						case 'tin-tuc':
                             break;
 
 
 
 
-                        case 'specs':
+                        case 'thong-so-ky-thuat':
                             break;
 
 
 
 
-                        case 'gallery':
+                        case 'hinh-anh':
                             googletag.defineSlot('/22557728108/my_vairiantimages_firstscreen_rightside_pc', [160, 600], 'div-gpt-ad-1735656697579-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/my_vairiantimages_sidebar_2_pc', [300, 250], 'div-gpt-ad-1735656715250-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/my_vairiantimages_firstscreen_leftside_pc', [160, 600], 'div-gpt-ad-1735656732530-0').addService(googletag.pubads());
@@ -385,13 +382,13 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'fuel-consumption':
+                        case 'tieu-hao-nhien-lieu':
                             break;
 
 
 
 
-                        case 'colors':
+                        case 'mau-sac':
                             break;
 
 
@@ -406,7 +403,7 @@ function add_gpt_script_to_head()
 
 
                 // Tools
-                if (urlPath === '/tools/loan-calculator') {
+                if (urlPath === '/dung-cu/mua-xe-tra-gop') {
                     googletag.defineSlot('/22557728108/vn_loantool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633057034-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_loantool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633078701-0').addService(googletag.pubads());
                 }
@@ -414,7 +411,7 @@ function add_gpt_script_to_head()
 
 
 
-                if (urlPath === '/tools/insurance-calculator') {
+                if (urlPath === '/dung-cu/bao-hiem-xe') {
                     googletag.defineSlot('/22557728108/vn_insurancetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633109519-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_insurancetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633133048-0').addService(googletag.pubads());
                 }
@@ -438,7 +435,7 @@ function add_gpt_script_to_head()
 
 
 
-                if (urlPath.includes('/compare-cars')) {
+                if (urlPath.includes('/so-sanh-xe')) {
                     googletag.defineSlot('/22557728108/vn_compare_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740632581185-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/my_compare_smyebar_1_pc', [300, 250], 'div-gpt-ad-1735655162916-0').addService(googletag.pubads());
 
@@ -452,7 +449,7 @@ function add_gpt_script_to_head()
 
 
 
-                if (urlPath === '/fuel-price') {
+                if (urlPath === '/dung-cu/gia-xang-dau') {
                     googletag.defineSlot('/22557728108/vn_fuelpricetool_breadcrumb_above_pc', [728, 90], 'div-gpt-ad-1740633212691-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_fuelpricetool_sidebar_end_pc', [300, 250], 'div-gpt-ad-1740633245602-0').addService(googletag.pubads());
                 }
@@ -510,13 +507,13 @@ function add_gpt_script_to_head()
 
                 if (make && model && section && sections.includes(section)) {
                     switch (section) {
-                        case 'overview':
+                        case 'tong-quat':
                             break;
 
 
 
 
-                        case 'gallery':
+                        case 'hinh-anh':
                             // model images page
                             googletag.defineSlot('/22557728108/vn_modelimages_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1740573668080-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_modelimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1740573691977-0').addService(googletag.pubads());
@@ -525,7 +522,7 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'fuel-consumption':
+                        case 'tieu-hao-nhien-lieu':
                             // model fuel consumption page
                             googletag.defineSlot('/22557728108/vn_fuelconsumption_othervariant_above_wap', [300, 250], 'div-gpt-ad-1740573768696-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_fuelconsumption_comparison_above_wap', [336, 280], 'div-gpt-ad-1740573794429-0').addService(googletag.pubads());
@@ -534,7 +531,7 @@ function add_gpt_script_to_head()
 
 
 
-                        case 'colors':
+                        case 'mau-sac':
                             // model colors page
                             googletag.defineSlot('/22557728108/vn_colors_relatedmodel_above_wap', [300, 250], 'div-gpt-ad-1740573717941-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_colors_gallery_under_wap', [336, 280], 'div-gpt-ad-1740573741895-0').addService(googletag.pubads());
@@ -568,13 +565,13 @@ function add_gpt_script_to_head()
 
                 if (make && model && section && !sections.includes(section) && variantSection) {
                     switch (variantSection) {
-                        case 'overview':
+                        case 'tong-quat':
                             break;
 
 
 
 
-                        case 'gallery':
+                        case 'hinh-anh':
                             // variant images page
                             googletag.defineSlot('/22557728108/vn_variantimages_related_above_wap', [300, 250], 'div-gpt-ad-1740573892425-0').addService(googletag.pubads());
                             googletag.defineSlot('/22557728108/vn_variantimages_carimages_under_wap', [336, 280], 'div-gpt-ad-1740573925132-0').addService(googletag.pubads());
@@ -592,7 +589,7 @@ function add_gpt_script_to_head()
 
 
                 // Tools
-                if (urlPath === '/tools/loan-calculator') {
+                if (urlPath === '/dung-cu/mua-xe-tra-gop') {
                     googletag.defineSlot('/22557728108/vn_loantool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740573946847-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_loantool_faq_above_wap', [336, 280], 'div-gpt-ad-1740573972475-0').addService(googletag.pubads());
                 }
@@ -624,7 +621,7 @@ function add_gpt_script_to_head()
 
 
 
-                if (urlPath === '/fuel-price') {
+                if (urlPath === '/dung-cu/gia-xang-dau') {
                     googletag.defineSlot('/22557728108/vn_fuelpricetool_moretools_above_wap', [300, 250], 'div-gpt-ad-1740631810447-0').addService(googletag.pubads());
                     googletag.defineSlot('/22557728108/vn_fuelpricetool_faq_above_wap', [336, 280], 'div-gpt-ad-1740631838534-0').addService(googletag.pubads());
                 }
@@ -1041,6 +1038,8 @@ if (strpos($_SERVER['REQUEST_URI'], 'author') !== false || wp_doing_ajax()) {
 require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/add-car.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/individual-listing-tabs.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/cars-for-sale/used-cars-for-sale/used-cars-for-sale.php';
+    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/faq.php';
+
 if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/gallary.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/mega-gallary.php';
@@ -1068,7 +1067,6 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-car/gallery.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-car/specs.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-car/news.php';
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/faq.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/comparison.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/videos.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/variant-overview.php';
@@ -1550,10 +1548,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'so-sanh-xe-may') !== false || wp_doing_ajax
 }
 if (
     strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false ||
-    strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false ||
-    strpos($_SERVER['REQUEST_URI'], '/zh') === 0 ||
-    strpos($_SERVER['REQUEST_URI'], '/bm') === 0 ||
-    wp_doing_ajax()
+    strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false || wp_doing_ajax()
 ) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/article-page.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/social-media.php';
@@ -1771,7 +1766,7 @@ add_action('init', 'custom_amp_rewrite_rule');
 
 function custom_motor_amp_rewrite_rule()
 {
-    add_rewrite_rule('^news-motorcycles/([0-9]+)/amp/?$', 'index.php?custom_amp_news_id=$matches[1]', 'top');
+    add_rewrite_rule('^tin-tuc-xe-may/([0-9]+)/amp/?$', 'index.php?custom_amp_news_id=$matches[1]', 'top');
 }
 add_action('init', 'custom_motor_amp_rewrite_rule');
 
@@ -2116,7 +2111,7 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
 //motorcycle news page
 $current_url = $_SERVER['REQUEST_URI'];
 if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
-    function enqueue_custom_motor_scripts()
+     function enqueue_custom_motor_scripts()
     {
         wp_enqueue_script('custom-motor-news-script', get_stylesheet_directory_uri() . '/js/custom-motor-news.js', array('jquery'), null, true);
 
@@ -2129,15 +2124,19 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
     function load_motor_news_template_based_on_url($template)
     {
         // Get the current URL
+        global $wp;
+
         $current_url = home_url(add_query_arg(array(), $wp->request));
+        // Ensure $current_url is a string (handle null case)
+        $current_url = $current_url ?? '';
 
         // Check if the current URL contains 'news'
-        if (strpos($current_url, 'news-motorcycles') !== false) {
+        if (strpos($current_url, 'tin-tuc-xe-may') !== false) {
             add_filter('pre_get_document_title', function ($title) {
                 return 'News - ' . get_bloginfo('name');
             });
             // Load the archive-news-motorcycles.php template
-            return get_stylesheet_directory() . '/archive-news-motorcycles.php';
+            //             return get_stylesheet_directory() . '/archive-news.php';
         }
 
         // Return the default template if 'news' is not in the URL
@@ -2171,19 +2170,17 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
             global $wpdb;
 
             $query = $wpdb->prepare("
-            SELECT DISTINCT t.*
-            FROM {$wpdb->terms} AS t
-            INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id
-            LEFT JOIN {$wpdb->termmeta} AS tm1 ON t.term_id = tm1.term_id AND tm1.meta_key = %s
-            LEFT JOIN {$wpdb->termmeta} AS tm2 ON t.term_id = tm2.term_id AND tm2.meta_key = %s
-            LEFT JOIN {$wpdb->termmeta} AS tm3 ON t.term_id = tm3.term_id AND tm3.meta_key = %s
-            WHERE tt.parent = %d
-              AND tt.taxonomy = %s
-              AND (tm1.meta_value = '' OR tm1.meta_value IS NULL)  -- second_lang is empty
-              AND tm2.meta_value = %s                              -- state = '1'
-              AND tm3.meta_value = %s                              -- type = '1'
-            ORDER BY CAST(tm1.meta_value AS UNSIGNED) ASC          -- sort by 'sort' meta value numerically
-        ", 'second_lang', 'state', 'type', $category_id, 'motorcycle-news-category', '1', '1');
+			SELECT DISTINCT t.*
+			FROM {$wpdb->terms} AS t
+			INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id
+			LEFT JOIN {$wpdb->termmeta} AS tm2 ON t.term_id = tm2.term_id AND tm2.meta_key = %s
+			LEFT JOIN {$wpdb->termmeta} AS tm3 ON t.term_id = tm3.term_id AND tm3.meta_key = %s
+			WHERE tt.parent = %d
+			  AND tt.taxonomy = %s
+			  AND tm2.meta_value = %s                              -- state = '1'
+			  AND tm3.meta_value = %s                              -- type = '1'
+			ORDER BY t.term_id ASC                                  -- sort by term_id numerically
+		", 'state', 'type', $category_id, 'motorcycle-news-category', '1', '1');
 
             $subcategories = $wpdb->get_results($query);
         }
@@ -2201,7 +2198,7 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
                     . esc_html($subcategory->name) . '</a></div>';
             }
             $subcategory_html .= '</div>';
-        } elseif ($category_id != 0 || $category_id === $subcategory_id) {
+        } else {
             $terms = get_terms(array(
                 'taxonomy'   => 'motorcycle-news-category',
                 'name'       => 'Others',
@@ -2209,7 +2206,7 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
                 'parent' => $category_id,
             ));
 
-            $subcategory_id = $terms[0] ? $terms[0]->term_id : 0;
+            $subcategory_id =  $terms[0]->term_id ?? null;
         }
 
         $query_args = array(
@@ -2233,7 +2230,8 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
             ),
         );
 
-        if (!empty($subcategories) && !is_wp_error($subcategories)) {
+        if ($category_id == 0) {
+        } elseif ($subcategory_id == $category_id && !empty($subcategories) && !is_wp_error($subcategories)) {
             // Multiple subcategories condition
             $meta_queries = array_map(function ($subcategory) {
                 return array(
@@ -2244,7 +2242,7 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
             }, $subcategories);
 
             $query_args['meta_query'][] = array_merge(['relation' => 'OR'], $meta_queries);
-        } elseif(!empty($subcategory_id)) {
+        } else {
             // Single subcategory condition
             $query_args['meta_query'][] = array(
                 'key'     => 'motorcycle-news-category',
@@ -2291,7 +2289,6 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
     add_action('wp_ajax_load_subcategory_motor_news', 'load_subcategory_motor_news');
     add_action('wp_ajax_nopriv_load_subcategory_motor_news', 'load_subcategory_motor_news');
 }
-
 
 function wapcar_add_query_vars($vars)
 {
@@ -2387,13 +2384,13 @@ function custom_cars_rewrite_rules()
     add_rewrite_rule('^xe-hoi-moi/([^/]+)/?$', 'index.php?pagename=xe-oto&filter=$matches[1]', 'top');
 
     //motor rewrite url
-    add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=tin-tuc-xe-may&news_slug=$matches[1]', 'top');
-    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=new motorcycles&make=$matches[1]', 'top');
+    add_rewrite_rule('^tin-tuc-xe-may/([^/]+)/?$', 'index.php?post_type=motorcycle-news&news_slug=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=xe-may&make=$matches[1]', 'top');
     add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]', 'top');
     add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]&section=$matches[3]', 'top');
     add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
-    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=new motorcycles&filter=$matches[1]', 'top');
+    add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=xe-may&filter=$matches[1]', 'top');
 
     //author
     add_rewrite_rule('^author/([^/]+)/?$', 'index.php?pagename=author&author_slug=$matches[1]', 'top');
@@ -2529,23 +2526,34 @@ function create_news_post_type()
 }
 add_action('init', 'create_news_post_type');
 
-function create_motor_news_post_type()
-{
+function create_motor_news_post_type() {
     register_post_type(
         'motorcycle-news',
         array(
             'labels' => array(
-                'name' => __('tin-tuc-xe-may'),
-                'singular_name' => __('tin-tuc-xe-may'),
+                'name'          => __('Tin tức xe máy'),
+                'singular_name' => __('Tin tức xe máy'),
             ),
-            'public' => true,
-            'has_archive' => true,
-            'rewrite' => array('slug' => 'tin-tuc-xe-may'),
-            'supports' => array('title', 'editor', 'custom-fields'),
+            'public'       => true,
+            'has_archive'  => true,
+            'rewrite'      => array('slug' => 'tin-tuc-xe-may'),
+            'supports'     => array('title', 'editor', 'custom-fields'),
         )
     );
 }
 add_action('init', 'create_motor_news_post_type');
+
+function load_motorcycle_news_archive_template($template) {
+    if (is_post_type_archive('motorcycle-news')) {
+        $custom_template = get_stylesheet_directory() . '/archive-news-motorcycles.php';
+
+        if (file_exists($custom_template)) {
+            return $custom_template;
+        }
+    }
+    return $template;
+}
+add_filter('template_include', 'load_motorcycle_news_archive_template');
 
 add_filter('post_type_link', function ($post_link, $post) {
     if ($post->post_type === 'listing') {
@@ -4166,8 +4174,8 @@ add_action('acf/save_post', 'store_historical_oil_price', 20);
 function custom_compare_cars_rewrite_rule()
 {
     add_rewrite_rule(
-        '^compare-cars/([^/]+)-vs-([^/]+)/?$',
-        'index.php?pagename=compare-cars&car1=$matches[1]&car2=$matches[2]',
+        '^so-sanh-xe/([^/]+)-vs-([^/]+)/?$',
+        'index.php?pagename=so-sanh-xe&car1=$matches[1]&car2=$matches[2]',
         'top'
     );
 }
@@ -5271,15 +5279,19 @@ function get_motor_variant_from_query_vars()
 
     $listing_name = $make . '-' . $model;
 
-    $individual_pages = ['overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors'];
+    $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac', ''];
     if (!in_array($section, $individual_pages)) {
+		if (strpos($section, $listing_name) === false) {
+			$section = $listing_name . '-' . $section;
+		}
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'motorcycle-variant',
             'posts_per_page' => 1
         ));
+
         if ($variant_post) {
-            $section = 'overview';
+            $section = 'tong-quat';
             $variant_section = $variant_post[0]->post_name;
         }
     }
@@ -5297,7 +5309,7 @@ function get_motor_variant_from_query_vars()
     // set_transient($cache_key, 'loading', 5 * MINUTE_IN_SECONDS);
 
     $listing_post = get_posts(array(
-        'name' => $model,
+        'name' => $listing_name,
         'post_type' => 'motorcycle-listing',
         'posts_per_page' => 1,
     ));
@@ -5340,38 +5352,42 @@ function get_motor_variant_from_query_vars()
 
 function motor_latest_news_shortcode($atts)
 {
-$translate = [
-    'Latest News' => 'ข่าวล่าสุด',
-];
+    $translate = [
+        'Latest News' => 'Tin mới nhất',
+    ];
+    
     $all_news = get_latest_news_data('motorcycle-news');
-    $news = array_slice($all_news, 0, 5);
-?>
+    $news = array_slice($all_news, 0, 5); // Limit to 5 items
+
+    ob_start(); // Start output buffering
+    ?>
     <!-- Your HTML Structure for Related News -->
-    <h2 style="margin-bottom: 16px; " class="wa-title-text"> <?php echo $translate['Latest News']; ?></h2>
+    <h2 style="margin-bottom: 16px;" class="wa-title-text">
+        <?php echo $translate['Latest News']; ?>
+    </h2>
     <div id="buying-guide-news-container" style="list-style: none; padding: 0;">
-        <?php foreach ($all_news as $news): ?>
+        <?php foreach ($news as $news_item): ?>
             <?php
-            $title = $news['title'];
-            $guid = $news['thumbnail_url'];
-            $custom_link = $news['link'];
-            $author_name = $news['author'];
-            $post_date = $news['post_date'];
+            $title = $news_item['title'];
+            $guid = $news_item['thumbnail_url'];
+            $custom_link = $news_item['link'];
+            $author_name = $news_item['author'];
+            $post_date = $news_item['post_date'];
             ?>
             <div class="buying-guide-news-item">
                 <!-- Post Thumbnail -->
                 <div class="news-thumbnail">
-                    <a href="<?php echo $custom_link; ?>">
-                        <img src="<?php echo esc_url($guid); ?>" alt="<?php echo $title; ?>" style="width: 110px; border-radius: 5px; height:74px;">
+                    <a href="<?php echo esc_url($custom_link); ?>">
+                        <img src="<?php echo esc_url($guid); ?>" alt="<?php echo esc_attr($title); ?>" style="width: 110px; border-radius: 5px; height: 74px;">
                     </a>
                 </div>
                 <!-- Post Info -->
                 <div class="news-info" style="flex: 1;">
-                    <h3 style="font-size: 14px; font-weight: bold; color: #262626; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;font-weight:700;">
-                        <a href="<?php echo $custom_link; ?>" style="color: inherit; text-decoration: none;"><?php echo $title; ?></a>
+                    <h3 style="font-size: 14px; font-weight: bold; color: #262626; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-weight: 700;">
+                        <a href="<?php echo esc_url($custom_link); ?>" style="color: inherit; text-decoration: none;"><?php echo esc_html($title); ?></a>
                     </h3>
-
                     <div class="news-meta-author-page">
-                        <?php echo $author_name; ?> • <?php echo $post_date; ?>
+                        <?php echo esc_html($author_name); ?> • <?php echo esc_html($post_date); ?>
                     </div>
                 </div>
             </div>
@@ -5380,10 +5396,10 @@ $translate = [
 
     <!-- "View More" Button -->
     <div id="view-more-container" style="text-align: center; margin-top: 20px;">
-        <a href="<?php echo home_url('/news-motorcycles/latest'); ?>" class="view-more">
-            View More
+        <a href="<?php echo esc_url(home_url('/tin-tuc-xe-may')); ?>" class="view-more">
+            Xem thêm
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
         </a>
     </div>
@@ -5457,9 +5473,25 @@ function format_price_vietnam($price)
         $formatted_price = number_format($price / 1000000, 0, '.', '') . ' Triệu';
     } else {
         // Handle smaller values, if needed
-        $formatted_price = number_format($price) . ' VND';
+        $formatted_price = number_format($price, 0, '', '.') . ' VND';
     }
 
     return $formatted_price;
 }
 
+add_action('init', 'custom_motorcycles_rewrite_rules');
+function custom_motorcycles_rewrite_rules()
+{
+    add_rewrite_rule(
+        '^xe-may/([^/]+)/?$',
+        'index.php?pagename=xe-may&make=$matches[1]',
+        'top'
+    );
+}
+
+add_action('after_switch_theme', 'flush_motorcycles_rewrite_rules');
+function flush_motorcycles_rewrite_rules()
+{
+    custom_motorcycles_rewrite_rules();
+    flush_rewrite_rules();
+}

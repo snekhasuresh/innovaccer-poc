@@ -92,7 +92,7 @@ function motor_filter_widget()
                 $carDetails[] = [
                     'main_image' => $main_image,
                     'small_images' => $small_images,
-                    'caption' => 'รูปภาพ ' .$model->post_title,
+                    'caption' => 'Hình ảnh  ' .$model->post_title,
                     'total_images' => $total_images
                 ];
             }
@@ -107,7 +107,7 @@ function motor_filter_widget()
 
     <div class="gallary-car-carousal-con ">
         <div class="container-filter-widget">
-            <h2 class="wa-title-text">รูปภาพมอเตอร์ไซค์ <?php echo $listing_make; ?></h3>
+            <h2 class="wa-title-text"> Hình ảnh xe máy  <?php echo $listing_make; ?></h3>
                 <div class="row">
                     <div class="">
                         <div class="carousel-filter-widget">
@@ -134,7 +134,7 @@ function motor_filter_widget()
                                                 <span><?php echo $car['caption']; ?></span>
                                             </div>
                                             <div class="total-count">
-                                                <p><?php echo $car['total_images']; ?> รูปภาพ &#10095;</p>
+                                                <p><?php echo $car['total_images']; ?>  Hình ảnh  &#10095;</p>
                                             </div>
                                         </div>
                                     </a>
@@ -145,7 +145,14 @@ function motor_filter_widget()
                 </div>
         </div>
     </div>
-
+<style>
+.container-filter-widget .slick-prev {
+    left: 0px !important;
+}
+	.container-filter-widget .slick-next {
+    right: -11px !important;
+}
+</style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>

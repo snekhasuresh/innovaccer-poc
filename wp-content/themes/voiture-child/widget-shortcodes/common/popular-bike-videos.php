@@ -16,7 +16,7 @@ function popular_bike_videos($atts)
 
     ob_start();
 ?>
-    <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 16px;">Popular Videos</h2>
+    <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 16px;">Video phổ biến</h2>
     <div class="popular-car-videos-container" style="list-style: none; padding: 0;">
 
         <?php if ($video_query->have_posts()): ?>
@@ -38,7 +38,7 @@ function popular_bike_videos($atts)
                             <?php echo esc_html($video_title); ?>
                         </h3>
                         <div class="video-views">
-                            <?php echo esc_html($views); ?> views
+                            <?php echo esc_html($views); ?> lượt xem
                         </div>
                     </div>
                 </div>

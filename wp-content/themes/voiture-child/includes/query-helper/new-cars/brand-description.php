@@ -118,7 +118,7 @@ function fetch_motor_brand_description_data_from_db()
         }
         $brand_id = $brand->term_id;
     }
-print_r($brand_id);
+
     $brand_image = get_term_meta($brand_id, 'motorcycle_make_image', true);
     $brand_info = [];
     $brand_info['brand_name'] = $brand->name;

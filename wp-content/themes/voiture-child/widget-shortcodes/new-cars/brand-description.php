@@ -33,7 +33,7 @@ function brand_description_shortcode($atts)
                     <?php if (!empty($brand_data['preview_text'])) : ?>
                         <span><?php echo esc_html($brand_data['preview_text']); ?></span>
                     <?php else : ?>
-                        <h2 style="font-size: 18px;">รายชื่อรุ่นรถ <?php echo esc_html($brand_data['brand_name']); ?> ใหม่ในไทย</h2>
+                        <h2 style="font-size: 18px;">Danh Sách Các Mẫu Xe <?php echo esc_html($brand_data['brand_name']); ?> Mới Tại Việt Nam</h2>
                     <?php endif; ?>
 
                     <div id="brand-more-text" class="brand-hidden-text">
@@ -42,7 +42,7 @@ function brand_description_shortcode($atts)
                         <?php endif; ?>
 
                         <?php if (!empty($brand_data['preview_text'])) : ?>
-                            <h2 style="font-size: 18px;">รายชื่อรุ่นรถ <?php echo esc_html($brand_data['brand_name']); ?> ใหม่ในไทย</h2>
+                            <h2 style="font-size: 18px;">Danh Sách Các Mẫu Xe <?php echo esc_html($brand_data['brand_name']); ?> Mới Tại Việt Nam</h2>
                         <?php endif; ?>
 
                         <div class="car-container">
@@ -56,16 +56,16 @@ function brand_description_shortcode($atts)
                             <?php endforeach; ?>
                         </div>
 
-                        <h2 style="font-size: 18px;">ตารางราคา <?php echo esc_html(ucfirst($brand_data['brand_name'])); ?></h2>
+                        <h2 style="font-size: 18px;">Bảng Giá Xe ô tô <?php echo esc_html(ucfirst($brand_data['brand_name'])); ?></h2>
                         <div class="car-container">
                             <div class="car-row dis-header">
-                                <div class="dis-label">ตารางรุ่นรถของ <?php echo esc_html($brand_data['brand_name']); ?></div>
-                                <div class="dis-value">ราคา</div>
+                                <div class="dis-label">Danh Sách Xe <?php echo esc_html($brand_data['brand_name']); ?></div>
+                                <div class="dis-value">Giá</div>
                             </div>
 
                             <?php foreach ($brand_data['models_with_prices'] as $modelprice): ?>
                                 <div class="car-row">
-                                    <div class="dis-label">ราคา <?php echo esc_html($modelprice['name']); ?></div>
+                                    <div class="dis-label">Giá <?php echo esc_html($modelprice['name']); ?></div>
                                     <div class="dis-value" style="text-align: start;">
                                         <?php echo esc_html($modelprice['price']); ?>
                                     </div>

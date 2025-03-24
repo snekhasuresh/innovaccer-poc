@@ -32,14 +32,23 @@ if (!function_exists('get_recommended_motor')) {
                         }
                     }
                 } else {
-                    if ($category === 'Popular' && isset($category_data['bike_models']) && is_array($category_data['bike_models'])) {
-                        // Extract only the first 10 models from the popular category
-                        $popular_bikes = array_slice($category_data['bike_models'], 0, 10);
-
-                        foreach ($popular_bikes as $model) {
-                            if (isset($model['id'])) {
-                                $latest_bike_ids[] = $model['id'];
+                    if ($category === 'popular' && isset($category_data['bike_models']) && is_array($category_data['bike_models'])) {
+                        foreach ($category_data['bike_models'] as $model) {
+                            if (is_array($model) && isset($model['id']) && isset($model['type'])) {
+                                // Collect the model IDs where type = 2
+                                if ($model['type'] == 2 && $model['sort'] >= 0 && $model['sort'] <= 9) {
+                                    $filtered_models[] = $model;
+                                }
                             }
+                        }
+                        // Sort the models by 'sort' in ascending order
+                        usort($filtered_models, function ($a, $b) {
+                            return $a['sort'] - $b['sort'];   // Ascending order by 'sort'
+                        });
+
+                        // Now, add the sorted models to the popular_bike_ids array
+                        foreach ($filtered_models as $model) {
+                            $latest_bike_ids[] = $model['id'];
                         }
                     }
                 }
@@ -137,23 +146,20 @@ function recommended_motors_shortcode()
     $popular_motors = get_recommended_motor('popular');
     $latest_motors = get_recommended_motor('latest');
 
+	 $translate = [
+        'Berita Terkini' => 'Các mẫu xe máy đề xuất',
+        'Populer' => 'Phổ biến',
+        'Terbaru' => 'Mới nhất',
+    ];
+	
     ob_start();
-	$translate = [
-    'Berita Terkini' => 'Các mẫu xe máy đề xuất',
-	'Populer' => 'Phổ biến',
-	'Terbaru' => 'Mới nhất',
-	];
-
-
-
-
     ?>
 
     <div class="custom-recommended-motors">
         <h2 class="wa-title-text "><?php echo $translate['Berita Terkini']; ?></h2>
         <ul class="custom-recommended-tabs">
             <li class="motor-custom-recommended-tab-link current" data-tab="custom-motor-recommended-tab-1"><?php echo $translate['Populer']; ?>
-</li>
+            </li>
             <li class="motor-custom-recommended-tab-link" data-tab="custom-motor-recommended-tab-2"><?php echo $translate['Terbaru']; ?></li>
         </ul>
 

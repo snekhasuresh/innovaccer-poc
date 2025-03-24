@@ -13,17 +13,19 @@ function motor_individual_variant_tabs_shortcode($atts)
 
     // read atts
     $atts = shortcode_atts(array(
-        'selected_tab' => 'Overview',
+        'selected_tab' => 'Tổng quát',
     ), $atts);
 
     $make = get_query_var('make');
     $model = get_query_var('model');
-    $base_url = get_site_url() . '/cars/' . $make . '/' . $model;
+	$section = get_query_var('section');
+	
+    $base_url = get_site_url() . '/xe-may/' . $make . '/' . $model;
+	
+    $make_term = get_term_by('slug', $make, 'motorcycle_make');
+    $make_logo_url = get_term_meta($make_term->term_id, 'motorcycle_make_image', true);
 
-    $make_term = get_term_by('slug', $make, 'listing_make');
-    $make_logo_url = get_term_meta($make_term->term_id, 'listing_make_image', true);
-
-    $global_variant_post_data = get_variant_from_query_vars();
+    $global_variant_post_data = get_motor_variant_from_query_vars();
 
     if (!$global_variant_post_data) {
         return;
@@ -35,11 +37,11 @@ function motor_individual_variant_tabs_shortcode($atts)
     $variant_post_title = $variant_post->post_title;
     $variant_post_name = $variant_post->post_name;
 
-    $urls = [
-        'overview' => $base_url . '/' . $variant_post_name,
-        'news' => $base_url . '/news',
-        'specs' => $base_url . '/' . $variant_post_name . '/specs',
-        'gallery' => $base_url . '/' . $variant_post_name . '/gallery'
+   $urls = [
+        'overview' => $base_url . '/' . $section,
+        'news' => $base_url . '/tin-tuc',
+        'specs' => $base_url . '/' . $section . '/thong-so-ky-thuat',
+        'gallery' => $base_url . '/' . $section . '/hinh-anh'
     ];
 
     ob_start();
@@ -52,37 +54,29 @@ function motor_individual_variant_tabs_shortcode($atts)
 function display_motor_variant_tabs($urls, $selected_tab, $listing_name, $variant_name, $make_logo_url)
 {
     $overview_tabs = [
-        ['tab' => 'ภาพรวม', 'url' => $urls['overview']],
-        ['tab' => 'ข่าวสาร', 'url' => $urls['news']],
-        ['tab' => 'สเปค', 'url' => $urls['specs']],
-        ['tab' => 'รูปภาพ', 'url' => $urls['gallery']]
+        ['tab' => 'Tổng quát', 'url' => $urls['overview']],
+        ['tab' => 'Tin tức', 'url' => $urls['news']],
+        ['tab' => 'Thông số kỹ thuật', 'url' => $urls['specs']],
+        ['tab' => 'Hình ảnh', 'url' => $urls['gallery']]
     ];
 
     $make = get_query_var('make') ? get_query_var('make') : '';
 
     switch ($selected_tab) {
-        case 'News':
-            $title = $make ? $listing_name . ' ' . $selected_tab . ' in Malaysia' : $listing_name;
+        case 'Tin tức':
+            $title = $make ? 'Tin tức Xe Ô ' . $listing_name . ' Tô tại Việt Nam ' : $listing_name;
             break;
-        case 'Specs':
-            $title = $variant_name . ' ' . $selected_tab;
+        case 'Thông số kỹ thuật':
+            $title = 'Thông số ' . $variant_name;
             break;
-        case 'Gallery':
-            $title = $variant_name . ' Interior & Exterior Images';
+        case 'Hình ảnh':
+            $title = 'Hình ảnh & Màu sắc về ' . $variant_name;
             break;
         default:
             $title = $variant_name;
             break;
     }
 ?>
-
-    <div class="car-header">
-        <span><img src="<?php echo $make_logo_url; ?>" alt="Logo" /></span>
-        <span>
-            <h1 class="tab-car-title"><?php echo esc_html($title); ?></h1>
-        </span>
-    </div>
-
       <div id="listing-tabs" class="listing-tabs">
   		<span class="car-header container p-l-0">
 			<span><img src="<?php echo $make_logo_url; ?>" alt="Logo" /></span>

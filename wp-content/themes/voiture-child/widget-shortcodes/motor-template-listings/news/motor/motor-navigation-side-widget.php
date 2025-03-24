@@ -16,12 +16,12 @@ function motor_navigation_shortcode()
     $post_title = $listing_post ? $listing_post[0]->post_title : "";
     $make_id = get_post_meta($post_id, 'make', true);
 
-    $may_also_like = [
-        ['title' => 'รูปภาพ ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/gallery'],
-        ['title' => 'สเปค ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/specs'],
-        ['title' => 'อัตราสิ้นเปลือง ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/fuel-consumption'],
-        ['title' => 'สี ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/colors'],
-    ];
+//     $may_also_like = [
+//         ['title' => 'รูปภาพ ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/gallery'],
+//         ['title' => 'สเปค ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/specs'],
+//         ['title' => 'อัตราสิ้นเปลือง ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/fuel-consumption'],
+//         ['title' => 'สี ' . $post_title, 'link' => '/motorcycles/' . $make . '/' . $model . '/colors'],
+//     ];
 
     // Array for "News Navigation"
     $related_brand_models = get_posts(array(
@@ -41,26 +41,16 @@ function motor_navigation_shortcode()
         $name_array = explode("-", $post_name);
         // remove first element and append other with hyphen
         $post_name = implode("-", array_slice($name_array, 1));
-        $news_navigation[] = ['title' => 'ข่าวสาร ' . $related_brand_model->post_title, 'link' => '/motorcycles/' . $make . '/' . $post_name . '/news'];
+        $news_navigation[] = ['title' => 'Tin tức ' . $related_brand_model->post_title, 'link' => '/xe-may/' . $make . '/' . $post_name . '/tin-tuc'];
 
-        $price_list[] = ['title' => 'ราคา ' . $related_brand_model->post_title, 'link' => '/motorcyclea/' . $make . '/' . $post_name];
+        $price_list[] = ['title' => 'Giá ' . $related_brand_model->post_title, 'link' => '/xe-may/' . $make . '/' . $post_name];
     }
 
     // HTML Output
     ob_start(); ?>
 
     <div class="dynamic-navigation">
-        <h2 class="wa-title-text nav-head">คุณอาจชอบ</h2>
-        <ul class="also-like">
-            <?php foreach ($may_also_like as $item): ?>
-                <li><a href="<?php echo esc_url($item['link']); ?>">
-                        <?php echo esc_html($item['title']); ?>
-                        <i class="fa fa-chevron-right"></i>
-                    </a></li>
-            <?php endforeach; ?>
-        </ul>
-
-        <h2 class="wa-title-text nav-head">การนำทางข่าว</h2>
+		<h2 class="wa-title-text nav-head">Điều hướng Tin tức</h2>
         <ul class="news-navigation">
             <?php foreach ($news_navigation as $item): ?>
                 <li><a href="<?php echo esc_url($item['link']); ?>">
@@ -70,7 +60,7 @@ function motor_navigation_shortcode()
             <?php endforeach; ?>
         </ul>
 
-        <h2 class="wa-title-text nav-head"> <?php echo ucfirst($make); ?> ตารางราคา</h2>
+        <h2 class="wa-title-text nav-head">Bảng Giá Xe ô tô <?php echo ucfirst($make); ?></h2>
         <ul class="price-list">
             <?php foreach ($price_list as $item): ?>
                 <li><a href="<?php echo esc_url($item['link']); ?>">

@@ -131,7 +131,7 @@ function display_motor_custom_page()
             foreach ($specs as $spec) {
                 $key = $spec['key'];
 
-                if ($group == 'สเปคหลัก') {
+                if ($group == 'Thông số kỹ thuật quan trọng') {
                     switch ($spec['key']) {
                         case 'make':
                             $variant_spec_data[$variant_post->post_title][$group][$key] = $make;
@@ -175,9 +175,9 @@ function display_motor_custom_page()
                     $price_keys = ['price', 'monthly_payment'];
                     if (in_array($key, $price_keys)) {
                         if (($value == '0' || $value == '-')) {
-                            $value = 'ยังไม่คอนเฟิร์ม';
+                            $value = 'Đang cập nhật';
                         } else {
-                            $value = 'Triệu' .format_number_with_commas($value);
+                            $value = format_price_vietnam($value);
                         }
                     }
 

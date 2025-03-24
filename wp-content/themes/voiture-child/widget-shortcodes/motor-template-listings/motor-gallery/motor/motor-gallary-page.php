@@ -49,7 +49,7 @@ function motor_gallery_shortcode()
             <!-- Dropdown for Switch Variants -->
             <div class="custom-dropdown">
                 <select name="car_variant" id="car_variant_dropdown" onchange="location.href = this.value;">
-                    <option value="">เปลี่ยนรุ่นรถ</option>
+                    <option value=""> Đổi mẫu xe</option>
                     <?php foreach ($variants as $variant): ?>
                         <option value="<?php echo $base_url . $variant->post_name . '/gallery'; ?>">
                             <?php echo $variant->post_title; ?>
@@ -64,9 +64,9 @@ function motor_gallery_shortcode()
                 <li class="nav-item">
                     <a class="nav-link <?php echo $tabName === 'Exterior' ? 'active' : ''; ?>" id="<?php echo strtolower($tabName); ?>-tab" data-toggle="tab" href="#<?php echo strtolower($tabName); ?>" role="tab" onclick="setActiveTab('<?php echo strtolower($tabName); ?>')">
                         <?php if ($tabName === 'Exterior') {
-                            echo 'ภายนอก';
+                            echo 'Ngoại thất';
                         } else {
-                            echo 'อื่นๆ';
+                            echo 'Màu sắc';
                         }; ?>
                     </a>
                 </li>

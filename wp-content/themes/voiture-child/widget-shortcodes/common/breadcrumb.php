@@ -244,6 +244,10 @@ function get_breadcrumb()
     if ($url_path == '/tin-tuc') {
         $breadcrumb_arr = ['Trang chủ' => '/', 'Tin tức' => '/tin-tuc/'];
     }
+	
+		if (str_starts_with($url_path, '/author')) {
+        $breadcrumb_arr = ['Trang chủ' => '/'];
+    }
 
     if ($news_slug) {
         $categories = ['moi-nhat', 'reviews', 'opinions', 'evs', 'buying-guides', 'owner-stories', 'used-car', 'good-reads', 'car-tips', 'culture'];
@@ -309,6 +313,10 @@ function get_breadcrumb()
 	
 	if ($url_path == '/about-us') {
         $breadcrumb_arr = ['Trang chủ' => '/','Về chúng tôi' => '/about-us/'];
+    }
+	
+		if ($url_path == '/sitemap') {
+        $breadcrumb_arr = ['Trang chủ' => '/','Sitemap' => '/sitemap/'];
     }
 	
 	if ($url_path == '/viet-cho-chung-toi') {

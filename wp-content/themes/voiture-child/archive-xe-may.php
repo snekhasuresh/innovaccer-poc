@@ -13,28 +13,41 @@ if ($post_type === 'xe-may') {
 
 	// if section is not equal to 'overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors'
     // check if variant exists with that name
-    $individual_pages = ['overview', 'news', 'specs', 'gallery', 'fuel-consumption', 'colors', ''];
+     $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac', ''];
     if (!in_array($section, $individual_pages)) {
+		$listing_name = $make . '-' . $model;
+
+		// Add listing_name to the variant section if not already present
+		if (strpos($section, $listing_name) === false) {
+			$section = $listing_name . '-' . $section;
+		}
+		
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'motorcycle-variant',
             'posts_per_page' => 1
         ));
         if (!empty($variant_post)) {
-            $section = 'overview';
+            if($variant_section === 'thong-so-ky-thuat'){
+				$section = 'thong-so-ky-thuat';
+			} elseif($variant_section === 'hinh-anh'){
+				$section = 'hinh-anh';
+			}else{
+            	$section = 'tong-quat';
+			}
             $variant_section = $variant_post[0]->post_name;
         }
     }
 	
-    $elementor_page_id = 318835;
-    $spec_spec_id = 318833;
-    $news_id = 318831;
-    $overview_id =  318829;
+    $elementor_page_id = 30640;
+    $spec_spec_id = 30638;
+    $news_id = 30636;
+    $overview_id =  30634;
 
     $fuel_consumption_id = 31903;
     $color_page_id = 31908;
-	
-	  // variant pages
+    
+      // variant pages
     $variant_overview_page_id = 31883;
     $variant_specs_page_id = 31893;
     $variant_gallery_page_id = 31898;
@@ -50,7 +63,7 @@ if ($post_type === 'xe-may') {
                     <?php
 //                     $active_section = !empty($variant_section) ? $variant_section : $section;
                     switch ($section) {
-                        case 'overview':
+                        case 'tong-quat':
                             if ($variant_section) {
                                 $elementor_query = new WP_Query(array('page_id' => $variant_overview_page_id));
                                 if ($elementor_query->have_posts()) :
@@ -74,7 +87,7 @@ if ($post_type === 'xe-may') {
                                 echo '<p>No content found for the cars archive.</p>';
                             endif;
                             break;
-                        case 'news':
+                        case 'tin-tuc':
                             //echo WP_CarDealer_Template_Loader::get_template_part('single-listing/news');
 
                             $elementor_query = new WP_Query(array('page_id' => $news_id));
@@ -87,7 +100,20 @@ if ($post_type === 'xe-may') {
                                 echo '<p>No content found for the cars archive.</p>';
                             endif;
                             break;
-                        case 'gallery':
+                        case 'hinh-anh':
+							if ($variant_section) {
+                                $elementor_query = new WP_Query(array('page_id' => $variant_gallery_page_id));
+                                if ($elementor_query->have_posts()) :
+                                    while ($elementor_query->have_posts()) : $elementor_query->the_post();
+                                        the_content(); // Display Elementor page content
+                                    endwhile;
+                                    wp_reset_postdata();
+                                else :
+                                    echo '<p>No content found for the variant cars archive.</p>';
+                                endif;
+                                break;
+                            }
+							
                             $elementor_query = new WP_Query(array('page_id' => $elementor_page_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();
@@ -99,8 +125,19 @@ if ($post_type === 'xe-may') {
                             endif;
 
                             break;
-                        case 'specs':
-
+                        case 'thong-so-ky-thuat':
+							if ($variant_section) {
+                                $elementor_query = new WP_Query(array('page_id' => $variant_specs_page_id));
+                                if ($elementor_query->have_posts()) :
+                                    while ($elementor_query->have_posts()) : $elementor_query->the_post();
+                                        the_content(); // Display Elementor page content
+                                    endwhile;
+                                    wp_reset_postdata();
+                                else :
+                                    echo '<p>No content found for the variant cars archive.</p>';
+                                endif;
+                                break;
+                            }
                             $elementor_query = new WP_Query(array('page_id' => $spec_spec_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();
@@ -113,7 +150,7 @@ if ($post_type === 'xe-may') {
 
                             // echo WP_CarDealer_Template_Loader::get_template_part('single-listing/spec');
                             break;
-                        case 'fuel-consumption':
+                        case 'tieu-hao-nhien-lieu':
                             $elementor_query = new WP_Query(array('page_id' => $fuel_consumption_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();
@@ -126,7 +163,7 @@ if ($post_type === 'xe-may') {
                             // echo WP_CarDealer_Template_Loader::get_template_part('single-listing/fuel-consumption');
                             break;
 
-                        case 'colors':
+                        case 'mau-sac':
                             $elementor_query = new WP_Query(array('page_id' => $color_page_id));
                             if ($elementor_query->have_posts()) :
                                 while ($elementor_query->have_posts()) : $elementor_query->the_post();
@@ -157,18 +194,20 @@ if ($post_type === 'xe-may') {
         </div>
     </section>
 <?php
-} else if ($post_type === 'motorcycle-news') {
+} else{
     // echo "news";
 
 ?>
     <section id="main-container" class="main-content <?php echo apply_filters('voiture_blog_content_class', 'container'); ?> inner">
         <?php
+	print_r('xe may else part accessed.......');
 	 	$current_url = $_SERVER['REQUEST_URI'];
         $path_parts = explode('/', trim($current_url, '/'));
         // $last_part = end($path_parts);
         $is_search = 0;
 
         $last_part = get_query_var('news_slug');
+print_r($last_part);
         // $new_individual_page = 10204;
        // Check if the last part matches the pattern (contains numbers at the end)
         if (preg_match('/(.*)-(\d+)$/', $last_part, $matches)) {

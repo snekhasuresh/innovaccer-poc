@@ -114,8 +114,8 @@ function fuel_price_news_shortcode($atts)
                 }
 
                 .latest-fuel-news-card img {
-                    width: 50px;
-                    height: 50px;
+                    width: 110px;
+                    height: 70px;
                 }
 
                 .latest-fuel-news-title {

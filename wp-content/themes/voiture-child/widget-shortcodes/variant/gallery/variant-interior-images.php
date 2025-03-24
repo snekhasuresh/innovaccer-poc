@@ -63,7 +63,7 @@ function variant_gallery_interior_shortcode()
     <?php if ($totalInteriorImages > 9) : ?>
         <div class="interior-view-more-container">
             <button class="interior-view-more" data-offset="9" data-total="<?php echo esc_attr($totalInteriorImages); ?>">
-                View More
+               Xem thêm
             </button>
         </div>
     <?php endif; ?>

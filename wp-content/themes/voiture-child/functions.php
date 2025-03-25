@@ -2462,16 +2462,18 @@ function load_archive_cars_for_news_slug($template)
 {
     // 	print_r('<h1>Hello world!</h1>');
     // 	exit;
-    $news_slug = get_query_var('news_slug');
+    if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false) {
+		$news_slug = get_query_var('news_slug');
 
-    if (($news_slug && !is_excluded_news_slug($news_slug))) {
-        return get_stylesheet_directory() . '/archive-xe-oto.php';
-    }
+		if (($news_slug && !is_excluded_news_slug($news_slug))) {
+			return get_stylesheet_directory() . '/archive-xe-oto.php';
+		}
 
-    // 	print_r('above news slug condition');
-    if (is_excluded_news_slug($news_slug) && $news_slug) {
-        return get_stylesheet_directory() . '/archive-news.php';
-    }
+		// 	print_r('above news slug condition');
+		if (is_excluded_news_slug($news_slug) && $news_slug) {
+			return get_stylesheet_directory() . '/archive-news.php';
+		}
+	}
     // 	print_r('returning default template');
 
     return $template;
@@ -2484,8 +2486,7 @@ function load_archive_motors_for_news_slug($template)
     // 	print_r($_SERVER['REQUEST_URI']);
     if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc-xe-may') !== false) {
         $news_slug = get_query_var('news_slug');
-
-        if (($news_slug && !is_excluded_news_slug($news_slug, true))) {
+        if ($news_slug && !is_excluded_news_slug($news_slug, true)) {
             return get_stylesheet_directory() . '/archive-xe-may.php';
         }
 
@@ -2493,7 +2494,6 @@ function load_archive_motors_for_news_slug($template)
             return get_stylesheet_directory() . '/archive-news-motorcycles.php';
         }
     }
-
     return $template;
 }
 

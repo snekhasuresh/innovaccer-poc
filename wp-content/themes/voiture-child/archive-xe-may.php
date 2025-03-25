@@ -1,7 +1,7 @@
 <?php
+echo "Test Output";
 get_header();
 $sidebar_configs = voiture_get_blog_layout_configs();
-
 
 // voiture_render_breadcrumbs();
 if ($post_type === 'xe-may') {

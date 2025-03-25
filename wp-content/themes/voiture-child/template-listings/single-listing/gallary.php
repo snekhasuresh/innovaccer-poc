@@ -141,7 +141,18 @@ function car_image_gallery_shortcode()
 
     $make = $global_listing_post_data['listing_make_term']->name;
     $model = $global_listing_post->post_title;
-    add_car_json_ld($make, $model, $specs);
+	$min_price = $global_listing_post_data['min_price'];
+    $max_price = $global_listing_post_data['max_price'];
+    $thumbnail_url = $global_listing_post_data['thumbnail'];
+	$colors = get_field('color_library', $post_id);
+    $car_colors = [];
+    foreach ($colors as $color) {
+        // ignore empty color names and empty strings
+        if (!empty($color['color_name'])) {
+            $car_colors[] = $color['color_name'];
+        }
+    }
+     add_car_json_ld($make, $model, $specs, $min_price, $max_price, $thumbnail_url, $car_colors);
 
     $segment_icon = wp_get_attachment_image_url(32256, 'Segment');
     $Body_Type_icon = wp_get_attachment_image_url(32254, 'body type');

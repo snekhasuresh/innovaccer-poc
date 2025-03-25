@@ -11,10 +11,10 @@ function add_faq_json_ld($faqs)
     foreach ($faqs as $faq) {
         $json_ld['mainEntity'][] = [
             "@type" => "Question",
-            "name" => $faq['question'],
+            "name" => strip_tags($faq['question']),
             "acceptedAnswer" => [
                 "@type" => "Answer",
-                "text" => $faq['answer']
+                "text" => strip_tags($faq['answer'])
             ]
         ];
     }

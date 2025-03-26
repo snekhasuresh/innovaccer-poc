@@ -249,7 +249,13 @@ function display_recommended_motor($cars)
                 $home_url = get_home_url();
                 $make = strtolower(str_replace(' ', '-', $listing_make));
                 $model = strtolower(str_replace(' ', '-', $post_name));
-                $base_url = $home_url . '/motorcycles/' . $make . '/' . $model . '/';
+				
+				// Check if the model name contains the make name and remove it
+				if (strpos($model, $make) === 0) { // If model starts with make
+					$model = trim(substr($model, strlen($make)), '-'); // Remove make and trim any leading dashes
+				}
+				
+                $base_url = $home_url . '/xe-may/' . $make . '/' . $model . '/';
 
                 // Check if the car is hot
                 $is_hot = false;
@@ -289,8 +295,16 @@ function display_recommended_motor($cars)
                         <!-- Display variant list here -->
                         <div>
                             <ul id="variant-list-<?php echo esc_attr($post_id); ?>" class="variant-list" style="display: none;">
-                                <?php foreach ($variants as $variant): ?>
-                                    <li><a href="<?php echo $base_url . $variant['post_name']; ?>">
+                                <?php foreach ($variants as $variant): 
+								    $listing_name = strtolower(str_replace(' ', '-', $make . '-' . $model));
+        
+									// Remove the listing name from the variant's post_name if it exists
+									$variant_slug = strtolower($variant['post_name']);
+									if (strpos($variant_slug, $listing_name) === 0) { // If variant starts with listing name
+										$variant_slug = trim(substr($variant_slug, strlen($listing_name)), '-');
+									}
+								?>
+                                    <li><a href="<?php echo $base_url . $variant_slug; ?>">
                                             <?php echo $variant['title']; ?>
                                         </a></li>
                                 <?php endforeach; ?>

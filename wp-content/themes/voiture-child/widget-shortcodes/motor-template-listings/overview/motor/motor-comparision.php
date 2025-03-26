@@ -84,7 +84,7 @@ function single_listing_motor_comparison()
                         </div>
 
                     </div>
-                    <a href="<?php echo home_url('/compare-motorcycles/') . $comparison_slug; ?>" class="compare-button">
+                    <a href="<?php echo home_url('/so-sanh-xe-may/') . $comparison_slug; ?>" class="compare-button">
                         <?php echo esc_html($post_title); ?> vs <?php echo $comparison_post_title; ?>
                     </a>
                 </div>

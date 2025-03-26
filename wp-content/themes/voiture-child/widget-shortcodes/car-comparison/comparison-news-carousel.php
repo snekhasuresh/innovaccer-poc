@@ -13,7 +13,7 @@ function comaprison_news($atts)
     enqueue_comparison_news_css();
     $atts = shortcode_atts(
         array(
-            'category' => 'Đánh giá',
+            'category' => '',
             'is_ev' => '1',
             'posts_per_page' => 5,
         ),
@@ -181,7 +181,7 @@ function comaprison_news($atts)
     </div>
 
     <div style="display: flex; justify-content: center;">
-        <a href="<?php echo esc_url(home_url('/news')); ?>" id="view-more-btn" style="background-color: white; border:none" class="button">
+        <a href="<?php echo esc_url(home_url('/tin-tuc')); ?>" id="view-more-btn" style="background-color: white; border:none" class="button">
             Xem thêm <span class="icon">&#10095;</span>
         </a>
     </div>

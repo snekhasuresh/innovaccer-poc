@@ -12,104 +12,24 @@ function compare_motor_comparison_page()
 {
     enqueue_compare_motor_css();
 
-    if (!defined('ABSPATH')) {
-        exit; // Exit if accessed directly
-        global $post;
-        global $wpdb;
-    }
-
     ob_start();
 
+    $popular_bikes = get_popular_bikes_data();
+    $latest_bikes = get_latest_bikes_data();
 
-    // <?php
-    // $current_post = get_queried_object();
-    global $listing_make;
-    $listing_type = '';
-
-    $make = get_query_var('make');
-    $listing_name = get_query_var('model');
-    $listing_name = $make . '-' . $listing_name;
-    $listing_post = get_posts(array(
-        'name' => $listing_name,
-        'post_type' => 'listing',
-        'posts_per_page' => 1
-    ));
-    $current_post = $listing_post[0];
-
-
-    if ($current_post && $current_post->post_type == 'listing') {
-        $listing_id = $current_post->ID;
-
-        // Retrieve the terms associated with the listing
-        $terms = wp_get_post_terms($listing_id, 'listing_make');
-        if (!empty($terms) && !is_wp_error($terms)) {
-            $listing_make = $terms[0]->name; // Assuming a single term or take the first one
-        }
-        $type_terms = wp_get_post_terms($listing_id, 'listing_type');
-        if (!empty($type_terms) && !is_wp_error($type_terms)) {
-            $listing_type = $type_terms[0]->name; // Assuming a single term or take the first one
-        }
+    if (empty($popular_bikes) && empty($latest_bikes)) {
+        return;
     }
-    $recommend_car_models = get_option('recommended_car_models');
-    $car_models_data = maybe_unserialize($recommend_car_models);
-
-    $popular_cars_ids = [];
-
-    if (!empty($car_models_data) && is_array($car_models_data)) {
-        foreach ($car_models_data as $category => $category_data) {
-
-            if (isset($category_data['car_models']) && is_array($category_data['car_models'])) {
-
-                foreach ($category_data['car_models'] as $model) {
-
-                    if (is_array($model) && isset($model['id']) && isset($model['type'])) {
-                        // Collect the model IDs where type = 1
-                        if ($model['type'] == 1) {
-                            $popular_cars_ids[] = $model['id'];
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    $popular_cars = [];
-    if (!empty($popular_cars_ids)) {
-        $popular_cars = get_posts(array(
-            'post_type' => 'listing',
-            'posts_per_page' => 10,
-            'post__in' => $popular_cars_ids,
-            'orderby' => 'post__in',
-        ));
-    }
-    $latest_cars = get_posts(array(
-        'post_type'      => 'upcoming-car',
-        'posts_per_page' => 10,
-        'meta_query'     => array(
-            array(
-                'key'     => 'time_to_launch',
-                'compare' => 'EXISTS',
-                'type'    => 'DATETIME',
-            ),
-        ),
-        'orderby'  => array(
-            'meta_value' => 'DESC',
-            'ID'    => 'ASC',
-        ),
-        'meta_key' => 'time_to_launch',
-        'meta_type' => 'DATETIME',
-    ));
-
-    $listing_types = get_transient('cached_listing_types');
 
     // Prepare tabs array
     $tabs = [
-        ['id' => 'recommended-multi-popular-content', 'label' => 'Popular Cars'],
-        ['id' => 'recommended-multi-latest-content', 'label' => 'Latest Cars'],
+        ['id' => 'recommended-multi-popular-content', 'label' => 'Populer'],
+        ['id' => 'recommended-multi-latest-content', 'label' => 'Terbaru'],
     ];
+
 ?>
     <div class="recommended-multi-car-tabs">
-        <h2 class="recommended-multi-tab-heading">Compare Cars</h2>
+        <h2 class="recommended-multi-tab-heading wa-title-text">So Sánh Xe Máy Phổ Biến</h2>
         <ul class="recommended-multi-tabs">
             <?php foreach ($tabs as $index => $tab): ?>
                 <li>
@@ -123,11 +43,11 @@ function compare_motor_comparison_page()
         <div class="recommended-multi-tab-content">
             <div id="recommended-multi-popular-content" class="recommended-multi-tab-pane">
 
-                <?php display_recommendedmotor_posts_compare_page($popular_cars); ?>
+                <?php display_recommendedmotor_posts_compare_page($popular_bikes); ?>
             </div>
             <div id="recommended-multi-latest-content" class="recommended-multi-tab-pane">
 
-                <?php display_recommendedmotor_posts_compare_page($latest_cars); ?>
+                <?php display_recommendedmotor_posts_compare_page($latest_bikes); ?>
             </div>
         </div>
     </div>
@@ -213,7 +133,7 @@ function compare_motor_comparison_page()
                         {
                             breakpoint: 768,
                             settings: {
-                                slidesToShow: 1,
+                                slidesToShow: 1.2,
                                 slidesToScroll: 1
                             }
                         }
@@ -234,6 +154,7 @@ function compare_motor_comparison_page()
             padding-right: 0px !important;
             padding-bottom: 0px !important;
             padding-left: 0px !important;
+            margin-left: -17px !important;
         }
 
         .recommended-multi-tab-content .slick-prev {
@@ -284,18 +205,35 @@ function compare_motor_comparison_page()
         .recommended-multi-tab-content .slick-next {
             right: -14px !important;
         }
+
+        .recommended-multi-tab-content .slick-prev {
+            left: -8px !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            .recommended-multi-tab-content .slick-next {
+                display: none !important;
+            }
+
+            .recommended-multi-tab-content .slick-prev {
+                display: none !important;
+            }
+        }
     </style>
-    <?php
+<?php
 }
 add_shortcode('compare_popular_motor', 'compare_motor_comparison_page');
 
-function display_recommendedmotor_posts_compare_page($cars)
+function display_recommendedmotor_posts_compare_page($posts)
 {
     // import C:\xampp\htdocs\wapcar_prepod_testing2\wp-content\themes\voiture-child\widget-shortcodes\ev\css\ev-car-comparison.css
     wp_enqueue_style('ev-car-comparison-css', get_stylesheet_directory_uri() . '/widget-shortcodes/ev/css/ev-car-comparison.css');
 
-    $posts = $cars;
     $num_posts = count($posts);
+    if ($num_posts < 2) {
+        return;
+    }
+
     $compare_cars_array = array();
     for ($i = 0; $i < $num_posts; $i += 2) {
         if (isset($posts[$i]) && isset($posts[$i + 1])) {
@@ -303,20 +241,18 @@ function display_recommendedmotor_posts_compare_page($cars)
             $listing2 = $posts[$i + 1];
 
             // For Listing 1
-            $listing1_id = $listing1->ID;
-            $listing1_title = get_the_title($listing1_id);
-            $listing1_price = get_motor_price($listing1_id);
-            $post_thumbnail_id1 = get_post_thumbnail_id($listing1_id);
-            $thumbnail_post1 = get_post($post_thumbnail_id1);
-            $listing1_image_guid = $thumbnail_post1 ? $thumbnail_post1->guid : '';
+            $listing1_id = $listing1['id'];
+            $listing1_title = $listing1['post_title'];
+            $listing1_price = $listing1['price_range'];
+            $listing1_image_guid = $listing1['thumbnail_url'];
+            $listing1_slug = $listing1['post_name'];
 
             // For Listing 2
-            $listing2_id = $listing2->ID;
-            $listing2_title = get_the_title($listing2_id);
-            $listing2_price = get_motor_price($listing2_id);
-            $post_thumbnail_id2 = get_post_thumbnail_id($listing2_id);
-            $thumbnail_post2 = get_post($post_thumbnail_id2);
-            $listing2_image_guid = $thumbnail_post2 ? $thumbnail_post2->guid : '';
+            $listing2_id = $listing2['id'];
+            $listing2_title = $listing2['post_title'];
+            $listing2_price = $listing2['price_range'];
+            $listing2_image_guid = $listing2['thumbnail_url'];
+            $listing2_slug = $listing2['post_name'];
 
             $compare_cars_array[] = array(
                 'listing1' => array(
@@ -331,94 +267,46 @@ function display_recommendedmotor_posts_compare_page($cars)
                     'price' => $listing2_price,
                     'image_guid' => $listing2_image_guid,
                 ),
+                'comparison_url' => $listing1_slug . '-vs-' . $listing2_slug
             );
         }
     }
 
-    if (!empty($cars)) {
-    ?>
-
-        <div class="recommended_carousel">
-            <div class="single-listing-car-list">
-                <?php foreach ($compare_cars_array as $compare_cars) : ?>
-                    <div class="findnew-comparison-item">
-                        <div class="car-comparison">
-                            <div class="findnew-compare-card">
-                                <div class="findnew-car-image-container">
-                                    <img src="<?php echo esc_url($compare_cars['listing1']['image_guid']); ?>" alt="<?php echo esc_attr($compare_cars['listing1']['title']); ?>">
-                                </div>
-                                <div class="price-and-name">
-                                    <div class="findnew-car-name"><?php echo esc_html($compare_cars['listing1']['title']); ?></div>
-                                    <div class="findnew-car-price"><?php echo esc_html($compare_cars['listing1']['price']); ?></div>
-                                </div>
+?>
+    <div class="recommended_carousel">
+        <div class="single-listing-car-list">
+            <?php foreach ($compare_cars_array as $compare_cars) : ?>
+                <div class="findnew-comparison-item">
+                    <div class="car-comparison">
+                        <div class="findnew-compare-card">
+                            <div class="findnew-car-image-container">
+                                <img src="<?php echo esc_url($compare_cars['listing1']['image_guid']); ?>" alt="<?php echo esc_attr($compare_cars['listing1']['title']); ?>">
                             </div>
-                            <div class="findnew-vs-container">
-                                <span class="findnew-vs-tag">VS</span>
-                            </div>
-                            <div class="findnew-compare-card">
-                                <div class="findnew-car-image-container">
-                                    <img src="<?php echo esc_url($compare_cars['listing2']['image_guid']); ?>" alt="<?php echo esc_attr($compare_cars['listing2']['title']); ?>">
-                                </div>
-                                <div class="price-and-name">
-                                    <div class="findnew-car-name"><?php echo esc_html($compare_cars['listing2']['title']); ?></div>
-                                    <div class="findnew-car-price"><?php echo esc_html($compare_cars['listing2']['price']); ?></div>
-                                </div>
+                            <div class="price-and-name">
+                                <div class="findnew-car-name"><?php echo esc_html($compare_cars['listing1']['title']); ?></div>
+                                <div class="findnew-car-price"><?php echo esc_html($compare_cars['listing1']['price']); ?></div>
                             </div>
                         </div>
-                        <a href=<?php echo esc_url(home_url('/compare-cars')); ?> class="findnew-compare-button">
-                            Compare <?php echo esc_html($compare_cars['listing1']['title']); ?> and <?php echo esc_html($compare_cars['listing2']['title']); ?>
-                        </a>
+                        <div class="findnew-vs-container">
+                            <span class="findnew-vs-tag">VS</span>
+                        </div>
+                        <div class="findnew-compare-card">
+                            <div class="findnew-car-image-container">
+                                <img src="<?php echo esc_url($compare_cars['listing2']['image_guid']); ?>" alt="<?php echo esc_attr($compare_cars['listing2']['title']); ?>">
+                            </div>
+                            <div class="price-and-name">
+                                <div class="findnew-car-name"><?php echo esc_html($compare_cars['listing2']['title']); ?></div>
+                                <div class="findnew-car-price"><?php echo esc_html($compare_cars['listing2']['price']); ?></div>
+                            </div>
+                        </div>
                     </div>
+                    <a href=<?php echo esc_url(home_url('so-sanh-xe-may/') . $compare_cars['comparison_url']); ?> class="findnew-compare-button">
+                        <?php echo esc_html($compare_cars['listing1']['title']); ?> vs <?php echo esc_html($compare_cars['listing2']['title']); ?>
+                    </a>
+                </div>
 
-                <?php endforeach; ?>
-            </div>
+            <?php endforeach; ?>
         </div>
+    </div>
 <?php
-    } else {
-        echo 'No cars found.';
-    }
-}
-
-
-function get_motor_price($listing_id)
-{
-    // Fetch variants of the car
-    $args = array(
-        'post_type' => 'variant',
-        'posts_per_page' => -1,
-        'meta_query' => array(
-            array(
-                'key' => 'model',
-                'value' => '"' . $listing_id . '"', // Correct match with serialized data format
-                'compare' => 'LIKE',
-            ),
-        ),
-    );
-    $variants = new WP_Query($args);
-
-    if (!empty($variants->posts)) {
-        $highest_price = 0;
-        $lowest_price = 0;
-        foreach ($variants->posts as $variant) {
-            if (get_post_meta($variant->ID, 'on_sale', true) == 'Yes') {
-                $price = get_post_meta($variant->ID, 'retail_price', true);
-                if ($price && $price > $highest_price) {
-                    $highest_price = $price;
-                }
-                if ($price && ($price < $lowest_price || $lowest_price == 0)) {
-                    $lowest_price = $price;
-                }
-            }
-        }
-
-        if ($highest_price == $lowest_price && $highest_price != 0) {
-            $price = 'RM ' . number_format($lowest_price);
-        } else {
-            $price = 'RM ' . number_format($lowest_price) . ' - RM ' . number_format($highest_price);
-        }
-    } else {
-        $price = 'N/A';
-    }
-
-    return $price;
 }

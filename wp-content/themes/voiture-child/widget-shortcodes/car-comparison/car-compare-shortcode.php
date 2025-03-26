@@ -2035,10 +2035,10 @@ function get_variant_details()
     $model_id = intval($_GET['model_id']);
     $variant_post = get_post($variant_id);
     $variant_meta = get_post_meta($variant_id);
-//     $retail_price = isset($variant_meta['retail_price'][0]) ? $variant_meta['retail_price'][0] : null;
+    $retail_price = isset($variant_meta['retail_price'][0]) ? $variant_meta['retail_price'][0] : null;
 
-//     // Format the retail price in PHP
-//     $formatted_price = $retail_price ? format_price_in_idr($retail_price) : 'Belum Tersedia';
+    // Format the retail price in PHP
+    $formatted_price = $retail_price ? format_price_vietnam($retail_price) : 'Belum Tersedia';
 
     // $image_id = get_post_meta($variant_id, 'image', true);
     $body_type_id = get_post_meta($model_id, '_listing_type', true);
@@ -2063,8 +2063,8 @@ function get_variant_details()
         $response = [
             'success' => true,
             'data' => [
-//                 'variant_data' => array_merge($variant_meta, ['retail_price' => $formatted_price]), // Include formatted price
-                'variant_data' => $variant_meta,
+                'variant_data' => array_merge($variant_meta, ['retail_price' => $formatted_price]), // Include formatted price
+//                 'variant_data' => $variant_meta,
 				'name' => $variant_post->post_title,
                 'image_url' => $guid,
                 'body_type' => $body_type_name ?? '--',

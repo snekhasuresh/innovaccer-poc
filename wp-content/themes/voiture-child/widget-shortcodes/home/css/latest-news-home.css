@@ -104,7 +104,7 @@
   
   .news-meta {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     margin-top: 65px;
 	justify-content:space-between;
   }

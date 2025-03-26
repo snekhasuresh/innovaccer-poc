@@ -202,6 +202,7 @@ if ($post_type === 'xe-oto') {
         <?php
         $current_url = $_SERVER['REQUEST_URI'];
         $path_parts = explode('/', trim($current_url, '/'));
+		
         // $last_part = end($path_parts);
         $is_search = 0;
 

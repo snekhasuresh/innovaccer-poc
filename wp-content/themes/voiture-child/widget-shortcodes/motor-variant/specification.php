@@ -28,12 +28,12 @@ function motor_variant_specification_shortcode($atts)
     $body_type_term = get_term($body_type_taxonomy);
     $body_type = $body_type_term->name;
 
-    $capacity = isset($variant_post_meta['capacity'][0]) ? $variant_post_meta['capacity'][0] : '-';
+    $number_of_strokes = isset($variant_post_meta['number_of_strokes'][0]) ? $variant_post_meta['number_of_strokes'][0] : '-';
     $maximum_power = isset($variant_post_meta['maximum_power'][0]) ? $variant_post_meta['maximum_power'][0] : '-';
-    $engine_opening_option = isset($variant_post_meta['engine_opening_option'][0]) ? $variant_post_meta['engine_opening_option'][0] : '-';
+    $engine_opening_option = isset($variant_post_meta['start_option'][0]) ? $variant_post_meta['start_option'][0] : '-';
 
-    $price = isset($variant_post_meta['price'][0]) ? 'THB ' . format_number_with_commas($variant_post_meta['price'][0]) : 'ยังไม่คอนเฟิร์ม';
-    $monthly_payment = isset($variant_post_meta['monthly_payment'][0]) ? 'THB ' . format_number_with_commas($variant_post_meta['monthly_payment'][0]) . '/tháng' : 'ยังไม่คอนเฟิร์ม';
+    $price = isset($variant_post_meta['price'][0]) ? format_price_vietnam($variant_post_meta['price'][0]) : 'Đang cập nhật';
+    $monthly_payment = isset($variant_post_meta['monthly_payment'][0]) ? format_price_vietnam($variant_post_meta['monthly_payment'][0]) . '/tháng' : 'Đang cập nhật';
 
 	$images_sql = $wpdb->prepare(
                     "SELECT type, image_data FROM car_image WHERE variant_post_id = %d",
@@ -54,11 +54,38 @@ function motor_variant_specification_shortcode($atts)
 			$firstThreeImages = array_slice($imageData, 0, 3);
 		}
 	}
-    $base_url = home_url('/motorcycles/') . $make . '/' . $model . '/';
+	// If no images are found for the current variant, try other variants under the same listing
+	if (empty($firstThreeImages)) {
+		// Get all sibling variants under the same listing
+		$sibling_variants_sql = $wpdb->prepare(
+			"SELECT ID FROM {$wpdb->posts} WHERE post_parent = %d AND post_type = 'motorcycle-variant'",
+			$listing_post_id
+		);
+		$siblingVariants = $wpdb->get_results($sibling_variants_sql);
+
+		foreach ($siblingVariants as $sibling) {
+			$sibling_images_sql = $wpdb->prepare(
+				"SELECT type, image_data FROM car_image WHERE variant_post_id = %d",
+				$sibling->ID
+			);
+			$siblingImageResults = $wpdb->get_results($sibling_images_sql);
+
+			if (!empty($siblingImageResults)) {
+				$siblingImageData = json_decode($siblingImageResults[0]->image_data, true);
+
+				if (!empty($siblingImageData)) {
+					// Use the first three images from this sibling variant
+					$firstThreeImages = array_slice($siblingImageData, 0, 3);
+					break; // Exit the loop once images are found
+				}
+			}
+		}
+	}
+    $base_url = home_url('/xe-may/') . $make . '/' . $model . '/';
 
 	//get model variants 
     $parent_variant_ids = $wpdb->get_results($wpdb->prepare(
-        "SELECT ID, post_title FROM {$wpdb->posts} WHERE post_parent = %d AND post_type = 'motorcycle-variant'",
+        "SELECT ID, post_title, post_name FROM {$wpdb->posts} WHERE post_parent = %d AND post_type = 'motorcycle-variant'",
         $listing_post_id
     ));
 
@@ -75,7 +102,7 @@ function motor_variant_specification_shortcode($atts)
     <div class="variant-motor-container">
         <div class="variant-motor-gallery">
             <div class="variant-motor-product-title">
-                <h1><?php echo $model_title; ?></h1>
+                <h1 class="wa-title-text"><?php echo $model_title; ?></h1>
                 <div class="variant-motor-dropdown">
                     <button class="variant-motor-change-model">Đổi mẫu xe</button>
                     <div class="variant-motor-dropdown-content">
@@ -109,7 +136,7 @@ function motor_variant_specification_shortcode($atts)
                     <span class="variant-motor-monthly-price"><?php echo $monthly_payment; ?></span>
                 </div>
                 <div>
-                    <button class="variant-motor-compare"><a href="<?php echo home_url('compare-motorcycles'); ?>">+ So sánh</a></button>
+                    <button class="variant-motor-compare"><a href="<?php echo home_url('so-sanh-xe-may'); ?>">+ So sánh</a></button>
                 </div>
             </div>
             <p class="variant-motor-subtitle">Giá <?php echo $variant_post_title; ?> ở Việt Nam</p>
@@ -122,7 +149,7 @@ function motor_variant_specification_shortcode($atts)
                     </div>
                     <div class="variant-motor-spec-pair">
                         <div class="variant-motor-specs-label">Số bước</div>
-                        <div class="variant-motor-specs-value"><?php echo $capacity; ?></div>
+                        <div class="variant-motor-specs-value"><?php echo $number_of_strokes; ?></div>
                     </div>
                     <div class="variant-motor-spec-pair">
                         <div class="variant-motor-specs-label">Công suất tối đa</div>
@@ -133,7 +160,7 @@ function motor_variant_specification_shortcode($atts)
                         <div class="variant-motor-specs-value"><?php echo $engine_opening_option; ?></div>
                     </div>
                 </div>
-				<button class="variant-motor-cta-button"><a href="<?php echo $base_url . $variant->post_name; ?>">Xem thông số </a></button>
+				<button class="variant-motor-cta-button"><a href="<?php echo $base_url . $variant->post_name . '/thong-so-ky-thuat'; ?>">Xem thông số </a></button>
             </div>
         </div>
     </div>
@@ -154,7 +181,7 @@ function motor_variant_specification_shortcode($atts)
 
         .variant-motor-slider-img {
             width: 100%;
-            height: 258px;
+            height: 270px !important;
             object-fit: cover;
         }
 
@@ -238,6 +265,8 @@ function motor_variant_specification_shortcode($atts)
             display: flex;
             align-items: center;
             gap: 8px;
+			font-family:"Roboto";
+			font-size:14px;
         }
 
 
@@ -329,20 +358,30 @@ function motor_variant_specification_shortcode($atts)
         }
 
 
-        .variant-motor-cta-button {
-            display: block;
-            width: 48%;
-            padding: 12px;
-            background: white;
-            border: 1px solid #ffb400;
-            border-radius: 4px;
-            color: #ffb400;
-            font-size: 16px;
-            text-align: center;
-            font-weight: 700;
-            cursor: pointer;
-        }
+       .variant-motor-cta-button {
+			display: block;
+			width: 48%;
+			padding: 5px;
+			background: white;
+			border: 1px solid #ffb400 !important;
+			border-radius: 4px;
+			color: #ffb400 !important;
+			font-size: 16px;
+			text-align: center;
+			font-weight: 700;
+			cursor: pointer;
+			height: 45px;
+		   font-family:"Roboto";
+		}
 
+
+		.variant-motor-cta-button a{
+			color:#ffb400;
+			font-family:"Roboto";
+		}
+		.variant-motor-cta-button a:hover {
+			color:#ffb400;
+		}
         .variant-motor-title {
             font-family: "Roboto";
             font-weight: 700;
@@ -391,7 +430,6 @@ function motor_variant_specification_shortcode($atts)
         .variant-motor-compare {
             display: block;
             width: 100%;
-            padding: 12px;
             background: white;
             border: 1px solid #d9d9d9;
             border-radius: 4px;
@@ -400,14 +438,54 @@ function motor_variant_specification_shortcode($atts)
             text-align: center;
             font-weight: 700;
             cursor: pointer;
+			height:35px !important;
         }
 
         .variant-motor-compare a {
             text-decoration: none;
             color: #8c8c8c;
+			font-family:"Roboto";
         }
+		@media screen and (max-width: 768px) {
+			.variant-motor-container {
+    padding: 0px !important;
+    display: flex;
+	flex-direction:column;
+    gap: 0px;
+}
+			.variant-motor-spec-pair {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    flex-direction: column;
+    border-bottom: 1px solid #f0f0f0;
+}
+			.variant-motor-cta-button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    background: white;
+    border: 1px solid #ffb400 !important;
+    border-radius: 4px;
+    color: #ffb400 !important;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    height: 45px;
+}
+			 .variant-motor-gallery {
+            width: 100%;
+            height: 100%;
+        }
+			.variant-motor-price-con {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+		}
     </style>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>

@@ -75,7 +75,7 @@ function findnew_bike_comparison($atts)
     }
 
 ?>
-    <h2 class="wa-title-text find-new-cars-compare-title">เปรียบเทียบรถมอเตอร์ไซค์ <?php echo esc_html($brand_name); ?></h2>
+    <h2 class="wa-title-text find-new-cars-compare-title">So sánh xe máy  <?php echo esc_html($brand_name); ?></h2>
     <div class="findnew-comparison-wrapper">
         <div class="findnew-comparison-carousel">
             <?php

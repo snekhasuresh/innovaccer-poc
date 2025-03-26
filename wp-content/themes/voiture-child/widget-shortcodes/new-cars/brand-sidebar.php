@@ -63,13 +63,14 @@ function display_car_brands_alphabetically()
     return ob_get_clean();
 }
 
-function car_brand_details_shortcode($atts) {
+function car_brand_details_shortcode($atts)
+{
     ob_start();
-	 $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $is_new_cars_page = strpos($url, 'new-cars') !== false;
+    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $is_new_cars_page = strpos($url, 'xe-hoi-moi') !== false;
 
 
-    ?>
+?>
     <div id="car-brand-details" class="car-brand-details">
         <?php
         if ($is_new_cars_page) {
@@ -79,7 +80,7 @@ function car_brand_details_shortcode($atts) {
         }
         ?>
     </div>
-    <?php
+<?php
 
     return ob_get_clean();
 }
@@ -120,14 +121,14 @@ function parse_filters_from_url($url, $filter_mapping)
     $path_parts = explode('/', $path);
     $last_part = end($path_parts);
 
-    // if the last part has best- and -cars-in-malaysia, remove them
-    if (strpos($last_part, 'best-') !== false && strpos($last_part, '-cars-in-malaysia') !== false) {
-        $last_part = str_replace(['best-', '-cars-in-malaysia'], '', $last_part);
-        $parts = strpos($last_part, '-and-') === false ? [$last_part] : explode('-and-', $last_part);
+    // if the last part has tot-nhat- and -oto-tai-vietnam, remove them
+    if (strpos($last_part, 'tot-nhat-') !== false && strpos($last_part, '-oto-tai-vietnam') !== false) {
+        $last_part = str_replace(['tot-nhat-', '-oto-tai-vietnam'], '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
     } else {
-        // remove best-and- from the last part
-        $last_part = str_replace('best-and-', '', $last_part);
-        $parts = strpos($last_part, '-and-') === false ? [$last_part] : explode('-and-', $last_part);
+        // remove tot-nhat-va- from the last part
+        $last_part = str_replace('tot-nhat-va-', '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
     }
 
     $selected_filters = [];
@@ -268,8 +269,8 @@ function show_all_cars()
     echo do_shortcode('[findnew_car_faqs_shortcode]');
     echo '</div>';
 
-   	$current_year = date('Y'); // Get the current year dynamically
-	echo '<h1 class="wa-title-text find-new-cars-overview-title">Xe ô tô mới tại Việt Nam ' . $current_year . '</h1>';
+    $current_year = date('Y'); // Get the current year dynamically
+    echo '<h1 class="wa-title-text find-new-cars-overview-title">Xe ô tô mới tại Việt Nam ' . $current_year . '</h1>';
     echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
     echo do_shortcode('[newcars_overview]');
     echo '</div>';
@@ -342,23 +343,23 @@ function get_filter_mapping()
 {
     // read url
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    // if url has new-cars in it like http://34.126.131.237/new-cars/best-suv-sedan/
-    if (strpos($url, 'new-cars') == true) {
+    // if url has new-cars in it like http://34.126.131.237/new-cars/tot-nhat-suv-sedan/
+    if (strpos($url, 'xe-hoi-moi') == true) {
         $body_type_terms = get_terms(array('taxonomy' => 'listing_type', 'hide_empty' => false));
         $filter_mapping = [];
 
         $filter_mapping = [
-            // 0-40K, 40-60K, 60-90K, 90-120K, 120-150K, 150-200K, 200-300K, 300-400K, 400-600K, 600-3000K
-            'between-rm-0-40k' => ['filter-type' => 'Price', 'filter-value' => '0-40'],
-            'between-rm-40-60k' => ['filter-type' => 'Price', 'filter-value' => '40-60'],
-            'between-rm-60-90k' => ['filter-type' => 'Price', 'filter-value' => '60-90'],
-            'between-rm-90-120k' => ['filter-type' => 'Price', 'filter-value' => '90-120'],
-            'between-rm-120-1500k' => ['filter-type' => 'Price', 'filter-value' => '120-150'],
-            'between-rm-150-200k' => ['filter-type' => 'Price', 'filter-value' => '150-200'],
-            'between-rm-200-300k' => ['filter-type' => 'Price', 'filter-value' => '200-300'],
-            'between-rm-300-400k' => ['filter-type' => 'Price', 'filter-value' => '300-400'],
-            'between-rm-400-6000k' => ['filter-type' => 'Price', 'filter-value' => '400-600'],
-            'between-rm-600-3000k' => ['filter-type' => 'Price', 'filter-value' => '600-3000'],
+            // giua-vnd-300-500-tr
+            'giua-vnd-0-300-tr' => ['filter-type' => 'Price', 'filter-value' => '0-300'],
+            'giua-vnd-300-500-tr' => ['filter-type' => 'Price', 'filter-value' => '300-500'],
+            'giua-vnd-500-700-tr' => ['filter-type' => 'Price', 'filter-value' => '500-700'],
+            'giua-vnd-700-1-ty' => ['filter-type' => 'Price', 'filter-value' => '700-1000'],
+            'giua-vnd-1-2-ty' => ['filter-type' => 'Price', 'filter-value' => '1000-2000'],
+            'giua-vnd-2-4-ty' => ['filter-type' => 'Price', 'filter-value' => '2000-4000'],
+            'giua-vnd-4-7-ty' => ['filter-type' => 'Price', 'filter-value' => '4000-7000'],
+            'giua-vnd-7-10-ty' => ['filter-type' => 'Price', 'filter-value' => '7000-10000'],
+            'giua-vnd-10-50-ty' => ['filter-type' => 'Price', 'filter-value' => '10000-50000'],
+
 
             // A-Segment, B-Segment, C-Segment, D-Segment, E-Segment, Commercial, Executive, Grand Tourer, Luxury, Sports Car, Super Car, Compact Executive, 4x4, 4x2
             'a-segment' => ['filter-type' => 'Segment', 'filter-value' => 'A-Segment'],
@@ -401,11 +402,6 @@ function get_filter_mapping()
             '7' => ['filter-type' => 'Seating Capacity', 'filter-value' => '7 Seater'],
             '8' => ['filter-type' => 'Seating Capacity', 'filter-value' => '8 Seater'],
             '9' => ['filter-type' => 'Seating Capacity', 'filter-value' => '9 Seater'],
-
-            // Front Wheel Drive, Rear Wheel Drive, All Wheel Drive
-            'forwardwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'fwd'],
-            'rearwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'rwd'],
-            'allwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'awd'],
         ];
 
         foreach ($body_type_terms as $term) {

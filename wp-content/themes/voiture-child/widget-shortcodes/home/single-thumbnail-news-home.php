@@ -28,7 +28,7 @@ function first_news_post_with_thumbnail_shortcode()
                 <?php $first_post = $news_posts[0]; ?>
                 <a href="<?php echo esc_url($first_post['link']); ?>" class="thumbnail-link">
                     <div class="thumbnail-overlay" style="position: relative;">
-                        <img src="<?php echo esc_url($first_post['thumbnail_url']); ?>" alt="<?php echo esc_attr($first_post['title']); ?>" style="height: 500px; width: 100%; display: block;" />
+                        <img class="singlenews-thumb-img" src="<?php echo esc_url($first_post['thumbnail_url']); ?>" alt="<?php echo esc_attr($first_post['title']); ?>"  />
                         <span class="dd" style="position: absolute; bottom: 10px; left: 10px; background: #F5C34B; color: #FFF; padding: 5px 10px; font-weight: bold; height: 26px; width: max-content;"><?php echo esc_html($first_post['news_category']); ?></span>
                         <h2 class="thumbnail-title" style="position: absolute; bottom: 10px; left: 10px; color: #FFF; font-size: 24px;"><?php echo esc_html($first_post['title']); ?></h2>
                     </div>

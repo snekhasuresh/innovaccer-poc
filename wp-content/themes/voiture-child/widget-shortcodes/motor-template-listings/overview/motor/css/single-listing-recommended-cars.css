@@ -179,8 +179,8 @@
   padding: 8px;
   border-radius: 4px;
   background-color: #fff;
-  color: #ffb400;
-  border: 1px solid #ffb400;
+  color: #ffb400 !important;
+  border: 1px solid #ffb400 !important;
   text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -306,9 +306,9 @@
 }
 
 .recommended-multi-car-tabs .recommended-multi-tabs li a:hover {
-  color: #32d0c6;
+  color: #ffb400;
   /* Hover color similar to the design */
-  border-bottom: 3px solid #32d0c6;
+  border-bottom: 3px solid #ffb400;
   /* Underline on hover */
 }
 

@@ -238,7 +238,7 @@ p {
   .fixed-thumbnail {
     width: 100% !important; 
     height: 110px !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
   }
 	.more-button {
     margin-top: -38px;

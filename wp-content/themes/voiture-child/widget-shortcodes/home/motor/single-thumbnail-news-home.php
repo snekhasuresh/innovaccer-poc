@@ -46,6 +46,46 @@ function first_motor_thumbnail_news_shortcode()
                 <?php endfor; ?>
             </div>
         </div>
+<style>
+.motor-single-thumbnail-news-img{
+        height: 500px !important;
+        width: 100% !important;
+        display: block;
+        object-fit: cover;
+        border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+.motor-single-thumbnail-news-img{
+        height: 100% !important;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 5px;
+}
+    .thumbnail-overlay .dd {
+        position: absolute;
+        top: 63px;
+        left: 10px;
+        font-weight: bold;
+        background-color: #ffb400;
+        padding: 3px 10px;
+        border-radius: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: white;
+		display:flex;
+		align-items:center;
+        /* Default color */
+    }
+	.news-posts-container{
+	display: flex; 
+	gap: 20px;
+		flex-direction:column;
+}
+}
+
+</style>
 <?php
 
         wp_reset_postdata();

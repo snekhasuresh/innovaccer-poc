@@ -33,7 +33,7 @@ function bike_brand_description_shortcode($atts)
                     <?php if (!empty($brand_data['preview_text'])) : ?>
                         <span><?php echo esc_html($brand_data['preview_text']); ?></span>
                     <?php else : ?>
-                        <h2 style="font-size: 18px;">ประเภทของรถมอเตอร์ไซค์ <?php echo esc_html($brand_data['brand_name']); ?></h2>
+                        <h2 style="font-size: 18px;">Các Loại Xe Máy <?php echo esc_html($brand_data['brand_name']); ?></h2>
                     <?php endif; ?>
 
                     <div id="brand-more-text" class="brand-hidden-text">
@@ -42,7 +42,7 @@ function bike_brand_description_shortcode($atts)
                         <?php endif; ?>
 
                         <?php if (!empty($brand_data['preview_text'])) : ?>
-                            <h2 style="font-size: 18px;">ประเภทของรถมอเตอร์ไซค์ <?php echo esc_html($brand_data['brand_name']); ?></h2>
+                            <h2 style="font-size: 18px;">Các Loại Xe Máy<?php echo esc_html($brand_data['brand_name']); ?></h2>
                         <?php endif; ?>
 
                         <div class="car-container">
@@ -56,11 +56,11 @@ function bike_brand_description_shortcode($atts)
                             <?php endforeach; ?>
                         </div>
 
-                        <h2 style="font-size: 18px;">ตารางราคา มอเตอร์ไซค์ <?php echo esc_html(ucfirst($brand_data['brand_name'])); ?></h2>
+                        <h2 style="font-size: 18px;">Bảng Giá Xe máy <?php echo esc_html(ucfirst($brand_data['brand_name'])); ?></h2>
                         <div class="car-container">
                             <div class="car-row dis-header">
-                                <div class="dis-label">รายการรถมอเตอร์ไซค์ <?php echo esc_html($brand_data['brand_name']); ?></div>
-                                <div class="dis-value">ราคา</div>
+                                <div class="dis-label">Danh Sách Xe máy <?php echo esc_html($brand_data['brand_name']); ?></div>
+                                <div class="dis-value">Giá</div>
                             </div>
 
                             <?php foreach ($brand_data['models_with_prices'] as $modelprice): ?>
@@ -74,7 +74,7 @@ function bike_brand_description_shortcode($atts)
                         </div>
                     </div>
                 </div>
-                <button id="desc-read-more-btn" class="desc-read-more-btn">อ่านเพิ่มเติม</button>
+                <button id="desc-read-more-btn" class="desc-read-more-btn">Đọc thêm</button>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@ function bike_brand_description_shortcode($atts)
                 const isHidden = moreText.classList.contains("brand-hidden-text");
 
                 moreText.classList.toggle("brand-hidden-text");
-                moreTextToggle.innerHTML = isHidden ? "ซ่อน" : "อ่านเพิ่มเติม";
+                moreTextToggle.innerHTML = isHidden ? "Ẩn" : "Đọc thêm";
 
                 brandPreview.style.maxHeight = isHidden ? "none" : "150px";
                 brandPreview.style.overflowY = isHidden ? "auto" : "hidden";

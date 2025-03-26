@@ -26,7 +26,8 @@
  * @since Voiture Child Theme
  */
 wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css', [], '6.5.1');
-function remove_posts_menu() {
+function remove_posts_menu()
+{
     remove_menu_page('edit.php'); // Hides "Posts" from the admin menu
 }
 add_action('admin_menu', 'remove_posts_menu');
@@ -361,7 +362,7 @@ function add_gpt_script_to_head()
                             googletag.defineSlot('/22557728108/vn_variant_sidebar_2_pc', [300, 250], 'div-gpt-ad-1740632952583-0').addService(googletag.pubads());
                             break;
 
-						case 'tin-tuc':
+                        case 'tin-tuc':
                             break;
 
 
@@ -902,49 +903,6 @@ function set_global_variable()
 // Initialize the global variable
 add_action('wp', 'set_global_variable');
 
-
-
-// Add custom rewrite rules for language paths
-function add_custom_rewrite_rules()
-{
-    add_rewrite_rule('^zh/?$', 'index.php?language=zh', 'top');
-    add_rewrite_rule('^bm/?$', 'index.php?language=bm', 'top');
-
-}
-add_action('init', 'add_custom_rewrite_rules');
-
-// Add language query var
-function add_language_query_var($vars)
-{
-    $vars[] = 'language';
-    return $vars;
-}
-add_filter('query_vars', 'add_language_query_var');
-
-// Handle language selection and cookie setting
-function handle_language_routing()
-{
-    // Get current URL path
-    $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-
-    // Cookie settings
-    $cookie_name = 'preferred_language';
-    $cookie_expiry = time() + (86400 * 30); // 30 days
-    $cookie_path = '/';
-
-    // Set language based on URL
-    if ($current_path === 'zh') {
-        setcookie($cookie_name, '中文', $cookie_expiry, $cookie_path);
-    } elseif ($current_path === 'bm') {
-        setcookie($cookie_name, 'Bahasa Malaysia', $cookie_expiry, $cookie_path);
-    }
-    if (strpos($current_path, 'news') !== false) {
-        setcookie($cookie_name, 'English', $cookie_expiry, $cookie_path);
-    }
-}
-add_action('template_redirect', 'handle_language_routing');
-add_action('init', 'handle_language_routing');
-
 require_once ABSPATH . 'vendor/autoload.php';
 //wp_localize_script('your-script-handle', 'ajax_url', admin_url('admin-ajax.php'));
 
@@ -1038,9 +996,9 @@ if (strpos($_SERVER['REQUEST_URI'], 'author') !== false || wp_doing_ajax()) {
 require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/add-car.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/common/individual-listing-tabs.php';
 require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/cars-for-sale/used-cars-for-sale/used-cars-for-sale.php';
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/faq.php';
+require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/individual-listing/faq.php';
 
-if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || strpos($_SERVER['REQUEST_URI'], 'xe-hoi-moi') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/gallary.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/mega-gallary.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/template-listings/single-listing/competitors.php';
@@ -1335,7 +1293,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || wp_doing_ajax()) {
 }
 
 //motor page
-if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || strpos($_SERVER['REQUEST_URI'], 'xe-may-moi') !== false || wp_doing_ajax()) {
     //news motorcycles page
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/new-motorcycle/latest-bike-videos-carousal-shortcode.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/new-motorcycle/motor-brand-sidebar.php';
@@ -1384,7 +1342,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/overview/motor/motor-videos.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/overview/motor/motor-faq.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/overview/motor/motor-fuel-consumption.php';
-	require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/overview/motor/motor-competitors.php';
+    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/motor-template-listings/overview/motor/motor-competitors.php';
 
     // individual pages end---------------
 
@@ -1553,7 +1511,7 @@ if (
     require_once ABSPATH . 'wp-content/themes/voiture-child/article-page.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/social-media.php';
 }
-    require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/recommended-car-carousel.php';
+require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/recommended-car-carousel.php';
 
 if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || strpos($_SERVER['REQUEST_URI'], 'dung-cu') !== false || strpos($_SERVER['REQUEST_URI'], 'gia-xang-dau') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/popular-car-brands/brands-in-my.php';
@@ -1574,25 +1532,24 @@ function custom_calculator_rewrite()
         'top'
     );
 
-//     // Generic rewrite rule for other /tools/ paths
-//     add_rewrite_rule(
-//         '^tools/([^/]*)/?', // Match /tools/<anything>
-//         'index.php?pagename=tools', // Map to the tools page
-//         'top'
-//     );
-	    // Match /alat/kredit-motor
+    //     // Generic rewrite rule for other /tools/ paths
+    //     add_rewrite_rule(
+    //         '^tools/([^/]*)/?', // Match /tools/<anything>
+    //         'index.php?pagename=tools', // Map to the tools page
+    //         'top'
+    //     );
+    // Match /alat/kredit-motor
     // Match /alat/kredit-motor
     add_rewrite_rule('^alat/kredit-motor/?$', 'index.php?pagename=kredit-motor', 'top');
 
     // Match /alat/anything-else or /alat
     add_rewrite_rule('^dung-cu/([^/]*)/?$', 'index.php?pagename=tools', 'top');
-	
 }
 add_action('init', 'custom_calculator_rewrite');
 
 
 // if (is_page('tools') && preg_match('#^/tools/?#', $_SERVER['REQUEST_URI']) || wp_doing_ajax()) {
-if (strpos($_SERVER['REQUEST_URI'], '/dung-cu/mua-xe-tra-gop') !== false ||strpos($_SERVER['REQUEST_URI'], '/dung-cu/bao-hiem-xe') !== false || wp_doing_ajax()) {
+if (strpos($_SERVER['REQUEST_URI'], '/dung-cu/mua-xe-tra-gop') !== false || strpos($_SERVER['REQUEST_URI'], '/dung-cu/bao-hiem-xe') !== false || wp_doing_ajax()) {
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/template-calculators.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/car-loan-data.php';
     require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/calculator/fuel-cost-data.php';
@@ -1959,9 +1916,9 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
 
         // Get subcategories for the selected category
         if ($category_id != 0) {
-			global $wpdb;
+            global $wpdb;
 
-			$query = $wpdb->prepare("
+            $query = $wpdb->prepare("
 			SELECT DISTINCT t.*
 			FROM {$wpdb->terms} AS t
 			INNER JOIN {$wpdb->term_taxonomy} AS tt ON t.term_id = tt.term_id
@@ -1974,8 +1931,8 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
 			ORDER BY t.term_id ASC                                  -- sort by term_id numerically
 		", 'state', 'type', $category_id, 'news-category', '1', '1');
 
-			$subcategories = $wpdb->get_results($query);
-		}
+            $subcategories = $wpdb->get_results($query);
+        }
 
         $subcategory_html = '';
 
@@ -1984,36 +1941,36 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
             $subcategory_html .= '<div class="subcategory-tab sub-active first-sub" data-category="' . esc_attr($category_id) . '"data-subcategory="' . esc_attr($category_id) . '"><a>All</a></div>';
             foreach ($subcategories as $subcategory) {
                 // Check if the subcategory has posts
-				$subcategory_posts = new WP_Query(array(
-					'post_type'      => 'news',
-					'posts_per_page' => 1,
-					'post_status'    => 'publish',
-					'meta_query'     => array(
-						array(
-							'key'     => 'news_category',
-							'value'   => sprintf(':"%d";', $subcategory->term_id),
-							'compare' => 'LIKE',
-						)
-					)
-				));
+                $subcategory_posts = new WP_Query(array(
+                    'post_type'      => 'news',
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                    'meta_query'     => array(
+                        array(
+                            'key'     => 'news_category',
+                            'value'   => sprintf(':"%d";', $subcategory->term_id),
+                            'compare' => 'LIKE',
+                        )
+                    )
+                ));
 
-				if ($subcategory_posts->have_posts()) {
-					$subcategory_html .= '<div class="subcategory-tab" 
+                if ($subcategory_posts->have_posts()) {
+                    $subcategory_html .= '<div class="subcategory-tab" 
 					data-subcategory="' . esc_attr($subcategory->term_id) . '"
 					data-subcategoryname="' . esc_attr($subcategory->name) . '"
 					data-categoryname="' . esc_attr($category->name) . '"><a>'
-						. esc_html($subcategory->name) . '</a></div>';
-				}else{
-					 $terms = get_terms(array(
-						'taxonomy'   => 'news-category',
-						'name'       => 'Others',
-						'hide_empty' => false,
-						'parent' => $category_id,
-					));
+                        . esc_html($subcategory->name) . '</a></div>';
+                } else {
+                    $terms = get_terms(array(
+                        'taxonomy'   => 'news-category',
+                        'name'       => 'Others',
+                        'hide_empty' => false,
+                        'parent' => $category_id,
+                    ));
 
-					$subcategory_id = $terms[0]->term_id;
-				}
-				wp_reset_postdata(); // Always reset post data after a query
+                    $subcategory_id = $terms[0]->term_id;
+                }
+                wp_reset_postdata(); // Always reset post data after a query
             }
             $subcategory_html .= '</div>';
         } else {
@@ -2034,11 +1991,11 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
             'post_status'    => 'publish',
 
             'meta_query'     => array(
-//                 array(
-//                     'key'     => 'second_language',
-//                     'value'   => '',
-//                     'compare' => '='
-//                 ),
+                //                 array(
+                //                     'key'     => 'second_language',
+                //                     'value'   => '',
+                //                     'compare' => '='
+                //                 ),
                 array(
                     'key'     => 'publish_time',
                     'value'   => current_time('mysql'),
@@ -2111,7 +2068,7 @@ if (preg_match('/^\/tin-tuc(\/|$)/', $current_url) || wp_doing_ajax()) {
 //motorcycle news page
 $current_url = $_SERVER['REQUEST_URI'];
 if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
-     function enqueue_custom_motor_scripts()
+    function enqueue_custom_motor_scripts()
     {
         wp_enqueue_script('custom-motor-news-script', get_stylesheet_directory_uri() . '/js/custom-motor-news.js', array('jquery'), null, true);
 
@@ -2154,7 +2111,7 @@ if (preg_match('/tin-tuc-xe-may/', $current_url) || wp_doing_ajax()) {
         $posts_per_page = 10;
         $subcategories = '';
         $category = get_term($category_id, 'motorcycle-news-category');
-		
+
         // second language
         //         $second_lang = get_current_language();
 
@@ -2364,7 +2321,7 @@ function is_excluded_news_slug($slug, $is_motorcycle = false)
     if ($is_motorcycle) {
         $excluded_slugs = array('moi-nhat', 'review', 'buying-guide', 'tips', 'opinions');
     } else {
-		$excluded_slugs = array('moi-nhat', 'reviews', 'buying-guides', 'evs', 'tips', 'used-car', 'opinions');
+        $excluded_slugs = array('moi-nhat', 'reviews', 'buying-guides', 'evs', 'tips', 'used-car', 'opinions');
     }
 
     return in_array($slug, $excluded_slugs);
@@ -2391,6 +2348,7 @@ function custom_cars_rewrite_rules()
     add_rewrite_rule('^xe-may/([^/]+)/([^/]+)/([^/]+)/([^/]+)/?$', 'index.php?post_type=xe-may&make=$matches[1]&model=$matches[2]&section=$matches[3]&variant_section=$matches[4]', 'top');
 
     add_rewrite_rule('^xe-may/([^/]+)/?$', 'index.php?pagename=xe-may&filter=$matches[1]', 'top');
+	add_rewrite_rule('^xe-may-moi/([^/]+)/?$', 'index.php?pagename=xe-may&filter=$matches[1]', 'top');
 
     //author
     add_rewrite_rule('^author/([^/]+)/?$', 'index.php?pagename=author&author_slug=$matches[1]', 'top');
@@ -2431,61 +2389,37 @@ function add_language_news_query_vars($vars)
 }
 add_filter('query_vars', 'add_language_news_query_vars');
 
-// Load archive-cars.php template for zh, bm language URLs
-function language_news_template_redirect()
-{
-    // Get the query variables
-    $lang = get_query_var('lang');
-    $post_name = get_query_var('post_name');
-    $post_id = get_query_var('post_id');
-
-    // Check if we have all the required parameters
-    if ($lang && $post_name && $post_id) {
-        // Verify if the language is either 'zh' or 'bm'
-        if (in_array($lang, ['zh', 'bm'])) {
-            // Load the archive-cars.php template
-            $template = get_stylesheet_directory() . '/archive-xe-oto.php';
-            if (file_exists($template)) {
-                load_template($template);
-                exit;
-            }
-        }
-    }
-}
-add_action('template_redirect', 'language_news_template_redirect');
-
-
-
 // Redirect non-excluded news/slug URLs to archive-cars.php
 add_filter('template_include', 'load_archive_cars_for_news_slug');
 function load_archive_cars_for_news_slug($template)
 {
     // 	print_r('<h1>Hello world!</h1>');
     // 	exit;
-    if (strpos($_SERVER['REQUEST_URI'], 'xe-oto') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc') !== false) {
-		$news_slug = get_query_var('news_slug');
+    if (strpos($_SERVER['REQUEST_URI'], '/xe-oto/') !== false || strpos($_SERVER['REQUEST_URI'], '/tin-tuc/') !== false) {
+        $news_slug = get_query_var('news_slug');
 
-		if (($news_slug && !is_excluded_news_slug($news_slug))) {
-			return get_stylesheet_directory() . '/archive-xe-oto.php';
-		}
+        if ($news_slug && !is_excluded_news_slug($news_slug)) {
+            return get_stylesheet_directory() . '/archive-xe-oto.php';
+        }
 
-		// 	print_r('above news slug condition');
-		if (is_excluded_news_slug($news_slug) && $news_slug) {
-			return get_stylesheet_directory() . '/archive-news.php';
-		}
-	}
+        // 	print_r('above news slug condition');
+        if (is_excluded_news_slug($news_slug) && $news_slug) {
+            return get_stylesheet_directory() . '/archive-news.php';
+        }
+    }
     // 	print_r('returning default template');
 
     return $template;
 }
 
 // Redirect non-excluded news/slug URLs to archive-motors.php
-add_filter('template_include', 'load_archive_motors_for_news_slug');
+add_filter('template_include', 'load_archive_motors_for_news_slug', 999);
 function load_archive_motors_for_news_slug($template)
 {
     // 	print_r($_SERVER['REQUEST_URI']);
     if (strpos($_SERVER['REQUEST_URI'], 'xe-may') !== false || strpos($_SERVER['REQUEST_URI'], 'tin-tuc-xe-may') !== false) {
         $news_slug = get_query_var('news_slug');
+		
         if ($news_slug && !is_excluded_news_slug($news_slug, true)) {
             return get_stylesheet_directory() . '/archive-xe-may.php';
         }
@@ -2526,7 +2460,8 @@ function create_news_post_type()
 }
 add_action('init', 'create_news_post_type');
 
-function create_motor_news_post_type() {
+function create_motor_news_post_type()
+{
     register_post_type(
         'motorcycle-news',
         array(
@@ -2543,7 +2478,8 @@ function create_motor_news_post_type() {
 }
 add_action('init', 'create_motor_news_post_type');
 
-function load_motorcycle_news_archive_template($template) {
+function load_motorcycle_news_archive_template($template)
+{
     if (is_post_type_archive('motorcycle-news')) {
         $custom_template = get_stylesheet_directory() . '/archive-news-motorcycles.php';
 
@@ -2818,7 +2754,7 @@ function custom_seo_title($seo_title)
             $thai_make_name = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Construct the title dynamically
-            $title = "Bảng Giá Xe ". ucfirst($make) ." Việt Nam ". $current_year ." - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
+            $title = "Bảng Giá Xe " . ucfirst($make) . " Việt Nam " . $current_year . " - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
         }
     }
 
@@ -2827,7 +2763,7 @@ function custom_seo_title($seo_title)
             $thai_make_name = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Construct the title dynamically
-            $title = "Bảng giá xe máy ". ucfirst($make) ." Việt Nam ". $current_year ." - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
+            $title = "Bảng giá xe máy " . ucfirst($make) . " Việt Nam " . $current_year . " - Thông số kỹ thuật, Hình ảnh, Đánh giá, Tin tức | Autofun";
         }
     }
     // cars filter
@@ -2858,41 +2794,41 @@ function custom_seo_title($seo_title)
 
         // Combine filters and price range to form the title
         $filters_text = implode(' ', $filters);
-       
+
         $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
 
-        //motorcycle filter
-        if (strpos($url_path, '/xe-may-moi') !== false) {
-            $current_url = trim($_SERVER['REQUEST_URI'], '/');
-            $last_part = basename($current_url);
-    
-            // Remove the "best-" prefix if it exists
-            if (strpos($last_part, 'best-') === 0) {
-                $last_part = substr($last_part, 5); // Remove the first 5 characters
-            }
-    
-            $parts = explode('-', $last_part);
-    
-            $filters = [];
-            $price_range_text = '';
-    
-            foreach ($parts as $part) {
-                if (strpos($part, 'between') === 0) {
-                    // Handle price range ("between60to90K")
-                    $price_range = str_replace(['between', 'to', 'K'], ['', '-', 'K'], $part);
-                    $price_range_text = "between Triệu $price_range";
-                } else {
-                    // Convert URL-friendly word to sentence-friendly word
-                    $filters[] = ucfirst($part);
-                }
-            }
-    
-            // Combine filters and price range to form the title
-            $filters_text = implode(' ', $filters);
-           
-            $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
+    //motorcycle filter
+    if (strpos($url_path, '/xe-may-moi') !== false) {
+        $current_url = trim($_SERVER['REQUEST_URI'], '/');
+        $last_part = basename($current_url);
+
+        // Remove the "best-" prefix if it exists
+        if (strpos($last_part, 'best-') === 0) {
+            $last_part = substr($last_part, 5); // Remove the first 5 characters
         }
+
+        $parts = explode('-', $last_part);
+
+        $filters = [];
+        $price_range_text = '';
+
+        foreach ($parts as $part) {
+            if (strpos($part, 'between') === 0) {
+                // Handle price range ("between60to90K")
+                $price_range = str_replace(['between', 'to', 'K'], ['', '-', 'K'], $part);
+                $price_range_text = "between Triệu $price_range";
+            } else {
+                // Convert URL-friendly word to sentence-friendly word
+                $filters[] = ucfirst($part);
+            }
+        }
+
+        // Combine filters and price range to form the title
+        $filters_text = implode(' ', $filters);
+
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
+    }
 
     // individual listing
     if ($make && $model) {
@@ -2901,9 +2837,9 @@ function custom_seo_title($seo_title)
         // Check if the URL contains "motorcycles" or "cars"
 
         if ($is_car) {
-            $title = "Giá xe ". $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
+            $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
         } elseif ($is_motorcycle) {
-            $title = "Giá xe ". $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
+            $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
         }
 
         if ($is_car) {
@@ -2934,7 +2870,7 @@ function custom_seo_title($seo_title)
                     $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
                     break;
                 case 'thong-so-ky-thuat':
-                    $title = "Thông số kỹ thuật " . $make . " " . $model . " " . $current_year ." - Kích thước, Trọng lượng, Động cơ, Hộp số | Autofun";
+                    $title = "Thông số kỹ thuật " . $make . " " . $model . " " . $current_year . " - Kích thước, Trọng lượng, Động cơ, Hộp số | Autofun";
                     break;
                 case 'hinh-anh':
                     $title = "Thư viện & Hình ảnh " . $make . " " . $model . " " . $current_year . " | Autofun";
@@ -2944,7 +2880,7 @@ function custom_seo_title($seo_title)
                     break;
 
                 case 'mau-sac':
-                    $title = "Màu xe mới của " . $make . " " . $model . " " . $current_year .", Kiểm Tra Tất Cả 10 Màu Tại Việt Nam | AutoFun";
+                    $title = "Màu xe mới của " . $make . " " . $model . " " . $current_year . ", Kiểm Tra Tất Cả 10 Màu Tại Việt Nam | AutoFun";
                     break;
                 default:
                     $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Đánh giá, Thông số kỹ thuật, Hình ảnh, Tin tức | Autofun";
@@ -2955,72 +2891,72 @@ function custom_seo_title($seo_title)
 
 
     // individual variant
-    if($is_car){
-    if ($make && $model && $variant_section) {
-        // get post title by post name
-        $args = array(
-            'name'           => $variant_section,
-            'post_type'      => 'variant',
-            'post_status'    => 'publish',
-            'posts_per_page' => 1
-        );
-        $query = new WP_Query($args);
+    if ($is_car) {
+        if ($make && $model && $variant_section) {
+            // get post title by post name
+            $args = array(
+                'name'           => $variant_section,
+                'post_type'      => 'variant',
+                'post_status'    => 'publish',
+                'posts_per_page' => 1
+            );
+            $query = new WP_Query($args);
 
-        if ($query->have_posts()) {
-            $query->the_post();
-            $post_title = get_the_title();
-            wp_reset_postdata();  // Reset post data
+            if ($query->have_posts()) {
+                $query->the_post();
+                $post_title = get_the_title();
+                wp_reset_postdata();  // Reset post data
 
-            switch ($section) {
-                case 'thong-so-ky-thuat':
-                    $title = "Thông số " . $make . " " . $model . " 2023 - Tính năng, Cấu hình động cơ, Kích thước lốp | Autofun" ;
-                    break;
-                case 'hinh-anh':
-                    $title = "Hình ảnh " . $make . " " . $model . " - Ảnh thực HD | Autofun";
-                    break;
-                default:
-                    $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
-                    break;
+                switch ($section) {
+                    case 'thong-so-ky-thuat':
+                        $title = "Thông số " . $make . " " . $model . " 2023 - Tính năng, Cấu hình động cơ, Kích thước lốp | Autofun";
+                        break;
+                    case 'hinh-anh':
+                        $title = "Hình ảnh " . $make . " " . $model . " - Ảnh thực HD | Autofun";
+                        break;
+                    default:
+                        $title = "Giá xe " . $make . " " . $model . " " . $current_year . " - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
+                        break;
+                }
             }
         }
     }
-}
 
-if($is_motorcycle){
-    if ($make && $model && $variant_section) {
-        // get post title by post name
-        $args = array(
-            'name'           => $variant_section,
-            'post_type'      => 'variant',
-            'post_status'    => 'publish',
-            'posts_per_page' => 1
-        );
-        $query = new WP_Query($args);
+    if ($is_motorcycle) {
+        if ($make && $model && $variant_section) {
+            // get post title by post name
+            $args = array(
+                'name'           => $variant_section,
+                'post_type'      => 'variant',
+                'post_status'    => 'publish',
+                'posts_per_page' => 1
+            );
+            $query = new WP_Query($args);
 
-        if ($query->have_posts()) {
-            $query->the_post();
-            $post_title = get_the_title();
-            wp_reset_postdata();  // Reset post data
+            if ($query->have_posts()) {
+                $query->the_post();
+                $post_title = get_the_title();
+                wp_reset_postdata();  // Reset post data
 
-            switch ($section) {
-                case 'thong-so-ky-thuat':
-                    $title = "Thông số ".$make." " .$model." - Động cơ, Mức tiêu hao nhiên liệu của, Kích thước lốp | Autofun" ;
-                    break;
-                case 'hinh-anh':
-                    $title = "Hình ảnh ".$make." " .$model." - Ảnh thực HD hình ảnh lớn | Autofun";
-                    break;
-                default:
-                    $title = "Giá xe ".$make ." ".$model." - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
-                    break;
+                switch ($section) {
+                    case 'thong-so-ky-thuat':
+                        $title = "Thông số " . $make . " " . $model . " - Động cơ, Mức tiêu hao nhiên liệu của, Kích thước lốp | Autofun";
+                        break;
+                    case 'hinh-anh':
+                        $title = "Hình ảnh " . $make . " " . $model . " - Ảnh thực HD hình ảnh lớn | Autofun";
+                        break;
+                    default:
+                        $title = "Giá xe " . $make . " " . $model . " - Khuyến mại, Đánh giá, Thông số, Hình ảnh tại Việt Nam | Autofun";
+                        break;
+                }
             }
         }
     }
-}
 
-  // cars-electric
-//   if ($url_path == '/cars-electric') {
-//     $title = 'ราคา รถ EV ใน ไทย, EV Cars Thailand | AutoFun';
-// }
+    // cars-electric
+    //   if ($url_path == '/cars-electric') {
+    //     $title = 'ราคา รถ EV ใน ไทย, EV Cars Thailand | AutoFun';
+    // }
 
     /***************** Tools Pages ****************/
     /***************** Tools Pages ****************/
@@ -3036,9 +2972,9 @@ if($is_motorcycle){
         $title = 'Giá Xăng Hôm Nay - Giá Xăng Hiện Tại, RON 92, RON 95, Dầu Diesel, Dầu hỏa ở Việt Nam';
     }
 
-//     if ($url_path == '/tools/fuel-cost-calculator') {
-//         $title = 'เครื่องคำนวณค่าน้ำมันเชื้อเพลิง คำนวณค่าน้ำมันเดินทาง ค่าใช้จ่ายน้ำมัน | AutoFun';
-//     }
+    //     if ($url_path == '/tools/fuel-cost-calculator') {
+    //         $title = 'เครื่องคำนวณค่าน้ำมันเชื้อเพลิง คำนวณค่าน้ำมันเดินทาง ค่าใช้จ่ายน้ำมัน | AutoFun';
+    //     }
 
     if ($url_path == '/so-sanh-xe') {
         $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
@@ -3049,7 +2985,7 @@ if($is_motorcycle){
     // bikes
     if ($url_path == '/dung-cu/mua-xe-tra-gop') {
         $title = 'Mua Xe Trả Góp - Bảng Tính Chi Phí Mua Xe Ô Tô Trả Góp | Autofun';
-    }   
+    }
 
     // other pages
     if ($url_path == '/about-us') {
@@ -3076,7 +3012,7 @@ if($is_motorcycle){
 
     // news
     if ((strpos($url_path, '/tin-tuc') !== false && !$news_slug) || $url_path == '/bm' || $url_path == '/zh') {
-            $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
+        $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
     }
     if ($url_path == '/tin-tuc-xe-may') {
         $title = "Tìm giá xe ô tô, Xe máy mới tại Việt Nam, Tin tức, Đánh giá, Hình ảnh | Autofun";
@@ -3086,8 +3022,8 @@ if($is_motorcycle){
         $news_post = get_news_post_from_news_slug();
         if ($news_post) {
             $title = $news_post->post_title . ' | Autofun';
-			
-			$yoast_title = get_post_meta($news_post->ID, '_yoast_wpseo_title', true);
+
+            $yoast_title = get_post_meta($news_post->ID, '_yoast_wpseo_title', true);
             if ($yoast_title) {
                 $title = $yoast_title;
             }
@@ -3152,7 +3088,7 @@ add_filter('wpseo_metadesc', function ($description) {
     $variant_section = get_query_var('variant_section');
     $current_year = date('Y');
     $news_slug = get_query_var('news_slug');
-	$is_motorcycle = strpos($_SERVER['REQUEST_URI'], '/xe-may/') !== false;
+    $is_motorcycle = strpos($_SERVER['REQUEST_URI'], '/xe-may/') !== false;
     $is_car = strpos($_SERVER['REQUEST_URI'], '/xe-oto/') !== false;
 
     // chinese and malay language news article
@@ -3162,20 +3098,19 @@ add_filter('wpseo_metadesc', function ($description) {
 
     // homepage
     if ($url_path == '/' || $url_path == '') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
-
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     // cars
     if ($url_path == '/xe-oto') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($url_path == '/xe-may') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($is_car) {
         if ($make && !$model) {
-            $description = "Nhận bảng giá xe ô tô ". ucfirst($make) ." 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe ". ucfirst($make) .", tra xe điện / giá xe ". ucfirst($make) .", thư viện, màu sắc, thông số kỹ thuật, tính năng, đánh giá của chuyên gia, đánh giá của người dùng, hình ảnh và video.";
+            $description = "Nhận bảng giá xe ô tô " . ucfirst($make) . " 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe " . ucfirst($make) . ", tra xe điện / giá xe " . ucfirst($make) . ", thư viện, màu sắc, thông số kỹ thuật, tính năng, đánh giá của chuyên gia, đánh giá của người dùng, hình ảnh và video.";
         }
     }
 
@@ -3185,7 +3120,7 @@ add_filter('wpseo_metadesc', function ($description) {
             $thai_make = isset($thai_car_names[$make]) ? $thai_car_names[$make] : $make;
 
             // Build the description with the dynamically replaced Thai make
-            $description = "Nhận bảng giá xe máy / xe tay ga / xe máy điện ". ucfirst($make) ." 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe máy BMW, khảo giá xe máy ". ucfirst($make) .", thư viện hình ảnh, màu sắc, thông số kỹ thuật, tính năng, đánh giá và video của chuyên gia.";
+            $description = "Nhận bảng giá xe máy / xe tay ga / xe máy điện " . ucfirst($make) . " 2022 - 2023 mới nhất tại Việt Nam, tìm các mẫu xe máy BMW, khảo giá xe máy " . ucfirst($make) . ", thư viện hình ảnh, màu sắc, thông số kỹ thuật, tính năng, đánh giá và video của chuyên gia.";
         }
     }
 
@@ -3219,30 +3154,28 @@ add_filter('wpseo_metadesc', function ($description) {
 
         // Combine filters and price range to form the title
         $filters_text = implode(' ', $filters);
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     // cars for sale
-//     if (strpos($url_path, '/used-car-market-value-guide') !== false) {
-//         $description = "Want to buy or sell a second hand car but have no idea about its market value? Get instant car values online with WapCar's free car value calculator. Make it easy to get a great deal.";
-//     }
+    //     if (strpos($url_path, '/used-car-market-value-guide') !== false) {
+    //         $description = "Want to buy or sell a second hand car but have no idea about its market value? Get instant car values online with WapCar's free car value calculator. Make it easy to get a great deal.";
+    //     }
 
-//     if (strpos($url_path, '/trade-in-your-car') !== false) {
-//         $description = 'How to trade in your car in Malaysia? WapCar’s online trade-in car calculator creates the best car trade-in value for you, and at the same time solves the problem of when should you trade-in your car (trade in car price) and how to trade in a car with loan, save more on your next car.';
-//     }
+    //     if (strpos($url_path, '/trade-in-your-car') !== false) {
+    //         $description = 'How to trade in your car in Malaysia? WapCar’s online trade-in car calculator creates the best car trade-in value for you, and at the same time solves the problem of when should you trade-in your car (trade in car price) and how to trade in a car with loan, save more on your next car.';
+    //     }
 
     // news
-    
-    if (strpos($url_path, '/tin-tuc') !== false || $url_path == '/bm' || $url_path == '/zh') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
+    if (strpos($url_path, '/tin-tuc') !== false || $url_path == '/bm' || $url_path == '/zh') {
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if (strpos($url_path, '/tin-tuc-xe-may') !== false || $url_path == '/bm' || $url_path == '/zh') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
-
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($news_slug) {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
         $news_post = get_news_post_from_news_slug();
         if ($news_post) {
@@ -3256,7 +3189,7 @@ add_filter('wpseo_metadesc', function ($description) {
 
     // chinese and malay news article
     if ($lang && $post_name && $post_id) {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
 
 
         $result = $wpdb->get_var(
@@ -3282,53 +3215,53 @@ add_filter('wpseo_metadesc', function ($description) {
             'posts_per_page' => 1
         ));
         $post_id = $listing_post[0]->ID;
-        $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " ". $current_year .".";
+        $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " " . $current_year . ".";
 
 
         if ($is_car) {
             switch ($section) {
                 case 'tin-tuc':
-                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
                     break;
                 case 'thong-so-ky-thuat':
-                    $description = "Xem đặc điểm và thông số kỹ thuật xe " . $make . " " .  $model .  " tại Việt Nam ". $current_year .", bao gồm mẫu xe " . $make . " " .  $model .  " kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
+                    $description = "Xem đặc điểm và thông số kỹ thuật xe " . $make . " " .  $model .  " tại Việt Nam " . $current_year . ", bao gồm mẫu xe " . $make . " " .  $model .  " kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
                     break;
                 case 'hinh-anh':
-                    $description = "Xem 22 hình ảnh xe " . $make . " " .  $model ." tại Việt Nam ". $current_year .", Bao gồm 200 ảnh nội thất " . $make . " " .  $model .", 300 ảnh ngoại thất Honda City, cũng như các hình ảnh phía trước và phía sau khác, hình ảnh bên hông, màu sắc và hình ảnh động cơ và khung gầm.";
+                    $description = "Xem 22 hình ảnh xe " . $make . " " .  $model . " tại Việt Nam " . $current_year . ", Bao gồm 200 ảnh nội thất " . $make . " " .  $model . ", 300 ảnh ngoại thất Honda City, cũng như các hình ảnh phía trước và phía sau khác, hình ảnh bên hông, màu sắc và hình ảnh động cơ và khung gầm.";
                     break;
                 case 'tieu-hao-nhien-lieu':
-                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model ." tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model .", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
+                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model . " tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model . ", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
                     break;
                 case 'mau-sac':
-                    $description = "Xem ảnh các màu Ford Fiesta ". $current_year ." đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
+                    $description = "Xem ảnh các màu Ford Fiesta " . $current_year . " đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
                     break;
                 default:
-                    $description = "Giá xe " . $make . " " .  $model ." mới nhất tại Việt Nam là 5200000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model ." trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model ." ". $current_year .".";
+                    $description = "Giá xe " . $make . " " .  $model . " mới nhất tại Việt Nam là 5200000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model . " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model . " " . $current_year . ".";
 
                     break;
             }
         }
-		
-		
+
+
         if ($is_motorcycle) {
             switch ($section) {
                 case 'tin-tuc':
-                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ". $current_year ." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+                    $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
                     break;
                 case 'thong-so-ky-thuat':
-                    $description = "Xem đặc điểm và thông số kỹ thuật " . $make . " " .  $model ." tại Việt Nam ". $current_year .", bao gồm mẫu xe máy " . $make . " " .  $model ." kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
+                    $description = "Xem đặc điểm và thông số kỹ thuật " . $make . " " .  $model . " tại Việt Nam " . $current_year . ", bao gồm mẫu xe máy " . $make . " " .  $model . " kích thước D x R x C, trọng lượng, loại động cơ và mô-men xoắn công suất, hộp số, mức tiêu thụ nhiên liệu của, dung tích bình xăng, trang bị an toàn và tính năng tiện nghi.";
                     break;
                 case 'hinh-anh':
-                    $description = "Xem 0 hình ảnh xe máy " . $make . " " .  $model ." tại Việt Nam ". $current_year .", Trong cửa hàng đã chụp 200 tấm hình lớn của " . $make . " " .  $model .", và 200 hình chụp các chi tiết về kiểu dáng và màu sắc.";
+                    $description = "Xem 0 hình ảnh xe máy " . $make . " " .  $model . " tại Việt Nam " . $current_year . ", Trong cửa hàng đã chụp 200 tấm hình lớn của " . $make . " " .  $model . ", và 200 hình chụp các chi tiết về kiểu dáng và màu sắc.";
                     break;
                 case 'tieu-hao-nhien-lieu':
-                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model ." tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model .", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
+                    $description = "Bạn muốn biết về hiệu quả sử dụng nhiên liệu của xe, mỗi 100km sử dụng bao nhiêu xăng? Xem chi tiết mức tiêu hao nhiên liệu của " . $make . " " .  $model . " tại Việt Nam. Kiểm tra dữ liệu trung bình và tính toán xem bạn có thể lái bao nhiêu km với mỗi lít xăng hoặc dầu diesel. Nhận đánh giá của chính chủ về khả năng tiết kiệm xăng của " . $make . " " .  $model . ", tìm những chiếc xe tiết kiệm xăng nhất Việt Nam.";
                     break;
                 case 'mau-sac':
-                    $description = "Xem ảnh các màu Ford Fiesta ". $current_year ." đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
+                    $description = "Xem ảnh các màu Ford Fiesta " . $current_year . " đẹp nhất trong cả 3 màu. Ngoài màu đen, trắng và đỏ cổ điển, mẫu biến thể này còn có các màu sau: , , . Xem hình ảnh của các loại sơn khác nhau và nhận được giá cả.";
                     break;
                 default:
-                    $description = "Giá xe máy BMW F 800 ". $current_year ." mới tại Việt Nam bắt giá từ 0 đồng. Xem ngay bảng giá lăn bánh xe điện, xe tay ga BMW F 800 mới nhất, các đánh giá, mẫu xe, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, hình ảnh, màu sắc, khuyến mãi và tin tức.";
+                    $description = "Giá xe máy BMW F 800 " . $current_year . " mới tại Việt Nam bắt giá từ 0 đồng. Xem ngay bảng giá lăn bánh xe điện, xe tay ga BMW F 800 mới nhất, các đánh giá, mẫu xe, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, hình ảnh, màu sắc, khuyến mãi và tin tức.";
 
                     break;
             }
@@ -3350,48 +3283,47 @@ add_filter('wpseo_metadesc', function ($description) {
             $post_title = get_the_title();
             wp_reset_postdata();
 
-            $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " ". $current_year .".";
-
+            $description = "Giá xe " . $make . " " .  $model .  " mới nhất tại Việt Nam là 545000000 đồng. Xem ngay hướng dẫn mua " . $make . " " .  $model .  " trên Autofun.vn để biết các khuyến mãi, thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất và tin tức của " . $make . " " .  $model .  " " . $current_year . ".";
         }
     }
 
     // individual variant
-    if($is_car){
-    if ($make && $model && $variant_section) {
-        // get post title by post name
-        $args = array(
-            'name'           => $variant_section,
-            'post_type'      => 'variant',
-            'post_status'    => 'publish',
-            'posts_per_page' => 1
-        );
-        $query = new WP_Query($args);
+    if ($is_car) {
+        if ($make && $model && $variant_section) {
+            // get post title by post name
+            $args = array(
+                'name'           => $variant_section,
+                'post_type'      => 'variant',
+                'post_status'    => 'publish',
+                'posts_per_page' => 1
+            );
+            $query = new WP_Query($args);
 
-        if ($query->have_posts()) {
-            $query->the_post();
-            $post_title = get_the_title();
-            wp_reset_postdata();
+            if ($query->have_posts()) {
+                $query->the_post();
+                $post_title = get_the_title();
+                wp_reset_postdata();
 
-            $listing_name = ucfirst($make) . ' ' . ucfirst($model);
-            $description = "Giá xe ".$listing_name." mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe ".$listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ".$listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
+                $listing_name = ucfirst($make) . ' ' . ucfirst($model);
+                $description = "Giá xe " . $listing_name . " mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe " . $listing_name . " trên Autofun.vn để biết các thông tin khuyến mãi " . $listing_name . " năm " . $current_year . ", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
 
-            switch ($section) {
-                case 'thong-so-ky-thuat':
-                    $description = "Xem cấu hình, chức năng và thông số kỹ thuật ".$listing_name." mới nhất tại Việt Nam, bao gồm kích thước ".$listing_name." D x R x C, chiều dài cơ sở, dung tích bình nhiên liệu, cỡ lốp, cỡ vành, trọng lượng, dung tích động cơ, công suất cực đại và tiêu thụ nhiên liệu kết hợp và thiết bị an toàn.";
-                    break;
-                case 'hinh-anh':
-                    $description = "Xem những hình ảnh chụp thực tế HD ".$listing_name." mới nhất tại Việt Nam. Các bạn có thể xem hình ảnh nội ngoại thất ".$listing_name." tại Autofun.vn, bao gồm động cơ, thân trước, thân sau, nóc xe, gầm xe, lốp và gương chiếu hậu, nắp thùng, đèn hậu, màu sắc ".$listing_name.".";
-                    break;
-                default:
-                $description = "Giá xe ".$listing_name." mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe ".$listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ".$listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
+                switch ($section) {
+                    case 'thong-so-ky-thuat':
+                        $description = "Xem cấu hình, chức năng và thông số kỹ thuật " . $listing_name . " mới nhất tại Việt Nam, bao gồm kích thước " . $listing_name . " D x R x C, chiều dài cơ sở, dung tích bình nhiên liệu, cỡ lốp, cỡ vành, trọng lượng, dung tích động cơ, công suất cực đại và tiêu thụ nhiên liệu kết hợp và thiết bị an toàn.";
+                        break;
+                    case 'hinh-anh':
+                        $description = "Xem những hình ảnh chụp thực tế HD " . $listing_name . " mới nhất tại Việt Nam. Các bạn có thể xem hình ảnh nội ngoại thất " . $listing_name . " tại Autofun.vn, bao gồm động cơ, thân trước, thân sau, nóc xe, gầm xe, lốp và gương chiếu hậu, nắp thùng, đèn hậu, màu sắc " . $listing_name . ".";
+                        break;
+                    default:
+                        $description = "Giá xe " . $listing_name . " mới nhất tại Việt Nam là 500 Triệu đồng. Xem ngay bài hướng dẫn mua xe " . $listing_name . " trên Autofun.vn để biết các thông tin khuyến mãi " . $listing_name . " năm " . $current_year . ", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
 
-                    break;
+                        break;
+                }
             }
         }
     }
-}
     // individual variant
-    if($is_motorcycle){
+    if ($is_motorcycle) {
         if ($make && $model && $variant_section) {
             // get post title by post name
             $args = array(
@@ -3401,34 +3333,34 @@ add_filter('wpseo_metadesc', function ($description) {
                 'posts_per_page' => 1
             );
             $query = new WP_Query($args);
-    
+
             if ($query->have_posts()) {
                 $query->the_post();
                 $post_title = get_the_title();
                 wp_reset_postdata();
-    
+
                 $listing_name = ucfirst($make) . ' ' . ucfirst($model);
-                $description = "Giá xe máy ". $listing_name." mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy ". $listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ". $listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
-    
+                $description = "Giá xe máy " . $listing_name . " mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy " . $listing_name . " trên Autofun.vn để biết các thông tin khuyến mãi " . $listing_name . " năm " . $current_year . ", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
+
                 switch ($section) {
                     case 'thong-so-ky-thuat':
-                        $description = "Cùng xem cấu hình, tính năng, thông số kỹ thuật xe máy ". $listing_name." mới nhất Việt Nam, bao gồm công suất động cơ ". $listing_name.", cỡ lốp, mức tiêu hao nhiên liệu của, dung tích bình xăng, trọng lượng bản thân, kích thước D x R x C và các trang bị an toàn.";
+                        $description = "Cùng xem cấu hình, tính năng, thông số kỹ thuật xe máy " . $listing_name . " mới nhất Việt Nam, bao gồm công suất động cơ " . $listing_name . ", cỡ lốp, mức tiêu hao nhiên liệu của, dung tích bình xăng, trọng lượng bản thân, kích thước D x R x C và các trang bị an toàn.";
                         break;
                     case 'hinh-anh':
-                        $description = "Xem những hình ảnh chụp thực tế HD của xe máy ". $listing_name." mới nhất tại Việt Nam. Các bạn có thể xem hình ngoại thất ". $listing_name." trên Autofun.vn, bao gồm động cơ, lốp xe, thân trước, thân xe, đệm ngồi, đuôi xe, chiếu hậu gương và đèn pha, đèn bên, đèn hậu và màu sắc ". $listing_name.".";
+                        $description = "Xem những hình ảnh chụp thực tế HD của xe máy " . $listing_name . " mới nhất tại Việt Nam. Các bạn có thể xem hình ngoại thất " . $listing_name . " trên Autofun.vn, bao gồm động cơ, lốp xe, thân trước, thân xe, đệm ngồi, đuôi xe, chiếu hậu gương và đèn pha, đèn bên, đèn hậu và màu sắc " . $listing_name . ".";
                         break;
                     default:
-                    $description = "Giá xe máy ". $listing_name." mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy ". $listing_name." trên Autofun.vn để biết các thông tin khuyến mãi ". $listing_name." năm ".$current_year.", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
-    
+                        $description = "Giá xe máy " . $listing_name . " mới nhất tại Việt Nam là 34,943 Triệu đồng. Xem ngay bài hướng dẫn mua xe máy " . $listing_name . " trên Autofun.vn để biết các thông tin khuyến mãi " . $listing_name . " năm " . $current_year . ", thông số kỹ thuật, tính năng, mức tiêu thụ nhiên liệu của, đánh giá, màu sắc, hình ảnh nội ngoại thất, tin tức và thông tin.";
+
                         break;
                 }
             }
         }
     }
     // cars-electric
-//     if ($url_path == '/cars-electric') {
-//         $description = "รถ EV ใน ไทย EV Cars Thailand (BEV/HEV/PHEV/FCEV) ในประเทศไทย รวบรวมรถไฟฟ้าทุกยี่ห้อในโลก ราคา รถ EVใหม่และใช้แล้วที่ถูกที่สุด ข่าวการเปิดตัวรถยนต์ EV ใหม่ สถานีชาร์จ ประกันภัย สินเชื่อ ซ่อมแซม บำรุงรักษา ภาษีถนน โปรโมชั่น และนโยบายสิทธิพิเศษอื่นๆ สำหรับรถยนต์ไฟฟ้า";
-//     }
+    //     if ($url_path == '/cars-electric') {
+    //         $description = "รถ EV ใน ไทย EV Cars Thailand (BEV/HEV/PHEV/FCEV) ในประเทศไทย รวบรวมรถไฟฟ้าทุกยี่ห้อในโลก ราคา รถ EVใหม่และใช้แล้วที่ถูกที่สุด ข่าวการเปิดตัวรถยนต์ EV ใหม่ สถานีชาร์จ ประกันภัย สินเชื่อ ซ่อมแซม บำรุงรักษา ภาษีถนน โปรโมชั่น และนโยบายสิทธิพิเศษอื่นๆ สำหรับรถยนต์ไฟฟ้า";
+    //     }
 
     /****************** Tools Pages ****************/
 
@@ -3436,41 +3368,41 @@ add_filter('wpseo_metadesc', function ($description) {
         $description = "Chọn xe muốn mua, tự động tính toán chi phí mua xe trả góp, tính lãi suất vay mua xe hàng tháng, dễ dàng đơn giản có được kế hoạch trả góp hàng tháng chính xác.";
     }
 
-//     if ($url_path == '/tools/road-tax-calculator') {
-//         $description = "กำลังค้นหาเครื่องมือคำนวณภาษีรถยนต์？ เช็คภาษีรถยนต์ของรถยนต์ใหม่2020-2021หรือรถมือสองที่AutoFunได้";
-//     }
+    //     if ($url_path == '/tools/road-tax-calculator') {
+    //         $description = "กำลังค้นหาเครื่องมือคำนวณภาษีรถยนต์？ เช็คภาษีรถยนต์ของรถยนต์ใหม่2020-2021หรือรถมือสองที่AutoFunได้";
+    //     }
 
     if ($url_path == '/dung-cu/bao-hiem-xe') {
         $description = "Bảng tính phí Bảo hiểm Xe ô tô Trực tuyến tại Việt Nam. Tính toán chi phí mua bảo hiểm cho ô tô của bạn.";
     }
 
-//     if ($url_path == '/tools/fuel-cost-calculator') {
-//         $description = "เครื่องคำนวณค่าน้ำมันเชื้อเพลิง วิธีคำนวณค่าน้ำมันรถยนต์ คำนวณค่าใช้จ่ายน้ำมันเชื้อเพลิงในการเดินทางตามรุ่นรถยนต์ อัตราการใช้น้ำมันเชื้อเพลิง ระยะทาง ราคาน้ำมัน และคำนวณค่าน้ำมันเชื้อเพลิงต่อปี";
-//     }
-	
-	    if ($url_path == '/dung-cu/mua-xe-tra-gop') {
+    //     if ($url_path == '/tools/fuel-cost-calculator') {
+    //         $description = "เครื่องคำนวณค่าน้ำมันเชื้อเพลิง วิธีคำนวณค่าน้ำมันรถยนต์ คำนวณค่าใช้จ่ายน้ำมันเชื้อเพลิงในการเดินทางตามรุ่นรถยนต์ อัตราการใช้น้ำมันเชื้อเพลิง ระยะทาง ราคาน้ำมัน และคำนวณค่าน้ำมันเชื้อเพลิงต่อปี";
+    //     }
+
+    if ($url_path == '/dung-cu/mua-xe-tra-gop') {
         $description = "Chọn xe muốn mua, tự động tính toán chi phí mua xe trả góp, tính lãi suất vay mua xe hàng tháng, dễ dàng đơn giản có được kế hoạch trả góp hàng tháng chính xác.";
     }
-	
+
     if ($url_path == '/so-sanh-xe') {
-        $description = 'Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam '.$current_year.' trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động. ';
+        $description = 'Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ' . $current_year . ' trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động. ';
     }
 
     if ($url_path == '/so-sanh-xe-may') {
         $description = 'Bạn đang muốn so sánh xe hơi và xe máy ở Việt Nam? Đừng tìm nữa, hãy truy cập vào AutoFunVN! Trang web toàn diện của chúng tôi cho phép bạn dễ dàng so sánh thông số kỹ thuật, giá cả và tính năng của nhiều loại xe khác nhau, giúp bạn đưa ra quyết định mua hàng thông minh. Bắt đầu tìm kiếm của bạn ngay hôm nay và tìm thấy chiếc xe hơi hoặc xe máy hoàn hảo cho nhu cầu của bạn!';
     }
-    
+
     if ($url_path == '/dung-cu/gia-xang-dau') {
         $oil_price_string = get_oil_prices();
         $description = 'Giá Xăng Dầu Hôm Nay - Giá xăng RON 92, RON 95, Dầu KO, DO 0 mới nhất ở Việt Nam: RON 92 giá 19.400 đ 1 lít, RON 95 giá 20.500 đ 1 lít, Dầu KO giá 18.830 đ 1 lít, Dầu DO 0 giá 18.140 đ 1 lít.';
     }
 
-	
-	
-	
+
+
+
     // other pages
     if ($url_path == '/about-us') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     if ($url_path == '/quang-cao-voi-chung-toi') {
@@ -3478,17 +3410,17 @@ add_filter('wpseo_metadesc', function ($description) {
     }
 
     if ($url_path == '/user-agreement') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($url_path == '/join-us') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
     if ($url_path == '/privacy-policy') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     if ($url_path == '/write-for-us') {
-        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam ".$current_year." trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
+        $description = "Xem các thông tin liên quan đến ô tô, xe máy mới nhất Việt Nam " . $current_year . " trên Autofun.vn, bao gồm tin tức xe, giá xe ô tô, hình ảnh, thông số kỹ thuật, video, đánh giá, so sánh xếp hạng, hướng dẫn mua hàng, v.v, theo dõi thời gian thực về ô tô mới và xe máy mới được sắp được tung ra hoặc niêm yết trên thị trường năng động.";
     }
 
     return $description;
@@ -4062,6 +3994,78 @@ function display_current_page_url()
 }
 add_shortcode('current_url', 'display_current_page_url');
 
+function display_motor_current_page_url()
+{
+    $news_id = get_last_numeric_id_from_url();
+    $post;
+    if ($news_id != NULL) {
+        global $wpdb;
+        $result = $wpdb->get_var(
+            $wpdb->prepare("SELECT news_post_id FROM news_temp WHERE news_id = %d", $news_id)
+        );
+        $post = get_post($result);
+    } else {
+        // Get the current URL path
+        $current_url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        // Extract the slug (last part of the URL)
+        $slug = basename($current_url); // This gets the last segment of the URL
+        // Get the post ID based on the slug and post type
+        $post = get_page_by_path($slug, OBJECT, 'news'); // Replace 'news' with your custom post type
+    }
+
+
+    if ($post) {
+        $related_model_ids = get_post_meta($post->ID, 'related_bike_model', true);
+        $make = '';
+        $model = '';
+        $model_data = '';
+        if (!empty($related_model_ids)) {
+            if (!is_array($related_model_ids)) {
+                $related_model_ids = explode(',', $related_model_ids);
+            }
+            $found_model = false;
+            foreach ($related_model_ids as $model_id) {
+                if ($found_model) {
+                    continue;
+                }
+                $model_id = intval(trim($model_id));
+                $model_post = get_post($model_id);
+                if ($model_post && !is_wp_error($model_post)) {
+                    $make_id = get_post_meta($model_id, 'make', true);
+                    if ($make_id) {
+                        $make_term = get_term($make_id);
+                        if ($make_term && !is_wp_error($make_term)) {
+                            $make_slug = $make_term->slug;
+                            $full_slug = $model_post->post_name;
+                            $model = trim(str_replace($make_slug, '', $full_slug));
+                            $model_name = ltrim($model, '-');
+                            $model_data .= '[individual_listing_bike_tabs make="' . esc_attr(strtolower(strtolower($make_slug))) . '" model="' . esc_attr(strtolower(strtolower($model_name))) . '" 											selected_tab="Tin tức"]';
+                            $found_model = true;
+                        }
+                    }
+                }
+            }
+        }
+        // Get author details and publish date with time
+        $author_id = $post->post_author;
+        $author_name = get_the_author_meta('display_name', $author_id);
+        $publish_date = get_the_date('M j, Y h:i A', $post); // Format date to match the design
+        $author_image_url = get_the_author_meta('user_url', $author_id);
+        // Start output buffering
+        ob_start();
+
+        // Display post title, author avatar, author name, publish date, and content with inline CSS
+    ?>
+        <section>
+            <div class="related-tabs">
+                <?php echo do_shortcode($model_data); ?>
+            </div>
+        </section>
+    <?php
+    }
+}
+add_shortcode('motor_current_url', 'display_motor_current_page_url');
+
 function create_historical_oil_price_table()
 {
     global $wpdb;
@@ -4180,6 +4184,17 @@ function custom_compare_cars_rewrite_rule()
     );
 }
 add_action('init', 'custom_compare_cars_rewrite_rule');
+
+
+function custom_compare_motor_rewrite_rule()
+{
+    add_rewrite_rule(
+        '^so-sanh-xe-may/([^/]+)-vs-([^/]+)/?$',
+        'index.php?pagename=so-sanh-xe-may&car1=$matches[1]&car2=$matches[2]',
+        'top'
+    );
+}
+add_action('init', 'custom_compare_motor_rewrite_rule');
 
 function get_custom_post_link($post_id, $default_link = '')
 {
@@ -4725,9 +4740,9 @@ function get_variant_from_query_vars()
 
     $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac'];
     if (!in_array($section, $individual_pages)) {
-		if (strpos($section, $listing_name) === false) {
-			$section = $listing_name . '-' . $section;
-		}
+        if (strpos($section, $listing_name) === false) {
+            $section = $listing_name . '-' . $section;
+        }
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'variant',
@@ -4895,6 +4910,9 @@ function customize_yoast_sitemap_post_urls($url, $post)
     if ($post->post_type === 'news') {
         // Append the post ID with a hyphen at the end of the URL
         $url = get_custom_post_link($post->ID, $url);
+    } elseif ($post->post_type === 'motorcycle-news') {
+        // Append the post ID with a hyphen at the end of the URL
+        $url = get_custom_post_link($post->ID, $url);
     } elseif ($post->post_type === 'variant') {
         // Get the model associated with the variant
         $model_id = $post->post_parent;
@@ -4914,6 +4932,26 @@ function customize_yoast_sitemap_post_urls($url, $post)
         if ($make_slug && $model_slug && $variant_slug) {
             // Construct the URL: cars/{make}/{model}/{variant}
             $url = home_url("xe-oto/" . sanitize_title($make_slug) . "/" . $model_slug . "/" . $variant_slug);
+        }
+    } elseif ($post->post_type === 'motorcycle-variant') {
+        // Get the model associated with the variant
+        $model_id = $post->post_parent;
+        $model_name = get_the_title($model_id);
+
+        // Get the make term ID directly from the model post
+        $make_term_id = get_post_meta($model_id, 'make', true);
+        $make_slug = get_motor_term_slug_by_id($make_term_id);
+
+        // Sanitize slugs
+        $model_slug = sanitize_title($model_name); // Get the slug for the model
+        $model_slug = str_replace($make_slug, '', $model_slug);
+        $model_slug = trim($model_slug, '-');
+
+        $variant_slug = $post->post_name;
+
+        if ($make_slug && $model_slug && $variant_slug) {
+            // Construct the URL: cars/{make}/{model}/{variant}
+            $url = home_url("xe-may/" . sanitize_title($make_slug) . "/" . $model_slug . "/" . $variant_slug);
         }
     }
 
@@ -4935,6 +4973,21 @@ function exclude_unpublished_news_from_sitemap($excluded_posts)
 }
 add_filter('wpseo_exclude_from_sitemap_by_post_ids', 'exclude_unpublished_news_from_sitemap');
 
+function exclude_unpublished_motorcycle_news_from_sitemap($excluded_posts)
+{
+    $args = array(
+        'post_type'      => 'motorcycle-news',
+        'post_status'    => array('draft', 'pending', 'private', 'trash'), // Exclude all non-published statuses
+        'fields'         => 'ids',
+        'posts_per_page' => -1,
+    );
+
+    $unpublished_posts = get_posts($args);
+
+    return array_merge($excluded_posts, $unpublished_posts);
+}
+add_filter('wpseo_exclude_from_sitemap_by_post_ids', 'exclude_unpublished_motorcycle_news_from_sitemap');
+
 // Helper function to retrieve the term slug by ID
 function get_term_slug_by_id($term_id)
 {
@@ -4942,6 +4995,16 @@ function get_term_slug_by_id($term_id)
         return '';
     }
     $term = get_term($term_id, 'listing_make');
+    return $term && !is_wp_error($term) ? $term->slug : '';
+}
+
+// Helper function to retrieve the term slug by ID for motorcycle varaint
+function get_motor_term_slug_by_id($term_id)
+{
+    if (!$term_id) {
+        return '';
+    }
+    $term = get_term($term_id, 'motorcycle_make');
     return $term && !is_wp_error($term) ? $term->slug : '';
 }
 
@@ -4975,12 +5038,16 @@ function add_listing_make_to_sitemap($sitemap_index)
     return $sitemap_index;
 }
 
-// // No .htaccess needed - Handle routing with 'init' and 'parse_request'
-// add_action( 'init', 'add_listing_make_rewrite_rule' );
-// function add_listing_make_rewrite_rule() {
-//     add_rewrite_tag('%listing_make_sitemap%', '([^/]+)'); // Still needed for query var
-// }
 
+add_filter('wpseo_sitemap_index', 'add_motorcycle_make_to_sitemap');
+function add_motorcycle_make_to_sitemap($sitemap_index)
+{
+    if (taxonomy_exists('motorcycle_make')) {
+        $taxonomy_sitemap_url = home_url('/motorcycle-make-sitemap.xml');
+        $sitemap_index .= '<sitemap><loc>' . esc_url($taxonomy_sitemap_url) . '</loc></sitemap>';
+    }
+    return $sitemap_index;
+}
 
 add_action('parse_request', 'generate_listing_make_sitemap');
 function generate_listing_make_sitemap($wp)
@@ -5004,6 +5071,44 @@ function generate_listing_make_sitemap($wp)
             foreach ($terms as $term) {
                 $make_slug = $term->slug; // Get the slug of the make
                 $custom_url = home_url('/xe-oto/' . $make_slug . '/'); // Format: car/make-name
+
+                echo '<url>';
+                echo '<loc>' . esc_url($custom_url) . '</loc>';
+                echo '<lastmod>' . date('c', time()) . '</lastmod>'; // Use current timestamp
+                echo '<changefreq>weekly</changefreq>';
+                echo '<priority>0.8</priority>';
+                echo '</url>';
+            }
+        }
+
+        echo '</urlset>';
+        exit;
+    }
+}
+
+//motorcycle make sitemap.xml
+add_action('parse_request', 'generate_motorcycle_make_sitemap');
+function generate_motorcycle_make_sitemap($wp)
+{
+    if ($wp->request === 'motorcycle-make-sitemap.xml') {
+        header('Content-Type: application/xml; charset=UTF-8');
+        echo '<?xml version="1.0" encoding="UTF-8"?>';
+        echo '<?xml-stylesheet type="text/xsl" href="' . esc_url(home_url('/main-sitemap.xsl')) . '"?>';
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+                     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+                     xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                     xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+                     xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">';
+
+        $terms = get_terms(array(
+            'taxonomy' => 'motorcycle_make',
+            'hide_empty' => false,
+        ));
+
+        if (! is_wp_error($terms) && ! empty($terms)) {
+            foreach ($terms as $term) {
+                $make_slug = $term->slug; // Get the slug of the make
+                $custom_url = home_url('/xe-may/' . $make_slug . '/'); // Format: car/make-name
 
                 echo '<url>';
                 echo '<loc>' . esc_url($custom_url) . '</loc>';
@@ -5281,9 +5386,9 @@ function get_motor_variant_from_query_vars()
 
     $individual_pages = ['tong-quat', 'tin-tuc', 'thong-so-ky-thuat', 'hinh-anh', 'tieu-hao-nhien-lieu', 'mau-sac', ''];
     if (!in_array($section, $individual_pages)) {
-		if (strpos($section, $listing_name) === false) {
-			$section = $listing_name . '-' . $section;
-		}
+        if (strpos($section, $listing_name) === false) {
+            $section = $listing_name . '-' . $section;
+        }
         $variant_post = get_posts(array(
             'name' => $section,
             'post_type' => 'motorcycle-variant',
@@ -5355,12 +5460,12 @@ function motor_latest_news_shortcode($atts)
     $translate = [
         'Latest News' => 'Tin mới nhất',
     ];
-    
+
     $all_news = get_latest_news_data('motorcycle-news');
     $news = array_slice($all_news, 0, 5); // Limit to 5 items
 
     ob_start(); // Start output buffering
-    ?>
+?>
     <!-- Your HTML Structure for Related News -->
     <h2 style="margin-bottom: 16px;" class="wa-title-text">
         <?php echo $translate['Latest News']; ?>
@@ -5465,14 +5570,16 @@ function format_price_vietnam($price)
 {
     if ($price >= 1000000000) {
         // Convert to 'Tỷ' (Billion)
-        $formatted_price = number_format($price / 1000000000, 3, '.', ''); // Keep 3 decimal places
-        $formatted_price = rtrim(rtrim($formatted_price, '0'), '.'); // Remove trailing zeros and dot if not needed
+        $formatted_price = number_format($price / 1000000000, 3, ',', ''); // Use comma as the decimal separator
+        $formatted_price = rtrim(rtrim($formatted_price, '0'), ','); // Remove trailing zeros and comma if not needed
         $formatted_price .= ' Tỷ';
-    } elseif ($price >= 1000000) {
-        // Convert to 'Triệu' (Million)
-        $formatted_price = number_format($price / 1000000, 0, '.', '') . ' Triệu';
+    } elseif ($price >= 1000000 || $price >= 1000) {
+        // Convert to 'Triệu' (Million), including fractional values below 1 Triệu
+        $formatted_price = number_format($price / 1000000, 3, ',', ''); // Use comma as the decimal separator
+        $formatted_price = rtrim(rtrim($formatted_price, '0'), ','); // Remove trailing zeros and comma if not needed
+        $formatted_price .= ' Triệu';
     } else {
-        // Handle smaller values, if needed
+        // Handle smaller values directly in VND
         $formatted_price = number_format($price, 0, '', '.') . ' VND';
     }
 

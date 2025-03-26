@@ -26,7 +26,7 @@ function motor_related_news($atts)
 
     ob_start();
 
-    $title = $brand_name ? esc_html('วีดีโอ รถมอเตอร์ไซค์ '. $brand_name . ' ในไทย') : 'Tin tức xe máy mới nhất';
+    $title = $brand_name ? esc_html('Tin tức về xe máy '. $brand_name . ' tại Việt Nam') : 'Tin tức xe máy mới nhất';
 ?>
     <h2 class="wa-title-text find-car-news-title" ><?php echo $title; ?></h2>
      <div id="fuel-latest-news-section" style="margin-left:10px" class="fuel-news-section inner">

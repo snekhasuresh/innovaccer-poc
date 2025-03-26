@@ -1,106 +1,93 @@
 <?php
-global $filter_keys;
-function bike_search_filter_shortcode()
+// import search-filter-shortcode.css
+function enqueue_motor_search_filter_shortcode_css()
 {
+    wp_enqueue_style('motorcycle-search-filter-shortcode', get_stylesheet_directory_uri() . '/widget-shortcodes/new-cars/css/search-filter-shortcode.css');
+}
+
+// import apply-filter-to-cars.css
+function enqueue_apply_filter_to_motorcycles_css()
+{
+    wp_enqueue_style('apply-filter-to-motorcycles', get_stylesheet_directory_uri() . '/widget-shortcodes/new-cars/css/apply-filter-to-cars.css');
+}
+
+function motorcycle_search_filter_shortcode()
+{
+    enqueue_motor_search_filter_shortcode_css();
+
     // price range
     $price_ranges = [
         'all' => 'All',
-        '0-40' => '0-40K',
-        '40-60' => '40-60K',
-        '60-90' => '60-90K',
-        '90-120' => '90-120K',
-        '120-150' => '120-150K',
-        '150-200' => '150-200K',
-        '200-300' => '200-300K',
-        '300-400' => '300-400K',
-        '400-600' => '400-600K',
-        '600-3000' => '600-3000K'
+        '0-5' => '0 -5 tr',
+        '5-10' => '5 - 10 tr',
+        '10-20' => '10 - 20 tr',
+        '20-50' => '20 - 50 tr',
+        '50-100' => '50 - 100 tr',
     ];
 
-    // body type
-    $body_type_terms = get_terms(array('taxonomy' => 'listing_type', 'hide_empty' => false));
-    $body_types = [];
-    $body_types['all'] = 'All';
-    $body_types_slug = [];
-    foreach ($body_type_terms as $term) {
-        $body_types[$term->term_id] = $term->name;
-        $body_types_slug[$term->term_id] = $term->slug;
-    }
-
-    // Segment
-    $segments = [
+    // categories
+    $categories = [
         'all' => 'All',
-        'A-Segment' => 'A-Segment',
-        'B-Segment' => 'B-Segment',
-        'C-Segment' => 'C-Segment',
-        'D-Segment' => 'D-Segment',
-        'E-Segment' => 'E-Segment',
-        'Commercial' => 'Commercial',
-        'Executive' => 'Executive',
-        'Grand Tourer' => 'Grand Tourer',
-        'Luxury' => 'Luxury',
-        'Sports Car' => 'Sports Car',
-        'Super Car' => 'Super Car',
-        'Compact Executive' => 'Compact Executive',
-        '4x4' => '4x4',
-        '4x2' => '4x2'
+        'adventure-touring' => 'Adventure Touring',
+        'cafe-racer' => 'Cafe Racer',
+        'cruiser' => 'Cruiser',
+        'dual-sport' => 'Dual Sport',
+        'moped' => 'Moped',
+        'off-road' => 'Off Road',
+        'scooter' => 'Scooter',
+        'sport' => 'Sport',
+        'street' => 'Street',
+        'super-sport' => 'Super Sport',
+        'touring' => 'Touring',
+        'touring-sport' => 'Touring Sport',
     ];
 
     // transmission
     $transmissions = [
         'all' => 'All',
-        'mt' => 'MT',
-        'amt' => 'AMT',
+        'mt' => 'Manual',
+        'at' => 'Automatic',
         'cvt' => 'CVT',
-        'dct' => 'DCT',
-        'at' => 'AT',
-        'mct' => 'MCT',
-        'ev' => 'EV',
-        'e-cvt' => 'E-CVT'
+        'dct' => 'Dual Clutch',
     ];
 
     // fuel
     $fuels = [
         'all' => 'All',
         'petrol' => 'Petrol',
-        'diesel' => 'Diesel',
-        'petrol-hybrid' => 'Petrol Hybrid',
-        'diesel-hybrid' => 'Diesel Hybrid',
-        'ev' => 'Electric Vehicle (EV)'
+        'ev' => 'Electric'
     ];
 
     // seats
     $seats = [
         'all' => 'All',
+        '1' => '1 seater',
         '2' => '2 seater',
-        '4' => '4 seater',
-        '5' => '5 seater',
-        '6' => '6 seater',
-        '7' => '7 seater',
-        '8' => '8 seater',
-        '9' => '9 seater',
     ];
 
-    // drive type
-    $drive_types = [
+    // displacement
+    $displacement = [
         'all' => 'All',
-        'frontWheelDrive' => 'FWD',
-        'rearWheelDrive' => 'RWD',
-        'allWheelDrive' => 'AWD'
+        '0-150-cc' => '0-150cc',
+        '150-200-cc' => '150-200cc',
+        '200-300-cc' => '200-300cc',
+        '300-400-cc' => '300-400cc',
+        '400-500-cc' => '400-500cc',
+        '500-1000-cc' => '500-1000cc',
+        'above-1000-cc' => 'Above 1000cc',
     ];
 
     $all_filters = [];
-    $all_filters['price_range'] = array('label' => 'ราคา', 'values' => $price_ranges);
-    $all_filters['body_type'] = array('label' => 'Body Type', 'values' => $body_types);
-    $all_filters['segment'] = array('label' => 'Segment', 'values' => $segments);
+    $all_filters['price_range'] = array('label' => 'Price', 'values' => $price_ranges);
+    $all_filters['category'] = array('label' => 'Category', 'values' => $categories);
     $all_filters['transmission'] = array('label' => 'Transmission', 'values' => $transmissions);
     $all_filters['fuel'] = array('label' => 'Fuel', 'values' => $fuels);
     $all_filters['seats'] = array('label' => 'Seats', 'values' => $seats);
-    $all_filters['drive_type'] = array('label' => 'Drive Type', 'values' => $drive_types);
+    $all_filters['displacement'] = array('label' => 'Displacement', 'values' => $displacement);
     ob_start();
 ?>
     <div class="car-search-filters">
-        <h2 class="wa-title-text">กรองผลการค้นหา</h2>
+        <h2 class="wa-title-text">Search Filters</h2>
         <div id="car-search-filters"></div>
         <?php foreach ($all_filters as $key => $value): ?>
             <div class="filter-group">
@@ -119,252 +106,19 @@ function bike_search_filter_shortcode()
             </div>
         <?php endforeach; ?>
     </div>
-    <div class="more-options-container">
+
+    <!-- <div class="more-options-container">
         <div class="line"></div>
         <button class="more-options-toggle">
             More Options <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>
         </button>
         <div class="line"></div>
-    </div>
+    </div> -->
     <div id="selected-filters-container">
     </div>
 
-
-    <style>
-        .nav-tabs li a {
-            margin-right: 2px;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.9;
-            border: none;
-            /* Remove all side borders */
-            border-radius: 8px 8px 0 0;
-        }
-
-        .nav-link:hover {
-            border-bottom: 3px solid #feb429;
-            color: #262626;
-            background-color: white !important;
-            cursor: pointer;
-        }
-
-
-        .nav-link {
-            color: #8c8c8c;
-        }
-
-        .nav-link:hover {
-            border: none;
-            /* No border on hover */
-        }
-
-        .nav-link.active {
-            color: #262626 !important;
-            border-bottom: 3px solid #feb429 !important;
-            /* Only bottom border */
-            background-color: transparent !important;
-            border-left: none !important;
-            border-right: none !important;
-            border-top: none !important;
-        }
-
-        #selectedFiltersContainer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        #selectedFiltersContainer div {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .car-search-filters {
-            font-family: Arial, sans-serif;
-            margin-bottom: 20px;
-            margin-top: 43px;
-        }
-
-
-
-        .heading-search-filters {
-            font-size: 26px;
-            line-height: 32px;
-
-            font-weight: bold;
-            color: black;
-        }
-
-        .filter-group {
-            margin-bottom: 10px;
-            display: flex;
-            font-size: 14px;
-            font-weight: 500;
-
-        }
-
-        .filter-group-container {
-            margin-top: 30px;
-        }
-
-        .filter-group label {
-            flex: 0 0 124px;
-            margin-right: 10px;
-            text-align: left;
-            font-size: 14px;
-            font-weight: 500;
-            /* Align the label text to the right */
-        }
-
-
-        .filter-group ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .filter-group ul li {
-            margin-right: 8px;
-            /* Reduced margin */
-            margin-bottom: 8px;
-        }
-
-        .filter-group button {
-
-            /* Reduced padding to make buttons smaller */
-            font-size: 14px;
-            font-family: "roboto";
-            /* Reduced button text size */
-            background: none;
-
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-
-            padding-left: 11px;
-            padding-right: 11px;
-            font-weight: 400;
-            /* Reduced button height */
-        }
-
-        .filter-group button.highlight-yellow {
-            display: block;
-            background: #feb429;
-            color: #fff;
-        }
-
-        .filter-group button.highlight-yellow:hover,
-        .filter-group button.highlight-dark-yellow:hover {
-            background-color: #feb429;
-            color: white;
-        }
-
-        .filter-group button.highlight-dark-yellow {
-            background-color: #feb429;
-            color: black;
-        }
-
-        .filter-group button:hover {
-            background-color: #f5f5f5;
-        }
-
-
-        .more-options-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -30px;
-        }
-
-        .more-options-toggle {
-            cursor: pointer;
-            padding: 4px 8px;
-            font-size: 12px;
-            background-color: white;
-            border: 1px solid #ccc;
-            width: 227px;
-            height: 40px;
-            margin-top: 39px;
-            border-top: none;
-            background-color: white;
-            font-family: "Roboto";
-            font-weight: 700;
-            line-height: 20px;
-            font-size: 14px;
-            color: #595959;
-
-        }
-
-
-        .line {
-            height: 0.5px;
-            background-color: #ccc;
-            flex-grow: 1;
-        }
-
-        .selected-filters {
-            border: 1px solid #e0e0e0;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 63px;
-            background-color: #f9f9f9;
-            margin-top: 28px;
-        }
-
-        .selected-filters h4 {
-            font-size: 16px;
-            margin-right: 10px;
-        }
-
-        .selected-filters .filter-tag {
-            background-color: #feb429;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            margin-right: 5px;
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .selected-filters .filter-tag span {
-            margin-right: 5px;
-        }
-
-        .selected-filters .filter-tag .remove-filter {
-            background-color: #ccc;
-            color: #fff;
-            padding: 2px 5px;
-            border-radius: 50%;
-            font-size: 10px;
-            cursor: pointer;
-        }
-
-        #resetFilters {
-            border: none;
-            background-color: #F9F9F9;
-
-            cursor: pointer;
-
-        }
-
-        .reset-filters {
-            display: flex;
-            justify-content: flex-end;
-            padding: auto;
-            margin: 10px 0px;
-        }
-    </style>
-
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
+        /*document.addEventListener('DOMContentLoaded', function() {
             const moreOptionsToggle = document.querySelector('.more-options-toggle');
             const filterGroups = document.querySelectorAll('.filter-group');
             const moreOptionsText = 'More Options <span style="margin-left: 5px;"><i class="fas fa-chevron-down"></i></span>';
@@ -383,7 +137,7 @@ function bike_search_filter_shortcode()
                 if (isExpanded) {
                     // Collapse: Hide filters after the first five
                     filterGroups.forEach((group, index) => {
-                        if (index >= 5) {
+                        if (index >= 10) {
                             group.style.display = 'none';
                         }
                     });
@@ -398,81 +152,55 @@ function bike_search_filter_shortcode()
                     moreOptionsToggle.classList.add('expanded');
                 }
             });
-        });
+        });*/
 
 
         let selectedFilters = {};
         var slug_map = slug_map || {};
-        Object.assign(slug_map, <?php echo json_encode($body_types_slug); ?>);
         Object.assign(slug_map, {
             // price range
-            '0-40': 'between0to40K',
-            '40-60': 'between40to60K',
-            '60-90': 'between60to90K',
-            '90-120': 'between90to120K',
-            '120-150': 'between120to150K',
-            '150-200': 'between150to200K',
-            '200-300': 'between200to300K',
-            '300-400': 'between300to400K',
-            '400-600': 'between400to600K',
-            '600-3000': 'between600to3000K',
+            '0-5': 'giua-vnd-0-5-tr',
+            '5-10': 'giua-vnd-5-10-tr',
+            '10-20': 'giua-vnd-10-20-tr',
+            '20-50': 'giua-vnd-20-50-tr',
+            '50-100': 'giua-vnd-50-100-tr',
 
-            // body types
-            'Sedan': 'sedan',
-            'Hatchback': 'hatchback',
-            'SUV': 'suv',
-            'Coupe': 'coupe',
-            'Convertible': 'convertible',
-            'Minivan': 'minivan',
-            'Pickup Truck': 'pickupTruck',
-            'Van': 'van',
-
-            // segments
-            'A-Segment': 'aSegment',
-            'B-Segment': 'bSegment',
-            'C-Segment': 'cSegment',
-            'D-Segment': 'dSegment',
-            'E-Segment': 'eSegment',
-            'Commercial': 'commercial',
-            'Executive': 'executive',
-            'Grand Tourer': 'grandTourer',
-            'Luxury': 'luxury',
-            'Sports Car': 'sportsCar',
-            'Super Car': 'superCar',
-            'Compact Executive': 'compactExecutive',
-            '4x4': '4x4',
-            '4x2': '4x2',
+            // categories
+            'adventure-touring': 'adventure-touring',
+            'cafe-racer': 'cafe-racer',
+            'cruiser': 'cruiser',
+            'dual-sport': 'dual-sport',
+            'moped': 'moped',
+            'off-road': 'off-road',
+            'scooter': 'scooter',
+            'sport': 'sport',
+            'street': 'street',
+            'super-sport': 'super-sport',
+            'touring': 'touring',
+            'touring-sport': 'touring-sport',
 
             // transmissions
             'mt': 'mt',
-            'amt': 'amt',
+            'at': 'at',
             'cvt': 'cvt',
             'dct': 'dct',
-            'at': 'at',
-            'mct': 'mct',
-            'ev': 'ev',
-            'e-cvt': 'eCvt',
 
             // fuels
             'petrol': 'petrol',
-            'diesel': 'diesel',
-            'petrol-hybrid': 'petrolHybrid',
-            'diesel-hybrid': 'dieselHybrid',
             'ev': 'ev',
 
             // seats
-            '2': '2Seater',
-            '4': '4Seater',
-            '5': '5Seater',
-            '6': '6Seater',
-            '7': '7Seater',
-            '8': '8Seater',
-            '9': '9Seater',
+            '1': '1',
+            '2': '2',
 
-            // drive types
-            'frontWheelDrive': 'fwd',
-            'rearWheelDrive': 'rwd',
-            'allWheelDrive': 'awd'
+            // displacement
+            '0-150-cc': '0-150cc',
+            '150-200-cc': '150-200cc',
+            '200-300-cc': '200-300cc',
+            '300-400-cc': '300-400cc',
+            '400-500-cc': '400-500cc',
+            '500-1000-cc': '500-1000cc',
+            'above-1000-cc': 'above-1000cc',
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -485,11 +213,21 @@ function bike_search_filter_shortcode()
             }
             var parts = url.split('/');
             var filter = parts[parts.length - 1];
-            var filter_parts = filter.split('-');
+
+            var filter_parts = [];
+            // if the last part has tot-nhat- and -xe-may-tai-vietnam, remove them
+            if (filter.includes('tot-nhat-') && filter.includes('-xe-may-tai-vietnam')) {
+                filter = filter.replace('tot-nhat-', '');
+                filter = filter.replace('-xe-may-tai-vietnam', '');
+            } else {
+                filter = filter.replace('tot-nhat', '');
+            }
+
+            filter_parts = filter.includes('-va-') ? filter.split('-va-') : [filter];
             all_filters = <?php echo json_encode($all_filters); ?>;
 
-            // check if filter_parts contains 'best'
-            var valid_url = filter_parts.length > 1 && filter_parts[0] === 'best';
+            // check if filter_parts contains 'tot-nhat'
+            var valid_url = filter_parts.length > 0;
             if (valid_url) {
                 // get keys of filter_parts from slug_map
                 for (var i = 0; i < filter_parts.length; i++) {
@@ -502,7 +240,7 @@ function bike_search_filter_shortcode()
                 }
             }
             // if url is baseurl/cars
-            if (filter_parts.length === 1 && filter_parts[0] === 'cars') {
+            if (filter_parts.length === 1 && filter_parts[0] === 'xe-may') {
                 valid_url = true;
             }
 
@@ -607,7 +345,7 @@ function bike_search_filter_shortcode()
                 selectedFilters[filter] = [value];
 
                 url = window.location.href;
-                let existingFilters = <?php echo json_encode(motor_get_existing_filters()); ?>;
+                let existingFilters = <?php echo json_encode(get_existing_motorcycle_filters()); ?>;
                 if (!existingFilters) {
                     existingFilters = {};
                 }
@@ -626,20 +364,30 @@ function bike_search_filter_shortcode()
             outerUnion = Object.fromEntries(Object.entries(outerUnion).filter(([_, v]) => v.length > 0));
 
             if (Object.keys(outerUnion).length === 0) {
-                return "<?php echo home_url('/cars'); ?>";
+                return "<?php echo home_url('/xe-may'); ?>";
             }
 
-            let base_url = "<?php echo home_url('/'); ?>" + 'new-cars/best';
+            const base_url = "<?php echo home_url('/'); ?>" + 'xe-may-moi/tot-nhat';
+            let url = base_url;
+
+            let all_valid_filters = [];
             for (const [key, value] of Object.entries(outerUnion)) {
                 if (value.length > 0) {
                     for (var i = 0; i < value.length; i++) {
                         if (slug_map[value[i]] !== undefined) {
-                            base_url = base_url + '-' + slug_map[value[i]];
+                            all_valid_filters.push(slug_map[value[i]]);
                         }
                     }
                 }
             }
-            return base_url;
+
+            if (all_valid_filters.length === 1) {
+                url = url + '-' + all_valid_filters[0] + '-xe-may-tai-vietnam';
+            } else {
+                url = url + '-va-' + all_valid_filters.join('-va-');
+            }
+
+            return url;
         }
 
         function getOuterUnion(selectedFilters, existingFilters) {
@@ -673,671 +421,294 @@ function bike_search_filter_shortcode()
             return union;
         }
     </script>
-    <?php
+<?php
     return ob_get_clean();
 }
 
-
-add_action('wp_ajax_handle_bike_search_filter', 'handle_bike_search_filter');
-add_action('wp_ajax_nopriv_handle_bike_search_filter', 'handle_bike_search_filter');
-function handle_bike_search_filter()
-{
-    if (isset($_POST['filter']) && isset($_POST['value'])) {
-        ob_start();
-
-        if (isset($_POST['selectedFilters'])) {
-            apply_filters_to_bikes($_POST['selectedFilters']);
-        } else {
-            apply_filters_to_bikes(array());
-        }
-
-        $output = ob_get_clean();
-        wp_send_json_success($output);
-    } else {
-        wp_send_json_error('Invalid request');
-    }
-}
-
-add_shortcode('bike_search_filter', 'bike_search_filter_shortcode');
+add_shortcode('motorcycle_search_filter', 'motorcycle_search_filter_shortcode');
 
 // require_once ABSPATH . 'wp-content/themes/voiture-child/widget-shortcodes/new-cars/findnew-upcoming-cars.php';
-
-function apply_filters_to_bikes($selectedFilters)
+function apply_filters_to_motorcycles($selectedFilters)
 {
+    enqueue_apply_filter_to_motorcycles_css();
+
     ob_start();
 
-    $args = array('post_type' => 'listing', 'meta_query' => array(), 'posts_per_page' => -1);
-
-    echo '<div class="widget-container"> </div>';
-
-    $need_variant_query = false;
     $filter_meta = array(
-        'Price' => array('post_type' => 'variant', 'meta_key' => 'retail_price'),
-        'Body Type' => array('post_type' => 'listing', 'meta_key' => 'listing_type'),
-        'Segment' => array('post_type' => 'listing', 'meta_key' => 'listing-segment'),
-        'Transmission' => array('post_type' => 'variant', 'meta_key' => 'transmission'),
-        'Fuel' => array('post_type' => 'variant', 'meta_key' => 'fuel_type'),
-        'Seats' => array('post_type' => 'variant', 'meta_key' => 'seats'),
-        'Drive Type' => array('post_type' => 'variant', 'meta_key' => 'driven_wheels'),
+        'Price' => array('post_type' => 'motorcycle-variant', 'meta_key' => 'price'),
+        'Category' => array('post_type' => 'motorcycle-listing', 'meta_key' => 'listing_type'),
+        'Transmission' => array('post_type' => 'motorcycle-variant', 'meta_key' => 'gearbox'),
+        'Fuel' => array('post_type' => 'motorcycle-variant', 'meta_key' => 'fuel_type'),
+        'Seats' => array('post_type' => 'motorcycle-variant', 'meta_key' => 'seat'),
+        'Displacement' => array('post_type' => 'motorcycle-variant', 'meta_key' => 'capacity'),
     );
 
-    // get variant post type labels from $filter_meta
+
+    /** logic to get listing ids */
+    $intersected_listing_ids = array();
+    $selected_filters_keys = array_keys($selectedFilters);
     foreach ($filter_meta as $key => $value) {
-        if (in_array($key, array_keys($selectedFilters)) && $value['post_type'] == 'variant') {
-            $need_variant_query = true;
-        }
-    }
+        if (in_array($key, $selected_filters_keys)) {
+            $post_type = $value['post_type'];
+            $meta_key = $value['meta_key'];
+            $category_filter_values = $selectedFilters[$key];
 
-    if ($need_variant_query) {
-        $variant_args = array('post_type' => 'variant', 'meta_query' => array(), 'posts_per_page' => -1);
-        $variant_args['meta_query'] = array('relation' => 'AND');
-        foreach ($selectedFilters as $key => $value) {
-            if ($filter_meta[$key]['post_type'] == 'variant') {
-                // if key is not Price and post type is variant
-                if ($key !== 'Price') {
-                    $variant_args['meta_query'][] = array(
-                        'key' => $filter_meta[$key]['meta_key'],
-                        'value' => $value,
-                        'compare' => 'IN'
-                    );
-                    continue;
-                } else {
-
-                    $price_meta_args = ['relation' => 'OR'];
-
-                    //  check that the retail_price meta key exists.
-                    $variant_args['meta_query'][] = array(
-                        'key' => 'retail_price',
-                        'compare' => 'EXISTS',
-                    );
-                    foreach ($value as $price) {
-                        $value = explode('-', $price);
-                        $value[0] = intval($value[0]) * 1000;
-                        $value[1] = intval($value[1]) * 1000;
-                        $price_meta_args[] = array(
-                            'key' => $filter_meta[$key]['meta_key'],
-                            'type' => 'NUMERIC',
-                            'value' => $value,
-                            'compare' => 'BETWEEN'
-                        );
-                    }
-
-                    $variant_args['meta_query'][] = $price_meta_args;
-                    continue;
-                }
-            }
-        }
-
-        $variant_args['meta_query'][] = [
-            'key' => 'on_sale',
-            'value' => 'Yes',
-            'compare' => '=='
-        ];
-
-        $variants = get_posts($variant_args);
-        if (count($variants) > 0) {
-            // get all listing ids from $variants
-            $listing_ids = array();
-            foreach ($variants as $variant) {
-                $listing_ids[] = $variant->post_parent;
-            }
-            // remove duplicates from $listing_ids
-            $listing_ids = array_unique($listing_ids);
-            $args['post__in'] = $listing_ids;
-        } else {
-            $args['post__in'] = array();
-        }
-    }
-
-    // add queries to $args
-    if (in_array('Body Type', array_keys($selectedFilters))) {
-        // get term ids of Body Type
-        $term_ids = array();
-        foreach ($selectedFilters['Body Type'] as $key => $value) {
-            $term = get_term_by('id', $value, 'listing_type');
-            $term_ids[] = $term->term_id;
-        }
-
-        $args['meta_query'][] = array(
-            'key' => '_listing_type',
-            'value' => $term_ids,
-            'compare' => 'IN'
-        );
-    }
-
-    if (in_array('Segment', array_keys($selectedFilters))) {
-        $args['meta_query'][] = array(
-            'key' => 'listing-segment',
-            'value' => $selectedFilters['Segment'],
-            'compare' => 'IN'
-        );
-    }
-
-    /* you can use this to display the results of your search */
-    /* add the shortcode here */
-    if ($need_variant_query && count($args['post__in']) == 0) {
-        echo 'No cars found';
-    } else {
-        $listings = new WP_Query($args);
-
-        if ($listings->have_posts()) {
-            echo '<h2 class="wa-title-text">' . count($listings->posts) . ' cars found</h2>';
-
-            $listing_ids = array();
-            while ($listings->have_posts()) {
-                $listings->the_post();
-                $listing_ids[] = get_the_ID();
+            $category_listing_ids = array();
+            foreach ($category_filter_values as $category_filter_value) {
+                $listing_ids = get_motorcycle_listing_ids_of_filter($meta_key, $category_filter_value, $post_type);
+                $category_listing_ids = array_merge($category_listing_ids, $listing_ids);
+                $category_listing_ids = array_unique($category_listing_ids);
             }
 
-            // put the shortcodes here
-    ?>
-            <div>
+            // take intersection of all listing ids
+            if (count($intersected_listing_ids) == 0) {
+                $intersected_listing_ids = $category_listing_ids;
+            } else {
+                $intersected_listing_ids = array_intersect($intersected_listing_ids, $category_listing_ids);
+            }
+        }
+    }
 
-                <!-- create a grid with 3 items in a row with margin of 10px  between them -->
-                <div>
-                    <?php
-                    // display_popular_car_posts($listings->post_count > 9 ? array_slice($listings->posts, 0, 9) : $listings->posts);
-                    display_popular_bike_posts($listings->posts);
-                    ?>
-                </div>
+    if (count($intersected_listing_ids) == 0) {
+        return '<h1 class="wa-title-text">No motorcycles found</h1>';
+    }
 
-                <div>
-                    <h2 class="wa-title-text">Compare Similar Cars</h2>
-                    <?php
-                    echo do_shortcode('[findnew_car_comparison post_includes="' . implode(',', $listing_ids) . '"]');
-                    ?>
-                </div>
-
-                <div class='widget-container'>
-                    <!-- <h2>Upcoming Cars</h2> -->
-                    <?php
-                    // echo do_shortcode('[upcoming_cars posts_include="' . implode(',', $listing_ids) . '"]');
-                    // echo do_shortcode('[upcoming_cars]');
-                    ?>
-                </div>
-
-                <div>
-                    <!-- <h2>Related News</h2> -->
-                    <?php
-                    echo do_shortcode('[car_related_news related_listings="' . implode(',', $listing_ids) . '"]');
-                    ?>
-                </div>
-
-            </div>
-
-            <style>
-                /* Tab container */
-                .fruit-tabs {
-                    margin: 20px 0;
-                    padding: 15px;
-                }
-
-                .tab {
-                    display: flex;
-                    list-style: none;
-                    padding: 0;
-                    margin-bottom: 9px;
-                }
-
-                .tabs {
-                    border-bottom: 1px solid #ddd;
-                    /* Separator */
-                }
-
-                .tabs li {
-                    margin-right: 25px;
-                }
-
-                .tabs .tabs-link {
-                    padding: 4px 3px;
-                    text-decoration: none;
-                    color: #8c8c8c;
-                    background-color: transparent;
-                    border: none;
-                    position: relative;
-                    font-size: 16px;
-                    cursor: pointer;
-                    transition: color 0.3s;
-                    font-weight: 700;
-                    letter-spacing: 0.5px;
-                    /* Add letter spacing */
-                }
-
-                .tab .tabs-link.active {
-                    color: #262626;
-                    border-bottom: 3px solid #feb429;
-                    padding-bottom: 12px;
-                    border-bottom-width: 3px;
-                }
-
-                /* Each car item */
-                .car-item {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    text-decoration: none;
-                    width: 100%;
-                    max-width: 300px;
-                    padding: 15px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    background-color: white;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                .car-item:hover {
-                    transform: translateY(1.01px);
-                    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-                }
-
-                /* Car list grid */
-                .car-list {
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    /* 3-column grid */
-                    gap: 20px;
-                    width: 100%;
-                }
-
-                /* Car image */
-                .car-item img {
-                    width: 100%;
-                    height: 124px;
-                    margin-bottom: 10px;
-                    border-radius: 5px;
-                }
-
-                /* Car title */
-                .car-item h4 {
-                    font-size: 16px;
-                    color: #262626;
-                    margin-bottom: -2px;
-                    text-align: center;
-                    font-weight: 700;
-                }
-
-                /* Car price */
-                .car-item p {
-                    font-size: 14px;
-                    color: #576b95;
-                    text-align: center;
-                    font-weight: 700;
-                    margin-bottom: 10px;
-                }
-
-                /* Hide all panes initially */
-                .tab-pane {
-                    display: none;
-                }
-
-                /* Show active pane */
-                .tab-pane.active {
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                .view-model-button {
-                    background: white;
-                    border: 1px solid #feb429;
-                    width: 255px;
-                    height: 40px;
-                    border-radius: 5px;
-                    font-weight: 700;
-                    font-size: 14px;
-                    color: #feb429;
-                }
-
-                .title-and-post {
-                    text-align: start;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-            </style>
-
-            <style>
-                .car-brand-model {
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #262626;
-                    font-family: "Roboto";
-                    line-height: 22px;
-                    word-break: break-word;
-                    text-overflow: ellipsis;
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 1;
-                    overflow: hidden;
-                }
-
-                /* Carousel container */
-                .upcoming-cars-list {
-                    display: flex;
-                    flex-wrap: nowrap;
-                    overflow: visible;
-                    position: relative;
-                    gap: 20px;
-                    height: 240px !important;
-                }
-
-                .slick-track {
-                    display: flex;
-                    gap: 20px;
-                }
-
-                .slick-prev:focus,
-                .slick-next:focus,
-                .slick-prev:active,
-                .slick-next:active {
-                    background-color: #ffffff !important;
-                    color: black !important;
-                    outline: none;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-                }
-
-                .slick-prev:before {
-                    content: '←';
-                    color: black !important;
-                }
-
-                .slick-next:before {
-                    content: '→';
-                    color: black !important;
-                }
-
-                /* More specific selector for slick arrows */
-                .slick-prev,
-                .slick-next {
-                    background-color: #ffffff !important;
-                    border-radius: 50%;
-                    width: 50px;
-                    height: 50px;
-                    z-index: 10;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
-                    transition: background-color 0.3s ease, color 0.3s ease;
-                    border: none;
-                }
-
-                .slick-prev:before,
-                .slick-next:before {
-                    font-size: 20px;
-                    color: black !important;
-                    /* Black arrow */
-                }
-
-                /* Hover state */
-                .slick-prev:hover,
-                .slick-next:hover {
-                    background-color: white !important;
-                    /* Change to yellow on hover */
-                    color: white !important;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
-                }
-
-                /* Focus state */
-                .slick-prev:focus,
-                .slick-next:focus {
-                    background-color: white !important;
-                    /* Keep background yellow on focus */
-                    color: white !important;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
-                    outline: none;
-                }
-
-                /* Active state when button is clicked */
-                .slick-prev:active,
-                .slick-next:active {
-                    background-color: white !important;
-                    /* Keep background yellow on click */
-                    color: white !important;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) !important;
-                    outline: none;
-                }
-
-                /* Focus-visible state for keyboard users */
-                .slick-prev:focus-visible,
-                .slick-next:focus-visible {
-                    background-color: white !important;
-                    color: white !important;
-                    outline: none;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-                }
-
-                /* Prevent disappearing of background by using more specific selectors */
-                button.slick-prev,
-                button.slick-next,
-                div.slick-prev,
-                div.slick-next {
-                    background-color: white !important;
-                    color: white !important;
-                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-                }
-
-                /* Positioning adjustments */
-                .slick-prev {
-                    left: -4px !important;
-                }
-
-                .slick-next {
-                    right: -25px !important;
-                }
-
-                /* Individual car item */
-                .car-sedan-item {
-                    display: flex;
-                    flex-direction: column;
-                    border: 1px solid #e0e0e0;
-                    width: calc(250px - 30px);
-                    border-radius: 8px;
-                    overflow: hidden;
-                    padding: 15px;
-                    margin: 0 15px;
-                    position: relative;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-
-                /* Hover effect for car items */
-                .car-item:hover {
-                    transform: translateY(-1px);
-                    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-                }
-
-                /* Thumbnail styling */
-                .car-thumbnail {
-                    position: relative;
-                    overflow: hidden;
-                    margin-top: -29px;
-                }
-
-                .car-thumbnail img {
-                    width: 100%;
-                    height: auto;
-                    transition: transform 0.3s ease;
-                }
-
-                /* Car label */
-                .car-label {
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    background-color: red;
-                    color: white;
-                    padding: 5px 10px;
-                    border-radius: 3px;
-                    font-size: 12px;
-                    font-weight: bold;
-                }
-
-                /* Car content styling */
-                .car-content {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    padding-top: 10px;
-                }
-
-                .car-info {
-                    /* display: flex; */
-                    width: 100%;
-                    color: black;
-                    align-items: baseline;
-                    /* margin-bottom: -10px; */
-                }
-
-                .car-info p {
-                    margin: 0 0 1px;
-                }
-
-                .car-brand-icon {
-                    color: #feb429;
-                    margin-right: 5px;
-                }
-
-                .car-brand {
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: #555;
-                }
-
-                /* Price styling */
-                .price {
-                    margin-top: -10px;
-                    font-size: 14px;
-                    font-weight: bold;
-                    color: #576B95;
-                }
-
-                /* Title styling */
-                .car-title {
-                    font-size: 18px;
-                    font-weight: bold;
-                    color: #333;
-                    text-decoration: none;
-                    display: block;
-                    margin-bottom: 5px;
-                }
-
-                /* Price text styling */
-                .car-price {
-                    font-size: 16px;
-                    color: #777;
-                }
-
-                /* View Model button */
-                .view-model-button {
-                    padding: 8px 12px;
-                    background-color: white;
-                    color: #feb429;
-                    text-decoration: none;
-                    border: 1px solid #feb429;
-                    border-radius: 4px;
-                    margin-top: auto;
-                    text-align: center;
-                    width: 100%;
-                    transition: background-color 0.3s ease, color 0.3s ease;
-                }
-
-                .view-model-button:hover {
-                    background-color: #feb429;
-                    color: white;
-                }
-            </style>
-
+    $formatted_motorcycle_data = format_bike_response($intersected_listing_ids);
+?>
+    <h1 class='wa-title-text'><?php echo get_motorcycle_filter_title(); ?></h1>
+    <h2 class='wa-title-text'><?php echo count($intersected_listing_ids); ?> motorcycles found</h2>
+    <div>
+        <?php
+        display_popular_bike_posts($formatted_motorcycle_data);
+        echo do_shortcode('[findnew_bike_comparison]');
+        echo do_shortcode('[motor_related_news]');
+        ?>
+    </div>
 <?php
-        }
-    }
 
     $output = ob_get_clean();
     echo $output;
 }
-if (!function_exists('motor_get_existing_filters')) {
-    function motor_get_existing_filters()
-    {
-        $body_type_terms = get_terms(array('taxonomy' => 'listing_type', 'hide_empty' => false));
-        $filter_mapping = [];
 
-        $filter_mapping = [
-            // 0-40K, 40-60K, 60-90K, 90-120K, 120-150K, 150-200K, 200-300K, 300-400K, 400-600K, 600-3000K
-            'between0to40K' => ['filter-type' => 'Price', 'filter-value' => '0-40'],
-            'between40to60K' => ['filter-type' => 'Price', 'filter-value' => '40-60'],
-            'between60to90K' => ['filter-type' => 'Price', 'filter-value' => '60-90'],
-            'between90to120K' => ['filter-type' => 'Price', 'filter-value' => '90-120'],
-            'between120to150K' => ['filter-type' => 'Price', 'filter-value' => '120-150'],
-            'between150to200K' => ['filter-type' => 'Price', 'filter-value' => '150-200'],
-            'between200to300K' => ['filter-type' => 'Price', 'filter-value' => '200-300'],
-            'between300to400K' => ['filter-type' => 'Price', 'filter-value' => '300-400'],
-            'between400to600K' => ['filter-type' => 'Price', 'filter-value' => '400-600'],
-            'between600to3000K' => ['filter-type' => 'Price', 'filter-value' => '600-3000'],
+function get_existing_motorcycle_filters()
+{
+    $filter_mapping = [
+        // Price
+        'giua-vnd-0-5-tr' => ['filter-type' => 'Price', 'filter-value' => '0-5'],
+        'giua-vnd-5-10-tr' => ['filter-type' => 'Price', 'filter-value' => '5-10'],
+        'giua-vnd-10-20-tr' => ['filter-type' => 'Price', 'filter-value' => '10-20'],
+        'giua-vnd-20-50-tr' => ['filter-type' => 'Price', 'filter-value' => '20-50'],
+        'giua-vnd-50-100-tr' => ['filter-type' => 'Price', 'filter-value' => '50-100'],
 
-            // A-Segment, B-Segment, C-Segment, D-Segment, E-Segment, Commercial, Executive, Grand Tourer, Luxury, Sports Car, Super Car, Compact Executive, 4x4, 4x2
-            'aSegment' => ['filter-type' => 'Segment', 'filter-value' => 'A-Segment'],
-            'bSegment' => ['filter-type' => 'Segment', 'filter-value' => 'B-Segment'],
-            'cSegment' => ['filter-type' => 'Segment', 'filter-value' => 'C-Segment'],
-            'dSegment' => ['filter-type' => 'Segment', 'filter-value' => 'D-Segment'],
-            'eSegment' => ['filter-type' => 'Segment', 'filter-value' => 'E-Segment'],
-            'commercial' => ['filter-type' => 'Segment', 'filter-value' => 'Commercial'],
-            'executive' => ['filter-type' => 'Segment', 'filter-value' => 'Executive'],
-            'grand-tourer' => ['filter-type' => 'Segment', 'filter-value' => 'Grand Tourer'],
-            'luxury' => ['filter-type' => 'Segment', 'filter-value' => 'Luxury'],
-            'sports-car' => ['filter-type' => 'Segment', 'filter-value' => 'Sports Car'],
-            'super-car' => ['filter-type' => 'Segment', 'filter-value' => 'Super Car'],
-            'compact-executive' => ['filter-type' => 'Segment', 'filter-value' => 'Compact Executive'],
-            '4x4' => ['filter-type' => 'Segment', 'filter-value' => '4x4'],
-            '4x2' => ['filter-type' => 'Segment', 'filter-value' => '4x2'],
+        // Adventure Touring, Cafe Racer, Cruiser, Dual Sport, Moped, Off Road, Scooter, Sport, Street, Super Sport, Touring, Touring Sport
+        'adventure-touring' => ['filter-type' => 'Category', 'filter-value' => 'adventure-touring'],
+        'cafe-racer' => ['filter-type' => 'Category', 'filter-value' => 'cafe-racer'],
+        'cruiser' => ['filter-type' => 'Category', 'filter-value' => 'cruiser'],
+        'dual-sport' => ['filter-type' => 'Category', 'filter-value' => 'dual-sport'],
+        'moped' => ['filter-type' => 'Category', 'filter-value' => 'moped'],
+        'off-road' => ['filter-type' => 'Category', 'filter-value' => 'off-road'],
+        'scooter' => ['filter-type' => 'Category', 'filter-value' => 'scooter'],
+        'sport' => ['filter-type' => 'Category', 'filter-value' => 'sport'],
+        'street' => ['filter-type' => 'Category', 'filter-value' => 'street'],
+        'super-sport' => ['filter-type' => 'Category', 'filter-value' => 'super-sport'],
+        'touring' => ['filter-type' => 'Category', 'filter-value' => 'touring'],
+        'touring-sport' => ['filter-type' => 'Category', 'filter-value' => 'touring-sport'],
 
-            // MT, AMT, CVT, DCT, AT, MCT, EV, E-CVT
-            'mt' => ['filter-type' => 'Transmission', 'filter-value' => 'mt'],
-            'amt' => ['filter-type' => 'Transmission', 'filter-value' => 'amt'],
-            'cvt' => ['filter-type' => 'Transmission', 'filter-value' => 'cvt'],
-            'dct' => ['filter-type' => 'Transmission', 'filter-value' => 'dct'],
-            'at' => ['filter-type' => 'Transmission', 'filter-value' => 'at'],
-            'mct' => ['filter-type' => 'Transmission', 'filter-value' => 'mct'],
-            'ev' => ['filter-type' => 'Transmission', 'filter-value' => 'ev'],
-            'ecvt' => ['filter-type' => 'Transmission', 'filter-value' => 'e-cvt'],
+        // MT, AMT, CVT, DCT, AT, MCT, EV, E-CVT
+        'mt' => ['filter-type' => 'Transmission', 'filter-value' => 'mt'],
+        'amt' => ['filter-type' => 'Transmission', 'filter-value' => 'amt'],
+        'cvt' => ['filter-type' => 'Transmission', 'filter-value' => 'cvt'],
+        'dct' => ['filter-type' => 'Transmission', 'filter-value' => 'dct'],
+        'at' => ['filter-type' => 'Transmission', 'filter-value' => 'at'],
+        'mct' => ['filter-type' => 'Transmission', 'filter-value' => 'mct'],
+        'ev' => ['filter-type' => 'Transmission', 'filter-value' => 'ev'],
+        'ecvt' => ['filter-type' => 'Transmission', 'filter-value' => 'e-cvt'],
 
-            // Petrol, Diesel, Petrol Hybrid, Diesel Hybrid, Electric Vehicle
-            'petrol' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol'],
-            'diesel' => ['filter-type' => 'Fuel', 'filter-value' => 'diesel'],
-            'petrolHybrid' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol-hybrid'],
-            'dieselHybrid' => ['filter-type' => 'Fuel', 'filter-value' => 'diesel-hybrid'],
-            'electricVehicle' => ['filter-type' => 'Fuel', 'filter-value' => 'electric-vehicle'],
+        // Petrol, Electric
+        'petrol' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol'],
+        'ev' => ['filter-type' => 'Fuel', 'filter-value' => 'ev'],
 
-            // 2 Seater, 4 Seater, 5 Seater, 6 Seater, 7 Seater, 8 Seater, 9 Seater
-            '2Seater' => ['filter-type' => 'Seating Capacity', 'filter-value' => '2 Seater'],
 
-            // Front Wheel Drive, Rear Wheel Drive, All Wheel Drive
-            'fwd' => ['filter-type' => 'Drive Type', 'filter-value' => 'fwd'],
-            'rwd' => ['filter-type' => 'Drive Type', 'filter-value' => 'rwd'],
-            'awd' => ['filter-type' => 'Drive Type', 'filter-value' => 'awd'],
-        ];
+        // 1 Seater, 2 Seater,
+        '1' => ['filter-type' => 'Seating Capacity', 'filter-value' => '1 Seater'],
+        '2' => ['filter-type' => 'Seating Capacity', 'filter-value' => '2 Seater'],
 
-        foreach ($body_type_terms as $term) {
-            $term_name = strtolower($term->name);
-            $term_id = (string) $term->term_id;
-            $filter_mapping[$term_name] = ['filter-type' => 'Body Type', 'filter-value' => $term_id];
-        }
+        // 0-150cc, 150-200cc, 200-300cc, 300-400cc, 400-500cc, 500-1000cc, Above 1000cc
+        '0-150cc' => ['filter-type' => 'Displacement', 'filter-value' => '0-150cc'],
+        '150-200cc' => ['filter-type' => 'Displacement', 'filter-value' => '150-200cc'],
+        '200-300cc' => ['filter-type' => 'Displacement', 'filter-value' => '200-300cc'],
+        '300-400cc' => ['filter-type' => 'Displacement', 'filter-value' => '300-400cc'],
+        '400-500cc' => ['filter-type' => 'Displacement', 'filter-value' => '400-500cc'],
+        '500-1000cc' => ['filter-type' => 'Displacement', 'filter-value' => '500-1000cc'],
+        'above-1000cc' => ['filter-type' => 'Displacement', 'filter-value' => 'above-1000cc'],
+    ];
 
-        $current_url = $_SERVER['REQUEST_URI'];
-        $current_url = rtrim($current_url, '/');
-        $path_parts = explode('/', $current_url);
-        $last_part = end($path_parts);
+    $current_url = $_SERVER['REQUEST_URI'];
+    $current_url = rtrim($current_url, '/');
+    $path_parts = explode('/', $current_url);
+    $last_part = end($path_parts);
 
-        $parts = explode('-', $last_part);
-        $existing_filters = [];
-        foreach ($parts as $part) {
-            if (isset($filter_mapping[$part])) {
-                // seggregate by filter category
-                $existing_filters[$filter_mapping[$part]['filter-type']][] = $filter_mapping[$part]['filter-value'];
-            }
-        }
-
-        return $existing_filters;
+    // if the last part has tot-nhat- and -xe-may-tai-vietnam, remove them
+    if (strpos($last_part, 'tot-nhat-') !== false && strpos($last_part, '-xe-may-tai-vietnam') !== false) {
+        $last_part = str_replace(['tot-nhat-', '-xe-may-tai-vietnam'], '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
+    } else {
+        // remove tot-nhat-va- from the last part
+        $last_part = str_replace('tot-nhat-va-', '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
     }
+
+    //     $parts = explode('-', $last_part);
+    $existing_filters = [];
+    foreach ($parts as $part) {
+        if (isset($filter_mapping[$part])) {
+            // seggregate by filter category
+            $existing_filters[$filter_mapping[$part]['filter-type']][] = $filter_mapping[$part]['filter-value'];
+        }
+    }
+
+    return $existing_filters;
 }
-?>
+
+
+function get_motorcycle_listing_ids_of_filter($filter_type, $filter_value, $post_type = 'variant')
+{
+    $cache_key = 'motorcycle_listing_ids_based_on_filter_' . $filter_type . '_' . $filter_value;
+
+    if (!FETCH_FROM_DB && USE_REDIS_CACHE) {
+        $listing_ids = get_data_from_redis($cache_key);
+        if ($listing_ids) {
+            return $listing_ids;
+        }
+    }
+
+    if ($post_type == 'motorcycle-variant') {
+        $listing_ids = get_motorcycle_listing_ids_based_on_variant_filter($filter_type, $filter_value);
+    } else {
+        $listing_ids = get_motorcycle_listing_ids_based_on_listing_filter($filter_type, $filter_value);
+    }
+
+    set_data_to_redis($cache_key, $listing_ids);
+
+    return $listing_ids;
+}
+
+
+function get_motorcycle_listing_ids_based_on_variant_filter($filter_type, $filter_value)
+{
+    $meta_query = array();
+    // if filter type is retail price, construct meta query for price range
+    if ($filter_type == 'price') {
+        // remove giua-vnd- from the filter value
+        $filter_value = str_replace('giua-vnd-', '', $filter_value);
+        // check if the filter value contains -tr or -ty and set the price range accordingly
+        $filter_value = str_replace('giua-vnd-', '', $filter_value);
+        $is_tr = strpos($filter_value, '-tr') !== false;
+
+        $filter_value = str_replace('-tr', '', $filter_value);
+        $filter_value = str_replace('-ty', '', $filter_value);
+        $filter_value = explode('-', $filter_value);
+        $min_price = (int) $filter_value[0];
+        $max_price = (int) $filter_value[1];
+
+        $price_range = array();
+        $price_range[] = $min_price * 1000 * ($is_tr ? 1 : 1000);
+        $price_range[] = $max_price * 1000 * ($is_tr ? 1 : 1000);
+
+        $meta_query = array(
+            'key' => 'price',
+            'value' => $price_range,
+            'type' => 'NUMERIC',
+            'compare' => 'BETWEEN'
+        );
+    } else {
+        $meta_query = array(
+            'key' => $filter_type,
+            'value' => $filter_value,
+            'compare' => 'like'
+        );
+    }
+
+    // get post parent ids based on variant filter
+    $args = array(
+        'post_type' => 'motorcycle-variant',
+        'meta_query' => array($meta_query),
+        'posts_per_page' => -1
+    );
+
+    $variants = get_posts($args);
+    $listing_ids = array();
+    foreach ($variants as $variant) {
+        $listing_ids[] = $variant->post_parent;
+    }
+
+    return $listing_ids;
+}
+
+
+function get_motorcycle_listing_ids_based_on_listing_filter($filter_type, $filter_value)
+{
+    // if listing_type, get listing ids based on body type
+    if ($filter_type == '_listing_type') {
+        $filter_value = $filter_value;
+
+        if (!$filter_value) {
+            return [];
+        }
+    }
+
+    $args = array(
+        'post_type' => 'motorcycle-listing',
+        'meta_query' => array(
+            array(
+                'key' => $filter_type,
+                'value' => $filter_value,
+                'compare' => '='
+            )
+        ),
+        'posts_per_page' => -1,
+        'fields' => 'ids'
+    );
+
+    $listings = get_posts($args);
+    $listing_ids = $listings;
+
+    return $listing_ids;
+}
+
+function get_motorcycle_filter_title()
+{
+    $current_url = trim($_SERVER['REQUEST_URI'], '/');
+    $last_part = basename($current_url);
+    $current_year = date('Y');
+
+    // if the last part has tot-nhat- and -xe-may-tai-vietnam, remove them
+    if (strpos($last_part, 'tot-nhat-') !== false && strpos($last_part, '-xe-may-tai-vietnam') !== false) {
+        $last_part = str_replace(['tot-nhat-', '-xe-may-tai-vietnam'], '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
+    } else {
+        // remove tot-nhat-va- from the last part
+        $last_part = str_replace('tot-nhat-va-', '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
+    }
+
+    $filters = [];
+    $price_range_text = '';
+
+    foreach ($parts as $part) {
+        if (strpos($part, 'giua') === 0) {
+            // Handle price range ("between-php-120-1500k")
+            $price_range = str_replace('giua-vnd-', '', $part);
+            $price_range_text = "between VND $price_range";
+        } else {
+            // Convert URL-friendly word to sentence-friendly word
+            $filters[] = ucfirst($part);
+        }
+    }
+
+    // Combine filters and price range to form the title
+    $filters_text = implode(', ', $filters);
+    $title = "$current_year Best New $price_range_text $filters_text Motorcycles in Vietnam";
+
+    return $title;
+}

@@ -562,7 +562,7 @@ function selects_motor_shortcode()
                 const currentUrl = window.location.pathname;
 
                 if (currentUrl.includes("-vs-")) {
-                    const path = currentUrl.replace("/bandingkan-motor", "");
+                    const path = currentUrl.replace("/so-sanh-xe-may", "");
                     const [car1, car2] = path.split("-vs-");
 
                     if (car1 && car2) {
@@ -1994,7 +1994,7 @@ function get_motor_compare_details()
     $price = isset($variant_meta['price'][0]) ? $variant_meta['price'][0] : null;
 
     // Format the retail price in PHP
-    $formatted_price = $price ? format_price_in_idr($price) : 'Belum Tersedia';
+    $formatted_price = $price ? format_price_vietnam($price) : 'Belum Tersedia';
 
     // $image_id = get_post_meta($variant_id, 'image', true);
     $body_type_id = get_post_meta($model_id, 'listing_type', true);

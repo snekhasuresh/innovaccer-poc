@@ -7,8 +7,26 @@ function get_current_post_motor_data_shortcode()
     // Extract the slug (last part of the URL)
     $slug = basename($current_url); // This gets the last segment of the URL
 
-    // Get the post ID based on the slug and post type
-    $post = get_page_by_path($slug, OBJECT, 'motorcycle-news'); // Replace 'news' with your custom post type
+    $news_id = get_last_numeric_id_from_url();
+    if ($news_id != NULL) {
+        global $wpdb;
+        $result = $wpdb->get_var(
+            $wpdb->prepare("SELECT news_post_id FROM news_temp WHERE news_id = %d", $news_id)
+        );
+
+        $result = $result ? $result : $news_id;
+        $post = $result ? get_post($result) : false;
+        if (!$post) {
+            return;
+        }
+    } else {
+        // Get the current URL path
+        $current_url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        // Extract the slug (last part of the URL)
+        $slug = basename($current_url); // This gets the last segment of the URL
+        // Get the post ID based on the slug and post type
+        $post = get_page_by_path($slug, OBJECT, 'motorcycle-news'); // Replace 'news' with your custom post type
+    }
 
     if ($post) {
         $related_model_ids = get_post_meta($post->ID, 'related_bike_model', true);
@@ -33,7 +51,7 @@ function get_current_post_motor_data_shortcode()
                     $make = isset($title_parts[0]) ? $title_parts[0] : '';
                     $model = isset($title_parts[1]) ? $title_parts[1] : '';
 
-                    $model_data .= '[individual_listing_bike_tabs make="' . esc_attr(strtolower(strtolower($make))) . '" model="' . esc_attr(strtolower(strtolower($model))) . '" selected_tab="ข่าวสาร"]';
+                    $model_data .= '[individual_listing_bike_tabs make="' . esc_attr(strtolower(strtolower($make))) . '" model="' . esc_attr(strtolower(strtolower($model))) . '" selected_tab="Tin tức"]';
                 }
             }
         }
@@ -50,10 +68,9 @@ function get_current_post_motor_data_shortcode()
 ?>
         <!-- Add the shortcode output for individual listing tabs -->
 
-        <div class="related-tabs">
+        <!--         <div class="related-tabs">
             <?php echo do_shortcode('[breadcrumb]'); ?>
-            <?php echo do_shortcode($model_data); ?>
-        </div>
+        </div> -->
         <div style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
 
             <h1 class="individual-news-title"><?php echo esc_html($post->post_title); ?></h1>
@@ -102,8 +119,6 @@ function get_current_post_motor_data_shortcode()
             }
 
             .related-tabs {
-                margin-top: -150px;
-                width: 150%;
                 margin-left: -100px;
             }
         </style>

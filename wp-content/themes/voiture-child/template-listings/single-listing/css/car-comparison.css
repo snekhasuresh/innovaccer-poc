@@ -367,4 +367,11 @@ div.slick-next {
         display: none !important;
         /* Adjust the positioning of the right arrow */
     }
+	.individual-comparison-wrapper h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    margin-left: 20px;
+}
 }

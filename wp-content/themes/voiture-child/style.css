@@ -557,6 +557,7 @@ body {
   border: 1px solid #ddd;
   text-align: right;
   margin-right: 0;
+  flex: 0 0 auto !important;
   /* Remove the right margin */
 }
 

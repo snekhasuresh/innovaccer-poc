@@ -137,76 +137,65 @@ function fetch_category_news_from_db($args)
     global $wpdb;
     $current_page = $args['paged'] ?? 1;
     $posts_per_page = 5;
-    $news_category = $args['category'];
+    $news_category = $args['category'] ?? '';
     $taxonomy = 'news-category';
     $description = $args['description'] ?? '';
 
-    $sql = $wpdb->prepare(
-        "
-        SELECT t.*, tt.*
-        FROM {$wpdb->terms} AS t
-        INNER JOIN {$wpdb->term_taxonomy} AS tt
-        ON t.term_id = tt.term_id
-        WHERE tt.taxonomy = %s
-        AND t.name = %s
-        AND tt.description = %s ",
-        $taxonomy,
-        $news_category,
-        $description
-    );
-    $terms = $wpdb->get_results($sql);
+    $news_category_term = null;
 
-    if (!empty($terms)) {
-        $news_category_term = $terms[0];
-    } else {
-        return [];
+    if (!empty($news_category)) {
+        $sql = $wpdb->prepare(
+            "
+            SELECT t.*, tt.*
+            FROM {$wpdb->terms} AS t
+            INNER JOIN {$wpdb->term_taxonomy} AS tt
+            ON t.term_id = tt.term_id
+            WHERE tt.taxonomy = %s
+            AND t.name = %s
+            AND tt.description = %s",
+            $taxonomy,
+            $news_category,
+            $description
+        );
+        $terms = $wpdb->get_results($sql);
+
+        if (!empty($terms)) {
+            $news_category_term = $terms[0];
+        }
     }
 
-    $news_category_term_id = $news_category_term->term_id;
-    $serialized_value = ':"' . $news_category_term_id . '";';
-//     $second_language = get_current_language();
-
     $query_args = [
-        'post_type'  => 'news',
-        'post_status' => 'publish',
-        'meta_query' => [
-            [
-                'key'     => 'second_language',
-                'value'   => '',
-                'compare' => '=',
-            ],
-            [
-                'key'     => 'news_category',
-                'value'   => $serialized_value,
-                'compare' => 'LIKE',
-            ],
-            // publish_time has to be less than current time
+        'post_type'      => 'news',
+        'post_status'    => 'publish',
+        'posts_per_page' => $posts_per_page,
+        'paged'          => $current_page,
+        'meta_query'     => [
             [
                 'key'     => 'publish_time',
                 'value'   => date('Y-m-d H:i:s'),
                 'compare' => '<',
                 'type'    => 'DATETIME',
             ],
-            // weight time greater than current time
-            // [
-            //     'key'     => 'weight',
-            //     'value'   => date('Y-m-d H:i:s'),
-            //     'compare' => '<',
-            //     'type'    => 'DATETIME',
-            // ],
         ],
-        'posts_per_page' => $posts_per_page,
-        'paged'          => $current_page,
-        // order by weight meta key descending
-        // 'meta_key'       => 'weight',
-        // order by publish time descending
-        'meta_key'       => 'publish_time',
         'orderby'        => 'meta_value',
+        'meta_key'       => 'publish_time',
         'meta_type'      => 'DATETIME',
         'order'          => 'DESC',
     ];
 
+    // If the category term exists, add the meta query for the category
+    if ($news_category_term) {
+        $serialized_value = ':"' . $news_category_term->term_id . '";';
+        $query_args['meta_query'][] = [
+            'key'     => 'news_category',
+            'value'   => $serialized_value,
+            'compare' => 'LIKE',
+        ];
+    }
+
     $news_posts = new WP_Query($query_args);
+
+    // If no posts found, return empty
     if (!$news_posts->have_posts()) {
         return [];
     }
@@ -224,23 +213,21 @@ function fetch_category_news_from_db($args)
         $content = wp_trim_words($post->post_content, 20, '...');
         $author_id = $post->post_author;
 
-        // post meta
         $post_meta = $required_meta[$news_id] ?? [];
         $publish_time = $post_meta['publish_time'][0] ?? '';
-        // $thumbnail_id = $post_meta['_thumbnail_id'][0] ?? '';
         $thumbnail_url = $thumbnail_urls[$news_id] ?? '';
         $author_name = $author_data[$author_id]['display_name'] ?? '';
         $author_image_url = $author_data[$author_id]['author_image_url'] ?? '';
 
         $news[] = [
-            'id' => $news_id,
-            'title' => $title,
-            'author' => $author_name,
-            'content' => $content,
+            'id'           => $news_id,
+            'title'        => $title,
+            'author'       => $author_name,
+            'content'      => $content,
             'thumbnail_url' => $thumbnail_url,
-            'post_date' => convert_myt_to_ist($publish_time),
-            'author_img' => $author_image_url,
-            'link'  => get_custom_post_link($news_id, ''),
+            'post_date'    => convert_myt_to_ist($publish_time),
+            'author_img'   => $author_image_url,
+            'link'         => get_custom_post_link($news_id, ''),
         ];
     }
 

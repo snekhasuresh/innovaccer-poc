@@ -1,5 +1,4 @@
 <?php
-echo "Test Output";
 get_header();
 $sidebar_configs = voiture_get_blog_layout_configs();
 
@@ -195,19 +194,16 @@ if ($post_type === 'xe-may') {
     </section>
 <?php
 } else{
-    // echo "news";
-
 ?>
     <section id="main-container" class="main-content <?php echo apply_filters('voiture_blog_content_class', 'container'); ?> inner">
         <?php
-	print_r('xe may else part accessed.......');
 	 	$current_url = $_SERVER['REQUEST_URI'];
         $path_parts = explode('/', trim($current_url, '/'));
         // $last_part = end($path_parts);
         $is_search = 0;
 
         $last_part = get_query_var('news_slug');
-print_r($last_part);
+
         // $new_individual_page = 10204;
        // Check if the last part matches the pattern (contains numbers at the end)
         if (preg_match('/(.*)-(\d+)$/', $last_part, $matches)) {

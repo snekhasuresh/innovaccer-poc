@@ -435,14 +435,14 @@ function motor_news_single_listing_shortcode($atts)
         }
 
         .single-listing-tab-content {
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         /* News items */
         .single-listing-news-item {
             display: flex;
             align-items: center;
-            padding: 40px 0;
+            padding: 15px 0;
         }
 
         .single-listing-news-thumbnail {

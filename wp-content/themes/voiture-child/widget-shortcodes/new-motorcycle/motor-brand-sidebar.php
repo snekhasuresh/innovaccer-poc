@@ -17,11 +17,10 @@ function display_bike_brands_alphabetically()
     $brands_by_letter = get_motor_brand_sidebar_data();
 
     if (empty($brands_by_letter)) {
-        return 'No car brands found.';
+        return 'No motorcycle brands found.';
     }
 
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $is_new_cars_page = strpos($url, 'new-cars') !== false;
 
     ob_start();
 ?>
@@ -46,7 +45,7 @@ function display_bike_brands_alphabetically()
                                 $brand_logo = $brand->logo ?: 'https://via.placeholder.com/100';
                     ?>
                                 <div class="brand-item">
-                                    <a href="/xe-may/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
+                                    <a href="/motorcycles/<?= esc_attr($brand->slug) ?>" class="brand-link brand-link-find-new-sidebar" data-brand-id="<?= $brand->term_id ?>">
                                         <img src="<?= esc_url($brand_logo) ?>" alt="<?= esc_attr($brand->name) ?> logo">
                                         <span><?= esc_html($brand->name) ?></span>
                                     </a>
@@ -69,9 +68,7 @@ function motor_brand_details_shortcode($atts)
 {
     ob_start();
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $is_new_cars_page = strpos($url, 'new-cars') !== false;
-
-
+    $is_new_cars_page = strpos($url, 'xe-may-moi') !== false;
 ?>
     <div id="car-brand-details" class="car-brand-details">
         <?php
@@ -94,21 +91,21 @@ function render_new_motor_details($url)
     $path_parts = explode('/', $current_url);
     $last_part = end($path_parts);
 
-    $filter_mapping = get_filter_mapping();
+    $filter_mapping = get_motor_filter_mapping();
     $selected_filters = parse_motor_filters_from_url($last_part, $filter_mapping);
 
     if (empty($selected_filters)) {
         // redirect to /cars if no filters are selected
-        wp_redirect('/cars');
+        wp_redirect('/xe-may');
         exit;
     }
 
     if ($selected_filters) {
-        echo do_shortcode('[car_search_filter]');
-        apply_filters_to_cars($selected_filters);
+        echo do_shortcode('[motorcycle_search_filter]');
+        apply_filters_to_motorcycles($selected_filters);
     } else {
         echo '<div class="widget-container" style="margin-bottom: 20px;">';
-        echo do_shortcode('[car_search_filter]');
+        echo do_shortcode('[motorcycle_search_filter]');
         echo '</div>';
     }
 }
@@ -123,14 +120,14 @@ function parse_motor_filters_from_url($url, $filter_mapping)
     $path_parts = explode('/', $path);
     $last_part = end($path_parts);
 
-    // if the last part has best- and -cars-in-malaysia, remove them
-    if (strpos($last_part, 'best-') !== false && strpos($last_part, '-cars-in-malaysia') !== false) {
-        $last_part = str_replace(['best-', '-cars-in-malaysia'], '', $last_part);
-        $parts = strpos($last_part, '-and-') === false ? [$last_part] : explode('-and-', $last_part);
+    // if the last part has tot-nhat- and -xe-may-tai-vietnam, remove them
+    if (strpos($last_part, 'tot-nhat-') !== false && strpos($last_part, '-xe-may-tai-vietnam') !== false) {
+        $last_part = str_replace(['tot-nhat-', '-xe-may-tai-vietnam'], '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
     } else {
-        // remove best-and- from the last part
-        $last_part = str_replace('best-and-', '', $last_part);
-        $parts = strpos($last_part, '-and-') === false ? [$last_part] : explode('-and-', $last_part);
+        // remove tot-nhat-va- from the last part
+        $last_part = str_replace('tot-nhat-va-', '', $last_part);
+        $parts = strpos($last_part, '-va-') === false ? [$last_part] : explode('-va-', $last_part);
     }
 
     $selected_filters = [];
@@ -151,12 +148,13 @@ function parse_motor_filters_from_url($url, $filter_mapping)
 function render_default_motor_details()
 {
     $brand_slug = get_query_var('make');
+
     if ($brand_slug) {
         $brand = get_term_by('slug', $brand_slug, 'motorcycle_make');
         if ($brand && !is_wp_error($brand)) {
             apply_bike_brand_filter($brand);
         } else {
-            echo '<h2>No cars found for the brand with ID: ' . esc_html($brand_slug) . '</h2>';
+            echo '<h2>No motorcycles found for the brand with ID: ' . esc_html($brand_slug) . '</h2>';
         }
     } else {
         show_all_motors();
@@ -221,13 +219,13 @@ function add_scripts_for_motor_brands()
 if (!function_exists('show_all_motors')) {
     function show_all_motors()
     {
-           echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
-			echo do_shortcode('[breadcrumb]');
-			echo '</div>';
+        echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
+        echo do_shortcode('[breadcrumb]');
+        echo '</div>';
 
-        // echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
-        // echo do_shortcode('[car_search_filter]');
-        // echo '</div>';
+        echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
+        echo do_shortcode('[motorcycle_search_filter]');
+        echo '</div>';
 
         // echo '<h2>Popular Cars in Malaysia</h2>';
         echo '<div class="widget-container populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
@@ -259,12 +257,12 @@ if (!function_exists('show_all_motors')) {
         // echo do_shortcode('[upcoming_bikes]');
         // echo '</div>';
 
-//         echo '<h2 class="wa-title-text">คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์</h2>';
+        //         echo '<h2 class="wa-title-text">คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์</h2>';
         echo '<div class="widget-container populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[findnew_bike_faqs_shortcode]');
         echo '</div>';
 
-        echo '<h1 class="wa-title-text find-new-cars-overview-title">Xe máy mới phổ biến tại Việt Nam</h1>';
+        echo '<h1 class="wa-title-text find-new-cars-overview-title">Popular New Motorcycles in Philippines</h1>';
         echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[newbike_overview]');
         echo '</div>';
@@ -275,16 +273,15 @@ if (!function_exists('apply_bike_brand_filter')) {
     function apply_bike_brand_filter($brand)
     {
         ob_start();
-        
-           echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
-			echo do_shortcode('[breadcrumb]');
-			echo '</div>';
+        echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
+        echo do_shortcode('[breadcrumb]');
+        echo '</div>';
 
         echo '<div class="widget-container populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[bike_brand_description brand_id="' . $brand->term_id . '"]');
         echo '</div>';
 
-        echo '<h2 class="wa-title-text find-car-news-title">Xe máy ' . $brand->name . '  Tại Việt Nam</h2>';
+        echo '<h2 class="wa-title-text find-car-news-title">' . $brand->name . ' Motorcycles in the Philippines</h2>';
 
         echo '<div class="widget-container  populor-car-brand-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[popular_bike_in_new_bikes brand_id="' . $brand->term_id . '"]');
@@ -300,7 +297,7 @@ if (!function_exists('apply_bike_brand_filter')) {
         echo do_shortcode('[findnew_motor_videos_carousal brand_id="' . $brand->term_id . ' brand_name="' . $brand->name . '"]');
         echo '</div>';
 
-//         echo '<h2 class="wa-title-text"> เปรียบเทียบรถมอเตอร์ไซค์ ' . $brand->name. '</h2>';
+        //         echo '<h2 class="wa-title-text"> เปรียบเทียบรถมอเตอร์ไซค์ ' . $brand->name. '</h2>';
         echo '<div class="widget-container" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[findnew_bike_comparison brand_id="' . $brand->term_id . '"]');
         echo '</div>';
@@ -310,7 +307,7 @@ if (!function_exists('apply_bike_brand_filter')) {
         // echo do_shortcode('[find_new_recommended_cars brand_id="' . $brand->term_id . '"]');
         // echo '</div>';
 
-//         echo '<h2 class="wa-title-text"> คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์ ' . $brand->name . ' 2024</h2>';
+        //         echo '<h2 class="wa-title-text"> คำถามที่พบบ่อยเกี่ยวกับรถมอเตอร์ไซค์ ' . $brand->name . ' 2024</h2>';
         echo '<div class="widget-container filtered-car-comparison-con" style="margin-bottom: 20px; margin-top: 20px">';
         echo do_shortcode('[findnew_bike_faqs_shortcode brand_id="' . $brand->term_id . '"]');
         echo '</div>';
@@ -328,79 +325,56 @@ if (!function_exists('apply_bike_brand_filter')) {
 
 function get_motor_filter_mapping()
 {
-    // read url
-    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    // if url has new-cars in it like http://34.126.131.237/new-cars/best-suv-sedan/
-    if (strpos($url, 'new-cars') == true) {
-        $body_type_terms = get_terms(array('taxonomy' => 'listing_type', 'hide_empty' => false));
-        $filter_mapping = [];
+    $filter_mapping = [
+        // Price
+        'giua-vnd-0-5-tr' => ['filter-type' => 'Price', 'filter-value' => '0-5'],
+        'giua-vnd-5-10-tr' => ['filter-type' => 'Price', 'filter-value' => '5-10'],
+        'giua-vnd-10-20-tr' => ['filter-type' => 'Price', 'filter-value' => '10-20'],
+        'giua-vnd-20-50-tr' => ['filter-type' => 'Price', 'filter-value' => '20-50'],
+        'giua-vnd-50-100-tr' => ['filter-type' => 'Price', 'filter-value' => '50-100'],
 
-        $filter_mapping = [
-            // 0-40K, 40-60K, 60-90K, 90-120K, 120-150K, 150-200K, 200-300K, 300-400K, 400-600K, 600-3000K
-            'between-rm-0-40k' => ['filter-type' => 'Price', 'filter-value' => '0-40'],
-            'between-rm-40-60k' => ['filter-type' => 'Price', 'filter-value' => '40-60'],
-            'between-rm-60-90k' => ['filter-type' => 'Price', 'filter-value' => '60-90'],
-            'between-rm-90-120k' => ['filter-type' => 'Price', 'filter-value' => '90-120'],
-            'between-rm-120-1500k' => ['filter-type' => 'Price', 'filter-value' => '120-150'],
-            'between-rm-150-200k' => ['filter-type' => 'Price', 'filter-value' => '150-200'],
-            'between-rm-200-300k' => ['filter-type' => 'Price', 'filter-value' => '200-300'],
-            'between-rm-300-400k' => ['filter-type' => 'Price', 'filter-value' => '300-400'],
-            'between-rm-400-6000k' => ['filter-type' => 'Price', 'filter-value' => '400-600'],
-            'between-rm-600-3000k' => ['filter-type' => 'Price', 'filter-value' => '600-3000'],
+        // Adventure Touring, Cafe Racer, Cruiser, Dual Sport, Moped, Off Road, Scooter, Sport, Street, Super Sport, Touring, Touring Sport
+        'adventure-touring' => ['filter-type' => 'Category', 'filter-value' => 'adventure-touring'],
+        'cafe-racer' => ['filter-type' => 'Category', 'filter-value' => 'cafe-racer'],
+        'cruiser' => ['filter-type' => 'Category', 'filter-value' => 'cruiser'],
+        'dual-sport' => ['filter-type' => 'Category', 'filter-value' => 'dual-sport'],
+        'moped' => ['filter-type' => 'Category', 'filter-value' => 'moped'],
+        'off-road' => ['filter-type' => 'Category', 'filter-value' => 'off-road'],
+        'scooter' => ['filter-type' => 'Category', 'filter-value' => 'scooter'],
+        'sport' => ['filter-type' => 'Category', 'filter-value' => 'sport'],
+        'street' => ['filter-type' => 'Category', 'filter-value' => 'street'],
+        'super-sport' => ['filter-type' => 'Category', 'filter-value' => 'super-sport'],
+        'touring' => ['filter-type' => 'Category', 'filter-value' => 'touring'],
+        'touring-sport' => ['filter-type' => 'Category', 'filter-value' => 'touring-sport'],
 
-            // A-Segment, B-Segment, C-Segment, D-Segment, E-Segment, Commercial, Executive, Grand Tourer, Luxury, Sports Car, Super Car, Compact Executive, 4x4, 4x2
-            'a-segment' => ['filter-type' => 'Segment', 'filter-value' => 'A-Segment'],
-            'b-segment' => ['filter-type' => 'Segment', 'filter-value' => 'B-Segment'],
-            'c-segment' => ['filter-type' => 'Segment', 'filter-value' => 'C-Segment'],
-            'd-segment' => ['filter-type' => 'Segment', 'filter-value' => 'D-Segment'],
-            'e-segment' => ['filter-type' => 'Segment', 'filter-value' => 'E-Segment'],
-            'commercial' => ['filter-type' => 'Segment', 'filter-value' => 'Commercial'],
-            'executive' => ['filter-type' => 'Segment', 'filter-value' => 'Executive'],
-            'grand-tourer' => ['filter-type' => 'Segment', 'filter-value' => 'Grand Tourer'],
-            'luxury' => ['filter-type' => 'Segment', 'filter-value' => 'Luxury'],
-            'sports-car' => ['filter-type' => 'Segment', 'filter-value' => 'Sports Car'],
-            'super-car' => ['filter-type' => 'Segment', 'filter-value' => 'Super Car'],
-            'compact-executive' => ['filter-type' => 'Segment', 'filter-value' => 'Compact Executive'],
-            '4x4' => ['filter-type' => 'Segment', 'filter-value' => '4x4'],
-            '4x2' => ['filter-type' => 'Segment', 'filter-value' => '4x2'],
+        // MT, AMT, CVT, DCT, AT, MCT, EV, E-CVT
+        'mt' => ['filter-type' => 'Transmission', 'filter-value' => 'mt'],
+        'amt' => ['filter-type' => 'Transmission', 'filter-value' => 'amt'],
+        'cvt' => ['filter-type' => 'Transmission', 'filter-value' => 'cvt'],
+        'dct' => ['filter-type' => 'Transmission', 'filter-value' => 'dct'],
+        'at' => ['filter-type' => 'Transmission', 'filter-value' => 'at'],
+        'mct' => ['filter-type' => 'Transmission', 'filter-value' => 'mct'],
+        'ev' => ['filter-type' => 'Transmission', 'filter-value' => 'ev'],
+        'ecvt' => ['filter-type' => 'Transmission', 'filter-value' => 'e-cvt'],
 
-            // MT, AMT, CVT, DCT, AT, MCT, EV, E-CVT
-            'mt' => ['filter-type' => 'Transmission', 'filter-value' => 'mt'],
-            'amt' => ['filter-type' => 'Transmission', 'filter-value' => 'amt'],
-            'cvt' => ['filter-type' => 'Transmission', 'filter-value' => 'cvt'],
-            'dct' => ['filter-type' => 'Transmission', 'filter-value' => 'dct'],
-            'at' => ['filter-type' => 'Transmission', 'filter-value' => 'at'],
-            'mct' => ['filter-type' => 'Transmission', 'filter-value' => 'mct'],
-            'ev' => ['filter-type' => 'Transmission', 'filter-value' => 'ev'],
-            'ecvt' => ['filter-type' => 'Transmission', 'filter-value' => 'e-cvt'],
+        // Petrol, Electric
+        'petrol' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol'],
+        'ev' => ['filter-type' => 'Fuel', 'filter-value' => 'ev'],
 
-            // Petrol, Diesel, Petrol Hybrid, Diesel Hybrid, Electric Vehicle
-            'petrol' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol'],
-            'diesel' => ['filter-type' => 'Fuel', 'filter-value' => 'diesel'],
-            'petrol-hybrid' => ['filter-type' => 'Fuel', 'filter-value' => 'petrol-hybrid'],
-            'diesel-hybrid' => ['filter-type' => 'Fuel', 'filter-value' => 'diesel-hybrid'],
-            'electric-vehicle' => ['filter-type' => 'Fuel', 'filter-value' => 'electric-vehicle'],
 
-            // 2 Seater, 4 Seater, 5 Seater, 6 Seater, 7 Seater, 8 Seater, 9 Seater
-            '2' => ['filter-type' => 'Seating Capacity', 'filter-value' => '2 Seater'],
-            '4' => ['filter-type' => 'Seating Capacity', 'filter-value' => '4 Seater'],
-            '5' => ['filter-type' => 'Seating Capacity', 'filter-value' => '5 Seater'],
-            '6' => ['filter-type' => 'Seating Capacity', 'filter-value' => '6 Seater'],
-            '7' => ['filter-type' => 'Seating Capacity', 'filter-value' => '7 Seater'],
-            '8' => ['filter-type' => 'Seating Capacity', 'filter-value' => '8 Seater'],
-            '9' => ['filter-type' => 'Seating Capacity', 'filter-value' => '9 Seater'],
+        // 1 Seater, 2 Seater,
+        '1' => ['filter-type' => 'Seating Capacity', 'filter-value' => '1 Seater'],
+        '2' => ['filter-type' => 'Seating Capacity', 'filter-value' => '2 Seater'],
 
-            // Front Wheel Drive, Rear Wheel Drive, All Wheel Drive
-            'forwardwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'fwd'],
-            'rearwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'rwd'],
-            'allwheeldrive' => ['filter-type' => 'Drive Type', 'filter-value' => 'awd'],
-        ];
-
-        foreach ($body_type_terms as $term) {
-            $term_name = strtolower($term->name);
-            $filter_mapping[$term_name] = ['filter-type' => 'Body Type', 'filter-value' => $term->term_id];
-        }
-    }
+        // 0-150cc, 150-200cc, 200-300cc, 300-400cc, 400-500cc, 500-1000cc, Above 1000cc
+        '0-150cc' => ['filter-type' => 'Displacement', 'filter-value' => '0-150cc'],
+        '150-200cc' => ['filter-type' => 'Displacement', 'filter-value' => '150-200cc'],
+        '200-300cc' => ['filter-type' => 'Displacement', 'filter-value' => '200-300cc'],
+        '300-400cc' => ['filter-type' => 'Displacement', 'filter-value' => '300-400cc'],
+        '400-500cc' => ['filter-type' => 'Displacement', 'filter-value' => '400-500cc'],
+        '500-1000cc' => ['filter-type' => 'Displacement', 'filter-value' => '500-1000cc'],
+        'above-1000cc' => ['filter-type' => 'Displacement', 'filter-value' => 'above-1000cc'],
+    ];
 
     return $filter_mapping;
 }

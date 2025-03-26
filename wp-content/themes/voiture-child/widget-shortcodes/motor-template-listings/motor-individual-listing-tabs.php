@@ -250,18 +250,20 @@ function display_motor_tabs($urls, $selected_tab, $listing_name, $make_logo_url)
         display: flex;
     }
 
-    .tab-car-title {
+
+
+    .car-header img {
+        margin-right: 0;
+    }
+		    .tab-car-title {
         font-size: 32px;
         line-height: 38px;
         font-family: "Roboto Condensed";
         color: #262626;
         font-weight: 700;
-        margin-left: 15px;
+        margin-left: 32px !important;
     }
 
-    .car-header img {
-        margin-right: 0;
-    }
 }
 
 	 </style>

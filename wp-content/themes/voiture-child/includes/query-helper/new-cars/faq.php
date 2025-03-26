@@ -22,9 +22,25 @@ function fetch_car_faq_data_from_db()
 
     if ($get_make_data) {
         $brand_id = $make_term->term_id;
+        // Add a condition to check for serialized or non-serialized meta values
+        $args['meta_query'][] = array(
+            'relation' => 'OR',
+            array(
+                'key'     => 'related_make',
+                'value'   => '"' . $brand_id . '"', // Serialized values will have quotes
+                'compare' => 'LIKE',
+            ),
+            array(
+                'key'     => 'related_make',
+                'value'   => $brand_id, // Non-serialized value
+                'compare' => '=',
+            ),
+        );
+    }else {
+        // Add fallback condition: where related_make and related_model are empty
         $args['meta_query'] = array(
-            'key'     => 'related_make',
-            'value'   => $brand_id,
+			'key'     => 'related_make',
+            'value'   => '',
             'compare' => '='
         );
     }
@@ -60,9 +76,24 @@ function fetch_motor_faq_data_from_db()
 
     if ($get_make_data) {
         $brand_id = $make_term->term_id;
+        $args['meta_query'][] = array(
+            'relation' => 'OR',
+            array(
+                'key'     => 'related_make',
+                'value'   => '"' . $brand_id . '"', // Serialized values will have quotes
+                'compare' => 'LIKE',
+            ),
+            array(
+                'key'     => 'related_make',
+                'value'   => $brand_id, // Non-serialized value
+                'compare' => '=',
+            ),
+        );
+    }else {
+        // Add fallback condition: where related_make and related_model are empty
         $args['meta_query'] = array(
-            'key'     => 'related_make',
-            'value'   => $brand_id,
+			'key'     => 'related_make',
+            'value'   => '',
             'compare' => '='
         );
     }

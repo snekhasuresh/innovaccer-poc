@@ -4,12 +4,15 @@ from concurrent.futures import TimeoutError
 
 from google.cloud import pubsub_v1
 from google.cloud import storage
-from confluent_kafka import Producer
+import confluent_kafka
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
+from token_provider import TokenProvider
 
 # Configure Kafka producer
-producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS}
-producer = Producer(producer_conf)
+token_provider = TokenProvider()
+producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS,'sasl.mechanisms': 'OAUTHBEARER',
+    'oauth_cb': token_provider.get_token}
+producer = confluent_kafka.Producer(producer_conf)
 
 def upload_file(bucket_name: str, source_path: str, dest_blob_name: str):
     """Uploads a local file to a GCS bucket."""

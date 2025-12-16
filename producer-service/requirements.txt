@@ -1,4 +1,4 @@
 google-cloud-pubsub
 google-cloud-storage
 confluent-kafka
-token_provider
+tokenprovider

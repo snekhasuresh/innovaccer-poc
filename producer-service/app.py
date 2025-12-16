@@ -6,7 +6,7 @@ from google.cloud import pubsub_v1
 from google.cloud import storage
 import confluent_kafka
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
-from token_provider import TokenProvider
+from tokenprovider import TokenProvider
 
 # Configure Kafka producer
 token_provider = TokenProvider()

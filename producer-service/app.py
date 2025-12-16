@@ -3,12 +3,22 @@ import base64
 from concurrent.futures import TimeoutError
 
 from google.cloud import pubsub_v1
+from google.cloud import storage
 from confluent_kafka import Producer
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
 
 # Configure Kafka producer
 producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS}
 producer = Producer(producer_conf)
+
+def upload_file(bucket_name: str, source_path: str, dest_blob_name: str):
+    """Uploads a local file to a GCS bucket."""
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
+    blob = bucket.blob(dest_blob_name)
+
+    blob.upload_from_filename(source_path)
+    print(f"Uploaded {source_path} to gs://{bucket_name}/{dest_blob_name}")
 
 def delivery_report(err, msg):
     if err is not None:
@@ -34,7 +44,7 @@ def handle_gcs_event(event_data: dict):
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     try:
         # Pub/Sub for GCS sends JSON in data field (base64-encoded)
-        payload = base64.b64decode(message.data).decode("utf-8")
+        payload = message.data.decode("utf-8")
         event = json.loads(payload)
         print(f"Received GCS event: {event}")
         handle_gcs_event(event)
@@ -58,4 +68,6 @@ def main():
         streaming_pull_future.result()
 
 if __name__ == "__main__":
+    upload_file("innovacer", "sample.txt", "uploaded-file.txt")
     main()
+   

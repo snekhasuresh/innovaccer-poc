@@ -6,12 +6,10 @@ from google.cloud import pubsub_v1
 from google.cloud import storage
 import confluent_kafka
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
-from tokenprovider import TokenProvider
+# from tokenprovider import TokenProvider
 
 # Configure Kafka producer
-token_provider = TokenProvider()
-producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS,'sasl.mechanisms': 'OAUTHBEARER',
-    'oauth_cb': token_provider.get_token}
+producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS}
 producer = confluent_kafka.Producer(producer_conf)
 
 def upload_file(bucket_name: str, source_path: str, dest_blob_name: str):

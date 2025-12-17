@@ -6,8 +6,8 @@ from google.cloud import storage
 import confluent_kafka # type: ignore
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
 import time
-import google.auth # type: ignore
-from google.auth.transport.requests import Request # type: ignore
+import google.auth
+from google.auth.transport.requests import Request
 
 # from tokenprovider import TokenProvider
 

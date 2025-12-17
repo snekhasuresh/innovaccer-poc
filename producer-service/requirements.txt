@@ -1,4 +1,3 @@
 google-cloud-pubsub
 google-cloud-storage
 confluent-kafka
-google.auth

@@ -15,6 +15,7 @@ from google.auth.transport.requests import Request # type: ignore
 # Configure Kafka producer
 def oauthbearer_token_refresh_cb(producer, oauthbearer_config):
     credentials, project = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
+    print(f"Using Google Cloud Project: {project}")
     credentials.refresh(Request())
     access_token = credentials.token
     lifetime = int(time.time()) + 3300  # token expiry as Unix time

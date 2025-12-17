@@ -3,18 +3,20 @@ import base64
 from concurrent.futures import TimeoutError
 from google.cloud import pubsub_v1
 from google.cloud import storage
-import confluent_kafka
+import confluent_kafka # type: ignore
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
 import time
+import google.auth # type: ignore
+from google.auth.transport.requests import Request # type: ignore
 
 # from tokenprovider import TokenProvider
 
 
 # Configure Kafka producer
 def oauthbearer_token_refresh_cb(producer, oauthbearer_config):
-    # 1. Call your IdP here to get an access token (e.g. Google, Okta).
-    #    This part is specific to your environment.
-    access_token = "<ACCESS_TOKEN_STRING>"
+    credentials, project = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
+    credentials.refresh(Request())
+    access_token = credentials.token
     lifetime = int(time.time()) + 3300  # token expiry as Unix time
 
     # 2. Set token on the client

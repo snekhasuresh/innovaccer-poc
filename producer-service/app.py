@@ -1,16 +1,42 @@
 import json
 import base64
 from concurrent.futures import TimeoutError
-
 from google.cloud import pubsub_v1
 from google.cloud import storage
-import confluent_kafka
+import confluent_kafka # type: ignore
 from config import PROJECT_ID, SUBSCRIPTION_ID, KAFKA_BOOTSTRAP_SERVERS, KAFKA_TOPIC
+import time
+import google.auth # type: ignore
+from google.auth.transport.requests import Request # type: ignore
+
 # from tokenprovider import TokenProvider
 
+
 # Configure Kafka producer
-producer_conf = {"bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS}
+def oauthbearer_token_refresh_cb(producer, oauthbearer_config):
+    credentials, project = google.auth.default(scopes=["https://www.googleapis.com/auth/cloud-platform"])
+    print(f"Using Google Cloud Project: {project}")
+    credentials.refresh(Request())
+    access_token = credentials.token
+    lifetime = int(time.time()) + 3300  # token expiry as Unix time
+
+    # 2. Set token on the client
+    producer.set_oauthbearer_token(
+        token_value=access_token,
+        md_lifetime_ms=lifetime * 1000,
+        md_principal_name="your-principal-or-email",
+        md_extensions={},
+    )
+
+producer_conf = {
+    "bootstrap.servers": KAFKA_BOOTSTRAP_SERVERS,
+    "security.protocol": "SASL_SSL",
+    "sasl.mechanisms": "OAUTHBEARER",
+    "oauth_cb": oauthbearer_token_refresh_cb,
+}
+
 producer = confluent_kafka.Producer(producer_conf)
+
 
 def upload_file(bucket_name: str, source_path: str, dest_blob_name: str):
     """Uploads a local file to a GCS bucket."""
@@ -21,11 +47,13 @@ def upload_file(bucket_name: str, source_path: str, dest_blob_name: str):
     blob.upload_from_filename(source_path)
     print(f"Uploaded {source_path} to gs://{bucket_name}/{dest_blob_name}")
 
+
 def delivery_report(err, msg):
     if err is not None:
         print(f"Delivery failed: {err}")
     else:
         print(f"Delivered to {msg.topic()} [{msg.partition()}] offset {msg.offset()}")
+
 
 def handle_gcs_event(event_data: dict):
     """
@@ -42,6 +70,7 @@ def handle_gcs_event(event_data: dict):
     )
     producer.poll(0)
 
+
 def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     try:
         # Pub/Sub for GCS sends JSON in data field (base64-encoded)
@@ -53,6 +82,7 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     except Exception as exc:
         print(f"Failed to process message: {exc}")
         message.ack()
+
 
 def main():
     subscriber = pubsub_v1.SubscriberClient()
@@ -68,7 +98,7 @@ def main():
         streaming_pull_future.cancel()
         streaming_pull_future.result()
 
+
 if __name__ == "__main__":
     upload_file("innovacer", "sample.txt", "uploaded-file.txt")
     main()
-   

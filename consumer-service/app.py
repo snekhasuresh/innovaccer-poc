@@ -41,6 +41,8 @@ def main():
     try:
         while True:
             msg = consumer.poll(1.0)
+            print("Polling for messages...")
+            print("Received message:", msg)
             if msg is None:
                 continue
             if msg.error():

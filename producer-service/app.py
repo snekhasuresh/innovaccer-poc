@@ -75,6 +75,7 @@ def callback(message: pubsub_v1.subscriber.message.Message) -> None:
     try:
         # Pub/Sub for GCS sends JSON in data field (base64-encoded)
         payload = message.data.decode("utf-8")
+        print("Received message data:", payload)
         event = json.loads(payload)
         print(f"Received GCS event: {event}")
         handle_gcs_event(event)
